@@ -41,11 +41,11 @@ class Comment(db.Model):
         return '<Comment {}>'.format(self.content[:15])
 
 class User_Group(db.Model):
-    UGId = db.Column(db.Integer, primary_key=True)
-    UGName = db.Column(db.String(50), unique=True)
+    ugid = db.Column(db.Integer, primary_key=True)
+    ugname = db.Column(db.String(50), unique=True)
 
-    def __init__(self, UGName):
-        self.UGName = UGName
+    def __init__(self, ugname):
+        self.ugname = UGName
 
     def __repr__(self):
         return '<User_Group {}>'.format(self.UGName)
@@ -100,3 +100,17 @@ class Type(db.Model):
 
     def __repr__(self):
         return '<Type {}>'.format(self.typename)
+
+class Visibility(db.Model):
+    vid = db.Column(db.Integer, primary_key=True)
+    vname = db.Column(db.String(50), unique=True)
+
+    def __init__(self, vname):
+        self.vname = vname
+
+    def __repr__(self):
+        return '<Visibility {}>'.format(self.vname)
+
+class UG_has_V(db.Model):
+    ugid = db.Column(db.Integer, primary_key=True)
+    vid = db.Column(db.Integer, primary_key=True)
