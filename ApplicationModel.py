@@ -1,6 +1,7 @@
 __author__ = 'Chrille'
 #from flask import Flask
 import flask.ext.sqlalchemy
+from sqlalchemy.dialects import postgresql
 #from sqlalchemy.ext.declarative import declarative_base
 
 #Base = declarative_base()
@@ -15,6 +16,7 @@ class User(db.Model):
     username = db.Column(db.String(120), unique=True)
     email = db.Column(db.String(120), unique=True)
     password = db.Column(db.String(256))
+    salt = db.Column(postgresql.BYTEA(24),nullable=False)
     postscreated = db.Column(db.Integer, default=0)
     comments = db.Column(db.Integer, default=0)
 
