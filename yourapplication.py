@@ -1,9 +1,10 @@
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
+from ApplicationModel import *
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:bubblegum123@localhost/postgres'
-db = SQLAlchemy(app)
+#app = Flask(__name__)
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:bubblegum123@localhost/postgres'
+#db = SQLAlchemy(app)
 
 """
 class User(db.Model):
