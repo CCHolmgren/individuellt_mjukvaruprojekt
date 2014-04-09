@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:bubblegum123@localhost/postgres'
 db = SQLAlchemy(app)
 
-
+"""
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True)
@@ -52,3 +52,4 @@ class Category(db.Model):
 
     def __repr__(self):
         return '<Category %r>' % self.name
+"""
