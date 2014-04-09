@@ -1,10 +1,18 @@
 __author__ = 'Chrille'
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
+
+Base = declarative_base()
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:bubblegum123@localhost/postgres'
 db = SQLAlchemy(app)
+
+"""ug_has_v_table = db.Table('association', Base.metadata,
+                          db.Column('left_id', db.Integer, db.ForeignKey('user_group.ugid'),primary_key=True),
+                          db.Column('right_id', db.Integer, db.ForeignKey('Visibility.vid'),primary_key=True))"""
 
 class User(db.Model):
     userid = db.Column(db.Integer, primary_key=True)
@@ -41,14 +49,16 @@ class Comment(db.Model):
         return '<Comment {}>'.format(self.content[:15])
 
 class User_Group(db.Model):
+    __tablename__ = 'usergroup'
     ugid = db.Column(db.Integer, primary_key=True)
     ugname = db.Column(db.String(50), unique=True)
+    #children = db.relationship("Visibility", secondary=ug_has_v_table)
 
     def __init__(self, ugname):
-        self.ugname = UGName
+        self.ugname = ugname
 
     def __repr__(self):
-        return '<User_Group {}>'.format(self.UGName)
+        return '<User_Group {}>'.format(self.ugname)
 
 class Category(db.Model):
     categoryid = db.Column(db.Integer, primary_key=True)
@@ -112,5 +122,18 @@ class Visibility(db.Model):
         return '<Visibility {}>'.format(self.vname)
 
 class UG_has_V(db.Model):
-    ugid = db.Column(db.Integer, primary_key=True)
-    vid = db.Column(db.Integer, primary_key=True)
+    __tablename__ = 'ughasv'
+    ugid = db.Column(db.Integer, db.ForeignKey('usergroup.ugid'))
+    vid = db.Column(db.Integer, db.ForeignKey('visibility.vid'))
+
+    __table_args__ = (
+        db.PrimaryKeyConstraint('ugid','vid'),
+        {},
+    )
+
+    def __init__(self, ugid, vid):
+        self.ugid = ugid
+        self.vid = vid
+
+    def __repr__(self):
+        return '<UG_has_V {} {}>'.format(self.ugid, self.vid)
