@@ -3,3 +3,4 @@ Flask grejor: http://flask.pocoo.org/docs/
   flask-sqlalchemy: http://pythonhosted.org/Flask-SQLAlchemy/quickstart.html
 Openshift?: https://www.openshift.com/app/account/new , https://www.openshift.com/blogs/use-flask-login-to-add-user-authentication-to-your-python-application
   jinja2: http://jinja.pocoo.org/docs/templates/
+  application-context: http://flask.pocoo.org/docs/appcontext/
