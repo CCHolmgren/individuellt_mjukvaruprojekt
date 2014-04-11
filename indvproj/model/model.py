@@ -1,8 +1,6 @@
 __author__ = 'Chrille'
-import flask.ext.sqlalchemy
 from sqlalchemy.dialects import postgresql
-
-db = flask.ext.sqlalchemy.SQLAlchemy()
+from model.database import db
 
 class User(db.Model):
     userid = db.Column(db.Integer, primary_key=True)

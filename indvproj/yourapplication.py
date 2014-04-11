@@ -1,10 +1,9 @@
 from flask import Flask, render_template
-from model.model import db
+from model.database import db
 import hashlib
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:bubblegum123@localhost/postgres'
-#db = SQLAlchemy(app)
 db.init_app(app)
 
 @app.route('/')
@@ -18,5 +17,5 @@ def sha512(something):
     return hashlib.sha512(something + salt).hexdigest(),salt
 
 if __name__ == '__main__':
-    print(sha512("what"))
+    #print(sha512("what"))
     app.run()
