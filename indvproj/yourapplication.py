@@ -1,20 +1,29 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, g, request
 from model.database import db
-import hashlib
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:bubblegum123@localhost/postgres'
 db.init_app(app)
 
-@app.route('/')
+@app.route('/',methods=['GET','POST'])
 def index():
-    return render_template('main.html',message='Hej meddelande')
+    if request.method == 'POST':
+        return render_template('main.html',message='Du accessade sidan med post istället för get')
+    if request.method == 'GET':
+        return render_template('main.html',message='Du accessade sidan med get istället för post')
 
-def sha512(something):
+def encrypt(password):
+    """
+    Takes a password, encodes it in utf-8 and
+    then uses the haslib sha512 function to encrypt it.
+    The hexdigest and the salt used is then returned.
+    """
+
     import os
-    something = something.encode('utf-8')
+    import hashlib
+    password = password.encode('utf-8')
     salt = os.urandom(24)
-    return hashlib.sha512(something + salt).hexdigest(),salt
+    return hashlib.sha512(password + salt).hexdigest(),salt
 
 if __name__ == '__main__':
     #print(sha512("what"))
