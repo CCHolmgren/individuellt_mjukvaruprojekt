@@ -1,14 +1,7 @@
 __author__ = 'Chrille'
-#from flask import Flask
 import flask.ext.sqlalchemy
 from sqlalchemy.dialects import postgresql
-#from sqlalchemy.ext.declarative import declarative_base
 
-#Base = declarative_base()
-
-#app = Flask(__name__)
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:bubblegum123@localhost/postgres'
-#db = SQLAlchemy(app)
 db = flask.ext.sqlalchemy.SQLAlchemy()
 
 class User(db.Model):
@@ -52,7 +45,6 @@ class UserGroup(db.Model):
     __tablename__ = 'usergroup'
     ugid = db.Column(db.Integer, primary_key=True)
     ugname = db.Column(db.String(50), unique=True)
-    #children = db.relationship("Visibility", secondary=ug_has_v_table)
 
     def __init__(self, ugname):
         self.ugname = ugname

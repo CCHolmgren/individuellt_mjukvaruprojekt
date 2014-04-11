@@ -1,6 +1,5 @@
 from flask import Flask, render_template
-#from flask.ext.sqlalchemy import SQLAlchemy
-from ApplicationModel import db
+from model.model import db
 import hashlib
 
 app = Flask(__name__)
@@ -20,4 +19,4 @@ def sha512(something):
 
 if __name__ == '__main__':
     print(sha512("what"))
-    #app.run()
+    app.run()
