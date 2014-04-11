@@ -1,5 +1,6 @@
 from flask import Flask, render_template, g, request
 from model.database import db
+import model.model
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:bubblegum123@localhost/postgres'
@@ -26,5 +27,8 @@ def encrypt(password):
     return hashlib.sha512(password + salt).hexdigest(),salt
 
 if __name__ == '__main__':
-    #print(sha512("what"))
+    print(encrypt("what"))
+    with app.app_context():
+       db.drop_all()
+       db.create_all()
     app.run()

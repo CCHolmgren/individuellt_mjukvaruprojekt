@@ -1,6 +1,7 @@
 __author__ = 'Chrille'
 from sqlalchemy.dialects import postgresql
 from model.database import db
+import datetime
 
 class User(db.Model):
     userid = db.Column(db.Integer, primary_key=True)
@@ -10,13 +11,15 @@ class User(db.Model):
     salt = db.Column(postgresql.BYTEA(24),nullable=False)
     postscreated = db.Column(db.Integer, default=0)
     comments = db.Column(db.Integer, default=0)
+    created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
-    def __init__(self, username, email, password):
+    def __init__(self, username, email, password, salt):
         self.username = username
         self.email = email
         self.password = password
         self.postscreated = 0
         self.comments = 0
+        self.salt = salt
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -28,6 +31,7 @@ class Comment(db.Model):
     postid = db.Column(db.Integer, db.ForeignKey('post.postid'))
     commentid = db.Column(db.Integer, db.ForeignKey('comment.id'), nullable=True)
     content = db.Column(db.String(2000))
+    created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     def __init__(self, userid, postid, content, commentid=None):
         self.userid = userid
@@ -54,6 +58,7 @@ class UserGroup(db.Model):
 class Category(db.Model):
     categoryid = db.Column(db.Integer, primary_key=True)
     categoryname = db.Column(db.String(100), unique=True)
+    created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     def __init__(self, categoryname):
         self.categoryname = categoryname
@@ -83,6 +88,7 @@ class Post(db.Model):
     content = db.Column(db.String(2000), nullable=False)
     typeid = db.Column(db.Integer, db.ForeignKey('type.typeid'), nullable=False)
     title = db.Column(db.String(250), nullable=False)
+    created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     def __init__(self, createdby, timeposted, content, typeid, title):
         self.createdby = createdby
@@ -133,3 +139,5 @@ class UG_has_V(db.Model):
 
     def __repr__(self):
         return '<UG_has_V {} {}>'.format(self.ugid, self.vid)
+
+
