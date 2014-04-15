@@ -12,6 +12,7 @@ class User(db.Model):
     postscreated = db.Column(db.Integer, default=0)
     comments = db.Column(db.Integer, default=0)
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    status = db.Column(db.Integer,db.ForeignKey('status.statusid'), default=1, nullable=False)
 
     def __init__(self, username, email, password, salt):
         self.username = username
@@ -24,6 +25,12 @@ class User(db.Model):
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
+class Status(db.Model):
+    statusid = db.Column(db.Integer, primary_key=True, nullable=False)
+    statusname = db.Column(db.String(25), nullable=False, unique=True)
+
+    def __repr__(self):
+        return '<Status {}>'.format(self.statusname)
 
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
