@@ -8,12 +8,9 @@ app.secret_key = "Wtf is wrong with you? Why won't you just let me register a us
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:bubblegum123@localhost/postgres'
 db.init_app(app)
 
-@app.route('/',methods=['GET','POST'])
+@app.route('/')
 def index():
-    if request.method == 'POST':
-        return render_template('main.html',message='Du accessade sidan med post istället för get', posts=Post.query.limit(10).all() or [{"content": "Det finns inga posts än."}])
-    if request.method == 'GET':
-        return render_template('main.html',message='Du accessade sidan med get istället för post', posts=Post.query.limit(10).all() or [{"content": "Det finns inga posts än."}])
+    return render_template('main.html',message='Du accessade sidan med get istället för post', posts=Post.query.limit(10).all() or [{"content": "Det finns inga posts än."}])
 
 @app.route('/register', methods=['GET','POST'])
 def register():
