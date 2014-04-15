@@ -3,4 +3,9 @@
     <h1>Overview</h1>
     <p>Do you want to <a href={{ url_for('register') }}> register?</a>
     {{ message }}
+    {%  for post in posts %}
+        {% if post %}
+            <div>{{ post.content|safe }}</div>
+        {% endif %}
+    {% endfor%}
 {% endblock %}

@@ -1,6 +1,6 @@
 from flask import Flask, render_template, g, request, flash, redirect, url_for
 from model.database import db
-from model.model import User
+from model.model import User, Post
 from model.Forms import RegistrationForm
 
 app = Flask(__name__)
@@ -11,9 +11,9 @@ db.init_app(app)
 @app.route('/',methods=['GET','POST'])
 def index():
     if request.method == 'POST':
-        return render_template('main.html',message='Du accessade sidan med post istället för get')
+        return render_template('main.html',message='Du accessade sidan med post istället för get', posts=Post.query.limit(10).all() or [{"content": "Det finns inga posts än."}])
     if request.method == 'GET':
-        return render_template('main.html',message='Du accessade sidan med get istället för post')
+        return render_template('main.html',message='Du accessade sidan med get istället för post', posts=Post.query.limit(10).all() or [{"content": "Det finns inga posts än."}])
 
 @app.route('/register', methods=['GET','POST'])
 def register():
