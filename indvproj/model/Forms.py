@@ -1,4 +1,4 @@
-from wtforms import Form, BooleanField, TextField, PasswordField, validators
+from wtforms import Form, BooleanField, TextField, PasswordField, validators, TextAreaField
 __author__ = 'Chrille'
 
 class RegistrationForm(Form):
@@ -9,3 +9,7 @@ class RegistrationForm(Form):
         validators.EqualTo("confirm", message="Passwords must match")
     ])
     confirm = PasswordField("Repeat password")
+
+class NewPostForm(Form):
+    title = TextField("Title",[validators.Length(min=10, max=250)])
+    content =  TextAreaField("Content here", [validators.Length(min=10, max=2000)])

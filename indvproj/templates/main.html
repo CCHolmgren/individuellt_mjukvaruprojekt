@@ -5,7 +5,12 @@
     {{ message }}
     {%  for post in posts %}
         {% if post %}
-            <div>{{ post.content|safe }}</div>
+            <div>{{ post.title }}</div>
+            <div>{{ post.content }}</div>
+        {% else %}
+            <div>
+                <p>There aren't any posts yet, would you like to <a href={{ url_for("new_post") }}>post</a> one?</p>
+            </div>
         {% endif %}
     {% endfor%}
 {% endblock %}

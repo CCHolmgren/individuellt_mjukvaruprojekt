@@ -1,7 +1,7 @@
 __author__ = 'Chrille'
 from sqlalchemy.dialects import postgresql
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, PrimaryKeyConstraint
-from models.database import Base as db
+from model.database import Base as db
 import datetime
 
 class User(db):
@@ -26,6 +26,17 @@ class User(db):
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
+
+    def is_authenticated(self):
+        return True
+    def is_active(self):
+        return True
+    def is_anonymous(self):
+        return False
+    def get_id(self):
+        return self.userid
+    def __unicode__(self):
+        return self.username
 
 class Status(db):
     __tablename__="status"
@@ -111,7 +122,7 @@ class Post(db):
         self.typeid = typeid
         self.title = title
         self.views = 0
-        self.typeid = 0
+        self.typeid = typeid
 
     def __repr__(self):
         return '<Post {}>'.format(self.title)
