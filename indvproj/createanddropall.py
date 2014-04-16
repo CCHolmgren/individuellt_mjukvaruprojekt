@@ -1,5 +1,5 @@
-from indvproj.model.database import db
-from model.model import *
+from database import db_session
+from models import *
 from flask import Flask
 
 __author__ = 'Chrille'

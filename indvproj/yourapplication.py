@@ -1,12 +1,15 @@
 from flask import Flask, render_template, g, request, flash, redirect, url_for
-from model.database import db
-from model.model import User, Post
-from model.Forms import RegistrationForm
+from database import db_session as db
+from models import User, Post
+from forms import RegistrationForm
 
 app = Flask(__name__)
 app.secret_key = "Wtf is wrong with you? Why won't you just let me register a user sometime today? :("
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:bubblegum123@localhost/postgres'
-db.init_app(app)
+
+@app.teardown_appcontext
+def shutdown_session(exception=None):
+    db.remove()
 
 @app.route('/')
 def index():
