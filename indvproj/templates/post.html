@@ -1,9 +1,10 @@
 {% extends "layout.html" %}
 {% block body %}
-    <h1>Post - {{ post.title or "Hello" }}</h1>
+    <h1>Post - {{ post.title or "There isn't anything here" }}</h1>
     {% if post %}
         <div>{{ post.content }}</div>
     {% else %}
         <div>There isn't any post associated with that id</div>
     {% endif %}
 {% endblock %}
+{% block title %}{% if post %}Post: {{ post.title }}{% else %}The post does not seem to exist{% endif %}{% endblock %}
