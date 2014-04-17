@@ -11,9 +11,9 @@ class RegistrationForm(Form):
     confirm = PasswordField("Repeat password")
 
 class NewPostForm(Form):
-    title = TextField("Title",[validators.Length(min=10, max=250)])
-    content =  TextAreaField("Content here", [validators.Length(min=10, max=2000)])
+    title = TextField("Title",[validators.Length(min=10, max=250),validators.Required()])
+    content =  TextAreaField("Content here", [validators.Length(min=10, max=2000),validators.Required()])
 
 class LoginForm(Form):
-    username = TextField("Username")
-    password = PasswordField("Password")
+    username = TextField("Username",[validators.Length(min=3,max=120),validators.Required()])
+    password = PasswordField("Password",[validators.Length(min=6),validators.Required()])

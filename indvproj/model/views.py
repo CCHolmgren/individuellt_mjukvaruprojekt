@@ -45,10 +45,14 @@ class LoginView(FlaskView):
         form = LoginForm(request.form)
         """, password=encrypt(form.password.data)"""
         if request.method == 'POST' and form.validate():
-            user = User.query.filter_by(username=form.username.data,password=check_password(form.password.data,User.query.filter(User.username == form.username.data).first().salt)).first()
-            login_user(user)
-            flash("Logged in successfully.")
-            return redirect(url_for("MainView:index"))
+            if User.query.filter_by(username=form.username.data).first():
+                user = User.query.filter_by(username=form.username.data,password=check_password(form.password.data,User.query.filter(User.username == form.username.data).first().salt)).first()
+                if user is not None:
+                    login_user(user)
+                    flash("Logged in successfully.")
+                    return redirect(url_for("MainView:index"))
+            flash('The login failed, check the username and password and try again')
+            return redirect(url_for('LoginView:index'))
         return render_template("login.html",form=form)
 
 

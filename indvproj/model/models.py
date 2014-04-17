@@ -171,6 +171,9 @@ class UG_has_V(db.Model):
         self.vid = vid
 
     def __repr__(self):
-        return '<UG_has_V {} {}>'.format(self.ugid, self.vid)
-"""
+        return '<UG_has_V {} {}>'.format(self.ugid, self.vid)"""
+ug_has_v = db.Table('ug_has_v',
+                    db.Column('ugid',db.Integer,db.ForeignKey('usergroup.ugid')),
+                    db.Column('vid', db.Integer,db.ForeignKey('visibility.vid'))
+)
 

@@ -1,19 +1,16 @@
 {% extends "layout.html" %}
 {% block body %}
-    <h1>Overview</h1>
-    <p>Do you want to <a href={{ url_for('RegisterView:get') }}> register?</a>
     {{ message }}
+    <h1>Overview</h1>
+    <p>Do you want to <a href={{ url_for('RegisterView:get') }}> register?</a></p>
+    <p>Or do you want to <a href={{ url_for('LoginView:index') }}>Login</a></p>
     {%  for post in posts %}
         {% if post %}
-            <div>{{ post.title }}</div>
-            <div>{{ post.content }}</div>
-            <div>{{ post.user.username }}</div>
-            <div>{{ post.user.allcomments.all() }}</div>
-            <div>{{ post.user.groups.all() }}</div>
-        {% else %}
-            <div>
-                <!--<p>There aren't any posts yet, would you like to <a href={{ url_for("new_post") }}>post</a> one?</p>-->
-            </div>
+            <div>Title: {{ post.title }}</div>
+            <div>Content: {{ post.content }}</div>
+            <div>Username: {{ post.user.username }}</div>
+            <div>Usercomments: {{ post.user.allcomments.all() }}</div>
+            <div>Usergroups: {{ post.user.groups.all() }}</div>
         {% endif %}
     {% endfor%}
 {% endblock %}
