@@ -1,4 +1,14 @@
 {% extends "layout.html" %}
 {% block body %}
-    {{ user }}
+    {{ user.username }}<br>
+    {{ user.userid }}<br>
+    {{ user.email }}<br>
+    {% for post in user.posts %}
+        <a href={{ url_for('PostView:get',id=post.postid) }}>{{ post.title }}</a><br>
+    {% endfor %}
+    {{ user.created }}<br>
+    {{ user.status }}<br>
+    {% for group in user.grups %}
+        {{ group }}<br>
+    {% endfor %}
 {% endblock %}

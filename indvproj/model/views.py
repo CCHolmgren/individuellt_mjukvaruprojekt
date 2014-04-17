@@ -80,7 +80,7 @@ class PostView(FlaskView):
 
 class RegisterView(FlaskView):
 
-    def get(self):
+    def index(self):
         form = RegistrationForm(request.form)
         return render_template('create_user.html', form=form)
 
