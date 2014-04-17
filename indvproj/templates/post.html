@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block body %}
+    <h1>Post - {{ post.title }}</h1>
+    {{ message }}
+    {%  for post in posts %}
+        {% if post %}
+            <div>{{ post.title }}</div>
+            <div>{{ post.content }}</div>
+        {% endif %}
+    {% endfor%}
+{% endblock %}

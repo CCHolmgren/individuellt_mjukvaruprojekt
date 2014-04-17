@@ -1,20 +1,20 @@
 __author__ = 'Chrille'
 from sqlalchemy.dialects import postgresql
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, PrimaryKeyConstraint
-from model.database import Base as db
+#from sqlalchemy import db.Column, db.Integer, db.String, db.DateTime, db.ForeignKey, PrimaryKeyConstraint
+from database import db
 import datetime
 
-class User(db):
+class User(db.Model):
     __tablename__="user"
-    userid = Column(Integer, primary_key=True)
-    username = Column(String(120), unique=True)
-    email = Column(String(120), unique=True)
-    password = Column(String(256))
-    salt = Column(postgresql.BYTEA(24),nullable=False)
-    postscreated = Column(Integer, default=0)
-    comments = Column(Integer, default=0)
-    created = Column(DateTime, default=datetime.datetime.utcnow)
-    status = Column(Integer,ForeignKey('status.statusid'), default=1, nullable=False)
+    userid = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(120), unique=True)
+    email = db.Column(db.String(120), unique=True)
+    password = db.Column(db.String(256))
+    salt = db.Column(postgresql.BYTEA(24),nullable=False)
+    postscreated = db.Column(db.Integer, default=0)
+    comments = db.Column(db.Integer, default=0)
+    created = db.Column(db.DateTime, default=datetime.datetime.utcnow())
+    status = db.Column(db.Integer,db.ForeignKey('status.statusid'), default=1, nullable=False)
 
     def __init__(self, username, email, password, salt):
         self.username = username
@@ -38,22 +38,22 @@ class User(db):
     def __unicode__(self):
         return self.username
 
-class Status(db):
+class Status(db.Model):
     __tablename__="status"
-    statusid = Column(Integer, primary_key=True, nullable=False)
-    statusname = Column(String(25), nullable=False, unique=True)
+    statusid = db.Column(db.Integer, primary_key=True, nullable=False)
+    statusname = db.Column(db.String(25), nullable=False, unique=True)
 
     def __repr__(self):
         return '<Status {}>'.format(self.statusname)
 
-class Comment(db):
+class Comment(db.Model):
     __tablename__="comment"
-    id = Column(Integer, primary_key=True)
-    userid = Column(Integer, ForeignKey('user.userid'))
-    postid = Column(Integer, ForeignKey('post.postid'))
-    commentid = Column(Integer, ForeignKey('comment.id'), nullable=True)
-    content = Column(String(2000))
-    created = Column(DateTime, default=datetime.datetime.utcnow)
+    id = db.Column(db.Integer, primary_key=True)
+    userid = db.Column(db.Integer, db.ForeignKey('user.userid'))
+    postid = db.Column(db.Integer, db.ForeignKey('post.postid'))
+    commentid = db.Column(db.Integer, db.ForeignKey('comment.id'), nullable=True)
+    content = db.Column(db.String(2000))
+    created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     def __init__(self, userid, postid, content, commentid=None):
         self.userid = userid
@@ -65,10 +65,10 @@ class Comment(db):
         return '<Comment {}>'.format(self.content[:15])
 
 
-class UserGroup(db):
+class UserGroup(db.Model):
     __tablename__ = 'usergroup'
-    ugid = Column(Integer, primary_key=True)
-    ugname = Column(String(50), unique=True)
+    ugid = db.Column(db.Integer, primary_key=True)
+    ugname = db.Column(db.String(50), unique=True)
 
     def __init__(self, ugname):
         self.ugname = ugname
@@ -77,11 +77,11 @@ class UserGroup(db):
         return '<User_Group {}>'.format(self.ugname)
 
 
-class Category(db):
+class Category(db.Model):
     __tablename__="category"
-    categoryid = Column(Integer, primary_key=True)
-    categoryname = Column(String(100), unique=True)
-    created = Column(DateTime, default=datetime.datetime.utcnow)
+    categoryid = db.Column(db.Integer, primary_key=True)
+    categoryname = db.Column(db.String(100), unique=True)
+    created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     def __init__(self, categoryname):
         self.categoryname = categoryname
@@ -90,11 +90,11 @@ class Category(db):
         return '<Category {}>'.format(self.categoryname)
 
 
-class Group(db):
+class Group(db.Model):
     __tablename__="group"
-    groupid = Column(Integer, primary_key=True)
-    userid = Column(Integer, ForeignKey('user.userid'), nullable=False)
-    title = Column(String(250), nullable=False)
+    groupid = db.Column(db.Integer, primary_key=True)
+    userid = db.Column(db.Integer, db.ForeignKey('user.userid'), nullable=False)
+    title = db.Column(db.String(250), nullable=False)
 
     def __init__(self, userid, title):
         self.userid = userid
@@ -104,16 +104,16 @@ class Group(db):
         return '<Group {} created by {}>'.format(self.title, self.userid)
 
 
-class Post(db):
+class Post(db.Model):
     __tablename__="post"
-    postid = Column(Integer, primary_key=True)
-    createdby = Column(Integer, ForeignKey('user.userid'), nullable=False)
-    timeposted = Column(DateTime, nullable=False)
-    views = Column(Integer, default=0)
-    content = Column(String(2000), nullable=False)
-    typeid = Column(Integer, ForeignKey('type.typeid'), nullable=False)
-    title = Column(String(250), nullable=False)
-    created = Column(DateTime, default=datetime.datetime.utcnow)
+    postid = db.Column(db.Integer, primary_key=True)
+    createdby = db.Column(db.Integer, db.ForeignKey('user.userid'), nullable=False)
+    timeposted = db.Column(db.DateTime, nullable=False)
+    views = db.Column(db.Integer, default=0)
+    content = db.Column(db.String(2000), nullable=False)
+    typeid = db.Column(db.Integer, db.ForeignKey('type.typeid'), nullable=False)
+    title = db.Column(db.String(250), nullable=False)
+    created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     def __init__(self, createdby, timeposted, content, typeid, title):
         self.createdby = createdby
@@ -128,10 +128,10 @@ class Post(db):
         return '<Post {}>'.format(self.title)
 
 
-class Type(db):
+class Type(db.Model):
     __tablename__="type"
-    typeid = Column(Integer, primary_key=True)
-    typename = Column(String(50), unique=True)
+    typeid = db.Column(db.Integer, primary_key=True)
+    typename = db.Column(db.String(50), unique=True)
 
     def __init__(self, typename):
         self.typename = typename
@@ -140,10 +140,10 @@ class Type(db):
         return '<Type {}>'.format(self.typename)
 
 
-class Visibility(db):
+class Visibility(db.Model):
     __tablename__="visibility"
-    vid = Column(Integer, primary_key=True)
-    vname = Column(String(50), unique=True)
+    vid = db.Column(db.Integer, primary_key=True)
+    vname = db.Column(db.String(50), unique=True)
 
     def __init__(self, vname):
         self.vname = vname
@@ -151,14 +151,14 @@ class Visibility(db):
     def __repr__(self):
         return '<Visibility {}>'.format(self.vname)
 
-
-class UG_has_V(db):
+"""
+class UG_has_V(db.Model):
     __tablename__ = 'ughasv'
-    ugid = Column(Integer, ForeignKey('usergroup.ugid'))
-    vid = Column(Integer, ForeignKey('visibility.vid'))
+    ugid = db.Column(db.Integer, db.ForeignKey('usergroup.ugid'))
+    vid = db.Column(db.Integer, db.ForeignKey('visibility.vid'))
 
     __table_args__ = (
-        PrimaryKeyConstraint('ugid', 'vid'),
+        ('ugid', 'vid'),
         {},
     )
 
@@ -168,5 +168,5 @@ class UG_has_V(db):
 
     def __repr__(self):
         return '<UG_has_V {} {}>'.format(self.ugid, self.vid)
-
+"""
 

@@ -34,8 +34,8 @@ class MainView(FlaskView):
 class PostView(FlaskView):
 
     def get(self, id):
-        return "Hello from PostView:get"
-        #return render_template('post.html', post=Post.query.get_or_404(id))
+        #return "Hello from PostView:get"
+        return render_template('post.html', post=Post.query.get_or_404(id))
 
     @route('/new')
     @login_required
