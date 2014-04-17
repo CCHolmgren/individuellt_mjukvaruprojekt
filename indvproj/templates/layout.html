@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}{% endblock %}
 </head>
 <body>
 {% with messages = get_flashed_messages() %}

@@ -101,7 +101,7 @@ class RegisterView(FlaskView):
 
 class UserView(FlaskView):
     def get(self, id):
-        user = User.query.get(id)
+        user = User.query.filter_by(username=id).first()
         if user is not None:
             return render_template('user.html',user=user)
         return render_template('user_missing.html')

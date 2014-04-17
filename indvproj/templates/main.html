@@ -8,7 +8,7 @@
         {% if post %}
             <div>Title: <a href={{ url_for('PostView:get', id=post.postid) }}>{{ post.title }}</a></div>
             <div>Content: {{ post.content }}</div>
-            <div>Username: <a href={{ url_for('UserView:get', id=post.user.userid) }}>{{ post.user.username }}</a></div>
+            <div>Username: <a href={{ url_for('UserView:get', id=post.user.username) }}>{{ post.user.username }}</a></div>
             <div>Usercomments: {{ post.user.allcomments.all() }}</div>
             <div>Usergroups: {{ post.user.groups.all() }}</div>
         {% endif %}

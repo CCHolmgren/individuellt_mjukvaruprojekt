@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/create_user.html" afterPath="$PROJECT_DIR$/indvproj/templates/create_user.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/layout.html" afterPath="$PROJECT_DIR$/indvproj/templates/layout.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/main.html" afterPath="$PROJECT_DIR$/indvproj/templates/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/new_post.html" afterPath="$PROJECT_DIR$/indvproj/templates/new_post.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/user.html" afterPath="$PROJECT_DIR$/indvproj/templates/user.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/user_missing.html" afterPath="$PROJECT_DIR$/indvproj/templates/user_missing.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="individuellt_mjukvaruprojekt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -19,7 +18,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$individuellt_mjukvaruprojekt.coverage" NAME="individuellt_mjukvaruprojekt Coverage Results" MODIFIED="1397741704979" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
+    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$individuellt_mjukvaruprojekt.coverage" NAME="individuellt_mjukvaruprojekt Coverage Results" MODIFIED="1397742529434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$model.coverage" NAME="model Coverage Results" MODIFIED="1397214632552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj/model" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$ApplicationModel.coverage" NAME="ApplicationModel Coverage Results" MODIFIED="1397043936621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -44,10 +43,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="yourapplication.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="yourapplication.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="22" selection-start="842" selection-end="842" vertical-scroll-proportion="0.0" vertical-offset="127" max-vertical-offset="816">
+            <state line="24" column="22" selection-start="842" selection-end="842" vertical-scroll-proportion="0.4787053" vertical-offset="127" max-vertical-offset="816">
               <folding>
                 <element signature="e#0#78#0" expanded="true" />
               </folding>
@@ -58,7 +57,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="0" selection-start="3037" selection-end="3037" vertical-scroll-proportion="0.0" vertical-offset="348" max-vertical-offset="935">
+            <state line="103" column="56" selection-start="3892" selection-end="3892" vertical-scroll-proportion="0.0" vertical-offset="348" max-vertical-offset="935">
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
                 <element signature="e#433#761#0" expanded="false" />
@@ -74,16 +73,34 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="114" selection-start="571" selection-end="571" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="357">
+            <state line="10" column="83" selection-start="540" selection-end="540" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="357">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="user.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/user.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="23" selection-start="370" selection-end="370" vertical-scroll-proportion="0.33333334" vertical-offset="0" max-vertical-offset="561">
+            <state line="12" column="16" selection-start="387" selection-end="387" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="323">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_missing.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indvproj/templates/user_missing.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="39" selection-start="241" selection-end="241" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="170">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indvproj/templates/layout.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="31" selection-start="112" selection-end="112" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="408">
               <folding />
             </state>
           </provider>
@@ -108,7 +125,6 @@
         <option value="$PROJECT_DIR$/indvproj/model/model.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
         <option value="$PROJECT_DIR$/indvproj/model/Forms.py" />
-        <option value="$PROJECT_DIR$/indvproj/templates/layout.html" />
         <option value="$PROJECT_DIR$/indvproj/createanddropall.py" />
         <option value="$PROJECT_DIR$/indvproj/model/loginmanager.py" />
         <option value="$PROJECT_DIR$/indvproj/model/database.py" />
@@ -117,12 +133,13 @@
         <option value="$PROJECT_DIR$/indvproj/templates/post.html" />
         <option value="$PROJECT_DIR$/indvproj/yourapplication.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/login.html" />
-        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
-        <option value="$PROJECT_DIR$/indvproj/templates/user_missing.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/new_post.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/create_user.html" />
-        <option value="$PROJECT_DIR$/indvproj/templates/main.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/user.html" />
+        <option value="$PROJECT_DIR$/indvproj/templates/layout.html" />
+        <option value="$PROJECT_DIR$/indvproj/templates/user_missing.html" />
+        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
+        <option value="$PROJECT_DIR$/indvproj/templates/main.html" />
       </list>
     </option>
   </component>
@@ -888,13 +905,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/user_missing.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="114" selection-start="159" selection-end="159" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="153">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="17" selection-start="110" selection-end="110" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="238">
@@ -916,13 +926,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="16" selection-start="325" selection-end="325" vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="391">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/create_user.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="34" selection-start="130" selection-end="130" vertical-scroll-proportion="0.09090909" vertical-offset="0" max-vertical-offset="561">
@@ -937,18 +940,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="22" selection-start="842" selection-end="842" vertical-scroll-proportion="0.0" vertical-offset="127" max-vertical-offset="816">
-          <folding>
-            <element signature="e#0#78#0" expanded="true" />
-          </folding>
+        <state line="4" column="31" selection-start="112" selection-end="112" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="408">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/user_missing.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="39" selection-start="241" selection-end="241" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="170">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="16" selection-start="387" selection-end="387" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="323">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="0" selection-start="3037" selection-end="3037" vertical-scroll-proportion="0.0" vertical-offset="348" max-vertical-offset="935">
+        <state line="103" column="56" selection-start="3892" selection-end="3892" vertical-scroll-proportion="0.0" vertical-offset="348" max-vertical-offset="935">
           <folding>
             <element signature="e#0#45#0" expanded="true" />
             <element signature="e#433#761#0" expanded="false" />
@@ -962,15 +977,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="114" selection-start="571" selection-end="571" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="357">
+        <state line="10" column="83" selection-start="540" selection-end="540" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="357">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/user.html">
+    <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="23" selection-start="370" selection-end="370" vertical-scroll-proportion="0.33333334" vertical-offset="0" max-vertical-offset="561">
-          <folding />
+        <state line="24" column="22" selection-start="842" selection-end="842" vertical-scroll-proportion="0.4787053" vertical-offset="127" max-vertical-offset="816">
+          <folding>
+            <element signature="e#0#78#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
