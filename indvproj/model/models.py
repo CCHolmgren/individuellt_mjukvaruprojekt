@@ -17,6 +17,7 @@ class User(db.Model):
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow())
     status = db.Column(db.Integer,db.ForeignKey('status.statusid'), default=1, nullable=False)
     posts = db.relationship('Post',backref='user',lazy='dynamic')
+    groups = db.relationship('Group', backref='user', lazy='dynamic')
 
     def __init__(self, username, email, password, salt):
         self.username = username

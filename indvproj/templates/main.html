@@ -9,6 +9,7 @@
             <div>{{ post.content }}</div>
             <div>{{ post.user.username }}</div>
             <div>{{ post.user.allcomments.all() }}</div>
+            <div>{{ post.user.groups.all() }}</div>
         {% else %}
             <div>
                 <!--<p>There aren't any posts yet, would you like to <a href={{ url_for("new_post") }}>post</a> one?</p>-->
