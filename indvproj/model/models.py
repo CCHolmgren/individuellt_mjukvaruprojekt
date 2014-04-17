@@ -13,6 +13,7 @@ class User(db.Model):
     salt = db.Column(postgresql.BYTEA(24),nullable=False)
     postscreated = db.Column(db.Integer, default=0)
     comments = db.Column(db.Integer, default=0)
+    allcomments = db.relationship('Comment',backref='user',lazy='dynamic')
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow())
     status = db.Column(db.Integer,db.ForeignKey('status.statusid'), default=1, nullable=False)
     posts = db.relationship('Post',backref='user',lazy='dynamic')
@@ -115,6 +116,7 @@ class Post(db.Model):
     typeid = db.Column(db.Integer, db.ForeignKey('type.typeid'), nullable=False)
     title = db.Column(db.String(250), nullable=False)
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    comments = db.relationship('Comment',backref='post',lazy='dynamic')
 
     def __init__(self, createdby, timeposted, content, typeid, title):
         self.createdby = createdby
