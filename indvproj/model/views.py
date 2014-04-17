@@ -5,7 +5,7 @@ from database import db_session
 from loginmanager import login_manager
 from flask_login import login_required, login_user
 from flask import render_template, request, redirect, flash, url_for
-from forms import NewPostForm, RegistrationForm
+from forms import NewPostForm, RegistrationForm, LoginForm
 import _datetime
 
 __author__ = 'Chrille'
@@ -21,7 +21,13 @@ def encrypt(password):
     import hashlib
     password = password.encode('utf-8')
     salt = os.urandom(24)
-    return hashlib.sha512(password + salt).hexdigest(),salt
+    return hashlib.sha512(password + salt).hexdigest()#,salt
+
+def check_password(string_password,salt):
+    import hashlib
+    print(string_password, salt)
+    string_password = string_password.encode('utf-8')
+    return hashlib.sha512(string_password+salt).hexdigest()
 
 class MainView(FlaskView):
     route_base = '/'
@@ -29,6 +35,19 @@ class MainView(FlaskView):
     def index(self):
         #print(Post.query.limit(10).all())
         return render_template('main.html',message='Du accessade sidan med get istället för post',posts=Post.query.limit(10).all())
+
+class LoginView(FlaskView):
+
+    @route('/', methods=['GET','POST'])
+    def index(self):
+        form = LoginForm(request.form)
+        """, password=encrypt(form.password.data)"""
+        if request.method == 'POST' and form.validate():
+            user = User.query.filter_by(username=form.username.data,password=check_password(form.password.data,User.query.filter(User.username == form.username.data).first().salt)).first()
+            login_user(user)
+            flash("Logged in successfully.")
+            return redirect(url_for("MainView:index"))
+        return render_template("login.html",form=form)
 
 
 class PostView(FlaskView):
@@ -47,7 +66,7 @@ class PostView(FlaskView):
                 print(post)
                 db_session.add(post)
                 db_session.commit()
-                redirect(url_for("PostView:get"))
+                redirect(url_for("PostView:get",id=post.postid))
             except Exception:
                 flash('Something horrible happened')
                 print('Damn')

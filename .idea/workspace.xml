@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/database.py" afterPath="$PROJECT_DIR$/indvproj/model/database.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/models.py" afterPath="$PROJECT_DIR$/indvproj/model/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/post.html" afterPath="$PROJECT_DIR$/indvproj/templates/post.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/indvproj/templates/login.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/indvproj/model/forms.py" afterPath="$PROJECT_DIR$/indvproj/model/forms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/yourapplication.py" afterPath="$PROJECT_DIR$/indvproj/yourapplication.py" />
@@ -19,7 +18,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$individuellt_mjukvaruprojekt.coverage" NAME="individuellt_mjukvaruprojekt Coverage Results" MODIFIED="1397732797808" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
+    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$individuellt_mjukvaruprojekt.coverage" NAME="individuellt_mjukvaruprojekt Coverage Results" MODIFIED="1397734348396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$model.coverage" NAME="model Coverage Results" MODIFIED="1397214632552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj/model" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$ApplicationModel.coverage" NAME="ApplicationModel Coverage Results" MODIFIED="1397043936621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -35,31 +34,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="yourapplication.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="yourapplication.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="26" selection-start="824" selection-end="824" vertical-scroll-proportion="0.6275168" vertical-offset="0" max-vertical-offset="680">
+            <state line="17" column="23" selection-start="727" selection-end="727" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
               <folding>
                 <element signature="e#0#78#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="schema.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Lib/site-packages/sqlalchemy/sql/schema.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="351" column="0" selection-start="14912" selection-end="14912" vertical-scroll-proportion="0.0" vertical-offset="5517" max-vertical-offset="57409">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Lib/site-packages/flask_sqlalchemy/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="509" column="0" selection-start="17517" selection-end="17517" vertical-scroll-proportion="0.0" vertical-offset="8118" max-vertical-offset="14807">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -82,12 +63,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="22" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1377">
+            <state line="31" column="26" selection-start="984" selection-end="984" vertical-scroll-proportion="0.35738254" vertical-offset="314" max-vertical-offset="1700">
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indvproj/templates/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="32" selection-start="128" selection-end="128" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="272">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create_user.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indvproj/templates/create_user.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="9" selection-start="0" selection-end="384" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="306">
+              <folding>
+                <marker date="1397574319382" expanded="true" signature="140:314" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -96,7 +97,7 @@
       <file leaf-file-name="forms.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/model/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+            <state line="17" column="36" selection-start="728" selection-end="728" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
               <folding />
             </state>
           </provider>
@@ -128,7 +129,9 @@
         <entry file="file://$PROJECT_DIR$/indvproj/model/database.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="7" column="32" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
-              <folding />
+              <folding>
+                <marker date="1397731812670" expanded="true" signature="461:541" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -155,15 +158,16 @@
         <option value="$PROJECT_DIR$/indvproj/templates/layout.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/create_user.html" />
         <option value="$PROJECT_DIR$/indvproj/createanddropall.py" />
-        <option value="$PROJECT_DIR$/indvproj/model/forms.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/new_post.html" />
         <option value="$PROJECT_DIR$/indvproj/model/loginmanager.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/main.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/post.html" />
         <option value="$PROJECT_DIR$/indvproj/model/database.py" />
         <option value="$PROJECT_DIR$/indvproj/model/models.py" />
-        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
+        <option value="$PROJECT_DIR$/indvproj/model/forms.py" />
         <option value="$PROJECT_DIR$/indvproj/yourapplication.py" />
+        <option value="$PROJECT_DIR$/indvproj/templates/login.html" />
+        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
       </list>
     </option>
   </component>
@@ -611,13 +615,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="32" selection-start="872" selection-end="872" vertical-scroll-proportion="0.0" vertical-offset="1683" max-vertical-offset="3026">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="126" selection-start="950" selection-end="950" vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="1462">
@@ -662,7 +659,9 @@
     <entry file="file://$PROJECT_DIR$/indvproj/model/database.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="17" selection-start="504" selection-end="504" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="357">
-          <folding />
+          <folding>
+            <marker date="1397731812670" expanded="true" signature="461:541" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -694,7 +693,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/create_user.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="9" selection-start="0" selection-end="384" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="306" />
+        <state line="9" column="9" selection-start="0" selection-end="384" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="306">
+          <folding>
+            <marker date="1397574319382" expanded="true" signature="140:314" placeholder="..." />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
@@ -732,7 +735,9 @@
     <entry file="file://$PROJECT_DIR$/indvproj/model/database.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="17" selection-start="504" selection-end="504" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="357">
-          <folding />
+          <folding>
+            <marker date="1397731812670" expanded="true" signature="461:541" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -759,7 +764,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/create_user.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="9" selection-start="315" selection-end="315" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="306" />
+        <state line="9" column="9" selection-start="315" selection-end="315" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="306">
+          <folding>
+            <marker date="1397574319382" expanded="true" signature="140:314" placeholder="..." />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
@@ -797,7 +806,9 @@
     <entry file="file://$PROJECT_DIR$/indvproj/model/database.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="0" selection-start="82" selection-end="82" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="170">
-          <folding />
+          <folding>
+            <marker date="1397731812670" expanded="true" signature="461:541" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -820,7 +831,9 @@
     <entry file="file://$PROJECT_DIR$/indvproj/model/database.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="0" selection-start="23" selection-end="66" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="170">
-          <folding />
+          <folding>
+            <marker date="1397731812670" expanded="true" signature="461:541" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -843,7 +856,9 @@
     <entry file="file://$PROJECT_DIR$/indvproj/model/database.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="0" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="170">
-          <folding />
+          <folding>
+            <marker date="1397731812670" expanded="true" signature="461:541" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -881,11 +896,6 @@
         <state line="15" column="16" selection-start="325" selection-end="325" vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="391" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/create_user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="9" selection-start="0" selection-end="384" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="306" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/new_post.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="14" selection-start="296" selection-end="296" vertical-scroll-proportion="0.30195382" vertical-offset="0" max-vertical-offset="563" />
@@ -916,13 +926,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="123" selection-start="0" selection-end="527" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="357">
@@ -937,16 +940,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Lib/site-packages/sqlalchemy/sql/schema.py">
+    <entry file="file://$PROJECT_DIR$/indvproj/model/database.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="351" column="0" selection-start="14912" selection-end="14912" vertical-scroll-proportion="0.0" vertical-offset="5517" max-vertical-offset="57409">
+        <state line="7" column="32" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+          <folding>
+            <marker date="1397731812670" expanded="true" signature="461:541" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="30" selection-start="181" selection-end="181" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="272">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Lib/site-packages/flask_sqlalchemy/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="509" column="0" selection-start="17517" selection-end="17517" vertical-scroll-proportion="0.0" vertical-offset="8118" max-vertical-offset="14807">
+        <state line="509" column="0" selection-start="17517" selection-end="17517" vertical-scroll-proportion="0.3321976" vertical-offset="8118" max-vertical-offset="14807">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lib/site-packages/sqlalchemy/sql/schema.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="351" column="0" selection-start="14912" selection-end="14912" vertical-scroll-proportion="0.3321976" vertical-offset="5517" max-vertical-offset="57409">
           <folding />
         </state>
       </provider>
@@ -958,34 +977,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
+    <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="30" selection-start="181" selection-end="181" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="272">
+        <state line="17" column="23" selection-start="727" selection-end="727" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+          <folding>
+            <element signature="e#0#78#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="32" selection-start="128" selection-end="128" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="272">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/database.py">
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/create_user.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="32" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+        <state line="9" column="9" selection-start="0" selection-end="384" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="306">
+          <folding>
+            <marker date="1397574319382" expanded="true" signature="140:314" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/model/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="36" selection-start="728" selection-end="728" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="22" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.0" vertical-offset="332" max-vertical-offset="1377">
+        <state line="31" column="26" selection-start="984" selection-end="984" vertical-scroll-proportion="0.35738254" vertical-offset="314" max-vertical-offset="1700">
           <folding>
             <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="26" selection-start="824" selection-end="824" vertical-scroll-proportion="0.6275168" vertical-offset="0" max-vertical-offset="680">
-          <folding>
-            <element signature="e#0#78#0" expanded="true" />
           </folding>
         </state>
       </provider>

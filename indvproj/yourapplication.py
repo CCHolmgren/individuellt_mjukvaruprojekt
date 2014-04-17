@@ -5,7 +5,7 @@ from forms import RegistrationForm, NewPostForm
 from loginmanager import login_manager
 from flask.ext.login import login_user, login_required
 import _datetime
-from views import MainView, RegisterView, PostView
+from views import MainView, RegisterView, PostView, LoginView
 
 app = Flask(__name__)
 app.secret_key = "Wtf is wrong with you? Why won't you just let me register a user sometime today? :("
@@ -15,6 +15,7 @@ login_manager.init_app(app)
 MainView.register(app)
 RegisterView.register(app)
 PostView.register(app)
+LoginView.register(app)
 
 @app.errorhandler(404)
 def page_not_found(e):

@@ -13,3 +13,7 @@ class RegistrationForm(Form):
 class NewPostForm(Form):
     title = TextField("Title",[validators.Length(min=10, max=250)])
     content =  TextAreaField("Content here", [validators.Length(min=10, max=2000)])
+
+class LoginForm(Form):
+    username = TextField("Username")
+    password = PasswordField("Password")
