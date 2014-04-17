@@ -6,7 +6,7 @@
     <p>Or do you want to <a href={{ url_for('LoginView:index') }}>Login</a></p>
     {%  for post in posts %}
         {% if post %}
-            <div>Title: {{ post.title }}</div>
+            <div>Title: <a href={{ url_for('PostView:get', id=post.postid) }}>{{ post.title }}</a></div>
             <div>Content: {{ post.content }}</div>
             <div>Username: {{ post.user.username }}</div>
             <div>Usercomments: {{ post.user.allcomments.all() }}</div>

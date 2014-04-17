@@ -42,9 +42,8 @@ class LoginView(FlaskView):
 
     @route('/', methods=['GET','POST'])
     def index(self):
-        form = LoginForm(request.form)
-        """, password=encrypt(form.password.data)"""
-        if request.method == 'POST' and form.validate():
+        form = LoginForm()
+        if form.validate_on_submit():
             if User.query.filter_by(username=form.username.data).first():
                 user = User.query.filter_by(username=form.username.data,password=check_password(form.password.data,User.query.filter(User.username == form.username.data).first().salt)).first()
                 if user is not None:
@@ -60,13 +59,13 @@ class PostView(FlaskView):
 
     def get(self, id):
         #return "Hello from PostView:get"
-        return render_template('post.html', post=Post.query.get_or_404(id))
+        return render_template('post.html', post=Post.query.get(id))
 
     @route('/new', methods=['GET','POST'])
     @login_required
     def new_post(self):
-        form = NewPostForm(request.form)
-        if request.method == 'POST' and form.validate():
+        form = NewPostForm()
+        if form.validate_on_submit():
             try:
                 post = Post(current_user.userid,_datetime.datetime.now(),form.content.data,1,form.title.data)
                 print(post)
@@ -86,8 +85,8 @@ class RegisterView(FlaskView):
         return render_template('create_user.html', form=form)
 
     def post(self):
-        form = RegistrationForm(request.form)
-        if form.validate:
+        form = RegistrationForm()
+        if form.validate_on_submit():
             try:
                 user = User(form.username.data, form.email.data, *encrypt(form.password.data))
                 db_session.add(user)
@@ -99,3 +98,10 @@ class RegisterView(FlaskView):
                 flash('Something horrible happened')
                 print(e)
                 redirect(url_for("MainView:register"))
+
+class UserView(FlaskView):
+    def get(self, id):
+        user = User.query.get(id)
+        if user is not None:
+            return render_template('user.html',user=user)
+        return render_template('user_missing.html')

@@ -1,11 +1,9 @@
 {% extends "layout.html" %}
 {% block body %}
-    <h1>Post - {{ post.title }}</h1>
-    {{ message }}
-    {%  for post in posts %}
-        {% if post %}
-            <div>{{ post.title }}</div>
-            <div>{{ post.content }}</div>
-        {% endif %}
-    {% endfor%}
+    <h1>Post - {{ post.title or "Hello" }}</h1>
+    {% if post %}
+        <div>{{ post.content }}</div>
+    {% else %}
+        <div>There isn't any post associated with that id</div>
+    {% endif %}
 {% endblock %}

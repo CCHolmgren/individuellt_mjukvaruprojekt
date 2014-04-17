@@ -1,4 +1,5 @@
-from wtforms import Form, BooleanField, TextField, PasswordField, validators, TextAreaField
+from flask_wtf import Form
+from wtforms import BooleanField, TextField, PasswordField, validators, TextAreaField
 __author__ = 'Chrille'
 
 class RegistrationForm(Form):

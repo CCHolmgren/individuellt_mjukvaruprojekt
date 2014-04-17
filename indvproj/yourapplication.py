@@ -5,17 +5,24 @@ from forms import RegistrationForm, NewPostForm
 from loginmanager import login_manager
 from flask.ext.login import login_user, login_required
 import _datetime
-from views import MainView, RegisterView, PostView, LoginView
+from views import MainView, RegisterView, PostView, LoginView, UserView
+from flask_wtf.csrf import CsrfProtect
 
 app = Flask(__name__)
 app.secret_key = "Wtf is wrong with you? Why won't you just let me register a user sometime today? :("
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:bubblegum123@localhost/postgres'
+
+csrf = CsrfProtect()
+
 db.init_app(app)
 login_manager.init_app(app)
+csrf.init_app(app)
+
 MainView.register(app)
 RegisterView.register(app)
 PostView.register(app)
 LoginView.register(app)
+UserView.register(app)
 
 @app.errorhandler(404)
 def page_not_found(e):
