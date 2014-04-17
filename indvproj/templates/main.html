@@ -7,6 +7,7 @@
         {% if post %}
             <div>{{ post.title }}</div>
             <div>{{ post.content }}</div>
+            <div>{{ post.user.username }}</div>
         {% else %}
             <div>
                 <!--<p>There aren't any posts yet, would you like to <a href={{ url_for("new_post") }}>post</a> one?</p>-->

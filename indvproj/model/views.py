@@ -3,7 +3,7 @@ import flask.ext.classy
 from models import User, Post
 from database import db_session
 from loginmanager import login_manager
-from flask_login import login_required, login_user
+from flask_login import login_required, login_user, current_user
 from flask import render_template, request, redirect, flash, url_for
 from forms import NewPostForm, RegistrationForm, LoginForm
 import _datetime
@@ -34,6 +34,8 @@ class MainView(FlaskView):
 
     def index(self):
         #print(Post.query.limit(10).all())
+        print(User.query.join(Post).filter(User.userid == Post.createdby).limit(10).all())
+        print(Post.query.join(User).filter(Post.createdby == User.userid).all())
         return render_template('main.html',message='Du accessade sidan med get istället för post',posts=Post.query.limit(10).all())
 
 class LoginView(FlaskView):
@@ -56,13 +58,13 @@ class PostView(FlaskView):
         #return "Hello from PostView:get"
         return render_template('post.html', post=Post.query.get_or_404(id))
 
-    @route('/new')
+    @route('/new', methods=['GET','POST'])
     @login_required
     def new_post(self):
         form = NewPostForm(request.form)
         if request.method == 'POST' and form.validate():
             try:
-                post = Post(5,_datetime.datetime.now(),form.content.data,1,form.title.data)
+                post = Post(current_user.userid,_datetime.datetime.now(),form.content.data,1,form.title.data)
                 print(post)
                 db_session.add(post)
                 db_session.commit()

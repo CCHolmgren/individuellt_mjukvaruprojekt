@@ -15,6 +15,7 @@ class User(db.Model):
     comments = db.Column(db.Integer, default=0)
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow())
     status = db.Column(db.Integer,db.ForeignKey('status.statusid'), default=1, nullable=False)
+    posts = db.relationship('Post',backref='user',lazy='dynamic')
 
     def __init__(self, username, email, password, salt):
         self.username = username
