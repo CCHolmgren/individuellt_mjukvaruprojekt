@@ -1,12 +1,12 @@
+import _datetime
+
 from flask.ext.classy import FlaskView, route
-import flask.ext.classy
 from models import User, Post, Collection
 from database import db_session
-from loginmanager import login_manager
 from flask_login import login_required, login_user, current_user
-from flask import render_template, request, redirect, flash, url_for
-from forms import NewPostForm, RegistrationForm, LoginForm, CollectionForm
-import _datetime
+from flask import render_template, redirect, flash, url_for
+from forms import NewPostForm, RegistrationForm, LoginForm
+
 
 __author__ = 'Chrille'
 
@@ -97,8 +97,9 @@ class RegisterView(FlaskView):
                 flash("Thanks for registering")
                 return redirect(url_for('MainView:index'))
             except Exception as e:
+                db_session.rollback()
                 flash('Something horrible happened')
-                print(e)
+                repr(e)
                 redirect(url_for("RegisterView:new_user"))
         return render_template('create_user.html', form=form)
 
@@ -110,8 +111,13 @@ class UserView(FlaskView):
         return render_template('user_missing.html')
 
 class CollectionView(FlaskView):
+    def index(self):
+        return render_template('not_verified_collection.html')
+
     @login_required
     def get(self, id):
-        if current_user.userid == Collection.query.get(id).first().userid:
-            return render_template('collection.html', collection = Collection.query.get(id).first())
+        if Collection.query.get(id):
+            if current_user.userid == Collection.query.get(id).first().userid:
+                return render_template('collection.html', collection=Collection.query.get(id).first())
+            return render_template('not_verified_collection.html')
         return render_template('not_verified_collection.html')

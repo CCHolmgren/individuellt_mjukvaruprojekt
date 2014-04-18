@@ -1,11 +1,8 @@
-from flask import Flask, render_template, g, request, flash, redirect, url_for
+from flask import Flask
 from database import db_session, db
-from models import User, Post
-from forms import RegistrationForm, NewPostForm
+from models import User
 from loginmanager import login_manager
-from flask.ext.login import login_user, login_required
-import _datetime
-from views import MainView, RegisterView, PostView, LoginView, UserView
+from views import MainView, RegisterView, PostView, LoginView, UserView, CollectionView
 from flask_wtf.csrf import CsrfProtect
 
 app = Flask(__name__)
@@ -23,18 +20,23 @@ RegisterView.register(app)
 PostView.register(app)
 LoginView.register(app)
 UserView.register(app)
+CollectionView.register(app)
+
 
 @app.errorhandler(404)
 def page_not_found(e):
     return "Sorry, nothing could be found. {}".format(e)
 
+
 @login_manager.user_loader
 def load_user(userid):
     return User.query.get(int(userid))
 
+
 @app.teardown_appcontext
 def shutdown_session(self, exception=None):
     db_session.remove()
+
 
 if __name__ == '__main__':
     #print("Encrypting 'what' and returns the sha512 hash with the salt generated",encrypt("what"))
