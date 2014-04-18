@@ -18,3 +18,6 @@ class NewPostForm(Form):
 class LoginForm(Form):
     username = TextField("Username",[validators.Length(min=3,max=120),validators.Required()])
     password = PasswordField("Password",[validators.Length(min=6),validators.Required()])
+
+class CollectionForm(Form):
+    title = TextField("Title", [validators.Length(min=10, max=250)])

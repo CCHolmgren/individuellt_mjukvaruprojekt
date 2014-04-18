@@ -4,8 +4,11 @@ from sqlalchemy.dialects import postgresql
 from database import db
 import datetime
 
+collection_has_post = db.Table('collection_has_post',
+                               db.Column('cid',db.Integer, db.ForeignKey('collection.groupid')),
+                               db.Column('pid',db.Integer, db.ForeignKey('post.postid'))
+)
 class User(db.Model):
-    __tablename__="user"
     userid = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(120), unique=True)
     email = db.Column(db.String(120), unique=True)
@@ -17,7 +20,7 @@ class User(db.Model):
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow())
     status = db.Column(db.Integer,db.ForeignKey('status.statusid'), default=1, nullable=False)
     posts = db.relationship('Post',backref='user',lazy='dynamic')
-    groups = db.relationship('Group', backref='user', lazy='dynamic')
+    groups = db.relationship('Collection', backref='user', lazy='dynamic')
 
     def __init__(self, username, email, password, salt):
         self.username = username
@@ -42,7 +45,6 @@ class User(db.Model):
         return self.username
 
 class Status(db.Model):
-    __tablename__="status"
     statusid = db.Column(db.Integer, primary_key=True, nullable=False)
     statusname = db.Column(db.String(25), nullable=False, unique=True)
 
@@ -50,7 +52,6 @@ class Status(db.Model):
         return '<Status {}>'.format(self.statusname)
 
 class Comment(db.Model):
-    __tablename__="comment"
     id = db.Column(db.Integer, primary_key=True)
     userid = db.Column(db.Integer, db.ForeignKey('user.userid'))
     postid = db.Column(db.Integer, db.ForeignKey('post.postid'))
@@ -69,7 +70,6 @@ class Comment(db.Model):
 
 
 class UserGroup(db.Model):
-    __tablename__ = 'usergroup'
     ugid = db.Column(db.Integer, primary_key=True)
     ugname = db.Column(db.String(50), unique=True)
 
@@ -79,9 +79,11 @@ class UserGroup(db.Model):
     def __repr__(self):
         return '<User_Group {}>'.format(self.ugname)
 
-
+ug_has_v = db.Table('ug_has_v',
+                    db.Column('ugid',db.Integer,db.ForeignKey('user_group.ugid')),
+                    db.Column('vid', db.Integer,db.ForeignKey('visibility.vid'))
+)
 class Category(db.Model):
-    __tablename__="category"
     categoryid = db.Column(db.Integer, primary_key=True)
     categoryname = db.Column(db.String(100), unique=True)
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
@@ -93,8 +95,7 @@ class Category(db.Model):
         return '<Category {}>'.format(self.categoryname)
 
 
-class Group(db.Model):
-    __tablename__="group"
+class Collection(db.Model):
     groupid = db.Column(db.Integer, primary_key=True)
     userid = db.Column(db.Integer, db.ForeignKey('user.userid'), nullable=False)
     title = db.Column(db.String(250), nullable=False)
@@ -108,7 +109,6 @@ class Group(db.Model):
 
 
 class Post(db.Model):
-    __tablename__="post"
     postid = db.Column(db.Integer, primary_key=True)
     createdby = db.Column(db.Integer, db.ForeignKey('user.userid'), nullable=False)
     timeposted = db.Column(db.DateTime, nullable=False)
@@ -118,6 +118,8 @@ class Post(db.Model):
     title = db.Column(db.String(250), nullable=False)
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     comments = db.relationship('Comment',backref='post',lazy='dynamic')
+    posts = db.relationship('Collection',secondary=collection_has_post,
+                            backref=db.backref('collections',lazy='dynamic'))
 
     def __init__(self, createdby, timeposted, content, typeid, title):
         self.createdby = createdby
@@ -133,7 +135,6 @@ class Post(db.Model):
 
 
 class Type(db.Model):
-    __tablename__="type"
     typeid = db.Column(db.Integer, primary_key=True)
     typename = db.Column(db.String(50), unique=True)
 
@@ -145,7 +146,6 @@ class Type(db.Model):
 
 
 class Visibility(db.Model):
-    __tablename__="visibility"
     vid = db.Column(db.Integer, primary_key=True)
     vname = db.Column(db.String(50), unique=True)
 
@@ -171,9 +171,14 @@ class UG_has_V(db.Model):
         self.vid = vid
 
     def __repr__(self):
-        return '<UG_has_V {} {}>'.format(self.ugid, self.vid)"""
+        return '<UG_has_V {} {}>'.format(self.ugid, self.vid)
 ug_has_v = db.Table('ug_has_v',
                     db.Column('ugid',db.Integer,db.ForeignKey('usergroup.ugid')),
                     db.Column('vid', db.Integer,db.ForeignKey('visibility.vid'))
 )
 
+collection_has_post = db.Table('collection_has_post',
+                               db.Column('cid',db.Integer, db.ForeignKey('collection.groupid')),
+                               db.Column('pid',db.Integer, db.ForeignKey('post.postid'))
+)
+"""

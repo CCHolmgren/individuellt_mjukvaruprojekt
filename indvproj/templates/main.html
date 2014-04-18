@@ -2,7 +2,7 @@
 {% block body %}
     {{ message }}
     <h1>Overview</h1>
-    <p>Do you want to <a href={{ url_for('RegisterView:index') }}> register?</a></p>
+    <p>Do you want to <a href={{ url_for('RegisterView:new_user') }}> register?</a></p>
     <p>Or do you want to <a href={{ url_for('LoginView:index') }}>Login</a></p>
     {%  for post in posts %}
         {% if post %}

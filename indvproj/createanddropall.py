@@ -8,7 +8,11 @@ def create_and_run():
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:bubblegum123@localhost/postgres'
     db.init_app(app)
+    print('hello')
 
     with app.app_context():
         db.drop_all()
         db.create_all()
+
+if __name__ == '__main__':
+    create_and_run()

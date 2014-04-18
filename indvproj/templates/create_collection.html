@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
 {% from "_formhelpers.html" import render_field %}
-<form method=post action=/register/>
+<form method=post action=/register>
     <dl>
         {{ render_field(form.username) }}
         {{ render_field(form.email) }}
@@ -9,7 +9,6 @@
         {{ render_field(form.confirm) }}
     </dl>
     <p><input type=submit value=Register></p>
-{{ form.csrf_token() }}
 </form>
 {% endblock %}
-{% block title %}Create a new user{% endblock %}
+{% block title %}Create a new collection{% endblock %}

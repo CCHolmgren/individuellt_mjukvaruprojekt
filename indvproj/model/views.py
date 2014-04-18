@@ -1,11 +1,11 @@
 from flask.ext.classy import FlaskView, route
 import flask.ext.classy
-from models import User, Post
+from models import User, Post, Collection
 from database import db_session
 from loginmanager import login_manager
 from flask_login import login_required, login_user, current_user
 from flask import render_template, request, redirect, flash, url_for
-from forms import NewPostForm, RegistrationForm, LoginForm
+from forms import NewPostForm, RegistrationForm, LoginForm, CollectionForm
 import _datetime
 
 __author__ = 'Chrille'
@@ -21,7 +21,7 @@ def encrypt(password):
     import hashlib
     password = password.encode('utf-8')
     salt = os.urandom(24)
-    return hashlib.sha512(password + salt).hexdigest()#,salt
+    return hashlib.sha512(password + salt).hexdigest(),salt
 
 def check_password(string_password,salt):
     import hashlib
@@ -80,14 +80,16 @@ class PostView(FlaskView):
 
 class RegisterView(FlaskView):
 
-    def index(self):
+    """def index(self):
         form = RegistrationForm(request.form)
-        return render_template('create_user.html', form=form)
+        return render_template('create_user.html', form=form)"""
 
-    def post(self):
+    @route('/', methods=['GET', 'POST'])
+    def new_user(self):
         form = RegistrationForm()
         if form.validate_on_submit():
             try:
+                print(*encrypt(form.password.data))
                 user = User(form.username.data, form.email.data, *encrypt(form.password.data))
                 db_session.add(user)
                 db_session.commit()
@@ -97,7 +99,8 @@ class RegisterView(FlaskView):
             except Exception as e:
                 flash('Something horrible happened')
                 print(e)
-                redirect(url_for("MainView:register"))
+                redirect(url_for("RegisterView:new_user"))
+        return render_template('create_user.html', form=form)
 
 class UserView(FlaskView):
     def get(self, id):
@@ -105,3 +108,10 @@ class UserView(FlaskView):
         if user is not None:
             return render_template('user.html',user=user)
         return render_template('user_missing.html')
+
+class CollectionView(FlaskView):
+    @login_required
+    def get(self, id):
+        if current_user.userid == Collection.query.get(id).first().userid:
+            return render_template('collection.html', collection = Collection.query.get(id).first())
+        return render_template('not_verified_collection.html')
