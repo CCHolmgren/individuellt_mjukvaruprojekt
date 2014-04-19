@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/indvproj/templates/collection.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/indvproj/templates/create_collection.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/indvproj/templates/not_verified_collection.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/indvproj/model/forms.py" afterPath="$PROJECT_DIR$/indvproj/model/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/create_user.html" afterPath="$PROJECT_DIR$/indvproj/templates/create_user.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/createanddropall.py" afterPath="$PROJECT_DIR$/indvproj/createanddropall.py" />
+    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Changed the validation length on the password field in the loginform to allow for shorter passwords.&#10;Added more info to the repr of Collection.&#10;&#10;A lot of stuff in the CollectionView to create new collections and such.&#10;Changed the templates to display more info and display the correct forms.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/collection.html" afterPath="$PROJECT_DIR$/indvproj/templates/collection.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/create_collection.html" afterPath="$PROJECT_DIR$/indvproj/templates/create_collection.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/forms.py" afterPath="$PROJECT_DIR$/indvproj/model/forms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/main.html" afterPath="$PROJECT_DIR$/indvproj/templates/main.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/models.py" afterPath="$PROJECT_DIR$/indvproj/model/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/not_verified_collection.html" afterPath="$PROJECT_DIR$/indvproj/templates/not_verified_collection.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -23,7 +21,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$individuellt_mjukvaruprojekt.coverage" NAME="individuellt_mjukvaruprojekt Coverage Results" MODIFIED="1397858569335" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
+    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$individuellt_mjukvaruprojekt.coverage" NAME="individuellt_mjukvaruprojekt Coverage Results" MODIFIED="1397899292136" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$createanddropall.coverage" NAME="createanddropall Coverage Results" MODIFIED="1397857973135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$ApplicationModel.coverage" NAME="ApplicationModel Coverage Results" MODIFIED="1397043936621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$model.coverage" NAME="model Coverage Results" MODIFIED="1397214632552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj/model" />
@@ -43,7 +41,7 @@
       <file leaf-file-name="schema.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Lib/site-packages/sqlalchemy/sql/schema.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="338" column="0" selection-start="14396" selection-end="14396" vertical-scroll-proportion="0.0" vertical-offset="5295" max-vertical-offset="57409">
+            <state line="338" column="0" selection-start="14396" selection-end="14396" vertical-scroll-proportion="0.0" vertical-offset="5746" max-vertical-offset="57664">
               <folding />
             </state>
           </provider>
@@ -52,10 +50,19 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="100" column="24" selection-start="3859" selection-end="3859" vertical-scroll-proportion="0.0" vertical-offset="1485" max-vertical-offset="2074">
+            <state line="137" column="65" selection-start="5243" selection-end="5243" vertical-scroll-proportion="0.0" vertical-offset="1937" max-vertical-offset="2533">
               <folding>
-                <element signature="e#0#45#0" expanded="true" />
+                <element signature="e#0#16#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forms.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/indvproj/model/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="31" selection-start="597" selection-end="597" vertical-scroll-proportion="0.48489934" vertical-offset="0" max-vertical-offset="596">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -63,16 +70,7 @@
       <file leaf-file-name="not_verified_collection.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/not_verified_collection.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="30" selection-start="185" selection-end="185" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="187">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="70" selection-start="243" selection-end="243" vertical-scroll-proportion="0.15097691" vertical-offset="0" max-vertical-offset="563">
+            <state line="5" column="55" selection-start="210" selection-end="210" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="187">
               <folding />
             </state>
           </provider>
@@ -81,7 +79,7 @@
       <file leaf-file-name="collection.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/collection.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="36" selection-start="148" selection-end="148" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="187">
+            <state line="3" column="17" selection-start="113" selection-end="113" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="187">
               <folding />
             </state>
           </provider>
@@ -99,11 +97,8 @@
       <file leaf-file-name="create_collection.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/create_collection.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="40" selection-start="424" selection-end="424" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="323">
-              <folding>
-                <marker date="1397856725061" expanded="true" signature="130:367" placeholder="..." />
-                <marker date="1397856725061" expanded="true" signature="139:313" placeholder="..." />
-              </folding>
+            <state line="3" column="30" selection-start="126" selection-end="126" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="289">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -143,6 +138,11 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="ch222kv" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -162,16 +162,16 @@
         <option value="$PROJECT_DIR$/indvproj/templates/user.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/post.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/login.html" />
-        <option value="$PROJECT_DIR$/indvproj/templates/create_collection.html" />
-        <option value="$PROJECT_DIR$/indvproj/model/forms.py" />
-        <option value="$PROJECT_DIR$/indvproj/yourapplication.py" />
-        <option value="$PROJECT_DIR$/indvproj/templates/collection.html" />
-        <option value="$PROJECT_DIR$/indvproj/templates/not_verified_collection.html" />
         <option value="$PROJECT_DIR$/indvproj/createanddropall.py" />
-        <option value="$PROJECT_DIR$/indvproj/model/models.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/create_user.html" />
-        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
+        <option value="$PROJECT_DIR$/indvproj/yourapplication.py" />
+        <option value="$PROJECT_DIR$/indvproj/templates/not_verified_collection.html" />
+        <option value="$PROJECT_DIR$/indvproj/templates/collection.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/main.html" />
+        <option value="$PROJECT_DIR$/indvproj/templates/create_collection.html" />
+        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
+        <option value="$PROJECT_DIR$/indvproj/model/models.py" />
+        <option value="$PROJECT_DIR$/indvproj/model/forms.py" />
       </list>
     </option>
   </component>
@@ -223,6 +223,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -293,7 +294,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -588,18 +588,44 @@
       <created>1397026736752</created>
       <updated>1397026736752</updated>
     </task>
+    <task id="LOCAL-00001" summary="Working with CollectionView">
+      <created>1397859882584</created>
+      <updated>1397859882584</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TodoView" selected-index="3">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3297414" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297414" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3275862" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286638" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19062833" sideWeight="0.499187" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19488817" sideWeight="0.499187" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.185836" sideWeight="0.500813" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32829374" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -643,9 +669,15 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="Working with CollectionView" />
+    <MESSAGE value="Changed the validation length on the password field in the loginform to allow for shorter passwords.&#10;Added more info to the repr of Collection.&#10;&#10;A lot of stuff in the CollectionView to create new collections and such.&#10;Changed the templates to display more info and display the correct forms." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed the validation length on the password field in the loginform to allow for shorter passwords.&#10;Added more info to the repr of Collection.&#10;&#10;A lot of stuff in the CollectionView to create new collections and such.&#10;Changed the templates to display more info and display the correct forms." />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -676,9 +708,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="54" selection-start="1244" selection-end="1244" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1207">
-          <folding />
-        </state>
+        <state line="30" column="54" selection-start="1244" selection-end="1244" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1207" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/new_post.html">
@@ -688,16 +718,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="16" selection-start="325" selection-end="325" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="391">
-          <folding />
-        </state>
+        <state line="15" column="16" selection-start="325" selection-end="325" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="391" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/create_user.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="9" selection-start="0" selection-end="384" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="306">
-          <folding />
-        </state>
+        <state line="9" column="9" selection-start="0" selection-end="384" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="306" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
@@ -710,9 +736,7 @@
     <entry file="file://$PROJECT_DIR$/indvproj/model/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="83" selection-start="667" selection-end="667" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="340">
-          <folding>
-            <marker date="1397856862878" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -723,11 +747,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/createanddropall.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="31" selection-start="31" selection-end="31" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="0" column="31" selection-start="31" selection-end="31" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/database.py">
@@ -746,23 +766,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="47" selection-start="674" selection-end="674" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="901">
-          <folding />
-        </state>
+        <state line="14" column="47" selection-start="674" selection-end="674" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="901" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="16" selection-start="325" selection-end="325" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="391">
-          <folding />
-        </state>
+        <state line="15" column="16" selection-start="325" selection-end="325" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="391" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/create_user.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="9" selection-start="315" selection-end="315" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="306">
-          <folding />
-        </state>
+        <state line="9" column="9" selection-start="315" selection-end="315" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="306" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
@@ -775,9 +789,7 @@
     <entry file="file://$PROJECT_DIR$/indvproj/model/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="22" selection-start="107" selection-end="123" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="272">
-          <folding>
-            <marker date="1397856862878" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -788,11 +800,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/createanddropall.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="23" selection-start="355" selection-end="355" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="323">
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="13" column="23" selection-start="355" selection-end="355" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="323" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/database.py">
@@ -811,9 +819,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="93" selection-start="125" selection-end="218" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="680">
-          <folding />
-        </state>
+        <state line="5" column="93" selection-start="125" selection-end="218" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="680" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/database.py">
@@ -832,9 +838,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="93" selection-start="125" selection-end="218" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="680">
-          <folding />
-        </state>
+        <state line="5" column="93" selection-start="125" selection-end="218" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="680" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/database.py">
@@ -911,9 +915,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="31" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="408">
-          <folding />
-        </state>
+        <state line="4" column="31" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="408" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/user.html">
@@ -937,37 +939,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/login.html">
+    <entry file="file://$PROJECT_DIR$/indvproj/createanddropall.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="27" selection-start="348" selection-end="348" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="306">
-          <folding />
-        </state>
+        <state line="17" column="20" selection-start="411" selection-end="411" vertical-scroll-proportion="0.49066213" vertical-offset="0" max-vertical-offset="589" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/create_collection.html">
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/create_user.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="40" selection-start="424" selection-end="424" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="323">
-          <folding>
-            <marker date="1397856725061" expanded="true" signature="130:367" placeholder="..." />
-            <marker date="1397856725061" expanded="true" signature="139:313" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="68" selection-start="1038" selection-end="1038" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
-          <folding>
-            <marker date="1397856862878" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/collection.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="36" selection-start="148" selection-end="148" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="187">
-          <folding />
-        </state>
+        <state line="12" column="7" selection-start="393" selection-end="393" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="340" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Lib/site-packages/sqlalchemy/sql/schema.py">
@@ -977,57 +956,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/not_verified_collection.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="30" selection-start="185" selection-end="185" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="187">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/createanddropall.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="20" selection-start="411" selection-end="411" vertical-scroll-proportion="0.49066213" vertical-offset="0" max-vertical-offset="589">
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="31" selection-start="2855" selection-end="2855" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3230">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="26" selection-start="772" selection-end="772" vertical-scroll-proportion="0.60611206" vertical-offset="0" max-vertical-offset="816">
-          <folding>
-            <element signature="e#0#78#0" expanded="true" />
-          </folding>
+        <state line="22" column="27" selection-start="705" selection-end="705" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/not_verified_collection.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="55" selection-start="210" selection-end="210" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="187">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/create_user.html">
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="7" selection-start="393" selection-end="393" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="340">
+        <state line="12" column="27" selection-start="348" selection-end="348" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="306">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="24" selection-start="385" selection-end="390" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="476">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/collection.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="17" selection-start="113" selection-end="113" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="187">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/create_collection.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="30" selection-start="126" selection-end="126" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="289">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="24" selection-start="3859" selection-end="3859" vertical-scroll-proportion="0.0" vertical-offset="1485" max-vertical-offset="2074">
+        <state line="137" column="65" selection-start="5243" selection-end="5243" vertical-scroll-proportion="0.0" vertical-offset="1937" max-vertical-offset="2533">
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#0#16#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
+    <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="70" selection-start="243" selection-end="243" vertical-scroll-proportion="0.15097691" vertical-offset="0" max-vertical-offset="563">
+        <state line="179" column="0" selection-start="5919" selection-end="5919" vertical-scroll-proportion="0.48657718" vertical-offset="2753" max-vertical-offset="3434">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/model/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="31" selection-start="597" selection-end="597" vertical-scroll-proportion="0.48489934" vertical-offset="0" max-vertical-offset="596">
           <folding />
         </state>
       </provider>

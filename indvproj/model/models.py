@@ -5,21 +5,23 @@ from database import db
 import datetime
 
 collection_has_post = db.Table('collection_has_post',
-                               db.Column('cid',db.Integer, db.ForeignKey('collection.groupid')),
-                               db.Column('pid',db.Integer, db.ForeignKey('post.postid'))
+                               db.Column('cid', db.Integer, db.ForeignKey('collection.groupid')),
+                               db.Column('pid', db.Integer, db.ForeignKey('post.postid'))
 )
+
+
 class User(db.Model):
     userid = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(120), unique=True)
     email = db.Column(db.String(120), unique=True)
     password = db.Column(db.String(256))
-    salt = db.Column(postgresql.BYTEA(24),nullable=False)
+    salt = db.Column(postgresql.BYTEA(24), nullable=False)
     postscreated = db.Column(db.Integer, default=0)
     comments = db.Column(db.Integer, default=0)
-    allcomments = db.relationship('Comment',backref='user',lazy='dynamic')
+    allcomments = db.relationship('Comment', backref='user', lazy='dynamic')
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow())
-    status = db.Column(db.Integer,db.ForeignKey('status.statusid'), default=1, nullable=False)
-    posts = db.relationship('Post',backref='user',lazy='dynamic')
+    status = db.Column(db.Integer, db.ForeignKey('status.statusid'), default=1, nullable=False)
+    posts = db.relationship('Post', backref='user', lazy='dynamic')
     groups = db.relationship('Collection', backref='user', lazy='dynamic')
 
     def __init__(self, username, email, password, salt):
@@ -35,14 +37,19 @@ class User(db.Model):
 
     def is_authenticated(self):
         return True
+
     def is_active(self):
         return True
+
     def is_anonymous(self):
         return False
+
     def get_id(self):
         return self.userid
+
     def __unicode__(self):
         return self.username
+
 
 class Status(db.Model):
     statusid = db.Column(db.Integer, primary_key=True, nullable=False)
@@ -50,6 +57,7 @@ class Status(db.Model):
 
     def __repr__(self):
         return '<Status {}>'.format(self.statusname)
+
 
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -79,10 +87,13 @@ class UserGroup(db.Model):
     def __repr__(self):
         return '<User_Group {}>'.format(self.ugname)
 
+
 ug_has_v = db.Table('ug_has_v',
-                    db.Column('ugid',db.Integer,db.ForeignKey('user_group.ugid')),
-                    db.Column('vid', db.Integer,db.ForeignKey('visibility.vid'))
+                    db.Column('ugid', db.Integer, db.ForeignKey('user_group.ugid')),
+                    db.Column('vid', db.Integer, db.ForeignKey('visibility.vid'))
 )
+
+
 class Category(db.Model):
     categoryid = db.Column(db.Integer, primary_key=True)
     categoryname = db.Column(db.String(100), unique=True)
@@ -105,7 +116,7 @@ class Collection(db.Model):
         self.title = title
 
     def __repr__(self):
-        return '<Group {} created by {}>'.format(self.title, self.userid)
+        return '<Group {} created by {}, collectionid: {}>'.format(self.title, self.user.username, self.groupid)
 
 
 class Post(db.Model):
@@ -117,9 +128,9 @@ class Post(db.Model):
     typeid = db.Column(db.Integer, db.ForeignKey('type.typeid'), nullable=False)
     title = db.Column(db.String(250), nullable=False)
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    comments = db.relationship('Comment',backref='post',lazy='dynamic')
-    posts = db.relationship('Collection',secondary=collection_has_post,
-                            backref=db.backref('collections',lazy='dynamic'))
+    comments = db.relationship('Comment', backref='post', lazy='dynamic')
+    posts = db.relationship('Collection', secondary=collection_has_post,
+                            backref=db.backref('collections', lazy='dynamic'))
 
     def __init__(self, createdby, timeposted, content, typeid, title):
         self.createdby = createdby
@@ -155,7 +166,8 @@ class Visibility(db.Model):
     def __repr__(self):
         return '<Visibility {}>'.format(self.vname)
 
-"""
+
+var = """
 class UG_has_V(db.Model):
     __tablename__ = 'ughasv'
     ugid = db.Column(db.Integer, db.ForeignKey('usergroup.ugid'))

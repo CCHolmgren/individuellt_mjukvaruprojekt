@@ -5,7 +5,7 @@ from models import User, Post, Collection
 from database import db_session
 from flask_login import login_required, login_user, current_user
 from flask import render_template, redirect, flash, url_for
-from forms import NewPostForm, RegistrationForm, LoginForm
+from forms import NewPostForm, RegistrationForm, LoginForm, CollectionForm
 
 
 __author__ = 'Chrille'
@@ -36,7 +36,9 @@ class MainView(FlaskView):
         #print(Post.query.limit(10).all())
         print(User.query.join(Post).filter(User.userid == Post.createdby).limit(10).all())
         print(Post.query.join(User).filter(Post.createdby == User.userid).all())
-        return render_template('main.html',message='Du accessade sidan med get istället för post',posts=Post.query.limit(10).all())
+        return render_template('main.html', message='Du accessade sidan med get istället för post',
+                               posts=Post.query.limit(10).all(), user=current_user)
+
 
 class LoginView(FlaskView):
 
@@ -117,7 +119,26 @@ class CollectionView(FlaskView):
     @login_required
     def get(self, id):
         if Collection.query.get(id):
-            if current_user.userid == Collection.query.get(id).first().userid:
-                return render_template('collection.html', collection=Collection.query.get(id).first())
+            print(Collection.query.get(id))
+            if current_user.userid == Collection.query.get(id).userid:
+                return render_template('collection.html', collection=Collection.query.get(id))
             return render_template('not_verified_collection.html')
         return render_template('not_verified_collection.html')
+
+    @route('/new', methods=['GET', 'POST'])
+    @login_required
+    def new_collection(self):
+        form = CollectionForm()
+        if form.validate_on_submit():
+            try:
+                collection = Collection(current_user.userid, form.title.data)
+                db_session.add(collection)
+                db_session.commit()
+                flash("The collection was created")
+                return redirect(url_for('CollectionView:get', id=collection.groupid))
+            except Exception as e:
+                db_session.rollback()
+                flash('Something horrible happened')
+                print(repr(e))
+                redirect(url_for("CollectionView:new_collection"))
+        return render_template('create_collection.html', form=form)

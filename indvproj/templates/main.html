@@ -4,6 +4,9 @@
     <h1>Overview</h1>
     <p>Do you want to <a href={{ url_for('RegisterView:new_user') }}> register?</a></p>
     <p>Or do you want to <a href={{ url_for('LoginView:index') }}>Login</a></p>
+    <p>Or create a new <a href={{ url_for('CollectionView:new_collection') }}>collection</a>?</p>
+    {{ user }}
+    {{ user.groups.all() }}
     {% for post in posts %}
         {% if post %}
             <div>Title: <a href={{ url_for('PostView:get', id=post.postid) }}>{{ post.title }}</a></div>
