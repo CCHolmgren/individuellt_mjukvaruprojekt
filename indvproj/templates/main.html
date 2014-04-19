@@ -2,15 +2,14 @@
 {% block body %}
     {{ message }}
     <h1>Overview</h1>
-    {% if not user %}
+    {% if not user.is_active() %}
         <p>Do you want to <a href={{ url_for('RegisterView:new_user') }}> register?</a></p>
         <p>Or do you want to <a href={{ url_for('LoginView:index') }}>Login</a></p>
     {% endif %}
-    {% if user %}
+    {% if user.is_active() %}
         <p>Do you want to create a new <a href={{ url_for('CollectionView:new_collection') }}>collection</a>?</p>
         <p>Or a new <a href={{ url_for('PostView:new_post') }}>post</a>?</p>
         {{ user }}
-        {{ user.groups.all() }}
     {% endif %}
     {% for post in posts %}
         {% if post %}

@@ -2,7 +2,7 @@ from flask import Flask
 from database import db_session, db
 from models import User
 from loginmanager import login_manager
-from views import MainView, RegisterView, PostView, LoginView, UserView, CollectionView
+from views import MainView, RegisterView, PostView, LoginView, UserView, CollectionView, LogoutView
 from flask_wtf.csrf import CsrfProtect
 
 app = Flask(__name__)
@@ -13,6 +13,7 @@ csrf = CsrfProtect()
 
 db.init_app(app)
 login_manager.init_app(app)
+login_manager.login_view = 'LoginView:index'
 csrf.init_app(app)
 
 MainView.register(app)
@@ -21,6 +22,7 @@ PostView.register(app)
 LoginView.register(app)
 UserView.register(app)
 CollectionView.register(app)
+LogoutView.register(app)
 
 
 @app.errorhandler(404)

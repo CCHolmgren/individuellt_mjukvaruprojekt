@@ -3,7 +3,7 @@ import _datetime
 from flask.ext.classy import FlaskView, route
 from models import User, Post, Collection
 from database import db_session
-from flask_login import login_required, login_user, current_user
+from flask_login import login_required, login_user, current_user, logout_user
 from flask import render_template, redirect, flash, url_for
 from forms import NewPostForm, RegistrationForm, LoginForm, CollectionForm
 
@@ -36,8 +36,9 @@ class MainView(FlaskView):
         #print(Post.query.limit(10).all())
         print(User.query.join(Post).filter(User.userid == Post.createdby).limit(10).all())
         print(Post.query.join(User).filter(Post.createdby == User.userid).all())
+        print(dir(current_user))
         return render_template('main.html', message='Du accessade sidan med get istället för post',
-                               posts=Post.query.limit(10).all(), user=current_user)
+                               posts=Post.query.limit(10).all(), user=current_user if current_user is not None else {})
 
 
 class LoginView(FlaskView):
@@ -55,6 +56,14 @@ class LoginView(FlaskView):
             flash('The login failed, check the username and password and try again')
             return redirect(url_for('LoginView:index'))
         return render_template("login.html",form=form)
+
+
+class LogoutView(FlaskView):
+    @login_required
+    def index(self):
+        logout_user()
+        flash('You were logged out')
+        return redirect(url_for("MainView:index"))
 
 
 class PostView(FlaskView):
