@@ -74,8 +74,9 @@ class PostView(FlaskView):
                 db_session.add(post)
                 db_session.commit()
                 redirect(url_for("PostView:get",id=post.postid))
-            except Exception:
+            except Exception as e:
                 flash('Something horrible happened')
+                print(e)
                 print('Damn')
                 redirect(url_for("PostView:new_post"))
         return render_template('new_post.html', form=form)
