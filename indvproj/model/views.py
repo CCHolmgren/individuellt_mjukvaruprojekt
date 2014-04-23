@@ -5,7 +5,7 @@ from models import User, Post, Collection
 from database import db_session
 from flask_login import login_required, login_user, current_user, logout_user
 from flask import render_template, redirect, flash, url_for
-from forms import NewPostForm, RegistrationForm, LoginForm, CollectionForm
+from forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, LinkPostForm
 
 
 __author__ = 'Chrille'
@@ -58,12 +58,12 @@ class LoginView(FlaskView):
         return render_template("login.html",form=form)
 
 
-@route('/logout')
-@login_required
-def logout(self):
-    logout_user()
-    flash('You were logged out')
-    return redirect(url_for("MainView:index"))
+class LogoutView(FlaskView):
+    @login_required
+    def logout(self):
+        logout_user()
+        flash('You were logged out')
+        return redirect(url_for("MainView:index"))
 
 
 class PostView(FlaskView):
@@ -76,10 +76,13 @@ class PostView(FlaskView):
     @route('/new', methods=['GET','POST'])
     @login_required
     def new_post(self):
-        form = NewPostForm()
-        if form.validate_on_submit():
+        form = TextPostForm()
+        linkform = LinkPostForm()
+        if form.validate_on_submit() or linkform.validate_on_submit():
             try:
-                post = Post(current_user.userid,_datetime.datetime.now(),form.content.data,1,form.title.data)
+                post = Post(current_user.userid, _datetime.datetime.now(), form.content.data, 1,
+                            form.title.data) or Post(current_user.userid, _datetime.datetime.now(), linkform.link.data,
+                                                     1, form.title.data)
                 print(post)
                 db_session.add(post)
                 db_session.commit()
@@ -89,7 +92,8 @@ class PostView(FlaskView):
                 print(e)
                 print('Damn')
                 redirect(url_for("PostView:new_post"))
-        return render_template('new_post.html', form=form)
+        return render_template('new_post.html', form=form, linkform=linkform)
+
 
 class RegisterView(FlaskView):
 

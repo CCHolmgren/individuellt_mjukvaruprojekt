@@ -3,6 +3,14 @@
     {% from "_formhelpers.html" import render_field %}
     <form method=post action=/p/new>
         <dl>
+            {{ render_field(linkform.title) }}
+            {{ render_field(linkform.link) }}
+        </dl>
+        <p><input type=submit value=Post/></p>
+        {{ linkform.csrf_token() }}
+    </form>
+    <form method=post action=/p/new>
+        <dl>
             {{ render_field(form.title) }}
             {{ render_field(form.content) }}
         </dl>

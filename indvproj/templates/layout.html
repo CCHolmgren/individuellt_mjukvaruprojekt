@@ -10,7 +10,7 @@
         <p>Do you want to <a href={{ url_for('RegisterView:new_user') }}> register?</a></p>
         <p>Or do you want to <a href={{ url_for('LoginView:index') }}>Login</a></p>
     {% else %}
-        <a href={{ url_for('logout') }}>Log out</a>
+        <a href={{ url_for('LogoutView:logout') }}>Log out</a>
         {{ g.user }}
     {% endif %}
 </div>
