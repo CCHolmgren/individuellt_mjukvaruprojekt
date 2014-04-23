@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
-    The user you were looking for doesn't seem to exist. Maybe you wan't to <a href={{ url_for('RegisterView:index') }}> register</a> a user?
+    The user you were looking for doesn't seem to exist. Maybe you wan't to
+    <a href={{ url_for('RegisterView:new_user') }}> register</a> a user?
 {% endblock %}
 {% block title %}The user doesn't exist{% endblock %}

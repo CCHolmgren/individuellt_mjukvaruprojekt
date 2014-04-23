@@ -50,7 +50,7 @@ class LoginView(FlaskView):
             if User.query.filter_by(username=form.username.data).first():
                 user = User.query.filter_by(username=form.username.data,password=check_password(form.password.data,User.query.filter(User.username == form.username.data).first().salt)).first()
                 if user is not None:
-                    login_user(user)
+                    login_user(user, remember=False)
                     flash("Logged in successfully.")
                     return redirect(url_for("MainView:index"))
             flash('The login failed, check the username and password and try again')
@@ -67,6 +67,7 @@ class LogoutView(FlaskView):
 
 
 class PostView(FlaskView):
+    route_base = '/p'
 
     def get(self, id):
         #return "Hello from PostView:get"
@@ -116,13 +117,17 @@ class RegisterView(FlaskView):
         return render_template('create_user.html', form=form)
 
 class UserView(FlaskView):
-    def get(self, id):
-        user = User.query.filter_by(username=id).first()
+    route_base = '/u'
+
+    def get(self, username):
+        user = User.query.filter_by(username=username).first()
         if user is not None:
             return render_template('user.html',user=user)
         return render_template('user_missing.html')
 
 class CollectionView(FlaskView):
+    route_base = '/c'
+
     def index(self):
         return render_template('not_verified_collection.html')
 
@@ -149,6 +154,6 @@ class CollectionView(FlaskView):
             except Exception as e:
                 db_session.rollback()
                 flash('Something horrible happened')
-                print(repr(e))
+                print(repr(e), e)
                 redirect(url_for("CollectionView:new_collection"))
         return render_template('create_collection.html', form=form)

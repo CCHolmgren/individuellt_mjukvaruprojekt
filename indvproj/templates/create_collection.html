@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 {% block body %}
 {% from "_formhelpers.html" import render_field %}
-    <form method=post action=/collection/new>
+    <form method=post action=/c/new>
         <dl>
-            {{ render_field(form.title) }}
+        {{ render_field(form.title) }}
         </dl>
         <p><input type=submit value=New></p>
         {{ form.csrf_token() }}

@@ -116,7 +116,7 @@ class Collection(db.Model):
         self.title = title
 
     def __repr__(self):
-        return '<Group {} created by {}, collectionid: {}>'.format(self.title, self.user.username, self.groupid)
+        return '<Collection {} created by {}, collectionid: {}>'.format(self.title, self.user.username, self.groupid)
 
 
 class Post(db.Model):

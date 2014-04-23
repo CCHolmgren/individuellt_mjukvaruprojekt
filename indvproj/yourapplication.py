@@ -27,7 +27,7 @@ LogoutView.register(app)
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return "Sorry, nothing could be found. {}".format(e)
+    return "Sorry, the page that you equested could not be found. {} {}".format(dir(e), e)
 
 
 @login_manager.user_loader

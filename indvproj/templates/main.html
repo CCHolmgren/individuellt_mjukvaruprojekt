@@ -1,27 +1,30 @@
 {% extends "layout.html" %}
+{% block title %}Homepage{% endblock %}
 {% block body %}
     {{ message }}
     <h1>Overview</h1>
     {% if not user.is_active() %}
         <p>Do you want to <a href={{ url_for('RegisterView:new_user') }}> register?</a></p>
         <p>Or do you want to <a href={{ url_for('LoginView:index') }}>Login</a></p>
-    {% endif %}
-    {% if user.is_active() %}
+    {% else %}
         <p>Do you want to create a new <a href={{ url_for('CollectionView:new_collection') }}>collection</a>?</p>
         <p>Or a new <a href={{ url_for('PostView:new_post') }}>post</a>?</p>
+        <a href={{ url_for('LogoutView:index') }}>Log out</a>
         {{ user }}
+        {{ user.groups.all() }}
+        <a href={{ url_for('UserView:get', username=user.username) }}>{{ user.username }}</a>
     {% endif %}
     {% for post in posts %}
         {% if post %}
-            <div>Title: <a href={{ url_for('PostView:get', id=post.postid) }}>{{ post.title }}</a></div>
+            <div>Title: <a href={{ url_for('PostView:get', username=post.postid) }}>{{ post.title }}</a></div>
             <div>Content: {{ post.content }}</div>
             {{ post }}
             {{ post.user }}
-            <div>Username: <a href={{ url_for('UserView:get', id=post.user.username) }}>{{ post.user.username }}</a>
+            <div>Username: <a
+                    href={{ url_for('UserView:get', username=post.user.username) }}>{{ post.user.username }}</a>
             </div>
             <div>Usercomments: {{ post.user.allcomments.all() }}</div>
             <div>Usergroups: {{ post.user.groups.all() }}</div>
         {% endif %}
     {% endfor %}
 {% endblock %}
-{% block title %}Homepage{% endblock %}
