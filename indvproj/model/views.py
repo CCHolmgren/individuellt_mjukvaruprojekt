@@ -58,12 +58,12 @@ class LoginView(FlaskView):
         return render_template("login.html",form=form)
 
 
-class LogoutView(FlaskView):
-    @login_required
-    def index(self):
-        logout_user()
-        flash('You were logged out')
-        return redirect(url_for("MainView:index"))
+@route('/logout')
+@login_required
+def logout(self):
+    logout_user()
+    flash('You were logged out')
+    return redirect(url_for("MainView:index"))
 
 
 class PostView(FlaskView):
