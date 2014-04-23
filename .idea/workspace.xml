@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Removed the &quot;Du accessade sidan med get istället för post&quot; since it did nothing useful.&#10;Changed the layout to always include">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/layout.html" afterPath="$PROJECT_DIR$/indvproj/templates/layout.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/main.html" afterPath="$PROJECT_DIR$/indvproj/templates/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
+    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Removed the &quot;Du accessade sidan med get istället för post&quot; since it did nothing useful.&#10;Changed the layout to always include login/logout things.&#10;Started using flask.g to give access to current_user to not have to pass it in to every template, this uses @app.before_request to set up g.user to current_user.&#10;&#10;Persistant login/logout ability is very handy and something that just must be there, so it had to be implemented.&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Document/Product backlog.ods" afterPath="$PROJECT_DIR$/Document/Product backlog.ods" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Document/Sprint Backlog.ods" afterPath="$PROJECT_DIR$/Document/Sprint Backlog.ods" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/yourapplication.py" afterPath="$PROJECT_DIR$/indvproj/yourapplication.py" />
     </list>
     <ignored path="individuellt_mjukvaruprojekt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,9 +37,7 @@
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="137" column="57" selection-start="4933" selection-end="4933" vertical-scroll-proportion="-12.461538" vertical-offset="2005" max-vertical-offset="3043">
-              <folding>
-                <element signature="e#0#16#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -121,7 +117,7 @@
       <file leaf-file-name="main.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="50" selection-start="663" selection-end="663" vertical-scroll-proportion="0.39323843" vertical-offset="0" max-vertical-offset="562">
+            <state line="23" column="14" selection-start="1063" selection-end="1063" vertical-scroll-proportion="0.69572955" vertical-offset="0" max-vertical-offset="562">
               <folding />
             </state>
           </provider>
@@ -614,7 +610,11 @@
       <created>1398242611421</created>
       <updated>1398242611421</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Removed the &quot;Du accessade sidan med get istället för post&quot; since it did nothing useful.&#10;Changed the layout to always include login/logout things.&#10;Started using flask.g to give access to current_user to not have to pass it in to every template, this uses @app.before_request to set up g.user to current_user.&#10;&#10;Persistant login/logout ability is very handy and something that just must be there, so it had to be implemented.&#10;">
+      <created>1398243294962</created>
+      <updated>1398243294962</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -701,7 +701,8 @@
     <MESSAGE value="Renamed Group to Collection in __repr__ for Collection so that it actually representes what it is.&#10;We do not need to remember the user with cookies, so set it explicitly.&#10;&#10;Set the route_base to shorter things, but will probably not keep it. This meant that I had to change the forms since they need to use the correct route.&#10;&#10;Also changed the errorhandler for 404 to give a better errormessage for debugging." />
     <MESSAGE value="Removed the block for the title since that was a little extreme I think, instead it uses justa variable instead. Changed all views and templates to represent this.&#10;Changed the register view to not allow the same usernames and at the same time alert you about it.&#10;" />
     <MESSAGE value="Removed the Classy logout class since it only needed a simple route, nothing more than that." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed the Classy logout class since it only needed a simple route, nothing more than that." />
+    <MESSAGE value="Removed the &quot;Du accessade sidan med get istället för post&quot; since it did nothing useful.&#10;Changed the layout to always include login/logout things.&#10;Started using flask.g to give access to current_user to not have to pass it in to every template, this uses @app.before_request to set up g.user to current_user.&#10;&#10;Persistant login/logout ability is very handy and something that just must be there, so it had to be implemented.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed the &quot;Du accessade sidan med get istället för post&quot; since it did nothing useful.&#10;Changed the layout to always include login/logout things.&#10;Started using flask.g to give access to current_user to not have to pass it in to every template, this uses @app.before_request to set up g.user to current_user.&#10;&#10;Persistant login/logout ability is very handy and something that just must be there, so it had to be implemented.&#10;" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1037,9 +1038,7 @@
     <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="137" column="57" selection-start="4933" selection-end="4933" vertical-scroll-proportion="-12.461538" vertical-offset="2005" max-vertical-offset="3043">
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1052,7 +1051,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="50" selection-start="663" selection-end="663" vertical-scroll-proportion="0.39323843" vertical-offset="0" max-vertical-offset="562">
+        <state line="23" column="14" selection-start="1063" selection-end="1063" vertical-scroll-proportion="0.69572955" vertical-offset="0" max-vertical-offset="562">
           <folding />
         </state>
       </provider>
