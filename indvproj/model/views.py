@@ -102,7 +102,19 @@ class RegisterView(FlaskView):
         form = RegistrationForm()
         if form.validate_on_submit():
             try:
-                print(*encrypt(form.password.data))
+                #print(*encrypt(form.password.data))
+
+                potentialUser = User.query.filter_by(username=form.username.data).first()
+                print(potentialUser)
+
+                if potentialUser:
+                    flash("The username already exists.")
+                    redirect(url_for("RegisterView:new_user"))
+
+                if User.query.filter_by(email=form.email.data).first():
+                    flash("The email already exists.")
+                    redirect(url_for("RegisterView:new_user"))
+
                 user = User(form.username.data, form.email.data, *encrypt(form.password.data))
                 db_session.add(user)
                 db_session.commit()
@@ -112,9 +124,10 @@ class RegisterView(FlaskView):
             except Exception as e:
                 db_session.rollback()
                 flash('Something horrible happened')
-                repr(e)
+                print(repr(e))
                 redirect(url_for("RegisterView:new_user"))
-        return render_template('create_user.html', form=form)
+        return render_template('create_user.html', form=form, title="Create a new user")
+
 
 class UserView(FlaskView):
     route_base = '/u'
@@ -123,22 +136,24 @@ class UserView(FlaskView):
         user = User.query.filter_by(username=username).first()
         if user is not None:
             return render_template('user.html',user=user)
-        return render_template('user_missing.html')
+        return render_template('user_missing.html', title="The user doesn't seem to exist")
+
 
 class CollectionView(FlaskView):
     route_base = '/c'
 
     def index(self):
-        return render_template('not_verified_collection.html')
+        return render_template('not_verified_collection.html', title="You are not eligible to view this collection")
 
     @login_required
     def get(self, id):
-        if Collection.query.get(id):
-            print(Collection.query.get(id))
-            if current_user.userid == Collection.query.get(id).userid:
-                return render_template('collection.html', collection=Collection.query.get(id))
-            return render_template('not_verified_collection.html')
-        return render_template('not_verified_collection.html')
+        collection = Collection.query.get(id)
+        if collection:
+            print(collection)
+            if current_user.userid == collection.userid:
+                return render_template('collection.html', collection=collection, title=collection.title)
+            return render_template('not_verified_collection.html', title="You are not eligible to view this collection")
+        return render_template('not_verified_collection.html', title="You are not eligible to view this collection")
 
     @route('/new', methods=['GET', 'POST'])
     @login_required
@@ -156,4 +171,4 @@ class CollectionView(FlaskView):
                 flash('Something horrible happened')
                 print(repr(e), e)
                 redirect(url_for("CollectionView:new_collection"))
-        return render_template('create_collection.html', form=form)
+        return render_template('create_collection.html', form=form, title="Create a new collection")

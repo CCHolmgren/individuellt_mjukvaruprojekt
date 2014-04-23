@@ -1,13 +1,12 @@
 {% extends "layout.html" %}
 {% block body %}
-{% from "_formhelpers.html" import render_field %}
-<form method=post action=/login/>
-    <dl>
-        {{ render_field(form.username) }}
-        {{ render_field(form.password) }}
-    </dl>
-    <p><input type=submit value=Login></p>
-{{ form.csrf_token }}
-</form>
+    {% from "_formhelpers.html" import render_field %}
+    <form method=post action=/login/>
+        <dl>
+            {{ render_field(form.username) }}
+            {{ render_field(form.password) }}
+        </dl>
+        <p><input type=submit value=Login></p>
+        {{ form.csrf_token }}
+    </form>
 {% endblock %}
-{% block title %}Login here{% endblock %}
