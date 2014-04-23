@@ -37,8 +37,8 @@ class MainView(FlaskView):
         print(User.query.join(Post).filter(User.userid == Post.createdby).limit(10).all())
         print(Post.query.join(User).filter(Post.createdby == User.userid).all())
         print(dir(current_user))
-        return render_template('main.html', message='Du accessade sidan med get istället för post',
-                               posts=Post.query.limit(10).all(), user=current_user if current_user is not None else {})
+        return render_template('main.html',
+                               posts=Post.query.limit(10).all())
 
 
 class LoginView(FlaskView):

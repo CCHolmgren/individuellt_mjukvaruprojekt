@@ -5,6 +5,15 @@
     {% block head %}{% endblock %}
 </head>
 <body>
+<div>
+    {% if not g.user.is_active() %}
+        <p>Do you want to <a href={{ url_for('RegisterView:new_user') }}> register?</a></p>
+        <p>Or do you want to <a href={{ url_for('LoginView:index') }}>Login</a></p>
+    {% else %}
+        <a href={{ url_for('logout') }}>Log out</a>
+        {{ g.user }}
+    {% endif %}
+</div>
 {% with messages = get_flashed_messages() %}
     {% if messages %}
         <ul class=flashes>
