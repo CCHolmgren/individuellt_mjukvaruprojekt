@@ -98,6 +98,7 @@ class Category(db.Model):
     categoryid = db.Column(db.Integer, primary_key=True)
     categoryname = db.Column(db.String(100), unique=True)
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    posts = db.relationship('Category', lazy='dynamic')
 
     def __init__(self, categoryname):
         self.categoryname = categoryname

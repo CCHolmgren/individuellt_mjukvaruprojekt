@@ -1,7 +1,7 @@
 import _datetime
 
 from flask.ext.classy import FlaskView, route
-from models import User, Post, Collection
+from models import User, Post, Collection, Category
 from database import db_session
 from flask_login import login_required, login_user, current_user, logout_user
 from flask import render_template, redirect, flash, url_for
@@ -141,6 +141,13 @@ class UserView(FlaskView):
         if user is not None:
             return render_template('user.html',user=user)
         return render_template('user_missing.html', title="The user doesn't seem to exist")
+
+
+class CategoryView(FlaskView):
+    def get(self, categoryname):
+        category = Category.query.filter_by(categoryname=categoryname).first()
+        posts = category.posts.all()
+        return render_template('category.html', category=category, posts=posts)
 
 
 class CollectionView(FlaskView):
