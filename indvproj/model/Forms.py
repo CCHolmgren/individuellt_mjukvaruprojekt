@@ -19,7 +19,7 @@ class RegistrationForm(Form):
 class TextPostForm(Form):
     title = TextField("Title", [validators.Length(min=10, max=250), validators.Required()])
     content = TextAreaField("Content here", [validators.Length(min=10, max=2000), validators.Required()])
-    categoryname = TextField('Categoryname', [validators.Length(min=10, max=100), validators.Required()])
+    categoryname = TextField('Categoryname', [validators.Length(min=1, max=100), validators.Required()])
 
 
 class LinkPostForm(Form):
