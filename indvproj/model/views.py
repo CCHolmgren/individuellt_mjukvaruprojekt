@@ -163,6 +163,7 @@ class CategoryView(FlaskView):
         print(dir(form))
         #linkform = LinkPostForm(categoryname=id)
         print(form.validate_on_submit())
+        print(form.validate())
         if form.validate_on_submit():
             print('Inside the if')
             try:
@@ -173,7 +174,7 @@ class CategoryView(FlaskView):
                 db_session.add(post)
                 db_session.commit()
                 print(post.postid)
-                return redirect(url_for("CategoryView:get", categoryname=post.postid))
+                return redirect(url_for("CategoryView:get", categoryname=id))
             except Exception as e:
                 flash('Something horrible happened')
                 print(e)

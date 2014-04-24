@@ -1,5 +1,5 @@
 from model.models import *
-from model.database import db_session
+from model.database import *
 from flask import Flask
 
 __author__ = 'Chrille'
