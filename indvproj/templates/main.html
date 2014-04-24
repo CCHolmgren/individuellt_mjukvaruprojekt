@@ -5,6 +5,7 @@
     {% if g.user.is_active() %}
         <p>Do you want to create a new <a href={{ url_for('CollectionView:new_collection') }}>collection</a>?</p>
         <p>Or a new <a href={{ url_for('PostView:new_post') }}>post</a>?</p>
+        <p>Create a new <a href={{ url_for('CategoryView:new_category') }}>category</a>.</p>
         {{ g.user.groups.all() }}
         <a href={{ url_for('UserView:get', username=g.user.username) }}>{{ g.user.username }}</a>
     {% endif %}

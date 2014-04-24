@@ -148,34 +148,39 @@ class UserView(FlaskView):
 
 class CategoryView(FlaskView):
     def get(self, categoryname):
-        category = Category.query.filter_by(categoryid=categoryname).first()
-        print(category)
+        category = Category.query.get(categoryname)
+        print("Category:", category)
+        print("Dir category:", dir(category))
         posts = category.posts.all()
         return render_template('category.html', category=category, posts=posts)
 
     @route('<id>/p/new', methods=['GET', 'POST'])
     @login_required
     def new_post(self, id):
-        form = TextPostForm(categoryname=id)
-        linkform = LinkPostForm(categoryname=id)
-        if form.validate_on_submit() or linkform.validate_on_submit():
+        print('Were inside CategoryView:new_post')
+        form = TextPostForm()
+        print(form)
+        print(dir(form))
+        #linkform = LinkPostForm(categoryname=id)
+        print(form.validate_on_submit())
+        if form.validate_on_submit():
+            print('Inside the if')
             try:
-                post = Post(current_user.userid, _datetime.datetime.now(), form.content.data, 1,
-                            form.title.data, form.categoryname.data) or Post(current_user.userid,
-                                                                             _datetime.datetime.now(),
-                                                                             linkform.link.data,
-                                                                             1, linkform.title.data,
-                                                                             linkform.categoryname.data)
+                print('Inside the try')
+                post = Post(current_user.userid, _datetime.datetime.now(), form.content.data, 1, form.title.data,
+                            id)  #or Post(current_user.userid, _datetime.datetime.now(),linkform.link.data,1, linkform.title.data,id)
                 print(post)
                 db_session.add(post)
                 db_session.commit()
-                redirect(url_for("PostView:get", id=post.postid))
+                print(post.postid)
+                return redirect(url_for("CategoryView:get", categoryname=post.postid))
             except Exception as e:
                 flash('Something horrible happened')
                 print(e)
                 print('Damn')
-                redirect(url_for("PostView:new_post"))
-        return render_template('new_post.html', form=form, linkform=linkform)
+                return redirect(url_for("CategoryView:new_post", id=id))
+        print('Returning')
+        return render_template('new_post.html', form=form, id=id)
 
     @route('/new', methods=['GET', 'POST'])
     @login_required

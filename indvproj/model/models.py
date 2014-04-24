@@ -1,7 +1,7 @@
 __author__ = 'Chrille'
 from sqlalchemy.dialects import postgresql
 #from sqlalchemy import db.Column, db.Integer, db.String, db.DateTime, db.ForeignKey, PrimaryKeyConstraint
-from database import db
+from model.database import db
 import datetime
 
 collection_has_post = db.Table('collection_has_post',
@@ -20,7 +20,7 @@ class User(db.Model):
     comments = db.Column(db.Integer, default=0)
     allcomments = db.relationship('Comment', backref='user', lazy='dynamic')
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow())
-    status = db.Column(db.Integer, db.ForeignKey('status.statusid'), default=1, nullable=False)
+    status = db.Column(db.Integer, db.ForeignKey('status.statusid'), default=1, nullable=True)
     posts = db.relationship('Post', backref='user', lazy='dynamic')
     groups = db.relationship('Collection', backref='user', lazy='dynamic')
 
@@ -126,7 +126,7 @@ class Post(db.Model):
     timeposted = db.Column(db.DateTime, nullable=False)
     views = db.Column(db.Integer, default=0)
     content = db.Column(db.String(2000), nullable=False)
-    typeid = db.Column(db.Integer, db.ForeignKey('type.typeid'), nullable=False)
+    typeid = db.Column(db.Integer, db.ForeignKey('type.typeid'), nullable=True)
     title = db.Column(db.String(250), nullable=False)
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     comments = db.relationship('Comment', backref='post', lazy='dynamic')

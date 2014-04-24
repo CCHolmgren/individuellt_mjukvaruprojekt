@@ -1,4 +1,5 @@
-from models import *
+from model.models import *
+from model.database import db_session
 from flask import Flask
 
 __author__ = 'Chrille'
@@ -10,9 +11,17 @@ def create_and_run():
     db.init_app(app)
 
     with app.app_context():
-        db.drop_all()
-        db.create_all()
-        print('Dropped and then created all tables, hopefully')
+        print('Before try')
+        try:
+            db_session.close()
+            print('after try')
+
+            #print('after drop_all')
+            db.create_all()
+            print('after create_all')
+            print('Dropped and then created all tables, hopefully')
+        except Exception as e:
+            print(e)
 
 
 if __name__ == '__main__':
