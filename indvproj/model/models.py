@@ -98,7 +98,7 @@ class Category(db.Model):
     categoryid = db.Column(db.Integer, primary_key=True)
     categoryname = db.Column(db.String(100), unique=True)
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    posts = db.relationship('Category', lazy='dynamic')
+    posts = db.relationship('Post', backref='category', lazy='dynamic')
 
     def __init__(self, categoryname):
         self.categoryname = categoryname
@@ -132,8 +132,9 @@ class Post(db.Model):
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
     posts = db.relationship('Collection', secondary=collection_has_post,
                             backref=db.backref('collections', lazy='dynamic'))
+    categoryid = db.Column(db.Integer, db.ForeignKey('category.categoryid'), nullable=False)
 
-    def __init__(self, createdby, timeposted, content, typeid, title):
+    def __init__(self, createdby, timeposted, content, typeid, title, categoryid):
         self.createdby = createdby
         self.timeposted = timeposted
         self.content = content
@@ -141,6 +142,7 @@ class Post(db.Model):
         self.title = title
         self.views = 0
         self.typeid = typeid
+        self.categoryid = categoryid
 
     def __repr__(self):
         return '<Post {}>'.format(self.title)

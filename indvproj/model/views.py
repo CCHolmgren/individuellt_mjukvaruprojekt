@@ -5,7 +5,7 @@ from models import User, Post, Collection, Category
 from database import db_session
 from flask_login import login_required, login_user, current_user, logout_user
 from flask import render_template, redirect, flash, url_for
-from forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, LinkPostForm
+from forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, LinkPostForm, CategoryForm
 
 
 __author__ = 'Chrille'
@@ -81,8 +81,9 @@ class PostView(FlaskView):
         if form.validate_on_submit() or linkform.validate_on_submit():
             try:
                 post = Post(current_user.userid, _datetime.datetime.now(), form.content.data, 1,
-                            form.title.data) or Post(current_user.userid, _datetime.datetime.now(), linkform.link.data,
-                                                     1, form.title.data)
+                            form.title.data, 1) or Post(current_user.userid, _datetime.datetime.now(),
+                                                        linkform.link.data,
+                                                        1, form.title.data, 1)
                 print(post)
                 db_session.add(post)
                 db_session.commit()
@@ -148,6 +149,24 @@ class CategoryView(FlaskView):
         category = Category.query.filter_by(categoryname=categoryname).first()
         posts = category.posts.all()
         return render_template('category.html', category=category, posts=posts)
+
+    @route('/new', methods=['GET', 'POST'])
+    @login_required
+    def new_category(self):
+        form = CategoryForm()
+        if form.validate_on_submit():
+            try:
+                category = Category(form.categoryname.data)
+                db_session.add(category)
+                db_session.commit()
+                flash("The category was created")
+                return redirect(url_for('CategoryView:get', id=category.categoryid))
+            except Exception as e:
+                db_session.rollback()
+                flash('Something horrible happened')
+                print(repr(e), e)
+                redirect(url_for("CategoryView:new_category"))
+        return render_template('create_category.html', form=form, title="Create a new category")
 
 
 class CollectionView(FlaskView):
