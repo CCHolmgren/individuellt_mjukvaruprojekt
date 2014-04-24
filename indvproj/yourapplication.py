@@ -3,7 +3,7 @@ from database import db_session, db
 from models import User
 from flask_login import current_user
 from loginmanager import login_manager
-from views import MainView, RegisterView, PostView, LoginView, UserView, CollectionView, LogoutView
+from views import MainView, RegisterView, PostView, LoginView, UserView, CollectionView, LogoutView, CategoryView
 from flask_wtf.csrf import CsrfProtect
 
 app = Flask(__name__)
@@ -24,6 +24,7 @@ LoginView.register(app)
 UserView.register(app)
 CollectionView.register(app)
 LogoutView.register(app)
+CategoryView.register(app)
 
 
 @app.before_request

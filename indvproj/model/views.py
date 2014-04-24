@@ -81,9 +81,11 @@ class PostView(FlaskView):
         if form.validate_on_submit() or linkform.validate_on_submit():
             try:
                 post = Post(current_user.userid, _datetime.datetime.now(), form.content.data, 1,
-                            form.title.data, 1) or Post(current_user.userid, _datetime.datetime.now(),
-                                                        linkform.link.data,
-                                                        1, form.title.data, 1)
+                            form.title.data, form.categoryname.data) or Post(current_user.userid,
+                                                                             _datetime.datetime.now(),
+                                                                             linkform.link.data,
+                                                                             1, linkform.title.data,
+                                                                             linkform.categoryname.data)
                 print(post)
                 db_session.add(post)
                 db_session.commit()
@@ -146,13 +148,39 @@ class UserView(FlaskView):
 
 class CategoryView(FlaskView):
     def get(self, categoryname):
-        category = Category.query.filter_by(categoryname=categoryname).first()
+        category = Category.query.filter_by(categoryid=categoryname).first()
+        print(category)
         posts = category.posts.all()
         return render_template('category.html', category=category, posts=posts)
+
+    @route('<id>/p/new', methods=['GET', 'POST'])
+    @login_required
+    def new_post(self, id):
+        form = TextPostForm(categoryname=id)
+        linkform = LinkPostForm(categoryname=id)
+        if form.validate_on_submit() or linkform.validate_on_submit():
+            try:
+                post = Post(current_user.userid, _datetime.datetime.now(), form.content.data, 1,
+                            form.title.data, form.categoryname.data) or Post(current_user.userid,
+                                                                             _datetime.datetime.now(),
+                                                                             linkform.link.data,
+                                                                             1, linkform.title.data,
+                                                                             linkform.categoryname.data)
+                print(post)
+                db_session.add(post)
+                db_session.commit()
+                redirect(url_for("PostView:get", id=post.postid))
+            except Exception as e:
+                flash('Something horrible happened')
+                print(e)
+                print('Damn')
+                redirect(url_for("PostView:new_post"))
+        return render_template('new_post.html', form=form, linkform=linkform)
 
     @route('/new', methods=['GET', 'POST'])
     @login_required
     def new_category(self):
+        print('We are inside CategoryView:new_category')
         form = CategoryForm()
         if form.validate_on_submit():
             try:
@@ -160,9 +188,10 @@ class CategoryView(FlaskView):
                 db_session.add(category)
                 db_session.commit()
                 flash("The category was created")
-                return redirect(url_for('CategoryView:get', id=category.categoryid))
+                return redirect(url_for('CategoryView:get', categoryname=category.categoryid))
             except Exception as e:
                 db_session.rollback()
+                print('Something horrible happened')
                 flash('Something horrible happened')
                 print(repr(e), e)
                 redirect(url_for("CategoryView:new_category"))
