@@ -173,14 +173,14 @@ class CategoryView(FlaskView):
         posts = category.posts.all()
         return render_template('category.html', category=category, posts=posts)
 
-    @route('<id>/p/<postid>')
+    @route('<categoryname>/p/<postid>')
     @login_required
-    def view_post(self, id, postid):
+    def view_post(self, categoryname, postid):
         return render_template('post.html', post=Post.query.get(postid))
 
-    @route('<id>/p/new', methods=['GET', 'POST'])
+    @route('<categoryname>/p/new', methods=['GET', 'POST'])
     @login_required
-    def new_post(self, id):
+    def new_post(self, categoryname):
         print('Were inside CategoryView:new_post')
         form = TextPostForm()
         print(form)
@@ -191,19 +191,19 @@ class CategoryView(FlaskView):
             try:
                 print('Inside the try')
                 post = Post(current_user.userid, _datetime.datetime.now(), form.content.data, 1, form.title.data,
-                            id)  #or Post(current_user.userid, _datetime.datetime.now(),linkform.link.data,1, linkform.title.data,id)
+                            categoryname)  #or Post(current_user.userid, _datetime.datetime.now(),linkform.link.data,1, linkform.title.data,id)
                 print(post)
                 db_session.add(post)
                 db_session.commit()
                 print(post.postid)
-                return redirect(url_for("CategoryView:get", categoryname=id))
+                return redirect(url_for("CategoryView:get", categoryname=categoryname))
             except Exception as e:
                 flash('Something horrible happened')
                 print(e)
                 print('Damn')
-                return redirect(url_for("CategoryView:new_post", id=id))
+                return redirect(url_for("CategoryView:new_post", categoryname=categoryname))
         print('Returning')
-        return render_template('new_post.html', form=form, id=id)
+        return render_template('new_post.html', form=form, categoryname=categoryname)
 
     @route('/new', methods=['GET', 'POST'])
     @login_required
