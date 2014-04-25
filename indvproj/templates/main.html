@@ -11,7 +11,7 @@
     {% endif %}
     {% for post in posts %}
         {% if post %}
-            <div>Title: <a href={{ url_for('PostView:get', username=post.postid) }}>{{ post.title }}</a></div>
+            <div>Title: <a href={{ url_for('PostView:get', id=post.postid) }}>{{ post.title }}</a></div>
             <div>Content: {{ post.content }}</div>
             {{ post }}
             {{ post.user }}

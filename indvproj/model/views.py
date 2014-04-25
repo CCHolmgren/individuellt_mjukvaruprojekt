@@ -10,24 +10,43 @@ from forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, Lin
 
 __author__ = 'Chrille'
 
+
+def getsalt(length):
+    """
+    Takes a length of the wanted salt and
+    returns os.urandom(length)
+    """
+    import os
+
+    return os.urandom(length)
+
+
 def encrypt(password):
     """
     Takes a password, encodes it in utf-8 and
     then uses the haslib sha512 function to encrypt it.
     The hexdigest and the salt used is then returned.
     """
-
-    import os
     import hashlib
     password = password.encode('utf-8')
-    salt = os.urandom(24)
-    return hashlib.sha512(password + salt).hexdigest(),salt
+    salt = getsalt(128)
+    for i in range(10000):
+        password = hashlib.sha512(password + salt).digest()
+    return password, salt
+
 
 def check_password(string_password,salt):
+    """
+    Checks a password using it's salt
+    """
     import hashlib
+
     print(string_password, salt)
-    string_password = string_password.encode('utf-8')
-    return hashlib.sha512(string_password+salt).hexdigest()
+    password = string_password.encode('utf-8')
+    for i in range(10000):
+        password = hashlib.sha512(password + salt).digest()
+    return password
+
 
 class MainView(FlaskView):
     route_base = '/'
@@ -148,11 +167,16 @@ class UserView(FlaskView):
 
 class CategoryView(FlaskView):
     def get(self, categoryname):
-        category = Category.query.get(categoryname)
+        category = Category.query.filter_by(categoryname=categoryname)
         print("Category:", category)
         print("Dir category:", dir(category))
         posts = category.posts.all()
         return render_template('category.html', category=category, posts=posts)
+
+    @route('<id>/p/<postid>')
+    @login_required
+    def view_post(self, id, postid):
+        return render_template('post.html', post=Post.query.get(postid))
 
     @route('<id>/p/new', methods=['GET', 'POST'])
     @login_required
@@ -162,8 +186,6 @@ class CategoryView(FlaskView):
         print(form)
         print(dir(form))
         #linkform = LinkPostForm(categoryname=id)
-        print(form.validate_on_submit())
-        print(form.validate())
         if form.validate_on_submit():
             print('Inside the if')
             try:
