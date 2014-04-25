@@ -6,7 +6,7 @@
         <p>Do you want to create a new <a href={{ url_for('CollectionView:new_collection') }}>collection</a>?</p>
         <p>Or a new <a href={{ url_for('PostView:new_post') }}>post</a>?</p>
         <p>Create a new <a href={{ url_for('CategoryView:new_category') }}>category</a>.</p>
-        {{ g.user.groups.all() }}
+        {{ g.user.collections.all() }}
         <a href={{ url_for('UserView:get', username=g.user.username) }}>{{ g.user.username }}</a>
     {% endif %}
     {% for post in posts %}
@@ -18,8 +18,8 @@
             <div>Username: <a
                     href={{ url_for('UserView:get', username=post.user.username) }}>{{ post.user.username }}</a>
             </div>
-            <div>Usercomments: {{ post.user.allcomments.all() }}</div>
-            <div>Usergroups: {{ post.user.groups.all() }}</div>
+            <div>Usercomments:{{ post.user.allcomments.all() }}</div>
+            <div>Usergroups: {{ post.user.collections.all() }}</div>
         {% endif %}
     {% endfor %}
 {% endblock %}

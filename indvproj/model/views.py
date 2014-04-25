@@ -144,8 +144,9 @@ class RegisterView(FlaskView):
                 user = User(form.username.data, form.email.data, *encrypt(form.password.data))
                 db_session.add(user)
                 db_session.commit()
-                login_user(user)
-                flash("Thanks for registering")
+                #login_user(user)
+                flash("Thanks for registering!")
+                flash("Now you can login and start using the site.")
                 return redirect(url_for('MainView:index'))
             except Exception as e:
                 db_session.rollback()
@@ -166,6 +167,11 @@ class UserView(FlaskView):
 
 
 class CategoryView(FlaskView):
+    def index(self):
+        categories = Category.query.all()
+        print(categories)
+        return render_template("all_categories.html", categories=categories)
+
     def get(self, categoryname):
         category = Category.query.filter_by(categoryname=categoryname)
         print("Category:", category)
@@ -212,6 +218,12 @@ class CategoryView(FlaskView):
         form = CategoryForm()
         if form.validate_on_submit():
             try:
+                potential_category = Category.query.filter_by(categoryname=form.categoryname.data).first()
+
+                if potential_category:
+                    flash("There is already a category with that name")
+                    return redirect(url_for("CategoryView:new_category"))
+
                 category = Category(form.categoryname.data)
                 db_session.add(category)
                 db_session.commit()

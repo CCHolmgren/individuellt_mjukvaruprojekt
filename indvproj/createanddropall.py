@@ -1,5 +1,5 @@
-from model.models import *
-from model.database import *
+from models import Type, Status
+from database import db
 from flask import Flask
 
 __author__ = 'Chrille'
@@ -20,6 +20,11 @@ def create_and_run():
             db.create_all()
             print('after create_all')
             print('Dropped and then created all tables, hopefully')
+            t = Type("Normal")
+            s = Status("Normal")
+            db.session.add(t)
+            db.session.add(s)
+            db.session.commit()
         except Exception as e:
             print(e)
 

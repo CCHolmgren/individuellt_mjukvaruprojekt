@@ -22,7 +22,7 @@ class User(db.Model):
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow())
     status = db.Column(db.Integer, db.ForeignKey('status.statusid'), default=1, nullable=True)
     posts = db.relationship('Post', backref='user', lazy='dynamic')
-    groups = db.relationship('Collection', backref='user', lazy='dynamic')
+    collections = db.relationship('Collection', backref='user', lazy='dynamic')
 
     def __init__(self, username, email, password, salt):
         self.username = username
@@ -54,6 +54,9 @@ class User(db.Model):
 class Status(db.Model):
     statusid = db.Column(db.Integer, primary_key=True, nullable=False)
     statusname = db.Column(db.String(25), nullable=False, unique=True)
+
+    def __init__(self, statusname):
+        self.statusname = statusname
 
     def __repr__(self):
         return '<Status {}>'.format(self.statusname)
