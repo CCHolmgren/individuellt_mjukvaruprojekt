@@ -8,6 +8,10 @@ collection_has_post = db.Table('collection_has_post',
                                db.Column('cid', db.Integer, db.ForeignKey('collection.groupid')),
                                db.Column('pid', db.Integer, db.ForeignKey('post.postid'))
 )
+category_has_moderator = db.Table('category_has_moderator',
+                                  db.Column('categoryid', db.Integer, db.ForeignKey('category.categoryid')),
+                                  db.Column('userid', db.Integer, db.ForeignKey('user.userid'))
+)
 
 
 class User(db.Model):
@@ -23,6 +27,8 @@ class User(db.Model):
     status = db.Column(db.Integer, db.ForeignKey('status.statusid'), default=1, nullable=True)
     posts = db.relationship('Post', backref='user', lazy='dynamic')
     collections = db.relationship('Collection', backref='user', lazy='dynamic')
+    moderator = db.relationship('Category', secondary=category_has_moderator,
+                                backref=db.backref('moderators', lazy='dynamic'))
 
     def __init__(self, username, email, password, salt):
         self.username = username
@@ -99,12 +105,14 @@ ug_has_v = db.Table('ug_has_v',
 
 class Category(db.Model):
     categoryid = db.Column(db.Integer, primary_key=True)
-    categoryname = db.Column(db.String(100), unique=True)
+    categoryname = db.Column(db.String(100), unique=True, nullable=False)
+    categorytitle = db.Column(db.String(100))
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     posts = db.relationship('Post', backref='category', lazy='dynamic')
 
-    def __init__(self, categoryname):
+    def __init__(self, categoryname, title="Default title"):
         self.categoryname = categoryname
+        self.categorytitle = title
 
     def __repr__(self):
         return '<Category {}>'.format(self.categoryname)

@@ -54,6 +54,9 @@ class MainView(FlaskView):
     def index(self):
         #print(Post.query.limit(10).all())
 
+        print("User", User)
+        print("dir", dir(User))
+        print(dir(User.moderator))
         print(User.query.join(Post).filter(User.userid == Post.createdby).limit(10).all())
         print(Post.query.join(User).filter(Post.createdby == User.userid).all())
         print(dir(current_user))
@@ -146,7 +149,7 @@ class RegisterView(FlaskView):
                 user = User(form.username.data, form.email.data, *encrypt(form.password.data))
                 db_session.add(user)
                 db_session.commit()
-                assert User.query.get(user.userid) > 0
+                #assert User.query.get(user.userid) > 0
                 #login_user(user)
                 flash("Thanks for registering!")
                 flash("Now you can login and start using the site.")
@@ -230,7 +233,7 @@ class CategoryView(FlaskView):
                 db_session.add(category)
                 db_session.commit()
                 flash("The category was created")
-                return redirect(url_for('CategoryView:get', categoryname=category.categoryid))
+                return redirect(url_for('CategoryView:get', categoryname=category.categoryname))
             except Exception as e:
                 db_session.rollback()
                 print('Something horrible happened')
