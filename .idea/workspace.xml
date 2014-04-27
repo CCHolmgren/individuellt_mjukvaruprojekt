@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Somehow this file didn't get included in last message. Adding some more validators to the forms to not allow spaces and such in usernames and categorynames. Email should also look like an email.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/createanddropall.py" afterPath="$PROJECT_DIR$/indvproj/createanddropall.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/main.html" afterPath="$PROJECT_DIR$/indvproj/templates/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/models.py" afterPath="$PROJECT_DIR$/indvproj/model/models.py" />
+    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Adding moderation slowly. Hopefully this works well.&#10;Much debugging.&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/indvproj/templates/new_post_category.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Document/Basic vision ch222kv.odt" afterPath="$PROJECT_DIR$/Document/Basic vision ch222kv.odt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/new_post.html" afterPath="$PROJECT_DIR$/indvproj/templates/new_post.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -18,7 +18,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$individuellt_mjukvaruprojekt.coverage" NAME="individuellt_mjukvaruprojekt Coverage Results" MODIFIED="1398595382382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
+    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$individuellt_mjukvaruprojekt.coverage" NAME="individuellt_mjukvaruprojekt Coverage Results" MODIFIED="1398599159576" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$createanddropall.coverage" NAME="createanddropall Coverage Results" MODIFIED="1398595371092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$ApplicationModel.coverage" NAME="ApplicationModel Coverage Results" MODIFIED="1397043936621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$model.coverage" NAME="model Coverage Results" MODIFIED="1397214632552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj/model" />
@@ -38,27 +38,30 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="235" column="38" selection-start="8948" selection-end="8948" vertical-scroll-proportion="-15.076923" vertical-offset="3603" max-vertical-offset="4811">
+            <state line="98" column="17" selection-start="3040" selection-end="3040" vertical-scroll-proportion="-9.807693" vertical-offset="1411" max-vertical-offset="3587">
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
+                <element signature="e#4567#6121#0" expanded="false" />
+                <element signature="e#6155#6444#0" expanded="false" />
+                <element signature="e#9715#11219#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
+      <file leaf-file-name="new_post.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indvproj/templates/new_post.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="0" selection-start="4582" selection-end="4582" vertical-scroll-proportion="0.20169492" vertical-offset="2040" max-vertical-offset="3655">
+            <state line="17" column="29" selection-start="620" selection-end="620" vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="442">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="createanddropall.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/indvproj/createanddropall.py">
+      <file leaf-file-name="new_post_category.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/indvproj/templates/new_post_category.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="112" selection-start="593" selection-end="593" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4471">
+            <state line="16" column="13" selection-start="618" selection-end="618" vertical-scroll-proportion="0.4822695" vertical-offset="0" max-vertical-offset="564">
               <folding />
             </state>
           </provider>
@@ -162,7 +165,6 @@
         <option value="$PROJECT_DIR$/indvproj/templates/user_missing.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/category.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/create_category.html" />
-        <option value="$PROJECT_DIR$/indvproj/templates/new_post.html" />
         <option value="$PROJECT_DIR$/indvproj/model/database.py" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="db-console:/b594ab0a/c6ad173e-df7a-4686-9b6a-01c36b8d8deb/" />
@@ -173,10 +175,12 @@
         <option value="$PROJECT_DIR$/indvproj/templates/post_missing.html" />
         <option value="$PROJECT_DIR$/indvproj/model/forms.py" />
         <option value="$PROJECT_DIR$/Lib/site-packages/flask_sqlalchemy/__init__.py" />
-        <option value="$PROJECT_DIR$/indvproj/model/models.py" />
         <option value="$PROJECT_DIR$/indvproj/createanddropall.py" />
-        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/main.html" />
+        <option value="$PROJECT_DIR$/indvproj/model/models.py" />
+        <option value="$PROJECT_DIR$/indvproj/templates/new_post.html" />
+        <option value="$PROJECT_DIR$/indvproj/templates/new_post_category.html" />
+        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
       </list>
     </option>
   </component>
@@ -679,7 +683,11 @@
       <created>1398591973200</created>
       <updated>1398591973200</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Adding moderation slowly. Hopefully this works well.&#10;Much debugging.&#10;">
+      <created>1398595622293</created>
+      <updated>1398595622294</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -782,7 +790,8 @@
     <MESSAGE value="Yes" />
     <MESSAGE value="Adding some more stuff with categories, displaying all of them on the front page.&#10;Some assertions in views" />
     <MESSAGE value="Somehow this file didn't get included in last message. Adding some more validators to the forms to not allow spaces and such in usernames and categorynames. Email should also look like an email." />
-    <option name="LAST_COMMIT_MESSAGE" value="Somehow this file didn't get included in last message. Adding some more validators to the forms to not allow spaces and such in usernames and categorynames. Email should also look like an email." />
+    <MESSAGE value="Adding moderation slowly. Hopefully this works well.&#10;Much debugging.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding moderation slowly. Hopefully this works well.&#10;Much debugging.&#10;" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -982,11 +991,6 @@
     <entry file="file://$PROJECT_DIR$/indvproj/templates/create_user.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="14" selection-start="456" selection-end="456" vertical-scroll-proportion="0.39253998" vertical-offset="0" max-vertical-offset="563" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/new_post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="46" selection-start="595" selection-end="595" vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="442" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
@@ -1190,32 +1194,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="235" column="38" selection-start="8948" selection-end="8948" vertical-scroll-proportion="-15.076923" vertical-offset="3603" max-vertical-offset="4811">
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="40" selection-start="1333" selection-end="1333" vertical-scroll-proportion="0.8351064" vertical-offset="22" max-vertical-offset="646">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/createanddropall.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="112" selection-start="593" selection-end="593" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4471">
+        <state line="11" column="112" selection-start="565" selection-end="565" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4505">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="0" selection-start="4582" selection-end="4582" vertical-scroll-proportion="0.20169492" vertical-offset="2040" max-vertical-offset="3655">
+        <state line="166" column="32" selection-start="6176" selection-end="6176" vertical-scroll-proportion="0.5186441" vertical-offset="2516" max-vertical-offset="3672">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="19" selection-start="1162" selection-end="1162" vertical-scroll-proportion="-14.192307" vertical-offset="22" max-vertical-offset="646">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="98" column="17" selection-start="3040" selection-end="3040" vertical-scroll-proportion="-9.807693" vertical-offset="1411" max-vertical-offset="3587">
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+            <element signature="e#4567#6121#0" expanded="false" />
+            <element signature="e#6155#6444#0" expanded="false" />
+            <element signature="e#9715#11219#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/new_post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="29" selection-start="620" selection-end="620" vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="442">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/new_post_category.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="13" selection-start="618" selection-end="618" vertical-scroll-proportion="0.4822695" vertical-offset="0" max-vertical-offset="564">
           <folding />
         </state>
       </provider>

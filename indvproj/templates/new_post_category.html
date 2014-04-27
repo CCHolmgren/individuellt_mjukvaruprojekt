@@ -9,8 +9,8 @@
         <p><input type=submit value=Post/></p>
         {#  #} linkform.csrf_token() }}
     </form>-->
-    <form method=post action=/p/new>
-    <dl>
+    <form method=post action=/category/{{ categoryname }}/p/new>
+        <dl>
             {{ render_field(form.title) }}
             {{ render_field(form.content) }}
             {{ render_field(form.categoryname) }}

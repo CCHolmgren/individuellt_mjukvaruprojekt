@@ -4,8 +4,8 @@ from flask.ext.classy import FlaskView, route
 from models import User, Post, Collection, Category
 from database import db_session
 from flask_login import login_required, login_user, current_user, logout_user
-from flask import render_template, redirect, flash, url_for
-from forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, LinkPostForm, CategoryForm
+from flask import render_template, redirect, flash, url_for, request
+from forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, CategoryForm
 
 
 __author__ = 'Chrille'
@@ -96,30 +96,32 @@ class PostView(FlaskView):
         #return "Hello from PostView:get"
         return render_template('post.html', post=Post.query.get(id))
 
-    @route('/new', methods=['GET','POST'])
+    @route('/new/', methods=['GET', 'POST'])
     @login_required
     def new_post(self):
         form = TextPostForm()
-        linkform = LinkPostForm()
-        if form.validate_on_submit() or linkform.validate_on_submit():
+        #linkform = LinkPostForm()
+        if form.validate_on_submit():  # or linkform.validate_on_submit():
             try:
+                category = Category.query.filter_by(categoryname=form.categoryname.data).first()
                 post = Post(current_user.userid, _datetime.datetime.now(), form.content.data, 1,
-                            form.title.data, form.categoryname.data) or Post(current_user.userid,
-                                                                             _datetime.datetime.now(),
-                                                                             linkform.link.data,
-                                                                             1, linkform.title.data,
-                                                                             linkform.categoryname.data)
+                            form.title.data, category.categoryid)  # or Post(current_user.userid,
+                #        _datetime.datetime.now(),
+                #       linkform.link.data,
+                #      1, linkform.title.data,
+                #     linkform.categoryname.data)
                 print(post)
                 db_session.add(post)
                 db_session.commit()
-                assert Post.query.get(post.postid) > 0
-                redirect(url_for("PostView:get",id=post.postid))
+                #assert Post.query.get(post.postid) > 0
+                return redirect(
+                    url_for("CategoryView:view_post", categoryname=category.categoryname, postid=post.postid))
             except Exception as e:
                 flash('Something horrible happened')
                 print(e)
                 print('Damn')
-                redirect(url_for("PostView:new_post"))
-        return render_template('new_post.html', form=form, linkform=linkform)
+                return redirect(url_for("PostView:new_post"))
+        return render_template('new_post.html', form=form)  #, linkform=linkform)
 
 
 class RegisterView(FlaskView):
@@ -178,6 +180,7 @@ class CategoryView(FlaskView):
         print(categories)
         return render_template("all_categories.html", categories=categories)
 
+    @route('/<categoryname>/')
     def get(self, categoryname):
         category = Category.query.filter_by(categoryname=categoryname).first()
         print("Category:", category)
@@ -192,8 +195,10 @@ class CategoryView(FlaskView):
     @route('<categoryname>/p/new', methods=['GET', 'POST'])
     @login_required
     def new_post(self, categoryname):
+        print(request.method)
         print('Were inside CategoryView:new_post')
         form = TextPostForm()
+        form.categoryname.data = categoryname
         print(form)
         print(dir(form))
         #linkform = LinkPostForm(categoryname=id)
@@ -214,7 +219,7 @@ class CategoryView(FlaskView):
                 print('Damn')
                 return redirect(url_for("CategoryView:new_post", categoryname=categoryname))
         print('Returning')
-        return render_template('new_post.html', form=form, categoryname=categoryname)
+        return render_template('new_post_category.html', form=form, categoryname=categoryname)
 
     @route('/new', methods=['GET', 'POST'])
     @login_required
