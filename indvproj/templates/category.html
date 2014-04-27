@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
-    {% from "_formhelpers.html" import render_field %}
+    {% from "_formhelpers.html" import render_post with context %}
     {% for post in posts %}
-        {{ post }}
+        {{ render_post(post) }}
     {% endfor %}
 {% endblock %}

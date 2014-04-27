@@ -16,9 +16,9 @@
     {% endfor %}
     <p>Categories:</p>
     {% for category in categories %}
-        {% if category %}
-            {{ category }}
-            {{ category.moderators.all() }}
-        {% endif %}
+        <a href={{ url_for('CategoryView:get', categoryname=category.categoryname) }}>{{ category.categoryname }}</a>
+        Moderators: {% for moderator in category.moderators.all() %}
+        <a href={{ url_for('UserView:get',username=moderator.username) }}>{{ moderator.username }}</a>
+    {% endfor %}
     {% endfor %}
 {% endblock %}

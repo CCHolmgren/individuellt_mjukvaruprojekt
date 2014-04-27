@@ -56,7 +56,7 @@ class MainView(FlaskView):
 
         print("User", User)
         print("dir", dir(User))
-        print(dir(User.moderator))
+        print(current_user.moderator)
         #print(User.query.join(Post).filter(User.userid == Post.createdby).limit(10).all())
         #print(Post.query.join(User).filter(Post.createdby == User.userid).all())
         print(current_user)

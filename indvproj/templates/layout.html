@@ -6,6 +6,7 @@
 </head>
 <body>
 <div>
+    <a href={{ url_for('MainView:index') }}>Home</a>
     {% if not g.user.is_active() %}
         <p>Do you want to <a href={{ url_for('RegisterView:new_user') }}> register?</a></p>
         <p>Or do you want to <a href={{ url_for('LoginView:index') }}>Login</a></p>
