@@ -175,6 +175,8 @@ class UserView(FlaskView):
 
 
 class CategoryView(FlaskView):
+    route_base = '/c'
+
     def index(self):
         categories = Category.query.all()
         print(categories)
@@ -249,7 +251,6 @@ class CategoryView(FlaskView):
 
 
 class CollectionView(FlaskView):
-    route_base = '/c'
 
     def index(self):
         return render_template('not_verified_collection.html', title="You are not eligible to view this collection")
