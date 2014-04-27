@@ -53,11 +53,12 @@ class MainView(FlaskView):
 
     def index(self):
         #print(Post.query.limit(10).all())
+
         print(User.query.join(Post).filter(User.userid == Post.createdby).limit(10).all())
         print(Post.query.join(User).filter(Post.createdby == User.userid).all())
         print(dir(current_user))
         return render_template('main.html',
-                               posts=Post.query.limit(10).all())
+                               posts=Post.query.all(), categories=Category.query.all())
 
 
 class LoginView(FlaskView):
@@ -108,6 +109,7 @@ class PostView(FlaskView):
                 print(post)
                 db_session.add(post)
                 db_session.commit()
+                assert Post.query.get(post.postid) > 0
                 redirect(url_for("PostView:get",id=post.postid))
             except Exception as e:
                 flash('Something horrible happened')
@@ -144,6 +146,7 @@ class RegisterView(FlaskView):
                 user = User(form.username.data, form.email.data, *encrypt(form.password.data))
                 db_session.add(user)
                 db_session.commit()
+                assert User.query.get(user.userid) > 0
                 #login_user(user)
                 flash("Thanks for registering!")
                 flash("Now you can login and start using the site.")
@@ -173,14 +176,13 @@ class CategoryView(FlaskView):
         return render_template("all_categories.html", categories=categories)
 
     def get(self, categoryname):
-        category = Category.query.filter_by(categoryname=categoryname)
+        category = Category.query.filter_by(categoryname=categoryname).first()
         print("Category:", category)
         print("Dir category:", dir(category))
         posts = category.posts.all()
         return render_template('category.html', category=category, posts=posts)
 
     @route('<categoryname>/p/<postid>')
-    @login_required
     def view_post(self, categoryname, postid):
         return render_template('post.html', post=Post.query.get(postid))
 

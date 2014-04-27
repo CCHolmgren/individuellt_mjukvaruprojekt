@@ -22,4 +22,10 @@
             <div>Usergroups: {{ post.user.collections.all() }}</div>
         {% endif %}
     {% endfor %}
+    <p>Categories:</p>
+    {% for category in categories %}
+        {% if category %}
+            {{ category }}
+        {% endif %}
+    {% endfor %}
 {% endblock %}
