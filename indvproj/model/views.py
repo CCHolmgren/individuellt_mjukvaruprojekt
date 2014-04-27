@@ -57,9 +57,9 @@ class MainView(FlaskView):
         print("User", User)
         print("dir", dir(User))
         print(dir(User.moderator))
-        print(User.query.join(Post).filter(User.userid == Post.createdby).limit(10).all())
-        print(Post.query.join(User).filter(Post.createdby == User.userid).all())
-        print(dir(current_user))
+        #print(User.query.join(Post).filter(User.userid == Post.createdby).limit(10).all())
+        #print(Post.query.join(User).filter(Post.createdby == User.userid).all())
+        print(current_user)
         return render_template('main.html',
                                posts=Post.query.all(), categories=Category.query.all())
 
@@ -257,7 +257,7 @@ class CategoryView(FlaskView):
 class CollectionView(FlaskView):
     @login_required
     def index(self):
-        return render_template('collections.html', title="You are not eligible to view this collection",
+        return render_template('collections.html', title="Displays your collections",
                                collections=current_user.collections)
 
     @login_required

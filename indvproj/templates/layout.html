@@ -11,7 +11,7 @@
         <p>Or do you want to <a href={{ url_for('LoginView:index') }}>Login</a></p>
     {% else %}
         <a href={{ url_for('LogoutView:logout') }}>Log out</a>
-        {{ g.user }}
+        <a href={{ url_for('UserView:get',username= g.user.username) }}>{{ g.user.username }}</a>
     {% endif %}
 </div>
 {% with messages = get_flashed_messages() %}

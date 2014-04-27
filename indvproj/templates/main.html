@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% from "_formhelpers.html" import render_post with context %}
 {% block body %}
     {{ message }}
     <h1>Overview</h1>
@@ -11,18 +12,7 @@
         <a href={{ url_for('UserView:get', username=g.user.username) }}>{{ g.user.username }}</a>
     {% endif %}
     {% for post in posts %}
-        {% if post %}
-            {{ post.postid }}
-            <div>Title: <a href={{ url_for('PostView:get', id=post.postid) }}>{{ post.title }}</a></div>
-            <div>Content: {{ post.content }}</div>
-            {{ post }}
-            {{ post.user }}
-            <div>Username: <a
-                    href={{ url_for('UserView:get', username=post.user.username) }}>{{ post.user.username }}</a>
-            </div>
-            <div>Usercomments:{{ post.user.allcomments.all() }}</div>
-            <div>Usergroups: {{ post.user.collections.all() }}</div>
-        {% endif %}
+        {{ render_post(post) }}
     {% endfor %}
     <p>Categories:</p>
     {% for category in categories %}
