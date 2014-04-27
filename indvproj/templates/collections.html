@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% from "_formhelpers.html" import render_field %}
+    {% for collection in collections %}
+        {{ collection }}
+    {% endfor %}
+{% endblock %}

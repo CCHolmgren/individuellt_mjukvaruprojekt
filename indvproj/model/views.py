@@ -94,6 +94,10 @@ class PostView(FlaskView):
 
     def get(self, id):
         #return "Hello from PostView:get"
+        post = Post.query.get(id)
+        if post:
+            return redirect(url_for('CategoryView:view_post', postid=post.postid,
+                                    categoryname=Category.query.get(post.categoryid).categoryname))
         return render_template('post.html', post=Post.query.get(id))
 
     @route('/new/', methods=['GET', 'POST'])
@@ -251,9 +255,10 @@ class CategoryView(FlaskView):
 
 
 class CollectionView(FlaskView):
-
+    @login_required
     def index(self):
-        return render_template('not_verified_collection.html', title="You are not eligible to view this collection")
+        return render_template('collections.html', title="You are not eligible to view this collection",
+                               collections=current_user.collections)
 
     @login_required
     def get(self, id):
