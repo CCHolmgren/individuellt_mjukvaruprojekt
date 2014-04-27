@@ -6,8 +6,8 @@ __author__ = 'Chrille'
 
 
 class RegistrationForm(Form):
-    username = TextField("Username", [validators.Length(min=5, max=120)])
-    email = TextField("Email", [validators.Length(min=6)])
+    username = TextField("Username", [validators.Regexp(r'^[\w.+-]+$'), validators.Length(min=5, max=120)])
+    email = TextField("Email", [validators.Length(min=6), validators.Email()])
     password = PasswordField("New password", [
         validators.Required(),
         validators.EqualTo("confirm", message="Passwords must match"),
@@ -38,4 +38,4 @@ class CollectionForm(Form):
 
 
 class CategoryForm(Form):
-    categoryname = TextField("Categoryname", [validators.Length(min=10, max=100)])
+    categoryname = TextField("Categoryname", [validators.Length(min=10, max=100), validators.Regexp(r'^[\w+-]+$')])
