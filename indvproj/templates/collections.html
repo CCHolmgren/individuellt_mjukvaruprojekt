@@ -1,8 +1,8 @@
 {# Intended to display a users collections, all of them #}
 {% extends "layout.html" %}
 {% block body %}
-    {% from "_formhelpers.html" import render_field %}
+    {% from "_formhelpers.html" import render_collection_dense with context %}
     {% for collection in collections %}
-        {{ collection }}
+        {{ render_collection_dense(collection) }}
     {% endfor %}
 {% endblock %}
