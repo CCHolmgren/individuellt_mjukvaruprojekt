@@ -61,13 +61,16 @@ class MainView(FlaskView):
         #print(Post.query.join(User).filter(Post.createdby == User.userid).all())
         print(current_user)
         return render_template('main.html',
-                               posts=Post.query.all(), categories=Category.query.all())
+                               posts=Post.query.all(), categories=Category.query.all(), users=User.query.all())
 
 
 class LoginView(FlaskView):
 
     @route('/', methods=['GET','POST'])
     def index(self):
+        if current_user.is_active():
+            return redirect(url_for('MainView:index'))
+
         form = LoginForm()
         if form.validate_on_submit():
             if User.query.filter_by(username=form.username.data).first():
@@ -136,6 +139,9 @@ class RegisterView(FlaskView):
 
     @route('/', methods=['GET', 'POST'])
     def new_user(self):
+        if current_user.is_active():
+            return redirect(url_for('MainView:index'))
+
         form = RegistrationForm()
         if form.validate_on_submit():
             try:

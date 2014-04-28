@@ -1,6 +1,10 @@
 {% extends "layout.html" %}
 {% from "_formhelpers.html" import render_post with context %}
 {% block body %}
+    All users:
+    {% for user in users %}
+        {{ user }}
+    {% endfor %}
     {{ message }}
     <h1>Overview</h1>
     {% if g.user.is_active() %}
@@ -17,8 +21,9 @@
     <p>Categories:</p>
     {% for category in categories %}
         <a href={{ url_for('CategoryView:get', categoryname=category.categoryname) }}>{{ category.categoryname }}</a>
-        Moderators: {% for moderator in category.moderators.all() %}
-        <a href={{ url_for('UserView:get',username=moderator.username) }}>{{ moderator.username }}</a>
-    {% endfor %}
+        Moderators:
+        {% for moderator in category.moderators.all() %}
+            <a href={{ url_for('UserView:get',username=moderator.username) }}>{{ moderator.username }}</a>
+        {% endfor %}
     {% endfor %}
 {% endblock %}
