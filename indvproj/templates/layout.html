@@ -8,11 +8,14 @@
 <div>
     <a href={{ url_for('MainView:index') }}>Home</a>
     {% if not g.user.is_active() %}
-        <p>Do you want to <a href={{ url_for('RegisterView:new_user') }}> register?</a></p>
-        <p>Or do you want to <a href={{ url_for('LoginView:index') }}>Login</a></p>
+        <div style="float:right"><p>Do you want to <a href={{ url_for('RegisterView:new_user') }}> register?</a></p>
+
+            <p>Or do you want to <a href={{ url_for('LoginView:index') }}>Login</a></p></div>
     {% else %}
-        <a href={{ url_for('LogoutView:logout') }}>Log out</a>
-        <a href={{ url_for('UserView:get',username= g.user.username) }}>{{ g.user.username }}</a>
+        <div style="float:right">
+            <a href={{ url_for('LogoutView:logout') }}>Log out</a>
+            <a href={{ url_for('UserView:get',username= g.user.username) }}>{{ g.user.username }}</a>
+        </div>
     {% endif %}
 </div>
 {% with messages = get_flashed_messages() %}

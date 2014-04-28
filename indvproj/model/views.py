@@ -6,6 +6,7 @@ from database import db_session
 from flask_login import login_required, login_user, current_user, logout_user
 from flask import render_template, redirect, flash, url_for, request
 from forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, CategoryForm
+from markdown import markdown
 
 
 __author__ = 'Chrille'
@@ -19,6 +20,15 @@ def getsalt(length):
     import os
 
     return os.urandom(length)
+
+
+def escape_text_and_create_markdown(unescaped_text):
+    """
+    Takes unsafe input and escapes it and converts it to safe html using markdown
+    Safe_mode set to escapes doesn't remove anything and allows the users to post what ever they want without it getting
+    removed.
+    """
+    return markdown(unescaped_text, safe_mode="escape")
 
 
 def encrypt(password):

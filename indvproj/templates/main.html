@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% from "_formhelpers.html" import render_post with context %}
+{% from "_formhelpers.html" import render_post, render_collection_dense with context %}
 {% block body %}
     All users: {{ users|map(attribute='username')|join(', ') }}
     {{ message }}
@@ -8,7 +8,9 @@
         <p>Do you want to create a new <a href={{ url_for('CollectionView:new_collection') }}>collection</a>?</p>
         <p>Or a new <a href={{ url_for('PostView:new_post') }}>post</a>?</p>
         <p>Create a new <a href={{ url_for('CategoryView:new_category') }}>category</a>.</p>
-        {{ g.user.collections.all() }}
+        {% for collection in g.user.collections.all() %}
+            {{ render_collection_dense(collection) }}
+        {% endfor %}
         {{ g.user.moderator }}
         <a href={{ url_for('UserView:get', username=g.user.username) }}>{{ g.user.username }}</a>
     {% endif %}

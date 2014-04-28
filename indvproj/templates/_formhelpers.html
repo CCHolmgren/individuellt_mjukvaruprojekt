@@ -11,8 +11,8 @@
     </dd>
 {% endmacro %}
 {% macro render_post(post) %}
-    <div>
-        <div>Postid: {{ post.postid }}</div>
+    <div style="border:1px solid black;">
+    <div>Postid: {{ post.postid }}</div>
         <div>Title: <a href={{ url_for('PostView:get', id=post.postid) }}>{{ post.title }}</a></div>
         <div>Content: {{ post.content }}</div>
         <div>Posted by: <a href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a>
@@ -30,8 +30,8 @@
     </div>
 {% endmacro %}
 {% macro render_collection_dense(collection) %}
-    <div>
-        <div>{{ collection.title }}</div>
+    <div style="border:1px solid black;">
+    <div>{{ collection.title }}</div>
         <div>{{ collection.user }}</div>
         <div>{{ collection.posts.all()|length }}</div>
     </div>
