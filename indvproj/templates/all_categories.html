@@ -1,13 +1,14 @@
+{# Intended to display all categories #}
 {% extends "layout.html" %}
 {% block body %}
     {% from "_formhelpers.html" import render_field %}
     what
-    {% for category in categories if categories %}
+    {% for category in categories %}
         {% if category %}
             This is a category.
             {{ category }}
         {% else %}
-            There are no categories.
+            There are no categories yet.
         {% endif %}
     {% endfor %}
 {% endblock %}
