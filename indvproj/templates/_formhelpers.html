@@ -20,3 +20,12 @@
         <div>Amount of comments: {{ post.comments.all()|length }}</div>
     </div>
 {% endmacro %}
+{% macro render_collection(collection) %}
+    <div>
+        <div>{{ collection.title }}</div>
+        <div>{{ collection.user }}</div>
+        {% for post in collection.posts.all() %}
+            {{ render_post(post) }}
+        {% endfor %}
+    </div>
+{% endmacro %}

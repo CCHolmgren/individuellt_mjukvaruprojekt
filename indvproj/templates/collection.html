@@ -1,6 +1,6 @@
 {# Inteded to display a single collection #}
 {% extends "layout.html" %}
 {% block body %}
-    {% from "_formhelpers.html" import render_field %}
-    {{ collection }}
+    {% from "_formhelpers.html" import render_collection with context %}
+    {{ render_collection(collection) }}
 {% endblock %}

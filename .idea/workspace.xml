@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Added description to a few files.">
+    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Changed some values in the sprint backlog, logging worked time.&#10;Renamed a relation from collections to posts since that's what it is.&#10;Implemented a render_collection macro and uses it on in collection.html to display a collection.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Document/Sprint Backlog.ods" afterPath="$PROJECT_DIR$/Document/Sprint Backlog.ods" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" afterPath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/collection.html" afterPath="$PROJECT_DIR$/indvproj/templates/collection.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/main.html" afterPath="$PROJECT_DIR$/indvproj/templates/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/models.py" afterPath="$PROJECT_DIR$/indvproj/model/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="individuellt_mjukvaruprojekt.iws" />
@@ -16,7 +19,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$individuellt_mjukvaruprojekt.coverage" NAME="individuellt_mjukvaruprojekt Coverage Results" MODIFIED="1398681991759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
+    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$individuellt_mjukvaruprojekt.coverage" NAME="individuellt_mjukvaruprojekt Coverage Results" MODIFIED="1398682697946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$createanddropall.coverage" NAME="createanddropall Coverage Results" MODIFIED="1398595371092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$ApplicationModel.coverage" NAME="ApplicationModel Coverage Results" MODIFIED="1397043936621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$model.coverage" NAME="model Coverage Results" MODIFIED="1397214632552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj/model" />
@@ -33,28 +36,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="8" selection-start="2028" selection-end="2028" vertical-scroll-proportion="0.5355932" vertical-offset="789" max-vertical-offset="4981">
-              <folding />
+            <state line="63" column="111" selection-start="1836" selection-end="1836" vertical-scroll-proportion="0.0" vertical-offset="908" max-vertical-offset="5100">
+              <folding>
+                <element signature="e#0#16#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="12" selection-start="1071" selection-end="1071" vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="578">
+            <state line="144" column="53" selection-start="5457" selection-end="5457" vertical-scroll-proportion="0.0" vertical-offset="2006" max-vertical-offset="3672">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="collection.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="collection.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/collection.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="41" selection-start="41" selection-end="41" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="187">
+            <state line="5" column="14" selection-start="217" selection-end="217" vertical-scroll-proportion="0.14655173" vertical-offset="0" max-vertical-offset="580">
               <folding />
             </state>
           </provider>
@@ -162,19 +167,19 @@
         <option value="$PROJECT_DIR$/indvproj/model/forms.py" />
         <option value="$PROJECT_DIR$/Lib/site-packages/flask_sqlalchemy/__init__.py" />
         <option value="$PROJECT_DIR$/indvproj/createanddropall.py" />
-        <option value="$PROJECT_DIR$/indvproj/model/models.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/new_post.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/new_post_category.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/create_collection.html" />
-        <option value="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/layout.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/user.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/collections.html" />
-        <option value="$PROJECT_DIR$/indvproj/templates/collection.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/all_categories.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/category.html" />
-        <option value="$PROJECT_DIR$/indvproj/templates/main.html" />
         <option value="$PROJECT_DIR$/indvproj/model/views.py" />
+        <option value="$PROJECT_DIR$/indvproj/templates/main.html" />
+        <option value="$PROJECT_DIR$/indvproj/templates/collection.html" />
+        <option value="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
+        <option value="$PROJECT_DIR$/indvproj/model/models.py" />
       </list>
     </option>
   </component>
@@ -705,7 +710,11 @@
       <created>1398681691470</created>
       <updated>1398681691470</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="No it's not possible to go to the register or login screen if you are already logged in. Instead you just get redirected to the index-page.">
+      <created>1398682175112</created>
+      <updated>1398682175112</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -732,7 +741,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3174946" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3174946" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297414" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3265086" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3275862" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -742,7 +751,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39956802" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3347732" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3347732" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3347732" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -787,8 +796,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Working around the anonymous user that flask-login uses when the user isn't logged in. Should work now with the added is_active calls." />
-    <MESSAGE value="Renamed Group to Collection in __repr__ for Collection so that it actually representes what it is.&#10;We do not need to remember the user with cookies, so set it explicitly.&#10;&#10;Set the route_base to shorter things, but will probably not keep it. This meant that I had to change the forms since they need to use the correct route.&#10;&#10;Also changed the errorhandler for 404 to give a better errormessage for debugging." />
     <MESSAGE value="Removed the block for the title since that was a little extreme I think, instead it uses justa variable instead. Changed all views and templates to represent this.&#10;Changed the register view to not allow the same usernames and at the same time alert you about it.&#10;" />
     <MESSAGE value="Removed the Classy logout class since it only needed a simple route, nothing more than that." />
     <MESSAGE value="Removed the &quot;Du accessade sidan med get istället för post&quot; since it did nothing useful.&#10;Changed the layout to always include login/logout things.&#10;Started using flask.g to give access to current_user to not have to pass it in to every template, this uses @app.before_request to set up g.user to current_user.&#10;&#10;Persistant login/logout ability is very handy and something that just must be there, so it had to be implemented.&#10;" />
@@ -812,7 +819,9 @@
     <MESSAGE value="Added a macro for rendering posts so that it can be used by all templates that need to display a summary of a post. Macros are nice, so I will probably use them more." />
     <MESSAGE value="Switched to using the new macro for some of the templates and added more stuff to them, more like it's supposed to be." />
     <MESSAGE value="Added description to a few files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added description to a few files." />
+    <MESSAGE value="No it's not possible to go to the register or login screen if you are already logged in. Instead you just get redirected to the index-page." />
+    <MESSAGE value="Changed some values in the sprint backlog, logging worked time.&#10;Renamed a relation from collections to posts since that's what it is.&#10;Implemented a render_collection macro and uses it on in collection.html to display a collection." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed some values in the sprint backlog, logging worked time.&#10;Renamed a relation from collections to posts since that's what it is.&#10;Implemented a render_collection macro and uses it on in collection.html to display a collection." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1122,13 +1131,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="9" selection-start="341" selection-end="341" vertical-scroll-proportion="0.39184397" vertical-offset="0" max-vertical-offset="564">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/user.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="14" selection-start="416" selection-end="416" vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="340">
@@ -1174,13 +1176,6 @@
     <entry file="file://$PROJECT_DIR$/indvproj/templates/collections.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="55" selection-start="55" selection-end="55" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="876">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/collection.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="41" selection-start="41" selection-end="41" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="876">
           <folding />
         </state>
       </provider>
@@ -1234,23 +1229,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="17" selection-start="1537" selection-end="1537" vertical-scroll-proportion="0.37457627" vertical-offset="272" max-vertical-offset="3672">
+        <state line="10" column="38" selection-start="566" selection-end="566" vertical-scroll-proportion="0.30141845" vertical-offset="0" max-vertical-offset="564">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="12" selection-start="1071" selection-end="1071" vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="578">
+        <state line="25" column="31" selection-start="924" selection-end="924" vertical-scroll-proportion="0.7535461" vertical-offset="0" max-vertical-offset="612">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="8" selection-start="2028" selection-end="2028" vertical-scroll-proportion="0.5355932" vertical-offset="789" max-vertical-offset="4981">
+        <state line="63" column="111" selection-start="1836" selection-end="1836" vertical-scroll-proportion="0.0" vertical-offset="908" max-vertical-offset="5100">
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="144" column="53" selection-start="5457" selection-end="5457" vertical-scroll-proportion="0.0" vertical-offset="2006" max-vertical-offset="3672">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/collection.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="14" selection-start="217" selection-end="217" vertical-scroll-proportion="0.14655173" vertical-offset="0" max-vertical-offset="580">
           <folding />
         </state>
       </provider>

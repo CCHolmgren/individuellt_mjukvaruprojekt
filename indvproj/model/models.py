@@ -142,7 +142,7 @@ class Post(db.Model):
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
     posts = db.relationship('Collection', secondary=collection_has_post,
-                            backref=db.backref('collections', lazy='dynamic'))
+                            backref=db.backref('posts', lazy='dynamic'))
     categoryid = db.Column(db.Integer, db.ForeignKey('category.categoryid'), nullable=False)
 
     def __init__(self, createdby, timeposted, content, typeid, title, categoryid):

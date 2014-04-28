@@ -1,10 +1,7 @@
 {% extends "layout.html" %}
 {% from "_formhelpers.html" import render_post with context %}
 {% block body %}
-    All users:
-    {% for user in users %}
-        {{ user }}
-    {% endfor %}
+    All users: {{ users|map(attribute='username')|join(', ') }}
     {{ message }}
     <h1>Overview</h1>
     {% if g.user.is_active() %}
