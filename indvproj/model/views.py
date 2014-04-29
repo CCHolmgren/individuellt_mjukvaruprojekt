@@ -5,7 +5,7 @@ from models import User, Post, Collection, Category
 from database import db_session
 from flask_login import login_required, login_user, current_user, logout_user
 from flask import render_template, redirect, flash, url_for, request
-from forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, CategoryForm
+from forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, CategoryForm, DeletePostForm
 from markdown import markdown
 
 
@@ -64,12 +64,14 @@ class MainView(FlaskView):
     def index(self):
         #print(Post.query.limit(10).all())
 
-        print("User", User)
-        print("dir", dir(User))
-        print(current_user.moderator)
+        #print("User", User)
+        #print("dir", dir(User))
+        #print(current_user.moderator)
         #print(User.query.join(Post).filter(User.userid == Post.createdby).limit(10).all())
         #print(Post.query.join(User).filter(Post.createdby == User.userid).all())
-        print(current_user)
+        #print(current_user)
+        #print(session)
+        #print(dir(session))
         return render_template('main.html',
                                posts=Post.query.all(), categories=Category.query.all(), users=User.query.all())
 
@@ -108,10 +110,25 @@ class PostView(FlaskView):
     def get(self, id):
         #return "Hello from PostView:get"
         post = Post.query.get(id)
+        form = DeletePostForm()
+        print(form)
         if post:
             return redirect(url_for('CategoryView:view_post', postid=post.postid,
                                     categoryname=Category.query.get(post.categoryid).categoryname))
-        return render_template('post.html', post=Post.query.get(id))
+        return render_template('post.html', post=Post.query.get(id), form=form)
+
+    @route('/<postid>/delete', methods=['POST'])
+    @login_required
+    def delete(self, postid):
+        try:
+            post = Post.query.get(postid)
+            db_session.delete(post)
+            db_session.commit()
+            return redirect(url_for('MainView:index'))
+        except Exception as e:
+            print(e)
+            db_session.rollback()
+            return redirect(url_for('MainView:index'))
 
     @route('/new/', methods=['GET', 'POST'])
     @login_required
@@ -121,7 +138,8 @@ class PostView(FlaskView):
         if form.validate_on_submit():  # or linkform.validate_on_submit():
             try:
                 category = Category.query.filter_by(categoryname=form.categoryname.data).first()
-                post = Post(current_user.userid, _datetime.datetime.now(), form.content.data, 1,
+                post = Post(current_user.userid, _datetime.datetime.now(),
+                            escape_text_and_create_markdown(form.content.data), 1,
                             form.title.data, category.categoryid)  # or Post(current_user.userid,
                 #        _datetime.datetime.now(),
                 #       linkform.link.data,
@@ -212,7 +230,8 @@ class CategoryView(FlaskView):
 
     @route('<categoryname>/p/<postid>')
     def view_post(self, categoryname, postid):
-        return render_template('post.html', post=Post.query.get(postid))
+        form = DeletePostForm()
+        return render_template('post.html', post=Post.query.get(postid), form=form)
 
     @route('<categoryname>/p/new', methods=['GET', 'POST'])
     @login_required
@@ -228,8 +247,10 @@ class CategoryView(FlaskView):
             print('Inside the if')
             try:
                 print('Inside the try')
-                post = Post(current_user.userid, _datetime.datetime.now(), form.content.data, 1, form.title.data,
-                            categoryname)  #or Post(current_user.userid, _datetime.datetime.now(),linkform.link.data,1, linkform.title.data,id)
+                post = Post(current_user.userid, _datetime.datetime.now(),
+                            escape_text_and_create_markdown(form.content.data), 1, form.title.data,
+                            Category.query.filter_by(
+                                categoryname=categoryname).first().categoryid)  #or Post(current_user.userid, _datetime.datetime.now(),linkform.link.data,1, linkform.title.data,id)
                 print(post)
                 db_session.add(post)
                 db_session.commit()

@@ -1,18 +1,21 @@
 from flask import Flask, g
 from database import db_session, db
+
+app = Flask('indvproj')
+app.secret_key = "Wtf is wrong with you? Why won't you just let me register a user sometime today? :("
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:bubblegum123@localhost/postgres'
+
+db.init_app(app)
+
 from models import User
 from flask_login import current_user
 from loginmanager import login_manager
 from views import MainView, RegisterView, PostView, LoginView, UserView, CollectionView, LogoutView, CategoryView
 from flask_wtf.csrf import CsrfProtect
 
-app = Flask(__name__)
-app.secret_key = "Wtf is wrong with you? Why won't you just let me register a user sometime today? :("
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:bubblegum123@localhost/postgres'
 
 csrf = CsrfProtect()
 
-db.init_app(app)
 login_manager.init_app(app)
 login_manager.login_view = 'LoginView:index'
 csrf.init_app(app)
@@ -49,5 +52,5 @@ def shutdown_session(self, exception=None):
 
 if __name__ == '__main__':
     #print("Encrypting 'what' and returns the sha512 hash with the salt generated",encrypt("what"))
-    app.debug = True
-    app.run()
+    #app.debug = True
+    app.run(host='0.0.0.0', debug=True)
