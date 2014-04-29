@@ -7,8 +7,9 @@ from flask_sqlalchemy import SQLAlchemy
 #engine = create_engine('postgres://postgres:bubblegum123@localhost/postgres', convert_unicode=True)
 #db_session = scoped_session(sessionmaker(autocommit=False, autoflush=False,bind=engine))
 
+print("Creating db in model.databse.py")
+print(__name__)
 db = SQLAlchemy()
-Base = db
 db_session = db.session
 
 """def init_db():

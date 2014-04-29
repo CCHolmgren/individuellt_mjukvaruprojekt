@@ -1,7 +1,8 @@
 __author__ = 'Chrille'
 from sqlalchemy.dialects import postgresql
 #from sqlalchemy import db.Column, db.Integer, db.String, db.DateTime, db.ForeignKey, PrimaryKeyConstraint
-from model.database import db
+#from model.database import db
+from indvproj import db
 import datetime
 
 collection_has_post = db.Table('collection_has_post',

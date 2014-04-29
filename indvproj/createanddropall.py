@@ -1,9 +1,6 @@
-from models import Status, Type
+#from models import Status, Type
 #from database import db_session,db
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.dialects import postgresql
-import datetime
+from models import *
 
 __author__ = 'Chrille'
 
@@ -11,12 +8,8 @@ __author__ = 'Chrille'
  is set up. So I just include all of them here, which is a bit annoying since I need to do that all the time if I want
 to change the models. Will have to have some way to backup the data so I do not need to recreate it all the time."""
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:bubblegum123@localhost/postgres'
-db = SQLAlchemy(app)
-
 __author__ = 'Chrille'
-
+"""
 collection_has_post = db.Table('collection_has_post',
                                db.Column('cid', db.Integer, db.ForeignKey('collection.groupid')),
                                db.Column('pid', db.Integer, db.ForeignKey('post.postid'))
@@ -194,7 +187,7 @@ class Visibility(db.Model):
         return '<Visibility {}>'.format(self.vname)
 
 
-var = """
+var =
 class UG_has_V(db.Model):
     __tablename__ = 'ughasv'
     ugid = db.Column(db.Integer, db.ForeignKey('usergroup.ugid'))
@@ -224,8 +217,10 @@ collection_has_post = db.Table('collection_has_post',
 
 
 def create_and_run():
+    print('Running create_and_run')
     print(db.metadata)
     print(dir(db.metadata))
+    """
     db.metadata.drop_all(bind=db.engine)
     db.metadata.create_all(bind=db.engine)
     with app.app_context():
@@ -235,7 +230,7 @@ def create_and_run():
         db.session.add(s)
         db.session.commit()
 
-    """with app.app_context():
+    with app.app_context():
         print(db)
         print(dir(db))
         print('Before try')
