@@ -4,6 +4,7 @@
     <form method=post action=/c/new>
         <dl>
         {{ render_field(form.categoryname) }}
+            {{ render_field(form.categorytitle) }}
         </dl>
         <p><input type=submit value=New></p>
         {{ form.csrf_token() }}

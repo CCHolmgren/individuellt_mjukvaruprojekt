@@ -291,13 +291,13 @@ class CategoryView(FlaskView):
         form = CategoryForm()
         if form.validate_on_submit():
             try:
-                potential_category = Category.query.filter_by(categoryname=form.categoryname.data).first()
+                potential_category = Category.query.filter_by(categoryname=form.categoryname.data.lower()).first()
 
                 if potential_category:
-                    flash("There is already a category with that name")
+                    flash("There is already a category with that categoryname")
                     return redirect(url_for("CategoryView:new_category"))
 
-                category = Category(form.categoryname.data)
+                category = Category(form.categoryname.data.lower(), form.categorytitle.data)
                 db_session.add(category)
                 db_session.commit()
                 flash("The category was created")

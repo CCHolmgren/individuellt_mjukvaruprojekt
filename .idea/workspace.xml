@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Added a DeletePostForm, which probably will get renamed to DeleteForm, which only has a button. This allows us to delete things in the templates, such as posts and collections.&#10;Changed the collection_has_post and category_has_moderator to have a composite primary_key. Hopefully this works as intended. This allows us to edit the posts and not just view them.&#10;Added a BlogView that just returns CategoryView.get(self, 'blog'). This is so that I can have a development blog easily.&#10;Importing func from sqlalchemy so that I can use the func.lower for categoryname. This should be changed so that categoryname is always lowercase, but I haven't done that yet. TODO.&#10;The same in view_post, which has grown quite a bit. Will have to tackle that soon.&#10;Added macros to render blog, collection and such. These should be renamed and fixed, but they work right now.&#10;New blog template.&#10;Small changes to the other templates.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/createanddropall.py" afterPath="$PROJECT_DIR$/indvproj/createanddropall.py" />
+    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Removed some warnings about comments in some files.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Document/Sprint Backlog.ods" afterPath="$PROJECT_DIR$/Document/Sprint Backlog.ods" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/create_category.html" afterPath="$PROJECT_DIR$/indvproj/templates/create_category.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/yourapplication.py" afterPath="$PROJECT_DIR$/indvproj/yourapplication.py" />
     </list>
     <ignored path="individuellt_mjukvaruprojekt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,11 +34,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="335" column="45" selection-start="12742" selection-end="12742" vertical-scroll-proportion="0.0" vertical-offset="3952" max-vertical-offset="4913">
+            <state line="306" column="52" selection-start="11719" selection-end="11719" vertical-scroll-proportion="0.76949155" vertical-offset="3439" max-vertical-offset="4913">
               <folding>
+                <element signature="e#0#16#0" expanded="true" />
                 <element signature="e#1736#2331#0" expanded="false" />
                 <element signature="e#2463#3346#0" expanded="false" />
                 <element signature="e#3382#3529#0" expanded="false" />
@@ -47,10 +49,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="yourapplication.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="27" selection-start="429" selection-end="429" vertical-scroll-proportion="0.30858085" vertical-offset="0" max-vertical-offset="1139">
+            <state line="114" column="40" selection-start="4237" selection-end="4237" vertical-scroll-proportion="0.0" vertical-offset="1733" max-vertical-offset="3706">
               <folding />
             </state>
           </provider>
@@ -115,7 +117,7 @@
       <file leaf-file-name="create_category.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/create_category.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="11" selection-start="298" selection-end="298" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="272">
+            <state line="6" column="8" selection-start="204" selection-end="204" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="289">
               <folding />
             </state>
           </provider>
@@ -169,21 +171,21 @@
         <option value="$PROJECT_DIR$/indvproj/templates/all_categories.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/collections.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/layout.html" />
-        <option value="$PROJECT_DIR$/indvproj/model/forms.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/post.html" />
         <option value="$PROJECT_DIR$/indvproj/model/database.py" />
         <option value="$PROJECT_DIR$/indvproj/__init__.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/blog.html" />
-        <option value="$PROJECT_DIR$/indvproj/templates/create_category.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/category.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/user.html" />
-        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/collection.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/main.html" />
         <option value="$PROJECT_DIR$/indvproj/model/models.py" />
         <option value="$PROJECT_DIR$/indvproj/createanddropall.py" />
         <option value="$PROJECT_DIR$/indvproj/yourapplication.py" />
+        <option value="$PROJECT_DIR$/indvproj/model/forms.py" />
+        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
+        <option value="$PROJECT_DIR$/indvproj/templates/create_category.html" />
       </list>
     </option>
   </component>
@@ -742,7 +744,11 @@
       <created>1398866038644</created>
       <updated>1398866038644</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Removed some warnings about comments in some files.">
+      <created>1398866091566</created>
+      <updated>1398866091566</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -770,18 +776,18 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297414" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3265086" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3261339" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39956802" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3347732" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3174946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3174946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3275862" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21192758" sideWeight="0.49841774" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3347732" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3347732" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -804,7 +810,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="More work on the categories." />
     <MESSAGE value="Odd names on categoryid and categoryname, should change those later." />
     <MESSAGE value="More work on categories, getting posting to work. Changed the models so that status and type isn't forced, that way I don't get errors all the time when those fks are missing." />
     <MESSAGE value="Problems with the creation of posts on categories." />
@@ -829,7 +834,8 @@
     <MESSAGE value="Solved the problem with double sessions. Moved db and app to __init__.py in indvproj which means that it only gets created once. So this should solve every problem. Some debugging prints left." />
     <MESSAGE value="Changed some imports which should improve the programming a bit." />
     <MESSAGE value="Added a DeletePostForm, which probably will get renamed to DeleteForm, which only has a button. This allows us to delete things in the templates, such as posts and collections.&#10;Changed the collection_has_post and category_has_moderator to have a composite primary_key. Hopefully this works as intended. This allows us to edit the posts and not just view them.&#10;Added a BlogView that just returns CategoryView.get(self, 'blog'). This is so that I can have a development blog easily.&#10;Importing func from sqlalchemy so that I can use the func.lower for categoryname. This should be changed so that categoryname is always lowercase, but I haven't done that yet. TODO.&#10;The same in view_post, which has grown quite a bit. Will have to tackle that soon.&#10;Added macros to render blog, collection and such. These should be renamed and fixed, but they work right now.&#10;New blog template.&#10;Small changes to the other templates." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a DeletePostForm, which probably will get renamed to DeleteForm, which only has a button. This allows us to delete things in the templates, such as posts and collections.&#10;Changed the collection_has_post and category_has_moderator to have a composite primary_key. Hopefully this works as intended. This allows us to edit the posts and not just view them.&#10;Added a BlogView that just returns CategoryView.get(self, 'blog'). This is so that I can have a development blog easily.&#10;Importing func from sqlalchemy so that I can use the func.lower for categoryname. This should be changed so that categoryname is always lowercase, but I haven't done that yet. TODO.&#10;The same in view_post, which has grown quite a bit. Will have to tackle that soon.&#10;Added macros to render blog, collection and such. These should be renamed and fixed, but they work right now.&#10;New blog template.&#10;Small changes to the other templates." />
+    <MESSAGE value="Removed some warnings about comments in some files." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed some warnings about comments in some files." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1191,13 +1197,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/create_category.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="11" selection-start="298" selection-end="298" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="272">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/collections.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="46" selection-start="269" selection-end="269" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="221">
@@ -1208,13 +1207,6 @@
     <entry file="file://$PROJECT_DIR$/indvproj/templates/category.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="31" selection-start="253" selection-end="253" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="238">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="1084" selection-end="1085" vertical-scroll-proportion="0.0" vertical-offset="226" max-vertical-offset="816">
           <folding />
         </state>
       </provider>
@@ -1263,25 +1255,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="335" column="45" selection-start="12742" selection-end="12742" vertical-scroll-proportion="0.0" vertical-offset="3952" max-vertical-offset="4913">
-          <folding>
-            <element signature="e#1736#2331#0" expanded="false" />
-            <element signature="e#2463#3346#0" expanded="false" />
-            <element signature="e#3382#3529#0" expanded="false" />
-            <element signature="e#5849#7496#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="81" selection-start="1820" selection-end="1820" vertical-scroll-proportion="0.7310231" vertical-offset="101" max-vertical-offset="3706">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/createanddropall.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="0" selection-start="94" selection-end="94" vertical-scroll-proportion="0.11221122" vertical-offset="0" max-vertical-offset="4403">
@@ -1291,8 +1264,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="27" selection-start="429" selection-end="429" vertical-scroll-proportion="0.30858085" vertical-offset="0" max-vertical-offset="1139">
+        <state line="28" column="30" selection-start="1039" selection-end="1039" vertical-scroll-proportion="0.6633663" vertical-offset="74" max-vertical-offset="1139">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/model/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="80" selection-start="1651" selection-end="1651" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="833">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="114" column="40" selection-start="4237" selection-end="4237" vertical-scroll-proportion="0.0" vertical-offset="1733" max-vertical-offset="3706">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/create_category.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="8" selection-start="204" selection-end="204" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="289">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="306" column="52" selection-start="11719" selection-end="11719" vertical-scroll-proportion="0.76949155" vertical-offset="3439" max-vertical-offset="4913">
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+            <element signature="e#1736#2331#0" expanded="false" />
+            <element signature="e#2463#3346#0" expanded="false" />
+            <element signature="e#3382#3529#0" expanded="false" />
+            <element signature="e#5849#7496#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
