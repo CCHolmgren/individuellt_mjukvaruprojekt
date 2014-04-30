@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Removed some warnings about comments in some files.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Document/Sprint Backlog.ods" afterPath="$PROJECT_DIR$/Document/Sprint Backlog.ods" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/create_category.html" afterPath="$PROJECT_DIR$/indvproj/templates/create_category.html" />
+    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Adding categorytitle to the form.&#10;add_moderator shell.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/indvproj/templates/add_moderators.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/category.html" afterPath="$PROJECT_DIR$/indvproj/templates/category.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -37,22 +37,23 @@
       <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="306" column="52" selection-start="11719" selection-end="11719" vertical-scroll-proportion="0.76949155" vertical-offset="3439" max-vertical-offset="4913">
+            <state line="317" column="28" selection-start="12178" selection-end="12178" vertical-scroll-proportion="0.81023103" vertical-offset="3844" max-vertical-offset="5032">
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-                <element signature="e#1736#2331#0" expanded="false" />
                 <element signature="e#2463#3346#0" expanded="false" />
                 <element signature="e#3382#3529#0" expanded="false" />
                 <element signature="e#5849#7496#0" expanded="false" />
+                <element signature="e#12613#12995#0" expanded="false" />
+                <element signature="e#13048#13581#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
+      <file leaf-file-name="add_moderators.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indvproj/templates/add_moderators.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="114" column="40" selection-start="4237" selection-end="4237" vertical-scroll-proportion="0.0" vertical-offset="1733" max-vertical-offset="3706">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="102">
               <folding />
             </state>
           </provider>
@@ -117,7 +118,7 @@
       <file leaf-file-name="create_category.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/create_category.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="8" selection-start="204" selection-end="204" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="289">
+            <state line="6" column="12" selection-start="208" selection-end="208" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="289">
               <folding />
             </state>
           </provider>
@@ -126,7 +127,7 @@
       <file leaf-file-name="category.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/category.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="31" selection-start="253" selection-end="253" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="238">
+            <state line="5" column="32" selection-start="226" selection-end="226" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="255">
               <folding />
             </state>
           </provider>
@@ -175,7 +176,6 @@
         <option value="$PROJECT_DIR$/indvproj/model/database.py" />
         <option value="$PROJECT_DIR$/indvproj/__init__.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/blog.html" />
-        <option value="$PROJECT_DIR$/indvproj/templates/category.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/user.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/collection.html" />
@@ -184,8 +184,10 @@
         <option value="$PROJECT_DIR$/indvproj/createanddropall.py" />
         <option value="$PROJECT_DIR$/indvproj/yourapplication.py" />
         <option value="$PROJECT_DIR$/indvproj/model/forms.py" />
-        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/create_category.html" />
+        <option value="$PROJECT_DIR$/indvproj/templates/category.html" />
+        <option value="$PROJECT_DIR$/indvproj/templates/add_moderators.html" />
+        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
       </list>
     </option>
   </component>
@@ -748,7 +750,11 @@
       <created>1398866091566</created>
       <updated>1398866091566</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Updated Sprint Backlog.&#10;changed the categoryname to use the lowercase version. This way we do not need to check it later, and the url will always use the lowercase anyway.&#10;Added the categorytitle to the create_category template.">
+      <created>1398868185748</created>
+      <updated>1398868185748</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -783,11 +789,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3347732" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3174946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3174946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3275862" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21192758" sideWeight="0.49841774" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3347732" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3347732" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -810,8 +816,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Odd names on categoryid and categoryname, should change those later." />
-    <MESSAGE value="More work on categories, getting posting to work. Changed the models so that status and type isn't forced, that way I don't get errors all the time when those fks are missing." />
     <MESSAGE value="Problems with the creation of posts on categories." />
     <MESSAGE value="Changed from db.String to postgresql.BYTEA instead since I changed encrypt function to return bytes instead of string.&#10;Added a getsalt function instead.&#10;We want to be able to view a post in a category, so added a function for that.&#10;Had a small problem in main.html where i used username instead of id in the url_for." />
     <MESSAGE value="Renamed the variables from id to categoryname since we are going to use that and not the id of the category." />
@@ -835,7 +839,9 @@
     <MESSAGE value="Changed some imports which should improve the programming a bit." />
     <MESSAGE value="Added a DeletePostForm, which probably will get renamed to DeleteForm, which only has a button. This allows us to delete things in the templates, such as posts and collections.&#10;Changed the collection_has_post and category_has_moderator to have a composite primary_key. Hopefully this works as intended. This allows us to edit the posts and not just view them.&#10;Added a BlogView that just returns CategoryView.get(self, 'blog'). This is so that I can have a development blog easily.&#10;Importing func from sqlalchemy so that I can use the func.lower for categoryname. This should be changed so that categoryname is always lowercase, but I haven't done that yet. TODO.&#10;The same in view_post, which has grown quite a bit. Will have to tackle that soon.&#10;Added macros to render blog, collection and such. These should be renamed and fixed, but they work right now.&#10;New blog template.&#10;Small changes to the other templates." />
     <MESSAGE value="Removed some warnings about comments in some files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed some warnings about comments in some files." />
+    <MESSAGE value="Updated Sprint Backlog.&#10;changed the categoryname to use the lowercase version. This way we do not need to check it later, and the url will always use the lowercase anyway.&#10;Added the categorytitle to the create_category template." />
+    <MESSAGE value="Adding categorytitle to the form.&#10;add_moderator shell." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding categorytitle to the form.&#10;add_moderator shell." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -855,13 +861,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="11" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="272">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="22" selection-start="107" selection-end="123" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="272" />
@@ -1204,13 +1203,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/category.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="31" selection-start="253" selection-end="253" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="238">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="8" selection-start="218" selection-end="376" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="323">
@@ -1238,13 +1230,6 @@
           <folding>
             <marker date="1398866026900" expanded="true" signature="294:378" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="11" selection-start="748" selection-end="748" vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="629">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1285,20 +1270,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/create_category.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="8" selection-start="204" selection-end="204" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="289">
+        <state line="6" column="12" selection-start="208" selection-end="208" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="289">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="12" selection-start="908" selection-end="908" vertical-scroll-proportion="-10.269231" vertical-offset="39" max-vertical-offset="629">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/category.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="32" selection-start="226" selection-end="226" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="255">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/add_moderators.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="590">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="306" column="52" selection-start="11719" selection-end="11719" vertical-scroll-proportion="0.76949155" vertical-offset="3439" max-vertical-offset="4913">
+        <state line="317" column="28" selection-start="12178" selection-end="12178" vertical-scroll-proportion="0.81023103" vertical-offset="3844" max-vertical-offset="5032">
           <folding>
             <element signature="e#0#16#0" expanded="true" />
-            <element signature="e#1736#2331#0" expanded="false" />
             <element signature="e#2463#3346#0" expanded="false" />
             <element signature="e#3382#3529#0" expanded="false" />
             <element signature="e#5849#7496#0" expanded="false" />
+            <element signature="e#12613#12995#0" expanded="false" />
+            <element signature="e#13048#13581#0" expanded="false" />
           </folding>
         </state>
       </provider>

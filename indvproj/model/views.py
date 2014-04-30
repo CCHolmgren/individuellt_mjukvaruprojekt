@@ -310,6 +310,16 @@ class CategoryView(FlaskView):
                 redirect(url_for("CategoryView:new_category"))
         return render_template('create_category.html', form=form, title="Create a new category")
 
+    @route('<categoryname>/moderators/add', methods=['GET', 'POST'])
+    @login_required
+    def add_moderator(self, categoryname):
+        """
+        Add moderators to a category
+        :param categoryname:
+        :return:
+        """
+        return render_template('add_moderators.html')
+
 
 class CollectionView(FlaskView):
     @login_required
