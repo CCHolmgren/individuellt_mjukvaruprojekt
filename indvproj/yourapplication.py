@@ -4,7 +4,7 @@ if __name__ == '__main__':
     print('Importing db_session and db')
     from indvproj import app, db_session
 
-    """app = Flask('indvproj')
+    var = """app = Flask('indvproj')
     app.secret_key = "Wtf is wrong with you? Why won't you just let me register a user sometime today? :("
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:bubblegum123@localhost/postgres'
     db.init_app(app)"""
