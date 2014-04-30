@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% from '_formhelpers.html' import render_post with context %}
+    <h1>Development blog</h1>
+    {% for post in posts %}
+        {{ render_post(post) }}
+    {% endfor %}
+{% endblock %}

@@ -6,12 +6,13 @@ from indvproj import db
 import datetime
 
 collection_has_post = db.Table('collection_has_post',
-                               db.Column('cid', db.Integer, db.ForeignKey('collection.groupid')),
-                               db.Column('pid', db.Integer, db.ForeignKey('post.postid'))
+                               db.Column('cid', db.Integer, db.ForeignKey('collection.groupid'), primary_key=True),
+                               db.Column('pid', db.Integer, db.ForeignKey('post.postid'), primary_key=True)
 )
 category_has_moderator = db.Table('category_has_moderator',
-                                  db.Column('categoryid', db.Integer, db.ForeignKey('category.categoryid')),
-                                  db.Column('userid', db.Integer, db.ForeignKey('user.userid'))
+                                  db.Column('categoryid', db.Integer, db.ForeignKey('category.categoryid'),
+                                            primary_key=True),
+                                  db.Column('userid', db.Integer, db.ForeignKey('user.userid'), primary_key=True)
 )
 
 

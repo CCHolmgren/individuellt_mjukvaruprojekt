@@ -1,6 +1,10 @@
 {# Inteded to display a single collection #}
 {% extends "layout.html" %}
 {% block body %}
-    {% from "_formhelpers.html" import render_collection with context %}
-    {{ render_collection(collection) }}
+    {% from "_formhelpers.html" import render_collection, render_field with context %}
+    {{ render_collection(collection,form) }}
+    <form method=post action=/collection/{{ collection.groupid }}/delete>
+        {{ render_field(form.submit) }}
+        {{ form.csrf_token() }}
+    </form>
 {% endblock %}

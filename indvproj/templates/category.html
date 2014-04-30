@@ -2,6 +2,7 @@
 {% extends "layout.html" %}
 {% block body %}
     {% from "_formhelpers.html" import render_post with context %}
+    {{ category.categorytitle }}
     {% for post in posts %}
         {{ render_post(post) }}
     {% endfor %}

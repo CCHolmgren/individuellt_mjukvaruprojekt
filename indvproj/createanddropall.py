@@ -1,6 +1,6 @@
 #from models import Status, Type
 #from database import db_session,db
-from models import *
+from indvproj import db
 
 __author__ = 'Chrille'
 
@@ -8,7 +8,6 @@ __author__ = 'Chrille'
  is set up. So I just include all of them here, which is a bit annoying since I need to do that all the time if I want
 to change the models. Will have to have some way to backup the data so I do not need to recreate it all the time."""
 
-__author__ = 'Chrille'
 """
 collection_has_post = db.Table('collection_has_post',
                                db.Column('cid', db.Integer, db.ForeignKey('collection.groupid')),

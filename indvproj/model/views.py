@@ -78,6 +78,11 @@ class MainView(FlaskView):
                                posts=Post.query.all(), categories=Category.query.all(), users=User.query.all())
 
 
+class BlogView(FlaskView):
+    def index(self):
+        return CategoryView.get(self, 'blog')
+
+
 class LoginView(FlaskView):
 
     @route('/', methods=['GET','POST'])
@@ -210,6 +215,7 @@ class UserView(FlaskView):
     def get(self, username):
         user = User.query.filter_by(username=username).first()
         if user is not None:
+            print(user.collections.all())
             return render_template('user.html',user=user)
         return render_template('user_missing.html', title="The user doesn't seem to exist")
 
@@ -224,7 +230,9 @@ class CategoryView(FlaskView):
 
     @route('/<categoryname>/')
     def get(self, categoryname):
-        category = Category.query.filter_by(categoryname=categoryname).first()
+        from sqlalchemy import func
+
+        category = Category.query.filter(func.lower(Category.categoryname) == func.lower(categoryname)).first()
         print("Category:", category)
         print("Dir category:", dir(category))
         posts = category.posts.all()
@@ -232,8 +240,18 @@ class CategoryView(FlaskView):
 
     @route('<categoryname>/p/<postid>')
     def view_post(self, categoryname, postid):
+        from sqlalchemy import func
+
         form = DeletePostForm()
-        return render_template('post.html', post=Post.query.get(postid), form=form)
+        post = Post.query.get(postid)
+        print(post.categoryid)
+        category = Category.query.filter(func.lower(Category.categoryname) == func.lower(categoryname)).first()
+        print(category)
+        if post.categoryid == category.categoryid:
+            return render_template('post.html', post=Post.query.get(postid), form=form)
+        print(Category.query.get(post.categoryid).categoryname, postid)
+        return redirect(url_for('CategoryView:view_post', categoryname=Category.query.get(post.categoryid).categoryname,
+                                postid=postid))
 
     @route('<categoryname>/p/new', methods=['GET', 'POST'])
     @login_required
@@ -299,13 +317,28 @@ class CollectionView(FlaskView):
         return render_template('collections.html', title="Displays your collections",
                                collections=current_user.collections)
 
+    @route('/<collectionid>/delete', methods=['POST'])
+    @login_required
+    def delete(self, collectionid):
+        try:
+            collection = Collection.query.get(collectionid)
+            db_session.delete(collection)
+            db_session.commit()
+            flash("The collection was removed")
+            return redirect(url_for('MainView:index'))
+        except Exception as e:
+            print(e)
+            db_session.rollback()
+            return redirect(url_for('MainView:index'))
+
     @login_required
     def get(self, id):
         collection = Collection.query.get(id)
+        form = DeletePostForm()
         if collection:
             print(collection)
             if current_user.userid == collection.userid:
-                return render_template('collection.html', collection=collection, title=collection.title)
+                return render_template('collection.html', collection=collection, title=collection.title, form=form)
             return render_template('not_verified_collection.html', title="You are not eligible to view this collection")
         return render_template('not_verified_collection.html', title="You are not eligible to view this collection")
 

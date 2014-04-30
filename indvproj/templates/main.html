@@ -8,11 +8,15 @@
         <p>Do you want to create a new <a href={{ url_for('CollectionView:new_collection') }}>collection</a>?</p>
         <p>Or a new <a href={{ url_for('PostView:new_post') }}>post</a>?</p>
         <p>Create a new <a href={{ url_for('CategoryView:new_category') }}>category</a>.</p>
+        All your collections:
         {% for collection in g.user.collections.all() %}
             {{ render_collection_dense(collection) }}
         {% endfor %}
+        Moderator in:
         {{ g.user.moderator }}
-        <a href={{ url_for('UserView:get', username=g.user.username) }}>{{ g.user.username }}</a>
+        <p>Your userpage:
+            <a href={{ url_for('UserView:get', username=g.user.username) }}>{{ g.user.username }}</a>
+        </p>
     {% endif %}
     {% for post in posts %}
         {{ render_post(post) }}

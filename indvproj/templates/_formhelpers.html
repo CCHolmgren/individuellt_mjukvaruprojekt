@@ -10,6 +10,13 @@
         {% endif %}
     </dd>
 {% endmacro %}
+{% macro render_blog(post) %}
+    <div>
+        <div>{{ post.title }}</div>
+        <div>{{ post.content|safe }}</div>
+        <div>{{ post.timeposted }}</div>
+    </div>
+{% endmacro %}
 {% macro render_post(post) %}
     <div style="border:1px solid black;">
         <div>Postid: {{ post.postid }}</div>
@@ -33,7 +40,7 @@
         </div>
     </div>
 {% endmacro %}
-{% macro render_collection(collection) %}
+{% macro render_collection(collection,form) %}
     <div>
         <div>{{ collection.title }}</div>
         <div>{{ collection.user }}</div>
@@ -44,7 +51,7 @@
 {% endmacro %}
 {% macro render_collection_dense(collection) %}
     <div style="border:1px solid black;">
-        <div>{{ collection.title }}</div>
+        <div><a href={{ url_for('CollectionView:get',id=collection.groupid) }}>{{ collection.title }}</a></div>
         <div>{{ collection.user }}</div>
         <div>{{ collection.posts.all()|length }}</div>
     </div>
