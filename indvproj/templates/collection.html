@@ -2,9 +2,14 @@
 {% extends "layout.html" %}
 {% block body %}
     {% from "_formhelpers.html" import render_collection, render_field with context %}
-    {{ render_collection(collection,form) }}
+    {{ render_collection(collection) }}
+    <form method=post action=/collection/{{ collection.groupid }}/add_link>
+        {{ render_field(addform.link) }}
+        {{ render_field(addform.submit) }}
+        {{ addform.csrf_token() }}
+    </form>
     <form method=post action=/collection/{{ collection.groupid }}/delete>
-        {{ render_field(form.submit) }}
-        {{ form.csrf_token() }}
+        {{ render_field(deleteform.submit) }}
+        {{ deleteform.csrf_token() }}
     </form>
 {% endblock %}

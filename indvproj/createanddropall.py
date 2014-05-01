@@ -1,6 +1,5 @@
-#from models import Status, Type
-#from database import db_session,db
-from indvproj import db
+from indvproj import db, app
+from models import Type, Status, User
 
 __author__ = 'Chrille'
 
@@ -219,16 +218,22 @@ def create_and_run():
     print('Running create_and_run')
     print(db.metadata)
     print(dir(db.metadata))
-    var = """
+
     db.metadata.drop_all(bind=db.engine)
     db.metadata.create_all(bind=db.engine)
     with app.app_context():
         t = Type("Normal")
         s = Status("Normal")
+        u = User("Ravengenocide", "christoffer.holmgren@gmail.com",
+                 b'\x1d\tT\xa8\xfdR\xff]\xdb\x17\x0f\xeask\x99\xbcX\xe2\xb4n\x1e\xe5\xbcl>\xd0\xf0G\x9dn\x8c\x98h{&\xc2>m\xf7\xb1w\xd4\xf5\x0b\x05\xe4\xa3\xdb\x9f\x8f\xe4\xa9!5\xad\xef\xacP\xd1a\x84*\x0f\xe0',
+                 b'\x9af\xa0\xdd\x1b\xca\xcf0\x87$\xd3\x0b\xb6\xcc\xd9\xf3\xe5\xc8}\xa9C5\x006\x01\\$\x07\x0c\xc7,\xcc\xe6H\xb1\xa2\xac\nr\xad\xc9\x8ew\xa4\x953\x02[\x16A\x90|\xa24LZ\xe1\xb1q\x1b\x9a\xc8\xc44\x98\x9d\xa3<\xe9\xdb|x\x7f\x06\xeb\xf8k:\x10\x15\xd3\x1b\x9f\x93\x0c\x94<\xdeA>\x97?\xac3\xb2\xd6\xfd\xdc_\xdfB \xec\xec\x8at\xd3\xe6\xbd\xb6\xfa\xf0\xec\xf3\xae}\xd6X!\xd9\xf7\x96\xea\n\x0c\x8fG@')
+
         db.session.add(t)
         db.session.add(s)
         db.session.commit()
-
+        db.session.add(u)
+        db.session.commit()
+    """
     with app.app_context():
         print(db)
         print(dir(db))

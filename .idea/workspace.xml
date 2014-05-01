@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Adding categorytitle to the form.&#10;add_moderator shell.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/indvproj/templates/add_moderators.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/category.html" afterPath="$PROJECT_DIR$/indvproj/templates/category.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Document/Sprint Backlog.ods" afterPath="$PROJECT_DIR$/Document/Sprint Backlog.ods" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" afterPath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/collection.html" afterPath="$PROJECT_DIR$/indvproj/templates/collection.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/createanddropall.py" afterPath="$PROJECT_DIR$/indvproj/createanddropall.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -17,10 +19,10 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$individuellt_mjukvaruprojekt.coverage" NAME="individuellt_mjukvaruprojekt Coverage Results" MODIFIED="1398846062458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
-    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$createanddropall.coverage" NAME="createanddropall Coverage Results" MODIFIED="1398776341792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
-    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$ApplicationModel.coverage" NAME="ApplicationModel Coverage Results" MODIFIED="1397043936621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$individuellt_mjukvaruprojekt.coverage" NAME="individuellt_mjukvaruprojekt Coverage Results" MODIFIED="1398957656600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
+    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$createanddropall.coverage" NAME="createanddropall Coverage Results" MODIFIED="1398958621346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$model.coverage" NAME="model Coverage Results" MODIFIED="1397214632552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj/model" />
+    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$ApplicationModel.coverage" NAME="ApplicationModel Coverage Results" MODIFIED="1397043936621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -34,18 +36,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="317" column="28" selection-start="12178" selection-end="12178" vertical-scroll-proportion="0.81023103" vertical-offset="3844" max-vertical-offset="5032">
+            <state line="41" column="18" selection-start="1262" selection-end="1413" vertical-scroll-proportion="-7.8846154" vertical-offset="492" max-vertical-offset="6664">
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-                <element signature="e#2463#3346#0" expanded="false" />
-                <element signature="e#3382#3529#0" expanded="false" />
-                <element signature="e#5849#7496#0" expanded="false" />
-                <element signature="e#12613#12995#0" expanded="false" />
-                <element signature="e#13048#13581#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createanddropall.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/indvproj/createanddropall.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="251" column="23" selection-start="9251" selection-end="9251" vertical-scroll-proportion="0.9119171" vertical-offset="3722" max-vertical-offset="4437">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -53,7 +59,7 @@
       <file leaf-file-name="add_moderators.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/add_moderators.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="102">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
               <folding />
             </state>
           </provider>
@@ -62,7 +68,7 @@
       <file leaf-file-name="user.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/user.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="42" selection-start="498" selection-end="498" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="340">
+            <state line="12" column="42" selection-start="498" selection-end="498" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="340">
               <folding />
             </state>
           </provider>
@@ -71,7 +77,7 @@
       <file leaf-file-name="blog.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/blog.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="24" selection-start="136" selection-end="136" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="221">
+            <state line="3" column="24" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="221">
               <folding />
             </state>
           </provider>
@@ -80,7 +86,7 @@
       <file leaf-file-name="collections.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/collections.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="46" selection-start="269" selection-end="269" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="221">
+            <state line="5" column="46" selection-start="269" selection-end="269" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="221">
               <folding />
             </state>
           </provider>
@@ -89,7 +95,7 @@
       <file leaf-file-name="post.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="8" selection-start="218" selection-end="376" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="323">
+            <state line="5" column="8" selection-start="218" selection-end="376" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="323">
               <folding />
             </state>
           </provider>
@@ -98,18 +104,7 @@
       <file leaf-file-name="collection.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/collection.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="14" selection-start="394" selection-end="394" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="255">
-              <folding>
-                <marker date="1398866026900" expanded="true" signature="294:378" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="all_categories.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/indvproj/templates/all_categories.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="19" selection-start="232" selection-end="232" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="323">
+            <state line="12" column="17" selection-start="549" selection-end="549" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="340">
               <folding />
             </state>
           </provider>
@@ -118,7 +113,7 @@
       <file leaf-file-name="create_category.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/create_category.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="12" selection-start="208" selection-end="208" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="289">
+            <state line="6" column="12" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="289">
               <folding />
             </state>
           </provider>
@@ -127,7 +122,7 @@
       <file leaf-file-name="category.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/category.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="32" selection-start="226" selection-end="226" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="255">
+            <state line="5" column="32" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="255">
               <folding />
             </state>
           </provider>
@@ -177,17 +172,17 @@
         <option value="$PROJECT_DIR$/indvproj/__init__.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/blog.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/user.html" />
-        <option value="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
-        <option value="$PROJECT_DIR$/indvproj/templates/collection.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/main.html" />
         <option value="$PROJECT_DIR$/indvproj/model/models.py" />
-        <option value="$PROJECT_DIR$/indvproj/createanddropall.py" />
         <option value="$PROJECT_DIR$/indvproj/yourapplication.py" />
-        <option value="$PROJECT_DIR$/indvproj/model/forms.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/create_category.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/category.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/add_moderators.html" />
+        <option value="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
+        <option value="$PROJECT_DIR$/indvproj/templates/collection.html" />
+        <option value="$PROJECT_DIR$/indvproj/model/forms.py" />
         <option value="$PROJECT_DIR$/indvproj/model/views.py" />
+        <option value="$PROJECT_DIR$/indvproj/createanddropall.py" />
       </list>
     </option>
   </component>
@@ -339,7 +334,7 @@
       <recent name="C:\Users\Chrille\School\individuellt_mjukvaruprojekt\indvproj" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.individuellt_mjukvaruprojekt">
+  <component name="RunManager" selected="Python.createanddropall">
     <configuration default="false" name="ApplicationModel" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -481,9 +476,6 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
-      <method />
-    </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -505,6 +497,9 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -754,7 +749,11 @@
       <created>1398868185748</created>
       <updated>1398868185748</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Adding categorytitle to the form.&#10;add_moderator shell.">
+      <created>1398869063206</created>
+      <updated>1398869063206</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -783,24 +782,24 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297414" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3261339" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39956802" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3347732" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3174946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3275862" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21192758" sideWeight="0.49841774" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3347732" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2140575" sideWeight="0.49841774" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39956802" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3347732" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33405173" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3174946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -966,9 +965,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="36" selection-start="1205" selection-end="1205" vertical-scroll-proportion="-4.576923" vertical-offset="102" max-vertical-offset="18989">
-          <folding />
-        </state>
+        <state line="13" column="36" selection-start="1205" selection-end="1205" vertical-scroll-proportion="-4.576923" vertical-offset="102" max-vertical-offset="18989" />
       </provider>
     </entry>
     <entry file="dbDummy://db-console:/b594ab0a/c6ad173e-df7a-4686-9b6a-01c36b8d8deb/">
@@ -1019,11 +1016,11 @@
           <ID>DATABASE</ID>
           <OriginalElement>c6ad173e-df7a-4686-9b6a-01c36b8d8deb.schema:postgres.public</OriginalElement>
           <nodes>
-            <node x="279.25" y="396.0">c6ad173e-df7a-4686-9b6a-01c36b8d8deb.table:postgres.public.comment</node>
             <node x="171.0" y="138.0">c6ad173e-df7a-4686-9b6a-01c36b8d8deb.table:postgres.public.post</node>
+            <node x="279.25" y="396.0">c6ad173e-df7a-4686-9b6a-01c36b8d8deb.table:postgres.public.comment</node>
             <node x="125.0" y="618.3505859375">c6ad173e-df7a-4686-9b6a-01c36b8d8deb.table:postgres.public.user_group</node>
-            <node x="301.25" y="0.0">c6ad173e-df7a-4686-9b6a-01c36b8d8deb.table:postgres.public.category</node>
             <node x="0.0" y="198.0">c6ad173e-df7a-4686-9b6a-01c36b8d8deb.table:postgres.public.collection</node>
+            <node x="301.25" y="0.0">c6ad173e-df7a-4686-9b6a-01c36b8d8deb.table:postgres.public.category</node>
             <node x="157.25" y="10.0">c6ad173e-df7a-4686-9b6a-01c36b8d8deb.table:postgres.public.type</node>
             <node x="44.0" y="436.5">c6ad173e-df7a-4686-9b6a-01c36b8d8deb.table:postgres.public.collection_has_post</node>
             <node x="579.75" y="0.0">c6ad173e-df7a-4686-9b6a-01c36b8d8deb.table:postgres.public.status</node>
@@ -1065,18 +1062,18 @@
               <point x="385.75" y="113.0" />
               <point x="0.0" y="44.0" />
             </edge>
+            <edge source="c6ad173e-df7a-4686-9b6a-01c36b8d8deb.table:postgres.public.ug_has_v" target="c6ad173e-df7a-4686-9b6a-01c36b8d8deb.table:postgres.public.visibility">
+              <point x="-28.0" y="-33.5" />
+              <point x="88.75" y="711.3505859375" />
+              <point x="52.5" y="711.3505859375" />
+              <point x="0.0" y="34.0" />
+            </edge>
             <edge source="c6ad173e-df7a-4686-9b6a-01c36b8d8deb.table:postgres.public.comment" target="c6ad173e-df7a-4686-9b6a-01c36b8d8deb.table:postgres.public.comment">
               <point x="0.0" y="74.0" />
               <point x="368.25" y="564.0" />
               <point x="259.25" y="564.0" />
               <point x="259.25" y="470.0" />
               <point x="-89.0" y="-0.0" />
-            </edge>
-            <edge source="c6ad173e-df7a-4686-9b6a-01c36b8d8deb.table:postgres.public.ug_has_v" target="c6ad173e-df7a-4686-9b6a-01c36b8d8deb.table:postgres.public.visibility">
-              <point x="-28.0" y="-33.5" />
-              <point x="88.75" y="711.3505859375" />
-              <point x="52.5" y="711.3505859375" />
-              <point x="0.0" y="34.0" />
             </edge>
             <edge source="c6ad173e-df7a-4686-9b6a-01c36b8d8deb.table:postgres.public.comment" target="c6ad173e-df7a-4686-9b6a-01c36b8d8deb.table:postgres.public.post">
               <point x="0.0" y="-74.0" />
@@ -1112,72 +1109,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/not_verified_collection.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="14" selection-start="162" selection-end="162" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="170">
-          <folding />
-        </state>
+        <state line="4" column="14" selection-start="162" selection-end="162" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="170" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/new_post_category.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="44" selection-start="433" selection-end="433" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="442">
-          <folding />
-        </state>
+        <state line="11" column="44" selection-start="433" selection-end="433" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="442" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/new_post.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="29" selection-start="616" selection-end="616" vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="442">
-          <folding />
-        </state>
+        <state line="17" column="29" selection-start="616" selection-end="616" vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="442" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="14" selection-start="360" selection-end="360" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="289">
-          <folding />
-        </state>
+        <state line="11" column="14" selection-start="360" selection-end="360" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="289" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/user_missing.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="14" selection-start="208" selection-end="208" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="170">
-          <folding />
-        </state>
+        <state line="4" column="14" selection-start="208" selection-end="208" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="170" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="15" selection-start="653" selection-end="653" vertical-scroll-proportion="0.49827588" vertical-offset="0" max-vertical-offset="612">
-          <folding />
-        </state>
+        <state line="17" column="15" selection-start="653" selection-end="653" vertical-scroll-proportion="0.49827588" vertical-offset="0" max-vertical-offset="612" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/create_collection.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="44" selection-start="144" selection-end="144" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="272">
-          <folding />
-        </state>
+        <state line="3" column="44" selection-start="144" selection-end="144" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="272" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/all_categories.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="19" selection-start="232" selection-end="232" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="323">
-          <folding />
-        </state>
+        <state line="7" column="19" selection-start="232" selection-end="232" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="323" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/loginmanager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="93" selection-end="93" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
-          <folding />
-        </state>
+        <state line="5" column="0" selection-start="93" selection-end="93" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/database.py">
@@ -1198,93 +1175,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/collections.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="46" selection-start="269" selection-end="269" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="221">
+        <state line="5" column="46" selection-start="269" selection-end="269" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="221">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="8" selection-start="218" selection-end="376" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="323">
+        <state line="5" column="8" selection-start="218" selection-end="376" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="323">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/blog.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="24" selection-start="136" selection-end="136" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="221">
+        <state line="3" column="24" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="221">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="20" selection-start="1859" selection-end="1859" vertical-scroll-proportion="-11.884615" vertical-offset="507" max-vertical-offset="1071">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/collection.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="14" selection-start="394" selection-end="394" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="255">
-          <folding>
-            <marker date="1398866026900" expanded="true" signature="294:378" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/user.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="42" selection-start="498" selection-end="498" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="340">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/createanddropall.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="94" selection-end="94" vertical-scroll-proportion="0.11221122" vertical-offset="0" max-vertical-offset="4403">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="30" selection-start="1039" selection-end="1039" vertical-scroll-proportion="0.6633663" vertical-offset="74" max-vertical-offset="1139">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="80" selection-start="1651" selection-end="1651" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="833">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="40" selection-start="4237" selection-end="4237" vertical-scroll-proportion="0.0" vertical-offset="1733" max-vertical-offset="3706">
+        <state line="12" column="42" selection-start="498" selection-end="498" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="340">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/create_category.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="12" selection-start="208" selection-end="208" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="289">
+        <state line="6" column="12" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="289">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="12" selection-start="908" selection-end="908" vertical-scroll-proportion="-10.269231" vertical-offset="39" max-vertical-offset="629">
-          <folding />
-        </state>
+        <state line="18" column="12" selection-start="908" selection-end="908" vertical-scroll-proportion="-10.269231" vertical-offset="39" max-vertical-offset="629" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/category.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="32" selection-start="226" selection-end="226" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="255">
+        <state line="5" column="32" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="255">
           <folding />
         </state>
       </provider>
@@ -1296,17 +1227,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="37" selection-start="1651" selection-end="1651" vertical-scroll-proportion="-9.038462" vertical-offset="479" max-vertical-offset="1071">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/model/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="30" selection-start="1924" selection-end="1924" vertical-scroll-proportion="0.0" vertical-offset="241" max-vertical-offset="901">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="25" selection-start="1822" selection-end="1879" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="3706">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="317" column="28" selection-start="12178" selection-end="12178" vertical-scroll-proportion="0.81023103" vertical-offset="3844" max-vertical-offset="5032">
+        <state line="41" column="18" selection-start="1262" selection-end="1413" vertical-scroll-proportion="-7.8846154" vertical-offset="492" max-vertical-offset="6664">
           <folding>
             <element signature="e#0#16#0" expanded="true" />
-            <element signature="e#2463#3346#0" expanded="false" />
-            <element signature="e#3382#3529#0" expanded="false" />
-            <element signature="e#5849#7496#0" expanded="false" />
-            <element signature="e#12613#12995#0" expanded="false" />
-            <element signature="e#13048#13581#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/collection.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="17" selection-start="549" selection-end="549" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="340">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="22" selection-start="399" selection-end="399" vertical-scroll-proportion="-0.6081081" vertical-offset="513" max-vertical-offset="1139">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/createanddropall.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="251" column="23" selection-start="9251" selection-end="9251" vertical-scroll-proportion="0.9119171" vertical-offset="3722" max-vertical-offset="4437">
+          <folding />
         </state>
       </provider>
     </entry>

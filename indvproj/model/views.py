@@ -1,13 +1,14 @@
 import _datetime
 
 from flask.ext.classy import FlaskView, route
-from models import User, Post, Collection, Category
+from models import User, Post, Collection, Category, collection_has_post
 
 print('Importing db_session in model.views.py')
 from indvproj import db_session
 from flask_login import login_required, login_user, current_user, logout_user
 from flask import render_template, redirect, flash, url_for, request
-from forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, CategoryForm, DeletePostForm
+from forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, CategoryForm, DeletePostForm, \
+    AddToCollectionForm
 from markdown import markdown
 
 
@@ -341,14 +342,30 @@ class CollectionView(FlaskView):
             db_session.rollback()
             return redirect(url_for('MainView:index'))
 
+    @route('/<collectionid>/add_link', methods=['POST'])
+    @login_required
+    def add_link(self, collectionid):
+        addform = AddToCollectionForm()
+        if addform.validate_on_submit():
+            print(collection_has_post)
+            raise Exception()
+            collection = Collection.query.get(collectionid)
+            print(collection)
+            collection.posts.add(Post.query.get(addform.link.data))
+            print(collection.posts)
+
     @login_required
     def get(self, id):
         collection = Collection.query.get(id)
-        form = DeletePostForm()
+        deleteform = DeletePostForm()
+        addform = AddToCollectionForm()
         if collection:
             print(collection)
+            print(collection.userid)
+            print(current_user.userid)
             if current_user.userid == collection.userid:
-                return render_template('collection.html', collection=collection, title=collection.title, form=form)
+                return render_template('collection.html', collection=collection, title=collection.title, \
+                                       deleteform=deleteform, addform=addform)
             return render_template('not_verified_collection.html', title="You are not eligible to view this collection")
         return render_template('not_verified_collection.html', title="You are not eligible to view this collection")
 
