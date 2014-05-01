@@ -140,8 +140,9 @@ class PostView(FlaskView):
 
     @route('/new/', methods=['GET', 'POST'])
     @login_required
-    def new_post(self):
+    def new_post(self, categoryname=""):
         form = TextPostForm()
+        form.categoryname.data = categoryname
         #linkform = LinkPostForm()
         if form.validate_on_submit():  # or linkform.validate_on_submit():
             try:
@@ -155,6 +156,7 @@ class PostView(FlaskView):
                 #     linkform.categoryname.data)
                 print(post)
                 db_session.add(post)
+                print(current_user.update(postscreated=current_user.postscreated + 1))
                 db_session.commit()
                 #assert Post.query.get(post.postid) > 0
                 return redirect(
@@ -164,7 +166,7 @@ class PostView(FlaskView):
                 print(e)
                 print('Damn')
                 return redirect(url_for("PostView:new_post"))
-        return render_template('new_post.html', form=form)  #, linkform=linkform)
+        return render_template('new_post.html', form=form, categoryname=categoryname)  #, linkform=linkform)
 
 
 class RegisterView(FlaskView):
@@ -257,6 +259,8 @@ class CategoryView(FlaskView):
     @route('<categoryname>/p/new', methods=['GET', 'POST'])
     @login_required
     def new_post(self, categoryname):
+        return PostView.new_post(self, categoryname)
+
         print(request.method)
         print('Were inside CategoryView:new_post')
         form = TextPostForm()
@@ -274,6 +278,7 @@ class CategoryView(FlaskView):
                                 categoryname=categoryname).first().categoryid)  #or Post(current_user.userid, _datetime.datetime.now(),linkform.link.data,1, linkform.title.data,id)
                 print(post)
                 db_session.add(post)
+                current_user.postscreated += 1
                 db_session.commit()
                 print(post.postid)
                 return redirect(url_for("CategoryView:get", categoryname=categoryname))

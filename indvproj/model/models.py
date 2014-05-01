@@ -6,7 +6,7 @@ from indvproj import db
 import datetime
 
 collection_has_post = db.Table('collection_has_post',
-                               db.Column('cid', db.Integer, db.ForeignKey('collection.groupid'), primary_key=True),
+                               db.Column('cid', db.Integer, db.ForeignKey('collection.collectionid'), primary_key=True),
                                db.Column('pid', db.Integer, db.ForeignKey('post.postid'), primary_key=True)
 )
 category_has_moderator = db.Table('category_has_moderator',
@@ -121,7 +121,7 @@ class Category(db.Model):
 
 
 class Collection(db.Model):
-    groupid = db.Column(db.Integer, primary_key=True)
+    collectionid = db.Column(db.Integer, primary_key=True)
     userid = db.Column(db.Integer, db.ForeignKey('user.userid'), nullable=False)
     title = db.Column(db.String(250), nullable=False)
 
@@ -143,8 +143,8 @@ class Post(db.Model):
     title = db.Column(db.String(250), nullable=False)
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
-    posts = db.relationship('Collection', secondary=collection_has_post,
-                            backref=db.backref('posts', lazy='dynamic'))
+    collections = db.relationship('Collection', secondary=collection_has_post,
+                                  backref=db.backref('posts', lazy='dynamic'))
     categoryid = db.Column(db.Integer, db.ForeignKey('category.categoryid'), nullable=False)
 
     def __init__(self, createdby, timeposted, content, typeid, title, categoryid):
