@@ -4,7 +4,7 @@ from flask.ext.classy import FlaskView, route
 from models import User, Post, Collection, Category, collection_has_post
 
 print('Importing db_session in model.views.py')
-from indvproj import db_session, db
+from indvproj import db_session
 from flask_login import login_required, login_user, current_user, logout_user
 from flask import render_template, redirect, flash, url_for, request
 from forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, CategoryForm, DeletePostForm, \
@@ -347,9 +347,14 @@ class CollectionView(FlaskView):
     def add_link(self, collectionid):
         addform = AddToCollectionForm()
         if addform.validate_on_submit():
+            oldpost = Post.query.get(addform.link.data)
+
             print(collection_has_post)
             collection = Collection.query.get(collectionid)
-
+            collection.posts.append(oldpost)
+            db_session.commit()
+            print(collection.posts.all())
+            """
             print(collection)
             print(collection_has_post.insert().values(cid=collection.groupid, pid=addform.link.data))
             stmt = collection_has_post.insert().values(cid=collection.groupid, pid=addform.link.data)
@@ -357,7 +362,7 @@ class CollectionView(FlaskView):
             #db_session.commit()
             print(collection_has_post)
             print(dir(collection_has_post))
-
+            """
             return redirect(url_for('MainView:index'))
 
     @login_required

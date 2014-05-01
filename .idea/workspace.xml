@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Adding posts to collections is now possible, but I want to be able to do it some other way. Lets see how that owkrs out. At this moment it's not possible to remove the posts, but that should be solved some time.">
+    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Simplified the adding of posts to collections, which also should mean that it is easier to remove posts.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -15,7 +15,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$individuellt_mjukvaruprojekt.coverage" NAME="individuellt_mjukvaruprojekt Coverage Results" MODIFIED="1398959418853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
+    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$individuellt_mjukvaruprojekt.coverage" NAME="individuellt_mjukvaruprojekt Coverage Results" MODIFIED="1398960367839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$createanddropall.coverage" NAME="createanddropall Coverage Results" MODIFIED="1398958621346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$model.coverage" NAME="model Coverage Results" MODIFIED="1397214632552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj/model" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$ApplicationModel.coverage" NAME="ApplicationModel Coverage Results" MODIFIED="1397043936621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -35,17 +35,26 @@
       <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="353" column="12" selection-start="13387" selection-end="13387" vertical-scroll-proportion="0.38793105" vertical-offset="1781" max-vertical-offset="2788">
+            <state line="353" column="44" selection-start="13441" selection-end="13441" vertical-scroll-proportion="0.38793105" vertical-offset="1781" max-vertical-offset="2873">
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-                <element signature="e#1788#2383#0" expanded="false" />
-                <element signature="e#2515#3398#0" expanded="false" />
-                <element signature="e#3434#3581#0" expanded="false" />
-                <element signature="e#3615#5862#0" expanded="false" />
-                <element signature="e#5901#7548#0" expanded="false" />
-                <element signature="e#7582#7913#0" expanded="false" />
-                <element signature="e#7951#12313#0" expanded="false" />
+                <element signature="e#1784#2379#0" expanded="false" />
+                <element signature="e#2511#3394#0" expanded="false" />
+                <element signature="e#3430#3577#0" expanded="false" />
+                <element signature="e#3611#5858#0" expanded="false" />
+                <element signature="e#5897#7544#0" expanded="false" />
+                <element signature="e#7578#7909#0" expanded="false" />
+                <element signature="e#7947#12309#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="145" column="8" selection-start="5480" selection-end="5480" vertical-scroll-proportion="0.0" vertical-offset="1938" max-vertical-offset="3706">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -752,7 +761,11 @@
       <created>1398958656583</created>
       <updated>1398958656583</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Adding posts to collections is now possible, but I want to be able to do it some other way. Lets see how that owkrs out. At this moment it's not possible to remove the posts, but that should be solved some time.">
+      <created>1398959894848</created>
+      <updated>1398959894848</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -777,7 +790,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3174946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297414" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -813,7 +826,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Renamed the variables from id to categoryname since we are going to use that and not the id of the category." />
     <MESSAGE value="Added an init to Status so that we can use it in the create and destroy script.&#10;Removed the direct login of the user and added a message saying that they now can login.&#10;We do not want to create categories that already exist, so search for them beforehand." />
     <MESSAGE value="Yes" />
     <MESSAGE value="Adding some more stuff with categories, displaying all of them on the front page.&#10;Some assertions in views" />
@@ -838,7 +850,8 @@
     <MESSAGE value="Adding categorytitle to the form.&#10;add_moderator shell." />
     <MESSAGE value="Changed some things, idk what." />
     <MESSAGE value="Adding posts to collections is now possible, but I want to be able to do it some other way. Lets see how that owkrs out. At this moment it's not possible to remove the posts, but that should be solved some time." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding posts to collections is now possible, but I want to be able to do it some other way. Lets see how that owkrs out. At this moment it's not possible to remove the posts, but that should be solved some time." />
+    <MESSAGE value="Simplified the adding of posts to collections, which also should mean that it is easier to remove posts." />
+    <option name="LAST_COMMIT_MESSAGE" value="Simplified the adding of posts to collections, which also should mean that it is easier to remove posts." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1241,13 +1254,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="25" selection-start="1822" selection-end="1879" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="3706">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/collection.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="17" selection-start="561" selection-end="561" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="340">
@@ -1269,18 +1275,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="145" column="8" selection-start="5480" selection-end="5480" vertical-scroll-proportion="0.0" vertical-offset="1938" max-vertical-offset="3706">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="353" column="12" selection-start="13387" selection-end="13387" vertical-scroll-proportion="0.38793105" vertical-offset="1781" max-vertical-offset="2788">
+        <state line="353" column="44" selection-start="13441" selection-end="13441" vertical-scroll-proportion="0.38793105" vertical-offset="1781" max-vertical-offset="2873">
           <folding>
             <element signature="e#0#16#0" expanded="true" />
-            <element signature="e#1788#2383#0" expanded="false" />
-            <element signature="e#2515#3398#0" expanded="false" />
-            <element signature="e#3434#3581#0" expanded="false" />
-            <element signature="e#3615#5862#0" expanded="false" />
-            <element signature="e#5901#7548#0" expanded="false" />
-            <element signature="e#7582#7913#0" expanded="false" />
-            <element signature="e#7951#12313#0" expanded="false" />
+            <element signature="e#1784#2379#0" expanded="false" />
+            <element signature="e#2511#3394#0" expanded="false" />
+            <element signature="e#3430#3577#0" expanded="false" />
+            <element signature="e#3611#5858#0" expanded="false" />
+            <element signature="e#5897#7544#0" expanded="false" />
+            <element signature="e#7578#7909#0" expanded="false" />
+            <element signature="e#7947#12309#0" expanded="false" />
           </folding>
         </state>
       </provider>
