@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Adding categorytitle to the form.&#10;add_moderator shell.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Document/Sprint Backlog.ods" afterPath="$PROJECT_DIR$/Document/Sprint Backlog.ods" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" afterPath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/collection.html" afterPath="$PROJECT_DIR$/indvproj/templates/collection.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/createanddropall.py" afterPath="$PROJECT_DIR$/indvproj/createanddropall.py" />
+    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Adding posts to collections is now possible, but I want to be able to do it some other way. Lets see how that owkrs out. At this moment it's not possible to remove the posts, but that should be solved some time.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -19,7 +15,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$individuellt_mjukvaruprojekt.coverage" NAME="individuellt_mjukvaruprojekt Coverage Results" MODIFIED="1398957656600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
+    <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$individuellt_mjukvaruprojekt.coverage" NAME="individuellt_mjukvaruprojekt Coverage Results" MODIFIED="1398959418853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$createanddropall.coverage" NAME="createanddropall Coverage Results" MODIFIED="1398958621346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$model.coverage" NAME="model Coverage Results" MODIFIED="1397214632552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/indvproj/model" />
     <SUITE FILE_PATH="coverage/individuellt_mjukvaruprojekt$ApplicationModel.coverage" NAME="ApplicationModel Coverage Results" MODIFIED="1397043936621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -36,22 +32,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="18" selection-start="1262" selection-end="1413" vertical-scroll-proportion="-7.8846154" vertical-offset="492" max-vertical-offset="6664">
+            <state line="353" column="12" selection-start="13387" selection-end="13387" vertical-scroll-proportion="0.38793105" vertical-offset="1781" max-vertical-offset="2788">
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
+                <element signature="e#1788#2383#0" expanded="false" />
+                <element signature="e#2515#3398#0" expanded="false" />
+                <element signature="e#3434#3581#0" expanded="false" />
+                <element signature="e#3615#5862#0" expanded="false" />
+                <element signature="e#5901#7548#0" expanded="false" />
+                <element signature="e#7582#7913#0" expanded="false" />
+                <element signature="e#7951#12313#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="createanddropall.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/indvproj/createanddropall.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="251" column="23" selection-start="9251" selection-end="9251" vertical-scroll-proportion="0.9119171" vertical-offset="3722" max-vertical-offset="4437">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -104,7 +98,7 @@
       <file leaf-file-name="collection.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/collection.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="17" selection-start="549" selection-end="549" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="340">
+            <state line="12" column="17" selection-start="561" selection-end="561" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="340">
               <folding />
             </state>
           </provider>
@@ -181,8 +175,8 @@
         <option value="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/collection.html" />
         <option value="$PROJECT_DIR$/indvproj/model/forms.py" />
-        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
         <option value="$PROJECT_DIR$/indvproj/createanddropall.py" />
+        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
       </list>
     </option>
   </component>
@@ -320,6 +314,7 @@
     <property name="FullScreen" value="false" />
     <property name="TODO_SCOPE" value="Changed Files" />
     <property name="dynamic.classpath" value="false" />
+    <property name="SearchEverywhereHistory" value="" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -334,7 +329,7 @@
       <recent name="C:\Users\Chrille\School\individuellt_mjukvaruprojekt\indvproj" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.createanddropall">
+  <component name="RunManager" selected="Python.individuellt_mjukvaruprojekt">
     <configuration default="false" name="ApplicationModel" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -753,7 +748,11 @@
       <created>1398869063206</created>
       <updated>1398869063206</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Changed some things, idk what.">
+      <created>1398958656583</created>
+      <updated>1398958656583</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -778,8 +777,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3174946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297414" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3261339" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3275862" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -789,13 +789,12 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39956802" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3347732" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33405173" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3336933" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3174946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -811,12 +810,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Problems with the creation of posts on categories." />
-    <MESSAGE value="Changed from db.String to postgresql.BYTEA instead since I changed encrypt function to return bytes instead of string.&#10;Added a getsalt function instead.&#10;We want to be able to view a post in a category, so added a function for that.&#10;Had a small problem in main.html where i used username instead of id in the url_for." />
     <MESSAGE value="Renamed the variables from id to categoryname since we are going to use that and not the id of the category." />
     <MESSAGE value="Added an init to Status so that we can use it in the create and destroy script.&#10;Removed the direct login of the user and added a message saying that they now can login.&#10;We do not want to create categories that already exist, so search for them beforehand." />
     <MESSAGE value="Yes" />
@@ -840,7 +836,9 @@
     <MESSAGE value="Removed some warnings about comments in some files." />
     <MESSAGE value="Updated Sprint Backlog.&#10;changed the categoryname to use the lowercase version. This way we do not need to check it later, and the url will always use the lowercase anyway.&#10;Added the categorytitle to the create_category template." />
     <MESSAGE value="Adding categorytitle to the form.&#10;add_moderator shell." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding categorytitle to the form.&#10;add_moderator shell." />
+    <MESSAGE value="Changed some things, idk what." />
+    <MESSAGE value="Adding posts to collections is now possible, but I want to be able to do it some other way. Lets see how that owkrs out. At this moment it's not possible to remove the posts, but that should be solved some time." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding posts to collections is now possible, but I want to be able to do it some other way. Lets see how that owkrs out. At this moment it's not possible to remove the posts, but that should be solved some time." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -965,7 +963,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="36" selection-start="1205" selection-end="1205" vertical-scroll-proportion="-4.576923" vertical-offset="102" max-vertical-offset="18989" />
+        <state line="13" column="36" selection-start="1205" selection-end="1205" vertical-scroll-proportion="-4.576923" vertical-offset="102" max-vertical-offset="18989">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="dbDummy://db-console:/b594ab0a/c6ad173e-df7a-4686-9b6a-01c36b8d8deb/">
@@ -1248,18 +1248,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="18" selection-start="1262" selection-end="1413" vertical-scroll-proportion="-7.8846154" vertical-offset="492" max-vertical-offset="6664">
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/collection.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="17" selection-start="549" selection-end="549" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="340">
+        <state line="12" column="17" selection-start="561" selection-end="561" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="340">
           <folding />
         </state>
       </provider>
@@ -1273,8 +1264,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/createanddropall.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="251" column="23" selection-start="9251" selection-end="9251" vertical-scroll-proportion="0.9119171" vertical-offset="3722" max-vertical-offset="4437">
+        <state line="217" column="31" selection-start="7683" selection-end="7683" vertical-scroll-proportion="0.0" vertical-offset="3584" max-vertical-offset="4471">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="353" column="12" selection-start="13387" selection-end="13387" vertical-scroll-proportion="0.38793105" vertical-offset="1781" max-vertical-offset="2788">
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+            <element signature="e#1788#2383#0" expanded="false" />
+            <element signature="e#2515#3398#0" expanded="false" />
+            <element signature="e#3434#3581#0" expanded="false" />
+            <element signature="e#3615#5862#0" expanded="false" />
+            <element signature="e#5901#7548#0" expanded="false" />
+            <element signature="e#7582#7913#0" expanded="false" />
+            <element signature="e#7951#12313#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
