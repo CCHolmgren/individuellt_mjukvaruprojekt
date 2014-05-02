@@ -3,12 +3,17 @@
 {% block body %}
     {% from "_formhelpers.html" import render_collection, render_field with context %}
     {{ render_collection(collection) }}
-    <form method=post action=/collection/{{ collection.groupid }}/add_link>
+    <form method=post action=/collection/{{ collection.collectionid }}/add_link>
+        {{ render_field(form.link) }}
+        <input type="submit" value="Add link">
+        {{ form.csrf_token() }}
+    </form>
+    <form method=post action=/collection/{{ collection.collectionid }}/add_post>
         {{ render_field(addform.link) }}
         {{ render_field(addform.submit) }}
         {{ addform.csrf_token() }}
     </form>
-    <form method=post action=/collection/{{ collection.groupid }}/delete>
+    <form method=post action=/collection/{{ collection.collectionid }}/delete>
         {{ render_field(deleteform.submit) }}
         {{ deleteform.csrf_token() }}
     </form>

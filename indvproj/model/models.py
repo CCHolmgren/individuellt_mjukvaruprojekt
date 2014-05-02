@@ -9,6 +9,10 @@ collection_has_post = db.Table('collection_has_post',
                                db.Column('cid', db.Integer, db.ForeignKey('collection.collectionid'), primary_key=True),
                                db.Column('pid', db.Integer, db.ForeignKey('post.postid'), primary_key=True)
 )
+collection_has_link = db.Table('collection_has_link',
+                               db.Column('cid', db.Integer, db.ForeignKey('collection.collectionid'), primary_key=True),
+                               db.Column('linkid', db.Integer, db.ForeignKey('link.linkid'), primary_key=True)
+)
 category_has_moderator = db.Table('category_has_moderator',
                                   db.Column('categoryid', db.Integer, db.ForeignKey('category.categoryid'),
                                             primary_key=True),
@@ -130,7 +134,8 @@ class Collection(db.Model):
         self.title = title
 
     def __repr__(self):
-        return '<Collection {} created by {}, collectionid: {}>'.format(self.title, self.user.username, self.groupid)
+        return '<Collection {} created by {}, collectionid: {}>'.format(self.title, self.user.username,
+                                                                        self.collectionid)
 
 
 class Post(db.Model):
@@ -159,6 +164,20 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post {}>'.format(self.title)
+
+
+class Link(db.Model):
+    linkid = db.Column(db.Integer, primary_key=True)
+    link = db.Column(db.String(350))
+
+    collection = db.relationship('Collection', secondary=collection_has_link,
+                                 backref=db.backref('links', lazy='dynamic'))
+
+    def __init__(self, link):
+        self.link = link
+
+    def __repr__(self):
+        return '<Link {}>'.format(self.link)
 
 
 class Type(db.Model):

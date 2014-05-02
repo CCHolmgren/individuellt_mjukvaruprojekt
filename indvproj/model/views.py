@@ -41,6 +41,7 @@ def encrypt(password):
     The hexdigest and the salt used is then returned.
     """
     import hashlib
+
     password = password.encode('utf-8')
     salt = getsalt(128)
     for i in range(10000):
@@ -48,7 +49,7 @@ def encrypt(password):
     return password, salt
 
 
-def check_password(string_password,salt):
+def check_password(string_password, salt):
     """
     Checks a password using it's salt
     """
@@ -85,8 +86,7 @@ class BlogView(FlaskView):
 
 
 class LoginView(FlaskView):
-
-    @route('/', methods=['GET','POST'])
+    @route('/', methods=['GET', 'POST'])
     def index(self):
         if current_user.is_active():
             return redirect(url_for('MainView:index'))
@@ -94,14 +94,16 @@ class LoginView(FlaskView):
         form = LoginForm()
         if form.validate_on_submit():
             if User.query.filter_by(username=form.username.data).first():
-                user = User.query.filter_by(username=form.username.data,password=check_password(form.password.data,User.query.filter(User.username == form.username.data).first().salt)).first()
+                user = User.query.filter_by(username=form.username.data, password=check_password(form.password.data,
+                                                                                                 User.query.filter(
+                                                                                                     User.username == form.username.data).first().salt)).first()
                 if user is not None:
                     login_user(user, remember=False)
                     flash("Logged in successfully.")
                     return redirect(url_for("MainView:index"))
             flash('The login failed, check the username and password and try again')
             return redirect(url_for('LoginView:index'))
-        return render_template("login.html",form=form)
+        return render_template("login.html", form=form)
 
 
 class LogoutView(FlaskView):
@@ -176,7 +178,6 @@ class PostView(FlaskView):
 
 
 class RegisterView(FlaskView):
-
     """def index(self):
         form = RegistrationForm(request.form)
         return render_template('create_user.html', form=form)"""
@@ -225,7 +226,7 @@ class UserView(FlaskView):
         user = User.query.filter_by(username=username).first()
         if user is not None:
             print(user.collections.all())
-            return render_template('user.html',user=user)
+            return render_template('user.html', user=user)
         return render_template('user_missing.html', title="The user doesn't seem to exist")
 
 
@@ -398,6 +399,8 @@ class CollectionView(FlaskView):
     @login_required
     def get(self, id):
         collection = Collection.query.get(id)
+        print(dir(collection))
+        print(collection.links.all())
         deleteform = DeletePostForm()
         addform = AddToCollectionForm()
         if collection:
@@ -420,7 +423,7 @@ class CollectionView(FlaskView):
                 db_session.add(collection)
                 db_session.commit()
                 flash("The collection was created")
-                return redirect(url_for('CollectionView:get', id=collection.groupid))
+                return redirect(url_for('CollectionView:get', id=collection.collectionid))
             except Exception as e:
                 db_session.rollback()
                 flash('Something horrible happened')
