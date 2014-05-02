@@ -19,34 +19,31 @@
 {% endmacro %}
 {% macro render_post(post) %}
     <div style="border:1px solid black;">
-        <div>Postid: {{ post.postid }}</div>
-        <div>Title: <a href={{ url_for('PostView:get', id=post.postid) }}>{{ post.title }}</a></div>
-        <div>Posted by: <a href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a>
-        </div>
-        <div>Amount of comments: {{ post.comments.all()|length }}</div>
+        <div><a href={{ url_for('PostView:get', id=post.postid) }}>{{ post.title }}</a></div>
+        <div>Postid: {{ post.postid }} | Posted by: <a
+                href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a> | Amount of
+            comments: {{ post.comments.all()|length }}</div>
     </div>
 {% endmacro %}
 {% macro render_post_with_delete(post,form) %}
     <div style="border:1px solid black;">
-        <div>Postid: {{ post.postid }}</div>
-        <div>Title: <a href={{ url_for('PostView:get', id=post.postid) }}>{{ post.title }}</a></div>
-        <div>Content: {{ post.content|safe }}</div>
-        <div>Posted by: <a href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a>
-        </div>
-        <div>Amount of comments: {{ post.comments.all()|length }}</div>
+        <div><a href={{ url_for('PostView:get', id=post.postid) }}>{{ post.title }}</a></div>
+        <div>{{ post.content|safe }}</div>
+        <div>Postid: {{ post.postid }} | Posted by: <a
+                href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a> | Amount of
+            comments: {{ post.comments.all()|length }}</div>
         <div>
-            {{ render_field(form.submit) }}
+            {{ form.submit }}
         </div>
     </div>
 {% endmacro %}
 {% macro render_post_without_delete(post) %}
     <div style="border:1px solid black;">
-        <div>Postid: {{ post.postid }}</div>
-        <div>Title: <a href={{ url_for('PostView:get', id=post.postid) }}>{{ post.title }}</a></div>
-        <div>Content: {{ post.content|safe }}</div>
-        <div>Posted by: <a href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a>
-        </div>
-        <div>Amount of comments: {{ post.comments.all()|length }}</div>
+        <div><a href={{ url_for('PostView:get', id=post.postid) }}>{{ post.title }}</a></div>
+        <div>{{ post.content|safe }}</div>
+        <div>Postid: {{ post.postid }} | Posted by: <a
+                href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a> | Amount of
+            comments: {{ post.comments.all()|length }}</div>
     </div>
 {% endmacro %}
 {% macro render_collection(collection) %}

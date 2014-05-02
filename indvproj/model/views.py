@@ -130,9 +130,15 @@ class PostView(FlaskView):
     def delete(self, postid):
         try:
             post = Post.query.get(postid)
-            db_session.delete(post)
-            db_session.commit()
-            return redirect(url_for('MainView:index'))
+            category = Category.query.get(post.categoryid)
+            if current_user.userid == post.createdby or current_user in category.moderators:
+                db_session.delete(post)
+                db_session.commit()
+                return redirect(url_for('MainView:index'))
+            else:
+                flash(
+                    "You weren't allowed to remove this post, maybe you aren't the posts creator, or you aren't a moderator.")
+                return redirect(url_for('MainView:index'))
         except Exception as e:
             print(e)
             db_session.rollback()
