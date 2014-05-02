@@ -1,5 +1,5 @@
 from flask_wtf import Form
-from wtforms import TextField, PasswordField, validators, TextAreaField
+from wtforms import TextField, PasswordField, validators, TextAreaField, SubmitField
 from wtforms.fields.html5 import URLField
 
 __author__ = 'Chrille'
@@ -38,4 +38,14 @@ class CollectionForm(Form):
 
 
 class CategoryForm(Form):
+    categorytitle = TextField("Categorytitle", [validators.Length(min=10, max=100), validators.Required()])
     categoryname = TextField("Categoryname", [validators.Length(min=10, max=100), validators.Regexp(r'^[\w+-]+$')])
+
+
+class DeletePostForm(Form):
+    submit = SubmitField("Delete")
+
+
+class AddToCollectionForm(Form):
+    link = TextField("Postid")
+    submit = SubmitField("Add to collection")

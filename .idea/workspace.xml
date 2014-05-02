@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Changed some macros to compress the displayed data a bit.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" afterPath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="individuellt_mjukvaruprojekt.iws" />
@@ -124,7 +122,7 @@
       <file leaf-file-name="_formhelpers.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="13" selection-start="605" selection-end="605" vertical-scroll-proportion="0.15862069" vertical-offset="265" max-vertical-offset="1173">
+            <state line="57" column="47" selection-start="2295" selection-end="2295" vertical-scroll-proportion="0.805492" vertical-offset="265" max-vertical-offset="1173">
               <folding>
                 <element signature="e#559#590#0" expanded="true" />
                 <element signature="e#1004#1035#0" expanded="true" />
@@ -781,7 +779,11 @@
       <created>1399026408642</created>
       <updated>1399026408642</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Changed some macros to compress the displayed data a bit.">
+      <created>1399029824303</created>
+      <updated>1399029824303</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -808,7 +810,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3174946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3174946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297414" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3261339" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3275862" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1316,7 +1318,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="13" selection-start="605" selection-end="605" vertical-scroll-proportion="0.15862069" vertical-offset="265" max-vertical-offset="1173">
+        <state line="57" column="47" selection-start="2295" selection-end="2295" vertical-scroll-proportion="0.805492" vertical-offset="265" max-vertical-offset="1173">
           <folding>
             <element signature="e#559#590#0" expanded="true" />
             <element signature="e#1004#1035#0" expanded="true" />
