@@ -8,7 +8,7 @@ from indvproj import db_session
 from flask_login import login_required, login_user, current_user, logout_user
 from flask import render_template, redirect, flash, url_for
 from forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, CategoryForm, DeletePostForm, \
-    AddToCollectionForm
+    AddToCollectionForm, AddModeratorForm
 from markdown import markdown
 
 
@@ -325,6 +325,10 @@ class CategoryView(FlaskView):
                 redirect(url_for("CategoryView:new_category"))
         return render_template('create_category.html', form=form, title="Create a new category")
 
+    @route('/<categoryname>/moderators/')
+    def moderators(self, categoryname):
+        return render_template('add_moderators.html')
+
     @route('<categoryname>/moderators/add', methods=['GET', 'POST'])
     @login_required
     def add_moderator(self, categoryname):
@@ -333,7 +337,14 @@ class CategoryView(FlaskView):
         :param categoryname:
         :return:
         """
-        return render_template('add_moderators.html')
+        category = Category.query.filter_by(categoryname=categoryname).first()
+        print(category)
+        form = AddModeratorForm()
+        if form.validate_on_submit():
+            user = User.query.filter_by(username=form.username.data).first()
+            category.moderators.append(user)
+            db_session.commit()
+        return render_template('add_moderators.html', category=category, form=form, categoryname=category.categoryname)
 
 
 class CollectionView(FlaskView):

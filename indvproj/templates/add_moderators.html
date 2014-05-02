@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% from "_formhelpers.html" import render_field %}
+    {% for moderator in category.moderators.all() %}
+        {{ moderator }}
+    {% endfor %}
+    <form method=post action=/c/{{ categoryname }}/moderators/add>
+        <dl>
+            {{ render_field(form.username) }}
+        </dl>
+        <p><input type=submit value="Add to the category"></p>
+        {{ form.csrf_token }}
+    </form>
+{% endblock %}
