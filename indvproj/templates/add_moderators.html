@@ -1,9 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
-    {% from "_formhelpers.html" import render_field %}
-    {% for moderator in category.moderators.all() %}
-        {{ moderator }}
-    {% endfor %}
+    {% from "_formhelpers.html" import render_field, all_moderators with context %}
+    {{ all_moderators() }}
     <form method=post action=/c/{{ categoryname }}/moderators/add>
         <dl>
             {{ render_field(form.username) }}

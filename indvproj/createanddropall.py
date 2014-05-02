@@ -232,6 +232,11 @@ def create_and_run():
         db.session.add(s)
         db.session.commit()
         db.session.add(u)
+        db.session.add(Status("Banned"))
+        db.session.add(Status("Shadow-banned"))
+        db.session.add(Status("Administrator"))
+        db.session.add(Type("Moderator-post"))
+        db.session.add(Type("Admin-post"))
         db.session.commit()
     """
     with app.app_context():

@@ -62,3 +62,9 @@
         <div>{{ collection.posts.all()|length }}</div>
     </div>
 {% endmacro %}
+{% macro all_moderators() %}
+    All moderators:
+    {% for moderator in category.moderators.all() %}
+        <p>{{ moderator.username }}</p>
+    {% endfor %}
+{% endmacro %}

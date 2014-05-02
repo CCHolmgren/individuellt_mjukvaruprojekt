@@ -327,7 +327,7 @@ class CategoryView(FlaskView):
 
     @route('/<categoryname>/moderators/')
     def moderators(self, categoryname):
-        return render_template('add_moderators.html')
+        return render_template('moderators.html', category=Category.query.filter_by(categoryname=categoryname).first())
 
     @route('<categoryname>/moderators/add', methods=['GET', 'POST'])
     @login_required
@@ -337,14 +337,19 @@ class CategoryView(FlaskView):
         :param categoryname:
         :return:
         """
+
         category = Category.query.filter_by(categoryname=categoryname).first()
         print(category)
-        form = AddModeratorForm()
-        if form.validate_on_submit():
-            user = User.query.filter_by(username=form.username.data).first()
-            category.moderators.append(user)
-            db_session.commit()
-        return render_template('add_moderators.html', category=category, form=form, categoryname=category.categoryname)
+        if current_user in category.moderators:
+            form = AddModeratorForm()
+            if form.validate_on_submit():
+                user = User.query.filter_by(username=form.username.data).first()
+                category.moderators.append(user)
+                db_session.commit()
+            return render_template('add_moderators.html', category=category, form=form,
+                                   categoryname=category.categoryname)
+        flash("You are not allowed to add moderators to this category!")
+        return redirect(url_for("MainView:index"))
 
 
 class CollectionView(FlaskView):
