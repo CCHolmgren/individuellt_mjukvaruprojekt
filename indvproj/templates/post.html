@@ -1,14 +1,13 @@
 {% extends "layout.html" %}
 {% block body %}
-    {% from '_formhelpers.html' import render_post_with_delete with context %}
+    {% from '_formhelpers.html' import render_post_with_delete, render_post_without_delete with context %}
     <h1>Post - {{ post.title or "There isn't anything here" }}</h1>
-    {% if post %}
+    {% if post and allowed_to_remove %}
         <form method=post action=/p/{{ post.postid }}/delete>
             {{ render_post_with_delete(post,form) }}
             {{ form.csrf_token() }}
         </form>
-        <div>{{ post.content|safe }}</div>
-    {% else %}
-        <div>There isn't any post associated with that id</div>
+    {% elif post %}
+        {{ render_post_without_delete(post) }}
     {% endif %}
 {% endblock %}

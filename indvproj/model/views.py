@@ -6,7 +6,7 @@ from models import User, Post, Collection, Category, collection_has_post
 print('Importing db_session in model.views.py')
 from indvproj import db_session
 from flask_login import login_required, login_user, current_user, logout_user
-from flask import render_template, redirect, flash, url_for, request
+from flask import render_template, redirect, flash, url_for
 from forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, CategoryForm, DeletePostForm, \
     AddToCollectionForm
 from markdown import markdown
@@ -251,7 +251,10 @@ class CategoryView(FlaskView):
         category = Category.query.filter(func.lower(Category.categoryname) == func.lower(categoryname)).first()
         print(category)
         if post.categoryid == category.categoryid:
-            return render_template('post.html', post=Post.query.get(postid), form=form)
+            if current_user.userid == post.createdby or current_user in category.moderators:
+                return render_template('post.html', post=Post.query.get(postid), form=form, allowed_to_remove=True)
+            return render_template('post.html', post=Post.query.get(postid), form=form, allowed_to_remove=False)
+
         print(Category.query.get(post.categoryid).categoryname, postid)
         return redirect(url_for('CategoryView:view_post', categoryname=Category.query.get(post.categoryid).categoryname,
                                 postid=postid))
@@ -260,7 +263,7 @@ class CategoryView(FlaskView):
     @login_required
     def new_post(self, categoryname):
         return PostView.new_post(self, categoryname)
-
+        """
         print(request.method)
         print('Were inside CategoryView:new_post')
         form = TextPostForm()
@@ -288,7 +291,7 @@ class CategoryView(FlaskView):
                 print('Damn')
                 return redirect(url_for("CategoryView:new_post", categoryname=categoryname))
         print('Returning')
-        return render_template('new_post_category.html', form=form, categoryname=categoryname)
+        return render_template('new_post_category.html', form=form, categoryname=categoryname)"""
 
     @route('/new', methods=['GET', 'POST'])
     @login_required
