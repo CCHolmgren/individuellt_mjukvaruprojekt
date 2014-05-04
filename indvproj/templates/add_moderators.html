@@ -5,6 +5,7 @@
     <form method=post action=/c/{{ categoryname }}/moderators/add>
         <dl>
             {{ render_field(form.username) }}
+            <small>Username of the user that you want to add.</small>
         </dl>
         <p><input type=submit value="Add to the category"></p>
         {{ form.csrf_token }}

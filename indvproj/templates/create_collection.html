@@ -4,7 +4,8 @@
     <form method=post action=/collection/new>
     <dl>
             {{ render_field(form.title) }}
-        </dl>
+        <small>The name of the collection.</small>
+    </dl>
         <p><input type=submit value=New></p>
         {{ form.csrf_token() }}
     </form>

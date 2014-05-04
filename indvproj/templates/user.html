@@ -9,6 +9,7 @@
 {% endfor %}
     Created: {{ user.created }}<br>
     Status: {{ user.status }}<br>
+    Statusname: {{ user.statusobject.statusname }}<br>
     Collections: {% for collection in user.collections.all() %}
     {{ render_collection_dense(collection) }}<br>
 {% endfor %}

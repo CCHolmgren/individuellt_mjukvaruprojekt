@@ -59,7 +59,7 @@
     <div style="border:1px solid black;">
         <div><a href={{ url_for('CollectionView:get',id=collection.groupid) }}>{{ collection.title }}</a></div>
         <div>{{ collection.user }}</div>
-        <div>{{ collection.posts.all()|length }}</div>
+        <div>Posts: {{ collection.posts.all()|length }}</div>
     </div>
 {% endmacro %}
 {% macro all_moderators() %}

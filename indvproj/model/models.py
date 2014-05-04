@@ -31,6 +31,7 @@ class User(db.Model):
     allcomments = db.relationship('Comment', backref='user', lazy='dynamic')
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow())
     status = db.Column(db.Integer, db.ForeignKey('status.statusid'), default=1, nullable=True)
+    statusobject = db.relationship('Status', lazy='joined')
     posts = db.relationship('Post', backref='user', lazy='dynamic')
     collections = db.relationship('Collection', backref='user', lazy='dynamic')
     moderator = db.relationship('Category', secondary=category_has_moderator,
@@ -104,8 +105,8 @@ class UserGroup(db.Model):
 
 
 ug_has_v = db.Table('ug_has_v',
-                    db.Column('ugid', db.Integer, db.ForeignKey('user_group.ugid')),
-                    db.Column('vid', db.Integer, db.ForeignKey('visibility.vid'))
+                    db.Column('ugid', db.Integer, db.ForeignKey('user_group.ugid'), primary_key=True),
+                    db.Column('vid', db.Integer, db.ForeignKey('visibility.vid'), primary_key=True)
 )
 
 
@@ -124,6 +125,9 @@ class Category(db.Model):
         return '<Category {}>'.format(self.categoryname)
 
 
+# TODO: Change from post to using only links. Makes more sense this way
+# Or does it? Hard to say really. Gotta think really hard about it. But it doesn't matter that much since I can just
+# Change it later if I need too
 class Collection(db.Model):
     collectionid = db.Column(db.Integer, primary_key=True)
     userid = db.Column(db.Integer, db.ForeignKey('user.userid'), nullable=False)
