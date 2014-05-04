@@ -1,13 +1,22 @@
 {% extends "layout.html" %}
 {% block body %}
-    {% from '_formhelpers.html' import render_post_with_delete, render_post_without_delete with context %}
+    {% from '_formhelpers.html' import render_post_with_delete, render_post_without_delete, render_field, render_post with context %}
     <h1>Post - {{ post.title or "There isn't anything here" }}</h1>
-    {% if post and allowed_to_remove %}
-        <form method=post action=/p/{{ post.postid }}/delete>
-            {{ render_post_with_delete(post,form) }}
-            {{ form.csrf_token() }}
-        </form>
-    {% elif post %}
-        {{ render_post_without_delete(post) }}
+    {% if post %}
+        {% if allowed_to_remove %}
+            {{ render_post(post) }}
+            <form method=post action=/p/{{ post.postid }}/delete>
+                {{ render_field(form.submit) }}
+                {{ form.csrf_token() }}
+            </form>
+            <form method=post action=/p/{{ post.postid }}/comment>
+                {{ render_field(commentform.content) }}
+                {{ commentform.csrf_token() }}
+                <input type="submit" value="Submit comment">
+            </form>
+        {% else %}
+            {{ render_post_without_delete(post) }}
+        {% endif %}
+        {{ post.comments.all() }}
     {% endif %}
 {% endblock %}

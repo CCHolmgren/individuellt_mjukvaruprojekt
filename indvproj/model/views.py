@@ -1,14 +1,14 @@
 import _datetime
 
 from flask.ext.classy import FlaskView, route
-from models import User, Post, Collection, Category, collection_has_post
+from models import User, Post, Collection, Category, collection_has_post, Comment
 
 print('Importing db_session in model.views.py')
 from indvproj import db_session
 from flask_login import login_required, login_user, current_user, logout_user
 from flask import render_template, redirect, flash, url_for
 from forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, CategoryForm, DeletePostForm, \
-    AddToCollectionForm, AddModeratorForm
+    AddToCollectionForm, AddModeratorForm, CommentForm
 from markdown import markdown
 
 
@@ -117,9 +117,9 @@ class LogoutView(FlaskView):
 class PostView(FlaskView):
     route_base = '/p'
 
-    def get(self, id):
+    def get(self, postid):
         #return "Hello from PostView:get"
-        post = Post.query.get(id)
+        post = Post.query.get(postid)
         form = DeletePostForm()
         print(form)
         if post:
@@ -146,12 +146,33 @@ class PostView(FlaskView):
             db_session.rollback()
             return redirect(url_for('MainView:index'))
 
+    @route('/<postid>/comment', methods=['POST'])
+    @login_required
+    def comment(self, postid):
+        print("Inside of comment")
+        form = CommentForm()
+        if form.validate_on_submit():
+            print("Inside of validate_on_submit")
+            post = Post.query.get(postid)
+            if post:
+                print("Inside if post:")
+                post.comments.append(Comment(content=form.content.data, postid=post.postid, userid=current_user.userid))
+                db_session.commit()
+                flash("The comment was posted")
+                return redirect(url_for('PostView:get', postid=postid))
+            flash("That post does not exist.")
+            return redirect(url_for("MainView:index"))
+
+
     @route('/new/', methods=['GET', 'POST'])
     @login_required
     def new_post(self, categoryname=""):
+        print("We are inside new_post of PostView")
         form = TextPostForm()
-        form.categoryname.data = categoryname
+        if not form.categoryname.data:
+            form.categoryname.data = categoryname
         #linkform = LinkPostForm()
+        print(form.categoryname.data)
         if form.validate_on_submit():  # or linkform.validate_on_submit():
             try:
                 category = Category.query.filter_by(categoryname=form.categoryname.data).first()
@@ -164,7 +185,7 @@ class PostView(FlaskView):
                 #     linkform.categoryname.data)
                 print(post)
                 db_session.add(post)
-                print(current_user.update(postscreated=current_user.postscreated + 1))
+                current_user.postscreated += 1
                 db_session.commit()
                 #assert Post.query.get(post.postid) > 0
                 return redirect(
@@ -253,14 +274,17 @@ class CategoryView(FlaskView):
         from sqlalchemy import func
 
         form = DeletePostForm()
+        commentform = CommentForm()
         post = Post.query.get(postid)
         print(post.categoryid)
         category = Category.query.filter(func.lower(Category.categoryname) == func.lower(categoryname)).first()
         print(category)
         if post.categoryid == category.categoryid:
             if current_user.userid == post.createdby or current_user in category.moderators:
-                return render_template('post.html', post=Post.query.get(postid), form=form, allowed_to_remove=True)
-            return render_template('post.html', post=Post.query.get(postid), form=form, allowed_to_remove=False)
+                return render_template('post.html', post=Post.query.get(postid), form=form, allowed_to_remove=True,
+                                       commentform=commentform)
+            return render_template('post.html', post=Post.query.get(postid), form=form, allowed_to_remove=False,
+                                   commentform=commentform)
 
         print(Category.query.get(post.categoryid).categoryname, postid)
         return redirect(url_for('CategoryView:view_post', categoryname=Category.query.get(post.categoryid).categoryname,
