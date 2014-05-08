@@ -120,12 +120,13 @@ class PostView(FlaskView):
     def get(self, postid):
         #return "Hello from PostView:get"
         post = Post.query.get(postid)
+        print(dir(Comment.query.filter(Comment.commentid in Post.comments)))
         form = DeletePostForm()
         print(form)
         if post:
             return redirect(url_for('CategoryView:view_post', postid=post.postid,
                                     categoryname=Category.query.get(post.categoryid).categoryname))
-        return render_template('post.html', post=Post.query.get(id), form=form)
+        return render_template('post.html', post=Post.query.get(postid), form=form)
 
     @route('/<postid>/delete', methods=['POST'])
     @login_required
