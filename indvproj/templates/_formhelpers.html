@@ -57,7 +57,8 @@
 {% endmacro %}
 {% macro render_collection_dense(collection) %}
     <div style="border:1px solid black;">
-        <div><a href={{ url_for('CollectionView:get',id=collection.groupid) }}>{{ collection.title }}</a></div>
+        <div><a href={{ url_for('CollectionView:get',collectionid=collection.groupid) }}>{{ collection.title }}</a>
+        </div>
         <div>{{ collection.user }}</div>
         <div>Posts: {{ collection.posts.all()|length }}</div>
     </div>

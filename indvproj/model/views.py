@@ -222,7 +222,6 @@ class PostView(FlaskView):
             flash("That post does not exist.")
             return redirect(url_for("MainView:index"))
 
-
     @route('/new/', methods=['GET', 'POST'])
     @login_required
     def new_post(self, categoryname=""):
@@ -575,7 +574,7 @@ class CollectionView(FlaskView):
             return redirect(url_for('MainView:index'))
 
     @login_required
-    def get(self, id):
+    def get(self, collectionid):
         """
         Gets the collection with the given id, if the user is allowed to view that collection,
         i.e. if he created it
@@ -583,7 +582,7 @@ class CollectionView(FlaskView):
         :param id: Collectionid to lookup
         :return:
         """
-        collection = Collection.query.get(id)
+        collection = Collection.query.get(collectionid)
         print(dir(collection))
         print(collection.links.all())
         deleteform = DeletePostForm()
