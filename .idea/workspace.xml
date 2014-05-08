@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="* Added docstrings to all views">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="individuellt_mjukvaruprojekt.iws" />
@@ -78,10 +77,8 @@
       <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="327" column="8" selection-start="12326" selection-end="12326" vertical-scroll-proportion="0.4950495" vertical-offset="5259" max-vertical-offset="10676">
-              <folding>
-                <element signature="e#0#16#0" expanded="true" />
-              </folding>
+            <state line="327" column="8" selection-start="12326" selection-end="12326" vertical-scroll-proportion="0.33333334" vertical-offset="5259" max-vertical-offset="10676">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -822,7 +819,11 @@
       <created>1399534668292</created>
       <updated>1399534668292</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="* Added docstrings to all views">
+      <created>1399536714339</created>
+      <updated>1399536714339</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -849,7 +850,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3174946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3174946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297414" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3261339" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3275862" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1294,10 +1295,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="327" column="8" selection-start="12326" selection-end="12326" vertical-scroll-proportion="0.4950495" vertical-offset="5259" max-vertical-offset="10676">
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
+        <state line="327" column="8" selection-start="12326" selection-end="12326" vertical-scroll-proportion="0.33333334" vertical-offset="5259" max-vertical-offset="10676">
+          <folding />
         </state>
       </provider>
     </entry>

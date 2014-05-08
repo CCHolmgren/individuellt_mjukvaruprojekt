@@ -39,7 +39,7 @@ class CollectionForm(Form):
 
 class CategoryForm(Form):
     categorytitle = TextField("Categorytitle", [validators.Length(min=10, max=100), validators.Required()])
-    categoryname = TextField("Categoryname", [validators.Length(min=10, max=100), validators.Regexp(r'^[\w+-]+$')])
+    categoryname = TextField("Categoryname", [validators.Length(min=4, max=100), validators.Regexp(r'^[\w+-]+$')])
 
 
 class DeletePostForm(Form):
@@ -49,3 +49,11 @@ class DeletePostForm(Form):
 class AddToCollectionForm(Form):
     link = TextField("Postid")
     submit = SubmitField("Add to collection")
+
+
+class AddModeratorForm(Form):
+    username = TextField('Username')
+
+
+class CommentForm(Form):
+    content = TextAreaField('Content', [validators.Length(max=2000)])
