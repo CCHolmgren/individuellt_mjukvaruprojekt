@@ -101,6 +101,21 @@ def allowed_to_remove_category(user, category):
     return False
 
 
+def allowed_to_post_in_category(user, category):
+    #If the user is an admin
+    if user.status == 4:
+        return True
+    #If the user is a moderator
+    elif user in category.moderators:
+        return True
+    #If the category is a normal category
+    elif category.statusid == 1:
+        return True
+    #All other cases
+    else:
+        return False
+
+
 class AboutView(FlaskView):
     def index(self):
         return CategoryView.get(None, 'about')
@@ -299,26 +314,22 @@ class PostView(FlaskView):
         print(form.categoryname.data)
         if form.validate_on_submit():  # or linkform.validate_on_submit():
             category = Category.query.filter_by(categoryname=form.categoryname.data).first()
-            post = Post(current_user.userid, _datetime.datetime.now(),
-                        escape_text_and_create_markdown(form.content.data), 1,
-                        form.title.data, category.categoryid)  # or Post(current_user.userid,
-            #        _datetime.datetime.now(),
-            #       linkform.link.data,
-            #      1, linkform.title.data,
-            #     linkform.categoryname.data)
-            print(post)
-            db_session.add(post)
-            current_user.postscreated += 1
-            db_session.commit()
-            #assert Post.query.get(post.postid) > 0
-            return redirect(
-                url_for("CategoryView:view_post", categoryname=category.categoryname, postid=post.postid))
-            """except Exception as e:
-                flash('Something horrible happened')
-                print(e)
-                print('Damn')
-                return redirect(url_for("PostView:new_post"))"""
-        return render_template('new_post.html', form=form, categoryname=categoryname)  #, linkform=linkform)
+            if allowed_to_post_in_category(current_user, category):
+                post = Post(current_user.userid, _datetime.datetime.now(),
+                            escape_text_and_create_markdown(form.content.data), 1,
+                            form.title.data, category.categoryid)
+
+                print(post)
+                db_session.add(post)
+                current_user.postscreated += 1
+                db_session.commit()
+                #assert Post.query.get(post.postid) > 0
+                return redirect(
+                    url_for("CategoryView:view_post", categoryname=category.categoryname, postid=post.postid))
+            flash("You are not allowed to post in that category!")
+            return redirect(url_for('CategoryView:get', categoryname=categoryname))
+
+        return render_template('new_post.html', form=form, categoryname=categoryname)
 
 
 class RegisterView(FlaskView):

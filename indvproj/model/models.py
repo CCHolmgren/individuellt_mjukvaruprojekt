@@ -74,6 +74,31 @@ class User(db.Model):
     def __unicode__(self):
         return self.username
 
+    def allowed_to_post_in_category(self, category):
+        #If the user is an admin
+        if self.status == 4:
+            return True
+        #If the user is a moderator
+        elif self in category.moderators:
+            return True
+        #If the category is a normal category
+        elif category.statusid == 1:
+            return True
+        #All other cases
+        else:
+            return False
+
+    def allowed_to_remove_category(self, category):
+        """
+        We don't want anyone except admins removing categories, just send a message to them if you want to remove it
+        :param user: the user that is doing the removal
+        :param category: category to remove
+        :return: True if user.status is 4, i.e. administrator else false
+        """
+        if self.status == 4:
+            return True
+        return False
+
 
 class Status(db.Model):
     """
@@ -147,10 +172,12 @@ class Category(db.Model):
     categorytitle = db.Column(db.String(100))
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     posts = db.relationship('Post', backref='category', lazy='dynamic')
+    statusid = db.Column(db.Integer, db.ForeignKey('status.statusid'))
 
-    def __init__(self, categoryname, title="Default title"):
+    def __init__(self, categoryname, status=1, title="Default title"):
         self.categoryname = categoryname
         self.categorytitle = title
+        self.status = status
 
     def __repr__(self):
         return '<Category {}>'.format(self.categoryname)
