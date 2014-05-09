@@ -1,7 +1,7 @@
 import _datetime
 
 from flask.ext.classy import FlaskView, route
-from models import User, Post, Collection, Category, collection_has_post, Comment
+from models import User, Post, Collection, Category, Comment, Link
 
 print('Importing db_session in model.views.py')
 from indvproj import db_session
@@ -162,7 +162,7 @@ class PostView(FlaskView):
         """
         # TODO: Change this to a missing_post template instead
         post = Post.query.get(postid)
-        print(dir(Comment.query.filter(Comment.commentid in Post.comments)))
+        #print(dir(Comment.query.filter(Comment.commentid in Post.comments)))
         form = DeletePostForm()
         print(form)
         if post:
@@ -240,27 +240,26 @@ class PostView(FlaskView):
         #linkform = LinkPostForm()
         print(form.categoryname.data)
         if form.validate_on_submit():  # or linkform.validate_on_submit():
-            try:
-                category = Category.query.filter_by(categoryname=form.categoryname.data).first()
-                post = Post(current_user.userid, _datetime.datetime.now(),
-                            escape_text_and_create_markdown(form.content.data), 1,
-                            form.title.data, category.categoryid)  # or Post(current_user.userid,
-                #        _datetime.datetime.now(),
-                #       linkform.link.data,
-                #      1, linkform.title.data,
-                #     linkform.categoryname.data)
-                print(post)
-                db_session.add(post)
-                current_user.postscreated += 1
-                db_session.commit()
-                #assert Post.query.get(post.postid) > 0
-                return redirect(
-                    url_for("CategoryView:view_post", categoryname=category.categoryname, postid=post.postid))
-            except Exception as e:
+            category = Category.query.filter_by(categoryname=form.categoryname.data).first()
+            post = Post(current_user.userid, _datetime.datetime.now(),
+                        escape_text_and_create_markdown(form.content.data), 1,
+                        form.title.data, category.categoryid)  # or Post(current_user.userid,
+            #        _datetime.datetime.now(),
+            #       linkform.link.data,
+            #      1, linkform.title.data,
+            #     linkform.categoryname.data)
+            print(post)
+            db_session.add(post)
+            current_user.postscreated += 1
+            db_session.commit()
+            #assert Post.query.get(post.postid) > 0
+            return redirect(
+                url_for("CategoryView:view_post", categoryname=category.categoryname, postid=post.postid))
+            """except Exception as e:
                 flash('Something horrible happened')
                 print(e)
                 print('Damn')
-                return redirect(url_for("PostView:new_post"))
+                return redirect(url_for("PostView:new_post"))"""
         return render_template('new_post.html', form=form, categoryname=categoryname)  #, linkform=linkform)
 
 
@@ -555,22 +554,18 @@ class CollectionView(FlaskView):
         """
         addform = AddToCollectionForm()
         if addform.validate_on_submit():
-            oldpost = Post.query.get(addform.link.data)
+            #oldpost = Link.query.get(addform.link.data)
+            link = Link(addform.link.data)
+            print(db_session)
 
-            print(collection_has_post)
-            collection = Collection.query.get(collectionid)
-            collection.posts.append(oldpost)
+
+            #print(collection_has_post)
+            db_session.add(link)
             db_session.commit()
-            print(collection.posts.all())
-            """
-            print(collection)
-            print(collection_has_post.insert().values(cid=collection.groupid, pid=addform.link.data))
-            stmt = collection_has_post.insert().values(cid=collection.groupid, pid=addform.link.data)
-            print(db.engine.execute(stmt))
-            #db_session.commit()
-            print(collection_has_post)
-            print(dir(collection_has_post))
-            """
+            collection = Collection.query.get(collectionid)
+            collection.links.append(link)
+            db_session.commit()
+            print(collection.links.all())
             return redirect(url_for('MainView:index'))
 
     @login_required
@@ -593,7 +588,7 @@ class CollectionView(FlaskView):
             print(current_user.userid)
             if current_user.userid == collection.userid:
                 return render_template('collection.html', collection=collection, title=collection.title, \
-                                       deleteform=deleteform, addform=addform)
+                                       deleteform=deleteform, form=addform)
             return render_template('not_verified_collection.html', title="You are not eligible to view this collection")
         return render_template('not_verified_collection.html', title="You are not eligible to view this collection")
 
@@ -613,7 +608,7 @@ class CollectionView(FlaskView):
                 db_session.add(collection)
                 db_session.commit()
                 flash("The collection was created")
-                return redirect(url_for('CollectionView:get', id=collection.collectionid))
+                return redirect(url_for('CollectionView:get', collectionid=collection.collectionid))
             except Exception as e:
                 db_session.rollback()
                 flash('Something horrible happened')

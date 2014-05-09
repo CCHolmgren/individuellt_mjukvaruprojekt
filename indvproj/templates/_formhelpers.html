@@ -1,6 +1,6 @@
 {% macro render_field(field) %}
-    <dt>{{ field.label }}
-    <dd>{{ field(**kwargs)|safe }}
+    <li>{{ field.label }}</li>
+    <li>{{ field(**kwargs)|safe }}
         {% if field.errors %}
             <ul class=errors>
                 {% for error in field.errors %}
@@ -8,8 +8,7 @@
                 {% endfor %}
             </ul>
         {% endif %}
-    </dd>
-{% endmacro %}
+    </li>{% endmacro %}
 {% macro render_blog(post) %}
     <div>
         <div>{{ post.title }}</div>
@@ -20,6 +19,7 @@
 {% macro render_post(post) %}
     <div style="border:1px solid black;">
         <div><a href={{ url_for('PostView:get', postid=post.postid) }}>{{ post.title }}</a></div>
+        <div>{{ post.content|safe }}</div>
         <div>Postid: {{ post.postid }} | Posted by: <a
                 href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a> | Amount of
             comments: {{ post.comments.all()|length }}</div>
@@ -50,17 +50,17 @@
     <div>
         <div>{{ collection.title }}</div>
         <div>{{ collection.user }}</div>
-        {% for post in collection.posts.all() %}
-            {{ render_post(post) }}
+        {% for link in collection.links.all() %}
+            {{ link.link|urlize }}
         {% endfor %}
     </div>
 {% endmacro %}
 {% macro render_collection_dense(collection) %}
     <div style="border:1px solid black;">
-        <div><a href={{ url_for('CollectionView:get',collectionid=collection.groupid) }}>{{ collection.title }}</a>
+        <div><a href={{ url_for('CollectionView:get',collectionid=collection.collectionid) }}>{{ collection.title }}</a>
         </div>
         <div>{{ collection.user }}</div>
-        <div>Posts: {{ collection.posts.all()|length }}</div>
+        <div>Links: {{ collection.links.all()|length }}</div>
     </div>
 {% endmacro %}
 {% macro all_moderators() %}

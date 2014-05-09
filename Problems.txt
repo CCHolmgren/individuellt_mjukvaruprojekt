@@ -1,0 +1,4 @@
+pip crashing with a lot of errors:
+    Overwrite the virtualenv so that pip gets installed again
+Sqlalchemy throwing some error of unresolvedhandler or osmething like that:
+    Reinstall sqlalchemy and flask_sqlalchemy

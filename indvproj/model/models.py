@@ -5,10 +5,10 @@ from sqlalchemy.dialects import postgresql
 from indvproj import db
 import datetime
 
-collection_has_post = db.Table('collection_has_post',
+"""collection_has_post = db.Table('collection_has_post',
                                db.Column('cid', db.Integer, db.ForeignKey('collection.collectionid'), primary_key=True),
                                db.Column('pid', db.Integer, db.ForeignKey('post.postid'), primary_key=True)
-)
+)"""
 collection_has_link = db.Table('collection_has_link',
                                db.Column('cid', db.Integer, db.ForeignKey('collection.collectionid'), primary_key=True),
                                db.Column('linkid', db.Integer, db.ForeignKey('link.linkid'), primary_key=True)
@@ -21,6 +21,9 @@ category_has_moderator = db.Table('category_has_moderator',
 
 
 class User(db.Model):
+    """
+    Represents a user with all things that are directly connected to the user
+    """
     userid = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(120), unique=True)
     email = db.Column(db.String(120), unique=True)
@@ -48,6 +51,7 @@ class User(db.Model):
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
+    #Functions needed for flask_login to work
     def is_authenticated(self):
         return True
 
@@ -65,6 +69,10 @@ class User(db.Model):
 
 
 class Status(db.Model):
+    """
+    Represents a status of something, such as unread or closed, and so on
+    At this moment only Status(Normal) is used, but it is possible to add more statuses and use them as you please
+    """
     statusid = db.Column(db.Integer, primary_key=True, nullable=False)
     statusname = db.Column(db.String(25), nullable=False, unique=True)
 
@@ -76,6 +84,11 @@ class Status(db.Model):
 
 
 class Comment(db.Model):
+    """
+    A comment on a post
+    """
+    # TODO: This should change to having a parent and a child object with a comment_has_comment table
+    # That way we can keep track of comments and adding children will be easy
     id = db.Column(db.Integer, primary_key=True)
     userid = db.Column(db.Integer, db.ForeignKey('user.userid'))
     postid = db.Column(db.Integer, db.ForeignKey('post.postid'))
@@ -94,6 +107,11 @@ class Comment(db.Model):
 
 
 class UserGroup(db.Model):
+    """
+    Usergroup should represent things such as normal, moderators and such
+    But it isn't really used as such at this time
+    Isn't really used at all
+    """
     ugid = db.Column(db.Integer, primary_key=True)
     ugname = db.Column(db.String(50), unique=True)
 
@@ -111,6 +129,9 @@ ug_has_v = db.Table('ug_has_v',
 
 
 class Category(db.Model):
+    """
+    A category collects posts in specific groups that all relate to eachother
+    """
     categoryid = db.Column(db.Integer, primary_key=True)
     categoryname = db.Column(db.String(100), unique=True, nullable=False)
     categorytitle = db.Column(db.String(100))
@@ -129,6 +150,10 @@ class Category(db.Model):
 # Or does it? Hard to say really. Gotta think really hard about it. But it doesn't matter that much since I can just
 # Change it later if I need too
 class Collection(db.Model):
+    """
+    A collection collects links, or posts, in specific groups that don't relate to each other
+    Such as bookmarks
+    """
     collectionid = db.Column(db.Integer, primary_key=True)
     userid = db.Column(db.Integer, db.ForeignKey('user.userid'), nullable=False)
     title = db.Column(db.String(250), nullable=False)
@@ -143,6 +168,9 @@ class Collection(db.Model):
 
 
 class Post(db.Model):
+    """
+    A post is a post
+    """
     postid = db.Column(db.Integer, primary_key=True)
     createdby = db.Column(db.Integer, db.ForeignKey('user.userid'), nullable=False)
     timeposted = db.Column(db.DateTime, nullable=False)
@@ -152,8 +180,8 @@ class Post(db.Model):
     title = db.Column(db.String(250), nullable=False)
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
-    collections = db.relationship('Collection', secondary=collection_has_post,
-                                  backref=db.backref('posts', lazy='dynamic'))
+    #collections = db.relationship('Collection', secondary=collection_has_post,
+    #                              backref=db.backref('posts', lazy='dynamic'))
     categoryid = db.Column(db.Integer, db.ForeignKey('category.categoryid'), nullable=False)
 
     def __init__(self, createdby, timeposted, content, typeid, title, categoryid):
@@ -171,6 +199,9 @@ class Post(db.Model):
 
 
 class Link(db.Model):
+    """
+    A link is a link
+    """
     linkid = db.Column(db.Integer, primary_key=True)
     link = db.Column(db.String(350))
 
@@ -185,6 +216,9 @@ class Link(db.Model):
 
 
 class Type(db.Model):
+    """
+
+    """
     typeid = db.Column(db.Integer, primary_key=True)
     typename = db.Column(db.String(50), unique=True)
 
@@ -196,6 +230,9 @@ class Type(db.Model):
 
 
 class Visibility(db.Model):
+    """
+
+    """
     vid = db.Column(db.Integer, primary_key=True)
     vname = db.Column(db.String(50), unique=True)
 

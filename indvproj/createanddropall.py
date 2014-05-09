@@ -214,6 +214,10 @@ collection_has_post = db.Table('collection_has_post',
 """
 
 
+def create():
+    db.metadata.create_all(bind=db.engine)
+
+
 def create_and_run():
     print('Running create_and_run')
     print(db.metadata)
@@ -260,4 +264,4 @@ def create_and_run():
 
 
 if __name__ == '__main__':
-    create_and_run()
+    create()

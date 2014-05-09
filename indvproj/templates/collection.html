@@ -6,14 +6,8 @@
     {# Add link to collection #}
     <form method=post action=/collection/{{ collection.collectionid }}/add_link>
         {{ render_field(form.link) }}
-        <input type="submit" value="Add link">
+        <input type="submit" value="Add link to collection">
         {{ form.csrf_token() }}
-    </form>
-    {# Add a post to the collection #}
-    <form method=post action=/collection/{{ collection.collectionid }}/add_post>
-        {{ render_field(addform.link) }}
-        {{ render_field(addform.submit) }}
-        {{ addform.csrf_token() }}
     </form>
     {# Delete the collection #}
     <form method=post action=/collection/{{ collection.collectionid }}/delete>
