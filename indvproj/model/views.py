@@ -83,6 +83,12 @@ def allowed_to_add_moderators(user, category):
     return False
 
 
+def allowed_to_remove_post(user, post):
+    if user.userid == post.createdby or user in post.category.moderators or user.status == 4:
+        return True
+    return False
+
+
 class AboutView(FlaskView):
     def index(self):
         return CategoryView.get(None, 'about')
@@ -212,13 +218,14 @@ class PostView(FlaskView):
         try:
             post = Post.query.get(postid)
             category = Category.query.get(post.categoryid)
-            if current_user.userid == post.createdby or current_user in category.moderators:
+            if allowed_to_remove_post(current_user, post):
                 db_session.delete(post)
                 db_session.commit()
                 return redirect(url_for('MainView:index'))
             else:
                 flash(
-                    "You weren't allowed to remove this post, maybe you aren't the posts creator, or you aren't a moderator.")
+                    "You weren't allowed to remove this post, maybe you aren't the posts creator,"
+                    "or you aren't a moderator.")
                 return redirect(url_for('MainView:index'))
         except Exception as e:
             print(e)
