@@ -1,9 +1,14 @@
 {# Inteded to display all posts in a category #}
 {% extends "layout.html" %}
 {% block body %}
-    {% from "_formhelpers.html" import render_post with context %}
+    {% from "_formhelpers.html" import render_post, render_field with context %}
     {{ category.categorytitle }}
     {{ category.moderators.all() }}
+    <a href={{ url_for('CategoryView:new_post',categoryname=category.categoryname) }}>Create a new post</a>
+    <form method=post action=/c/{{ category.categoryname }}/delete>
+        {{ render_field(form.submit) }}
+        {{ form.csrf_token() }}
+    </form>
     {% for post in posts %}
         {{ render_post(post) }}
     {% endfor %}

@@ -1,0 +1,17 @@
+Changes:
+X (Works as it should now) Change so you can login using lowercase and uppercase, no matter the case actually
+Make it more descriptive around adding links to collections, maybe even a description of what a collection is at the creation page and so on
+Better errormessage on add link collection page, something other than invalid url
+Make it actually possible to post links to a collection
+Confirmation box on removal of stuff
+Formfield for posting comments
+Change comments from what it is now to a parent children situation where parent is a foreign key and children is a relationship with a table comment_has_comment with columns parentcommentid, comment id
+Removal of comments
+A post should be able to directly post to a collection, or something like that. A box to the side where you choose a collection to post in, and then do it?
+X (Meh, reddit does it) A posts title shouldn't need to link to itself, should it inside PostView:get
+Maybe change creation of categories to a ajax version so that we can validate without redirecting all the time? Or fill in the values that are correct when you failed some vlaidation?
+X (Fixed, just a problem with post.html not having the form there) You can comment on your own posts, but not someone elses?
+Category id already exists error? Categoryid 3 exists, but why doesn't it get increased? Didn't seem to happen again, odd.
+x (Is now a link, but should maybe change to something better, or better text?) Add quicklinks to creation of posts to a category.
+X (Only possible by being an admin, but it's possible. Should remove the button if you aren't an admin though) Removal of categories.
+X (A default will not be chosen, that was a bad idea.) Change so that if no category is chosen a default one will be chosen for you, preferably something like /c/index or /c/default

@@ -89,6 +89,18 @@ def allowed_to_remove_post(user, post):
     return False
 
 
+def allowed_to_remove_category(user, category):
+    """
+    We don't want anyone except admins removing categories, just send a message to them if you want to remove it
+    :param user: the user that is doing the removal
+    :param category: category to remove
+    :return: True if user.status is 4, i.e. administrator else false
+    """
+    if user.status == 4:
+        return True
+    return False
+
+
 class AboutView(FlaskView):
     def index(self):
         return CategoryView.get(None, 'about')
@@ -148,21 +160,29 @@ class LoginView(FlaskView):
 
         :return: Either a redirect to MainView, LoginView:index again or a rendered template of login.html
         """
+        from sqlalchemy import func
+
         if current_user.is_active():
             return redirect(url_for('MainView:index'))
 
         form = LoginForm()
+
         if form.validate_on_submit():
-            if User.query.filter_by(username=form.username.data).first():
-                user = User.query.filter_by(username=form.username.data, password=check_password(form.password.data,
-                                                                                                 User.query.filter(
-                                                                                                     User.username == form.username.data).first().salt)).first()
-                if user is not None:
-                    login_user(user, remember=False)
+            potentialuser = User.query.filter(func.lower(User.username) == func.lower(form.username.data)).first()
+
+            if potentialuser:
+                #user = User.query.filter(username=form.username.data, password=check_password(form.password.data,
+                #                                                                                User.query.filter(
+                #                                                                                   User.username == form.username.data).first().salt)).first()
+                #Instead of doing a odd query, just do this instead
+                if potentialuser.password == check_password(form.password.data, potentialuser.salt):
+                    login_user(potentialuser)
                     flash("Logged in successfully.")
                     return redirect(url_for("MainView:index"))
+
             flash('The login failed, check the username and password and try again')
             return redirect(url_for('LoginView:index'))
+
         return render_template("login.html", form=form)
 
 
@@ -195,9 +215,12 @@ class PostView(FlaskView):
         """
         # TODO: Change this to a missing_post template instead
         post = Post.query.get(postid)
+
         #print(dir(Comment.query.filter(Comment.commentid in Post.comments)))
+
         form = DeletePostForm()
         print(form)
+
         if post:
             return redirect(url_for('CategoryView:view_post', postid=post.postid,
                                     categoryname=Category.query.get(post.categoryid).categoryname))
@@ -251,6 +274,7 @@ class PostView(FlaskView):
                 print("Inside if post:")
                 post.comments.append(Comment(content=form.content.data, postid=post.postid, userid=current_user.userid))
                 db_session.commit()
+                print(post.comments[0].children)
                 flash("The comment was posted")
                 return redirect(url_for('PostView:get', postid=postid))
             flash("That post does not exist.")
@@ -398,11 +422,12 @@ class CategoryView(FlaskView):
         """
         from sqlalchemy import func
 
+        deletionform = DeletePostForm()
         category = Category.query.filter(func.lower(Category.categoryname) == func.lower(categoryname)).first()
         print("Category:", category)
         print("Dir category:", dir(category))
         posts = category.posts.all()
-        return render_template('category.html', category=category, posts=posts)
+        return render_template('category.html', category=category, posts=posts, form=deletionform)
 
     @route('<categoryname>/p/<postid>')
     def view_post(self, categoryname, postid):
@@ -539,6 +564,31 @@ class CategoryView(FlaskView):
                                    categoryname=category.categoryname)
         flash("You are not allowed to add moderators to this category!")
         return redirect(url_for("MainView:index"))
+
+    @route('/<categoryname>/delete', methods=['POST'])
+    @login_required
+    def delete(self, categoryname):
+        """
+        Deletes the post associated with the postid, but only if the user is the created or a moderator of the category
+        This is a permanent deletion, it won't be marked invisible or something, it will get deleted
+        Use with caution
+
+        :param postid: Postid of post to delete
+        :return: Redirects to MainView:index all the time
+        """
+        try:
+            category = Category.query.filter_by(categoryname=categoryname).first()
+            if allowed_to_remove_category(current_user, category):
+                db_session.delete(category)
+                db_session.commit()
+                return redirect(url_for('MainView:index'))
+            else:
+                flash("To remove this category message the admins")
+                return redirect(url_for('MainView:index'))
+        except Exception as e:
+            print(e)
+            db_session.rollback()
+            return redirect(url_for('MainView:index'))
 
 
 class CollectionView(FlaskView):

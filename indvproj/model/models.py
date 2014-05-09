@@ -18,6 +18,13 @@ category_has_moderator = db.Table('category_has_moderator',
                                             primary_key=True),
                                   db.Column('userid', db.Integer, db.ForeignKey('user.userid'), primary_key=True)
 )
+comment_has_comment = db.Table('comment_has_comment',
+                               db.Column('parentcommentid', db.Integer, db.ForeignKey('comment.commentid'),
+                                         primary_key=True),
+                               db.Column('childcommentid', db.Integer, db.ForeignKey('comment.commentid'),
+                                         primary_key=True)
+)
+
 
 class User(db.Model):
     """
@@ -67,6 +74,7 @@ class User(db.Model):
     def __unicode__(self):
         return self.username
 
+
 class Status(db.Model):
     """
     Represents a status of something, such as unread or closed, and so on
@@ -88,18 +96,21 @@ class Comment(db.Model):
     """
     # TODO: This should change to having a parent and a child object with a comment_has_comment table
     # That way we can keep track of comments and adding children will be easy
-    id = db.Column(db.Integer, primary_key=True)
+    commentid = db.Column(db.Integer, primary_key=True)
     userid = db.Column(db.Integer, db.ForeignKey('user.userid'))
-    postid = db.Column(db.Integer, db.ForeignKey('post.postid'))
-    commentid = db.Column(db.Integer, db.ForeignKey('comment.id'), nullable=True)
+    postid = db.Column(db.Integer, db.ForeignKey('post.postid'), nullable=True)
+    parent = db.Column(db.Integer, db.ForeignKey('comment.commentid'), nullable=True)
+    children = db.relationship('Comment', secondary=comment_has_comment,
+                               foreign_keys=[comment_has_comment.c.childcommentid])
     content = db.Column(db.String(2000))
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
-    def __init__(self, userid, postid, content, commentid=None):
+    def __init__(self, userid, postid, content, parent=None, commentid=None):
         self.userid = userid
         self.postid = postid
         self.content = content
         self.commentid = commentid
+        self.parent = parent
 
     def __repr__(self):
         return '<Comment {}>'.format(self.content[:15])
@@ -181,7 +192,7 @@ class Post(db.Model):
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
     #collections = db.relationship('Collection', secondary=collection_has_post,
     #                              backref=db.backref('posts', lazy='dynamic'))
-    categoryid = db.Column(db.Integer, db.ForeignKey('category.categoryid'), nullable=False)
+    categoryid = db.Column(db.Integer, db.ForeignKey('category.categoryid', ondelete="CASCADE"), nullable=False)
 
     def __init__(self, createdby, timeposted, content, typeid, title, categoryid):
         self.createdby = createdby

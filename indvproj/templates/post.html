@@ -9,14 +9,14 @@
                 {{ render_field(form.submit) }}
                 {{ form.csrf_token() }}
             </form>
-            <form method=post action=/p/{{ post.postid }}/comment>
-                {{ render_field(commentform.content) }}
-                {{ commentform.csrf_token() }}
-                <input type="submit" value="Submit comment">
-            </form>
         {% else %}
             {{ render_post_without_delete(post) }}
         {% endif %}
+        <form method=post action=/p/{{ post.postid }}/comment>
+            {{ render_field(commentform.content) }}
+            {{ commentform.csrf_token() }}
+            <input type="submit" value="Submit comment">
+        </form>
         {{ post.comments.all() }}
     {% endif %}
 {% endblock %}
