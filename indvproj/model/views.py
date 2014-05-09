@@ -62,6 +62,32 @@ def check_password(string_password, salt):
     return password
 
 
+def is_url(user_input):
+    import re
+
+    return re.match('^http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+&', user_input)
+
+
+def flash_errors(form):
+    for field, errors in form.errors.items():
+        for error in errors:
+            flash(u"Error in the %s field - %s" % (
+                getattr(form, field).label.text, error
+            ))
+
+
+def allowed_to_add_moderators(user, category):
+    print(user.status)
+    if user in category.moderators or user.status == 4:
+        return True
+    return False
+
+
+class AboutView(FlaskView):
+    def index(self):
+        return CategoryView.get(None, 'about')
+
+
 class MainView(FlaskView):
     """
     MainView handles ourpage.tld/
@@ -151,6 +177,7 @@ class PostView(FlaskView):
     PostView handles everything that is centered around specific posts such as deletion and commenting,
     and also creation of new posts
     """
+    # TODO: Add so that we can see what user did what, such as removal of the post and edited and so on
     route_base = '/p'
 
     def get(self, postid):
@@ -495,7 +522,7 @@ class CategoryView(FlaskView):
 
         category = Category.query.filter_by(categoryname=categoryname).first()
         print(category)
-        if current_user in category.moderators:
+        if allowed_to_add_moderators(current_user, category):
             form = AddModeratorForm()
             if form.validate_on_submit():
                 user = User.query.filter_by(username=form.username.data).first()
@@ -555,11 +582,10 @@ class CollectionView(FlaskView):
         :return:
         """
         addform = AddToCollectionForm()
-        if addform.validate_on_submit():
+        if addform.validate_on_submit() and is_url(addform.link.data):
             #oldpost = Link.query.get(addform.link.data)
             link = Link(addform.link.data)
             print(db_session)
-
 
             #print(collection_has_post)
             db_session.add(link)
@@ -568,10 +594,12 @@ class CollectionView(FlaskView):
             collection.links.append(link)
             db_session.commit()
             print(collection.links.all())
-            return redirect(url_for('MainView:index'))
+            return redirect(url_for('CollectionView:get', collectionid=collectionid))
+        flash_errors(addform)
+        return redirect(url_for('CollectionView:get', collectionid=collectionid))
 
     @login_required
-    def get(self, collectionid):
+    def get(self, collectionid, **kwargs):
         """
         Gets the collection with the given id, if the user is allowed to view that collection,
         i.e. if he created it
@@ -584,6 +612,7 @@ class CollectionView(FlaskView):
         print(collection.links.all())
         deleteform = DeletePostForm()
         addform = AddToCollectionForm()
+
         if collection:
             print(collection)
             print(collection.userid)

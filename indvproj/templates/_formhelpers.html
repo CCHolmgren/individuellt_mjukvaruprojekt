@@ -48,16 +48,17 @@
 {% endmacro %}
 {% macro render_collection(collection) %}
     <div>
-        <div>{{ collection.title }}</div>
-        <div>{{ collection.user }}</div>
+        <div>Collection title:{{ collection.title }}</div>
+        <div>Creator:{{ collection.user.username }}</div>
         {% for link in collection.links.all() %}
-            {{ link.link|urlize }}
+            <p>{{ link.link|urlize }}</p>
         {% endfor %}
     </div>
 {% endmacro %}
 {% macro render_collection_dense(collection) %}
     <div style="border:1px solid black;">
-        <div><a href={{ url_for('CollectionView:get',collectionid=collection.collectionid) }}>{{ collection.title }}</a>
+        <div>
+            <a href={{ url_for('CollectionView:get',collectionid=collection.collectionid,errors=None) }}>{{ collection.title }}</a>
         </div>
         <div>{{ collection.user }}</div>
         <div>Links: {{ collection.links.all()|length }}</div>

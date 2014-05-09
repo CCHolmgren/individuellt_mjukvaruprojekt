@@ -19,7 +19,6 @@ category_has_moderator = db.Table('category_has_moderator',
                                   db.Column('userid', db.Integer, db.ForeignKey('user.userid'), primary_key=True)
 )
 
-
 class User(db.Model):
     """
     Represents a user with all things that are directly connected to the user
@@ -40,13 +39,14 @@ class User(db.Model):
     moderator = db.relationship('Category', secondary=category_has_moderator,
                                 backref=db.backref('moderators', lazy='dynamic'))
 
-    def __init__(self, username, email, password, salt):
+    def __init__(self, username, email, password, salt, status=1):
         self.username = username
         self.email = email
         self.password = password
         self.postscreated = 0
         self.comments = 0
         self.salt = salt
+        self.status = status
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -66,7 +66,6 @@ class User(db.Model):
 
     def __unicode__(self):
         return self.username
-
 
 class Status(db.Model):
     """
