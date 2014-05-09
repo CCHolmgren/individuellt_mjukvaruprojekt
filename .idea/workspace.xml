@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="* Somehow I got the parent child part of the commenting system to work, I am amazed that it actually worked.&#10;* Set category removal to cascade, hopefully it works as intended.&#10;* Added helper function to check if the user is allowed to remove a category, at this point only admins can do that.&#10;* Login is now caseinsensitive, as it should be.&#10;* Deletion of categories implemented.&#10;* Moved the comment field so that everyone can comment and now just the creator.&#10;* Link from a category to creation of a new post in the category.&#10;* Added a Things_to_change file where I add things that I should work on at this moment.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Things_to_change.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/category.html" afterPath="$PROJECT_DIR$/indvproj/templates/category.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/models.py" afterPath="$PROJECT_DIR$/indvproj/model/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/post.html" afterPath="$PROJECT_DIR$/indvproj/templates/post.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/Forms.py" afterPath="$PROJECT_DIR$/indvproj/model/Forms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -42,8 +39,10 @@
       <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="279" column="46" selection-start="9600" selection-end="9600" vertical-scroll-proportion="0.74752474" vertical-offset="4290" max-vertical-offset="12070">
-              <folding />
+            <state line="279" column="46" selection-start="9600" selection-end="9600" vertical-scroll-proportion="0.50333333" vertical-offset="4290" max-vertical-offset="12070">
+              <folding>
+                <element signature="e#0#16#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,14 +88,14 @@
       <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="0" selection-start="4638" selection-end="4638" vertical-scroll-proportion="0.0" vertical-offset="1530" max-vertical-offset="4879">
+            <state line="106" column="0" selection-start="4639" selection-end="4639" vertical-scroll-proportion="0.0" vertical-offset="1547" max-vertical-offset="4896">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/indvproj/model/forms.py">
+      <file leaf-file-name="Forms.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indvproj/model/Forms.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="23" column="0" selection-start="965" selection-end="965" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1088">
               <folding />
@@ -128,7 +127,7 @@
       <file leaf-file-name="post.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="49" selection-start="807" selection-end="807" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="459">
+            <state line="17" column="45" selection-start="803" selection-end="803" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="459">
               <folding />
             </state>
           </provider>
@@ -852,7 +851,11 @@
       <created>1399639537748</created>
       <updated>1399639537748</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="* Somehow I got the parent child part of the commenting system to work, I am amazed that it actually worked.&#10;* Set category removal to cascade, hopefully it works as intended.&#10;* Added helper function to check if the user is allowed to remove a category, at this point only admins can do that.&#10;* Login is now caseinsensitive, as it should be.&#10;* Deletion of categories implemented.&#10;* Moved the comment field so that everyone can comment and now just the creator.&#10;* Link from a category to creation of a new post in the category.&#10;* Added a Things_to_change file where I add things that I should work on at this moment.">
+      <created>1399676645264</created>
+      <updated>1399676645264</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -877,9 +880,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3174946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3174946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3261339" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3275862" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -988,7 +991,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/forms.py">
+    <entry file="file://$PROJECT_DIR$/indvproj/model/Forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="0" selection-start="965" selection-end="965" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1088">
           <folding />
@@ -1222,7 +1225,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/forms.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="162" column="73" selection-start="11174" selection-end="11174" vertical-scroll-proportion="-7.8461537" vertical-offset="2550" max-vertical-offset="20485" />
+        <state line="162" column="73" selection-start="11174" selection-end="11174" vertical-scroll-proportion="-7.8461537" vertical-offset="2550" max-vertical-offset="20485">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/pydoc.html">
@@ -1275,7 +1280,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="49" selection-start="807" selection-end="807" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="459">
+        <state line="17" column="45" selection-start="803" selection-end="803" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="459">
           <folding />
         </state>
       </provider>
@@ -1297,7 +1302,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/forms.py">
+    <entry file="file://$PROJECT_DIR$/indvproj/model/Forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="0" selection-start="965" selection-end="965" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="1054">
           <folding />
@@ -1315,15 +1320,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="0" selection-start="4638" selection-end="4638" vertical-scroll-proportion="0.0" vertical-offset="1530" max-vertical-offset="4879">
+        <state line="106" column="0" selection-start="4639" selection-end="4639" vertical-scroll-proportion="0.0" vertical-offset="1547" max-vertical-offset="4896">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="279" column="46" selection-start="9600" selection-end="9600" vertical-scroll-proportion="0.74752474" vertical-offset="4290" max-vertical-offset="12070">
-          <folding />
+        <state line="279" column="46" selection-start="9600" selection-end="9600" vertical-scroll-proportion="0.50333333" vertical-offset="4290" max-vertical-offset="12070">
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

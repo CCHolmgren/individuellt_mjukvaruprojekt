@@ -47,8 +47,8 @@ class DeletePostForm(Form):
 
 
 class AddToCollectionForm(Form):
-    link = TextField("Postid")
-    submit = SubmitField("Add to collection")
+    link = TextField("Link", [validators.URL()], default="Link")
+    submit = SubmitField("Add link to collection")
 
 
 class AddModeratorForm(Form):
