@@ -461,6 +461,8 @@ class CategoryView(FlaskView):
                 category = Category(form.categoryname.data.lower(), form.categorytitle.data)
                 db_session.add(category)
                 db_session.commit()
+                category.moderators.append(current_user)
+                db_session.commit()
                 flash("The category was created")
                 return redirect(url_for('CategoryView:get', categoryname=category.categoryname))
             except Exception as e:
