@@ -17,6 +17,8 @@
             {{ commentform.csrf_token() }}
             <input type="submit" value="Submit comment">
         </form>
-        {{ post.comments.all() }}
+        {% for comment in post.comments.all() %}
+            {{ comment }}
+        {% endfor %}
     {% endif %}
 {% endblock %}

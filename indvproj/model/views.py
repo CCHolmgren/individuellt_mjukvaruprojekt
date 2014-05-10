@@ -77,14 +77,29 @@ def flash_errors(form):
 
 
 def allowed_to_add_moderators(user, category):
-    print(user.status)
+    """
+    A user can add a moderator to a category if the user is a moderator himself, or an admin
+    :param user: User doing the adding
+    :param category: Category to add to
+    :return:
+    """
     if user in category.moderators or user.status == 4:
         return True
     return False
 
 
 def allowed_to_remove_post(user, post):
-    if user.userid == post.createdby or user in post.category.moderators or user.status == 4:
+    """
+    A user who created the post, a moderator of the category or an admin can remove a post
+    :param user: The user doing the removal
+    :param post: The post to remove
+    :return: True if the user is allowed to remove the post else False
+    """
+    if user.userid == post.createdby:
+        return True
+    elif user in post.category.moderators:
+        return True
+    elif user.status == 4:
         return True
     return False
 
@@ -94,7 +109,7 @@ def allowed_to_remove_category(user, category):
     We don't want anyone except admins removing categories, just send a message to them if you want to remove it
     :param user: the user that is doing the removal
     :param category: category to remove
-    :return: True if user.status is 4, i.e. administrator else false
+    :return: True if user.status is 4, i.e. administrator else False
     """
     if user.status == 4:
         return True
@@ -102,6 +117,12 @@ def allowed_to_remove_category(user, category):
 
 
 def allowed_to_post_in_category(user, category):
+    """
+
+    :param user:
+    :param category:
+    :return:
+    """
     #If the user is an admin
     if user.status == 4:
         return True
@@ -237,6 +258,7 @@ class PostView(FlaskView):
         print(form)
 
         if post:
+            print(post.comments.one().children)
             return redirect(url_for('CategoryView:view_post', postid=post.postid,
                                     categoryname=Category.query.get(post.categoryid).categoryname))
         return render_template('post.html', post=Post.query.get(postid), form=form)
@@ -295,6 +317,33 @@ class PostView(FlaskView):
             flash("That post does not exist.")
             return redirect(url_for("MainView:index"))
 
+    """
+    @route('/<postid>/<commentid>/comment',methods=['POST'])
+    @login_required
+    def comment_on_comment(self, postid, commentid):
+        form = CommentForm()
+        if form.validate_on_submit():
+            comment = Comment.query.get(commentid)
+            if comment:
+                newcomment = Comment(content=form.content.data, userid=current_user.userid, parent=commentid)
+                db.session.add(newcomment)
+                db_session.commit()
+                print(newcomment.commentid)
+                db.engine.execute(comment_has_comment.insert().values(parentcommentid=commentid, childcommentid=newcomment.commentid))
+
+                #comment.children.append(Comment(content=form.content.data, postid=postid, userid=current_user.userid,parent=1))
+                db_session.commit()
+
+                flash("The comment was created")
+                return redirect(url_for('PostView:get',postid=postid))
+
+    @route('/<postid>/<commentid>')
+    @login_required
+    def comment_on(self,postid, commentid):
+        form = CommentForm()
+        return render_template('comment_on_comment.html',form=form, parentcomment=Comment.query.get(commentid),postid=postid)
+    """
+
     @route('/new/', methods=['GET', 'POST'])
     @login_required
     def new_post(self, categoryname=""):
@@ -314,7 +363,7 @@ class PostView(FlaskView):
         print(form.categoryname.data)
         if form.validate_on_submit():  # or linkform.validate_on_submit():
             category = Category.query.filter_by(categoryname=form.categoryname.data).first()
-            if allowed_to_post_in_category(current_user, category):
+            if category.allowed_to_post_in_category(current_user):
                 post = Post(current_user.userid, _datetime.datetime.now(),
                             escape_text_and_create_markdown(form.content.data), 1,
                             form.title.data, category.categoryid)
@@ -336,10 +385,6 @@ class RegisterView(FlaskView):
     """
     Handles Registration of users
     """
-
-    """def index(self):
-        form = RegistrationForm(request.form)
-        return render_template('create_user.html', form=form)"""
 
     @route('/', methods=['GET', 'POST'])
     def new_user(self):
@@ -480,35 +525,6 @@ class CategoryView(FlaskView):
         :return:
         """
         return PostView.new_post(self, categoryname)
-        """
-        print(request.method)
-        print('Were inside CategoryView:new_post')
-        form = TextPostForm()
-        form.categoryname.data = categoryname
-        print(form)
-        print(dir(form))
-        #linkform = LinkPostForm(categoryname=id)
-        if form.validate_on_submit():
-            print('Inside the if')
-            try:
-                print('Inside the try')
-                post = Post(current_user.userid, _datetime.datetime.now(),
-                            escape_text_and_create_markdown(form.content.data), 1, form.title.data,
-                            Category.query.filter_by(
-                                categoryname=categoryname).first().categoryid)  #or Post(current_user.userid, _datetime.datetime.now(),linkform.link.data,1, linkform.title.data,id)
-                print(post)
-                db_session.add(post)
-                current_user.postscreated += 1
-                db_session.commit()
-                print(post.postid)
-                return redirect(url_for("CategoryView:get", categoryname=categoryname))
-            except Exception as e:
-                flash('Something horrible happened')
-                print(e)
-                print('Damn')
-                return redirect(url_for("CategoryView:new_post", categoryname=categoryname))
-        print('Returning')
-        return render_template('new_post_category.html', form=form, categoryname=categoryname)"""
 
     @route('/new', methods=['GET', 'POST'])
     @login_required
@@ -520,28 +536,35 @@ class CategoryView(FlaskView):
         """
         print('We are inside CategoryView:new_category')
         form = CategoryForm()
-        if form.validate_on_submit():
-            try:
-                potential_category = Category.query.filter_by(categoryname=form.categoryname.data.lower()).first()
+        if current_user.allowed_to_create_category():
+            if form.validate_on_submit():
+                try:
+                    potential_category = Category.query.filter_by(categoryname=form.categoryname.data.lower()).first()
 
-                if potential_category:
-                    flash("There is already a category with that categoryname")
-                    return redirect(url_for("CategoryView:new_category"))
+                    if potential_category:
+                        flash("There is already a category with that categoryname")
+                        return redirect(url_for("CategoryView:new_category"))
 
-                category = Category(form.categoryname.data.lower(), form.categorytitle.data)
-                db_session.add(category)
-                db_session.commit()
-                category.moderators.append(current_user)
-                db_session.commit()
-                flash("The category was created")
-                return redirect(url_for('CategoryView:get', categoryname=category.categoryname))
-            except Exception as e:
-                db_session.rollback()
-                print('Something horrible happened')
-                flash('Something horrible happened')
-                print(repr(e), e)
-                redirect(url_for("CategoryView:new_category"))
-        return render_template('create_category.html', form=form, title="Create a new category")
+                    category = Category(form.categoryname.data.lower(), form.categorytitle.data)
+                    db_session.add(category)
+                    db_session.commit()
+
+                    category.moderators.append(current_user)
+                    db_session.commit()
+
+                    flash("The category was created")
+                    return redirect(url_for('CategoryView:get', categoryname=category.categoryname))
+                except Exception as e:
+                    db_session.rollback()
+                    print('Something horrible happened')
+                    flash('Something horrible happened')
+                    print(repr(e), e)
+                    redirect(url_for("CategoryView:new_category"))
+
+            return render_template('create_category.html', form=form, title="Create a new category")
+
+        flash("You are not allowed to create categories. Please contact the admins to resolve this.")
+        return redirect(url_for("MainView:index"))
 
     @route('/<categoryname>/moderators/')
     def moderators(self, categoryname):
@@ -565,7 +588,7 @@ class CategoryView(FlaskView):
 
         category = Category.query.filter_by(categoryname=categoryname).first()
         print(category)
-        if allowed_to_add_moderators(current_user, category):
+        if current_user.allowed_to_add_moderators(category):
             form = AddModeratorForm()
             if form.validate_on_submit():
                 user = User.query.filter_by(username=form.username.data).first()
@@ -589,7 +612,7 @@ class CategoryView(FlaskView):
         """
         try:
             category = Category.query.filter_by(categoryname=categoryname).first()
-            if allowed_to_remove_category(current_user, category):
+            if current_user.allowed_to_remove_category(category):
                 db_session.delete(category)
                 db_session.commit()
                 return redirect(url_for('MainView:index'))
@@ -686,7 +709,7 @@ class CollectionView(FlaskView):
             print(collection.userid)
             print(current_user.userid)
             if current_user.userid == collection.userid:
-                return render_template('collection.html', collection=collection, title=collection.title, \
+                return render_template('collection.html', collection=collection, title=collection.title,
                                        deleteform=deleteform, form=addform)
             return render_template('not_verified_collection.html', title="You are not eligible to view this collection")
         return render_template('not_verified_collection.html', title="You are not eligible to view this collection")

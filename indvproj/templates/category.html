@@ -2,16 +2,20 @@
 {% extends "layout.html" %}
 {% block body %}
     {% from "_formhelpers.html" import render_post, render_field with context %}
-    {{ category.categorytitle }}
-    {{ category.moderators.all() }}
+    <h1>{{ category.categorytitle }}</h1>
+
+    Moderators in this category:
+    {% for moderator in category.moderators.all() %}
+        <div>{{ moderator }}</div>
+    {% endfor %}
     {% if g.user.allowed_to_post_in_category(category) %}
         <a href={{ url_for('CategoryView:new_post',categoryname=category.categoryname) }}>Create a new post</a>
     {% endif %}
     {% if g.user.allowed_to_remove_category(category) %}
         <form method=post action=/c/{{ category.categoryname }}/delete>
-        {{ render_field(form.submit) }}
-        {{ form.csrf_token() }}
-    </form>
+            {{ render_field(form.submit) }}
+            {{ form.csrf_token() }}
+        </form>
     {% endif %}
     {% for post in posts %}
         {{ render_post(post) }}

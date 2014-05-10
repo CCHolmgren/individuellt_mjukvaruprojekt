@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% from '_formhelpers.html' import render_post_with_delete, render_post_without_delete, render_field, render_post with context %}
+    {{ parentcomment }}
+    <form method=post action=/p/{{ postid }}/{{ parentcomment.commentid }}/comment>
+        {{ render_field(form.content) }}
+        <input type=submit value="Post the comment">
+        {{ form.csrf_token() }}
+    </form>
+{% endblock %}

@@ -74,19 +74,8 @@ class User(db.Model):
     def __unicode__(self):
         return self.username
 
-    def allowed_to_post_in_category(self, category):
-        #If the user is an admin
-        if self.status == 4:
-            return True
-        #If the user is a moderator
-        elif self in category.moderators:
-            return True
-        #If the category is a normal category
-        elif category.statusid == 1:
-            return True
-        #All other cases
-        else:
-            return False
+    def is_admin(self):
+        return self.status == 4
 
     def allowed_to_remove_category(self, category):
         """
@@ -95,9 +84,40 @@ class User(db.Model):
         :param category: category to remove
         :return: True if user.status is 4, i.e. administrator else false
         """
-        if self.status == 4:
+        if self.is_admin():
             return True
         return False
+
+    def allowed_to_add_moderators(self, category):
+        """
+        A user can add a moderator to a category if the user is a moderator himself, or an admin
+        :param user: User doing the adding
+        :param category: Category to add to
+        :return:
+        """
+        if self in category.moderators:
+            return True
+        elif self.is_admin():
+            return True
+        return False
+
+    def allowed_to_remove_post(self, post):
+        """
+        A user who created the post, a moderator of the category or an admin can remove a post
+        :param user: The user doing the removal
+        :param post: The post to remove
+        :return: True if the user is allowed to remove the post else False
+        """
+        if self.userid == post.createdby:
+            return True
+        elif self in post.category.moderators:
+            return True
+        elif self.is_admin():
+            return True
+        return False
+
+    def allowed_to_create_category(self):
+        return self.status == 1 or self.status == 4
 
 
 class Status(db.Model):
@@ -130,7 +150,7 @@ class Comment(db.Model):
     content = db.Column(db.String(2000))
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
-    def __init__(self, userid, postid, content, parent=None, commentid=None):
+    def __init__(self, userid, content, postid=None, parent=None, commentid=None):
         self.userid = userid
         self.postid = postid
         self.content = content
@@ -138,7 +158,7 @@ class Comment(db.Model):
         self.parent = parent
 
     def __repr__(self):
-        return '<Comment {}>'.format(self.content[:15])
+        return '<Comment {}, commentid: {}>'.format(self.content[:15], self.commentid)
 
 
 class UserGroup(db.Model):
@@ -181,6 +201,22 @@ class Category(db.Model):
 
     def __repr__(self):
         return '<Category {}>'.format(self.categoryname)
+
+    def allowed_to_post_in_category(self, user):
+        if user.status in (2, 3, 5):
+            return False
+        #If the user is an admin
+        elif user.is_admin():
+            return True
+        #If the user is a moderator
+        elif user in self.moderators:
+            return True
+        #If the category is a normal category
+        elif self.statusid == 1:
+            return True
+        #All other cases
+        else:
+            return False
 
 
 # TODO: Change from post to using only links. Makes more sense this way

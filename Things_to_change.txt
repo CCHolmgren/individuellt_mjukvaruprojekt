@@ -5,7 +5,7 @@ Better errormessage on add link collection page, something other than invalid ur
 Make it actually possible to post links to a collection
 Confirmation box on removal of stuff
 Formfield for posting comments
-Change comments from what it is now to a parent children situation where parent is a foreign key and children is a relationship with a table comment_has_comment with columns parentcommentid, comment id
+X (Plans laid on ice for now. Will look to implement this later, but at this moment it isn't worth the time since there's a lot of things to do.) Change comments from what it is now to a parent children situation where parent is a foreign key and children is a relationship with a table comment_has_comment with columns parentcommentid, comment id
 Removal of comments
 A post should be able to directly post to a collection, or something like that. A box to the side where you choose a collection to post in, and then do it?
 X (Meh, reddit does it) A posts title shouldn't need to link to itself, should it inside PostView:get
