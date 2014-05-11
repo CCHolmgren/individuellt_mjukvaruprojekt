@@ -166,15 +166,15 @@ class MainView(FlaskView):
 
         :return: rendered template main.html with the options inserted
         """
-        print(Comment.query.all())  #.children.append(Comment(userid=1, content="Hello"))
-        print(dir(Comment.query.first()))
-        print(Comment.query.first().ignored_list.all())
+        #print(Comment.query.all())  #.children.append(Comment(userid=1, content="Hello"))
+        #print(dir(Comment.query.first()))
+        #print(Comment.query.first().ignored_list.all())
         #ui = UserIgnore(Comment.query.first(), Comment(userid=1, content=""))
         #db_session.add(ui)
         #db_session.commit()
         #Comment.query.first().ignored_list.append(Comment(userid=1, content=""))
         #db_session.commit()
-        raise Exception()
+        #raise Exception()
         return render_template('main.html',
                                posts=Post.query.all(), categories=Category.query.all(), users=User.query.all())
 
@@ -324,7 +324,6 @@ class PostView(FlaskView):
             flash("That post does not exist.")
             return redirect(url_for("MainView:index"))
 
-    """
     @route('/<postid>/<commentid>/comment',methods=['POST'])
     @login_required
     def comment_on_comment(self, postid, commentid):
@@ -332,14 +331,16 @@ class PostView(FlaskView):
         if form.validate_on_submit():
             comment = Comment.query.get(commentid)
             if comment:
-                newcomment = Comment(content=form.content.data, userid=current_user.userid, parent=commentid)
-                db.session.add(newcomment)
+                comment.children.append(
+                    Comment(content=form.content.data, userid=current_user.userid))  #, parent=commentid))
+                #newcomment = Comment(content=form.content.data, userid=current_user.userid, parent=commentid)
+                #db_session.add(newcomment)
                 db_session.commit()
-                print(newcomment.commentid)
-                db.engine.execute(comment_has_comment.insert().values(parentcommentid=commentid, childcommentid=newcomment.commentid))
+                #print(newcomment.commentid)
+                #db.engine.execute(comment_has_comment.insert().values(parentcommentid=commentid, childcommentid=newcomment.commentid))
 
                 #comment.children.append(Comment(content=form.content.data, postid=postid, userid=current_user.userid,parent=1))
-                db_session.commit()
+                #db_session.commit()
 
                 flash("The comment was created")
                 return redirect(url_for('PostView:get',postid=postid))
@@ -349,7 +350,6 @@ class PostView(FlaskView):
     def comment_on(self,postid, commentid):
         form = CommentForm()
         return render_template('comment_on_comment.html',form=form, parentcomment=Comment.query.get(commentid),postid=postid)
-    """
 
     @route('/new/', methods=['GET', 'POST'])
     @login_required

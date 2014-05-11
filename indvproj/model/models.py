@@ -174,7 +174,8 @@ class Comment(db.Model):
         self.commentid = commentid
 
     def __repr__(self):
-        return '<Comment {}, commentid: {}>'.format(self.content[:15], self.commentid)
+        return '<Comment {}, commentid: {}, children: {}>'.format(self.content[:15], self.commentid, len(self.children))
+
 
 class UserGroup(db.Model):
     """

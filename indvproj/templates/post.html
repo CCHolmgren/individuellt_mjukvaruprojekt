@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
-    {% from '_formhelpers.html' import render_post_with_delete, render_post_without_delete, render_field, render_post with context %}
+    {% from '_formhelpers.html' import render_post_with_delete, render_post_without_delete, render_field, render_post, render_comment, render_childcomments with context %}
     <h1>Post - {{ post.title or "There isn't anything here" }}</h1>
     {% if post %}
         {% if allowed_to_remove %}
@@ -18,7 +18,8 @@
             <input type="submit" value="Submit comment">
         </form>
         {% for comment in post.comments.all() %}
-            {{ comment }}
+            <div>{{ render_comment(comment) }}
+            </div>
         {% endfor %}
     {% endif %}
 {% endblock %}

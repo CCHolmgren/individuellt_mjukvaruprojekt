@@ -70,3 +70,15 @@
         <p>{{ moderator.username }}</p>
     {% endfor %}
 {% endmacro %}
+{% macro render_comment(comment) %}
+    <div>
+        <div>{{ comment }}</div>
+        {{ render_childcomments(comment) }}
+    </div>
+{% endmacro %}
+{% macro render_childcomments(parent_comment) %}
+    {% for comment in parent_comment.children recursive %}
+        <div style="margin-left:{{ loop.depth*20 }}px">{{ comment }}</div>
+        <div>{{ loop(comment.children) }}</div>
+    {% endfor %}
+{% endmacro %}
