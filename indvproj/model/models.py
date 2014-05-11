@@ -119,6 +119,22 @@ class User(db.Model):
     def allowed_to_create_category(self):
         return self.status == 1 or self.status == 4
 
+    def allowed_to_post_in_category(self, category):
+        if self.status in (2, 3, 5):
+            return False
+        #If the user is an admin
+        elif self.is_admin():
+            return True
+        #If the user is a moderator
+        elif self in category.moderators:
+            return True
+        #If the category is a normal category
+        elif category.statusid == 1:
+            return True
+        #All other cases
+        else:
+            return False
+
 
 class Status(db.Model):
     """
@@ -144,22 +160,21 @@ class Comment(db.Model):
     commentid = db.Column(db.Integer, primary_key=True)
     userid = db.Column(db.Integer, db.ForeignKey('user.userid'))
     postid = db.Column(db.Integer, db.ForeignKey('post.postid'), nullable=True)
-    parent = db.Column(db.Integer, db.ForeignKey('comment.commentid'), nullable=True)
-    children = db.relationship('Comment', secondary=comment_has_comment,
-                               foreign_keys=[comment_has_comment.c.childcommentid])
+    parentid = db.Column(db.Integer, db.ForeignKey(commentid))
+
+    children = db.relationship('Comment', backref=db.backref('parent', remote_side=commentid))
+
     content = db.Column(db.String(2000))
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
-    def __init__(self, userid, content, postid=None, parent=None, commentid=None):
+    def __init__(self, userid, content, postid=None, commentid=None):
         self.userid = userid
         self.postid = postid
         self.content = content
         self.commentid = commentid
-        self.parent = parent
 
     def __repr__(self):
         return '<Comment {}, commentid: {}>'.format(self.content[:15], self.commentid)
-
 
 class UserGroup(db.Model):
     """

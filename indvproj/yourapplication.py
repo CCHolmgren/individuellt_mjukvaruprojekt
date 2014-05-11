@@ -41,6 +41,8 @@ if __name__ == '__main__':
 
     @app.before_request
     def before_request():
+        print("Now we are in before_request.")
+        print(current_user)
         g.user = current_user
 
 

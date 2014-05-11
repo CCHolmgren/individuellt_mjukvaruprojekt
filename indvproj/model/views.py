@@ -6,7 +6,7 @@ from models import User, Post, Collection, Category, Comment, Link
 print('Importing db_session in model.views.py')
 from indvproj import db_session
 from flask_login import login_required, login_user, current_user, logout_user
-from flask import render_template, redirect, flash, url_for
+from flask import render_template, redirect, flash, url_for, g
 from Forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, CategoryForm, DeletePostForm, \
     AddToCollectionForm, AddModeratorForm, CommentForm
 from markdown import markdown
@@ -166,6 +166,15 @@ class MainView(FlaskView):
 
         :return: rendered template main.html with the options inserted
         """
+        print(Comment.query.all())  #.children.append(Comment(userid=1, content="Hello"))
+        print(dir(Comment.query.first()))
+        print(Comment.query.first().ignored_list.all())
+        #ui = UserIgnore(Comment.query.first(), Comment(userid=1, content=""))
+        #db_session.add(ui)
+        #db_session.commit()
+        #Comment.query.first().ignored_list.append(Comment(userid=1, content=""))
+        #db_session.commit()
+        raise Exception()
         return render_template('main.html',
                                posts=Post.query.all(), categories=Category.query.all(), users=User.query.all())
 
@@ -258,7 +267,6 @@ class PostView(FlaskView):
         print(form)
 
         if post:
-            print(post.comments.one().children)
             return redirect(url_for('CategoryView:view_post', postid=post.postid,
                                     categoryname=Category.query.get(post.categoryid).categoryname))
         return render_template('post.html', post=Post.query.get(postid), form=form)
@@ -311,7 +319,6 @@ class PostView(FlaskView):
                 print("Inside if post:")
                 post.comments.append(Comment(content=form.content.data, postid=post.postid, userid=current_user.userid))
                 db_session.commit()
-                print(post.comments[0].children)
                 flash("The comment was posted")
                 return redirect(url_for('PostView:get', postid=postid))
             flash("That post does not exist.")
@@ -478,6 +485,7 @@ class CategoryView(FlaskView):
         """
         from sqlalchemy import func
 
+        print(g.user)
         deletionform = DeletePostForm()
         category = Category.query.filter(func.lower(Category.categoryname) == func.lower(categoryname)).first()
         print("Category:", category)
@@ -504,8 +512,9 @@ class CategoryView(FlaskView):
         print(post.categoryid)
         category = Category.query.filter(func.lower(Category.categoryname) == func.lower(categoryname)).first()
         print(category)
+        print(dir(current_user))
         if post.categoryid == category.categoryid:
-            if current_user.userid == post.createdby or current_user in category.moderators:
+            if current_user.is_active() and current_user.allowed_to_remove_post(post):
                 return render_template('post.html', post=Post.query.get(postid), form=form, allowed_to_remove=True,
                                        commentform=commentform)
             return render_template('post.html', post=Post.query.get(postid), form=form, allowed_to_remove=False,

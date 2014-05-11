@@ -3,14 +3,19 @@
 {% block body %}
     {% from "_formhelpers.html" import render_post, render_field with context %}
     <h1>{{ category.categorytitle }}</h1>
-
-    Moderators in this category:
-    {% for moderator in category.moderators.all() %}
-        <div>{{ moderator }}</div>
-    {% endfor %}
+    <div>
+        {% if category.moderators.all() %}
+            Moderators in this category:
+            {% for moderator in category.moderators.all() %}
+                <div>{{ moderator }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div>
     {% if g.user.allowed_to_post_in_category(category) %}
         <a href={{ url_for('CategoryView:new_post',categoryname=category.categoryname) }}>Create a new post</a>
     {% endif %}
+    </div>
     {% if g.user.allowed_to_remove_category(category) %}
         <form method=post action=/c/{{ category.categoryname }}/delete>
             {{ render_field(form.submit) }}
