@@ -454,8 +454,8 @@ class UserView(FlaskView):
         """
         user = User.query.filter_by(username=username).first()
         if user is not None:
-            print(user.collections.all())
-            return render_template('user.html', user=user)
+            #print(user.collections.all())
+            return render_template('user.html', user=user, allowed_to_view_collections=current_user == user)
         return render_template('user_missing.html', title="The user doesn't seem to exist")
 
 

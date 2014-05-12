@@ -17,12 +17,15 @@
     </div>
 {% endmacro %}
 {% macro render_post(post) %}
-    <div style="border:1px solid black;">
-        <div><a href={{ url_for('PostView:get', postid=post.postid) }}>{{ post.title }}</a></div>
-        <div>{{ post.content|safe }}</div>
-        <div>Postid: {{ post.postid }} | Posted by: <a
+    <div class="post">
+        <div class="post-title"><a href={{ url_for('PostView:get', postid=post.postid) }}>{{ post.title }}</a></div>
+        <div class="post-content">{{ post.content|safe }}</div>
+        <footer>
+            Postid: {{ post.postid }} | Posted by: <a
                 href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a> | Amount of
-            comments: {{ post.comments.all()|length }}</div>
+            comments: {{ post.comments.all()|length }}
+            <small>Currently displays incorrect data.</small>
+        </footer>
     </div>
 {% endmacro %}
 {% macro render_post_with_delete(post,form) %}
@@ -47,8 +50,8 @@
     </div>
 {% endmacro %}
 {% macro render_collection(collection) %}
-    <div>
-        <div>Collection title:{{ collection.title }}</div>
+    <div class="collection">
+    <div>Collection title:{{ collection.title }}</div>
         <div>Creator:{{ collection.user.username }}</div>
         {% for link in collection.links.all() %}
             <p>{{ link.link|urlize }}</p>
@@ -56,8 +59,8 @@
     </div>
 {% endmacro %}
 {% macro render_collection_dense(collection) %}
-    <div style="border:1px solid black;">
-        <div>
+    <div class="collection-dense" style="border:1px solid black;">
+    <div>
             <a href={{ url_for('CollectionView:get',collectionid=collection.collectionid,errors=None) }}>{{ collection.title }}</a>
         </div>
         <div>{{ collection.user }}</div>

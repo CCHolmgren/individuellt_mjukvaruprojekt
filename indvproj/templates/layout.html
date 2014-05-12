@@ -6,7 +6,7 @@
     <link rel=stylesheet type=text/css href="{{ url_for('static',filename='style.css') }}">
 </head>
 <body>
-<div>
+<div class="head">
     <a href={{ url_for('MainView:index') }}>Home</a>
     {% if not g.user.is_active() %}
         <div style="float:right"><p>Do you want to <a href={{ url_for('RegisterView:new_user') }}> register?</a></p>
@@ -19,15 +19,17 @@
         </div>
     {% endif %}
 </div>
-{% with messages = get_flashed_messages() %}
-    {% if messages %}
-        <ul class=flashes>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-{% endwith %}
-{% block body %}{% endblock %}
+<div class="messages">
+    {%- with messages = get_flashed_messages() %}
+        {%- if messages %}
+            <ul class=flashes>
+                {%- for message in messages %}
+                    <li>{{ message }}</li>
+                {%- endfor %}
+            </ul>
+        {%- endif %}
+    {%- endwith %}
+</div>
+{%- block body %}{%- endblock %}
 </body>
 </html>

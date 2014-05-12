@@ -1,33 +1,56 @@
 {% extends "layout.html" %}
 {% from "_formhelpers.html" import render_post, render_collection_dense with context %}
 {% block body %}
-    All users: {{ users|map(attribute='username')|join(', ') }}
-    {{ message }}
-    <h1>Overview</h1>
-    {% if g.user.is_active() %}
-        <p>Do you want to create a new <a href={{ url_for('CollectionView:new_collection') }}>collection</a>?</p>
-        <p>Or a new <a href={{ url_for('PostView:new_post') }}>post</a>?</p>
-        <p>Create a new <a href={{ url_for('CategoryView:new_category') }}>category</a>.</p>
-        All your collections:
-        {% for collection in g.user.collections.all() %}
-            {{ render_collection_dense(collection) }}
+    <header>
+        All users: {{ users|map(attribute='username')|join(', ') }}
+        {{ message }}
+    </header>
+    <div class="collections">
+        <div>
+            {% if g.user.collections %}
+                All your collections:
+                {% for collection in g.user.collections.all() %}
+                    {{ render_collection_dense(collection) }}
+                {% endfor %}
+            {% else %}
+                You haven't got any collections
+            {% endif %}
+        </div>
+    </div>
+    <div style="margin-left:216px; float:left">
+        <h1>Overview</h1>
+        {% if g.user.is_active() %}
+            <p>Do you want to create a new <a href={{ url_for('CollectionView:new_collection') }}>collection</a>?</p>
+            <p>Or a new <a href={{ url_for('PostView:new_post') }}>post</a>?</p>
+            <p>Create a new <a href={{ url_for('CategoryView:new_category') }}>category</a>.</p>
+
+            <div>
+                Moderator in:
+                {{ g.user.moderator }}
+            </div>
+            <p>Your userpage:
+                <a href={{ url_for('UserView:get', username=g.user.username) }}>{{ g.user.username }}</a>
+            </p>
+        {% endif %}
+        {% for post in posts %}
+            {{ render_post(post) }}
         {% endfor %}
-        Moderator in:
-        {{ g.user.moderator }}
-        <p>Your userpage:
-            <a href={{ url_for('UserView:get', username=g.user.username) }}>{{ g.user.username }}</a>
-        </p>
-    {% endif %}
-    {% for post in posts %}
-        {{ render_post(post) }}
-    {% endfor %}
-    <p>Categories:</p>
-    {% for category in categories %}
-        <p><a href={{ url_for('CategoryView:get', categoryname=category.categoryname) }}>{{ category.categoryname }}</a>
-            Moderators:
-            {% for moderator in category.moderators.all() %}
-            <a href={{ url_for('UserView:get',username=moderator.username) }}>{{ moderator.username }}</a>
+    </div>
+    <div class="categories">
+        <p>Categories:</p>
+        {% for category in categories %}
+            <div>
+                <a href={{ url_for('CategoryView:get', categoryname=category.categoryname) }}>{{ category.categoryname }}</a>
+                {% if category.moderators.all() %}
+                    <div>
+                        <small>Moderators:
+                            {% for moderator in category.moderators.all() %}
+                                <a href={{ url_for('UserView:get',username=moderator.username) }}>{{ moderator.username }}</a>
+                            {% endfor %}
+                        </small>
+                    </div>
+                {% endif %}
+            </div>
         {% endfor %}
-        </p>
-    {% endfor %}
+    </div>
 {% endblock %}
