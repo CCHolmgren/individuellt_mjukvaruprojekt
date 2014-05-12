@@ -9,7 +9,7 @@ if __name__ == '__main__':
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:bubblegum123@localhost/postgres'
     db.init_app(app)"""
 
-    from models import User
+    from models import User, Category
     from flask_login import current_user
     from loginmanager import login_manager
     from views import MainView, RegisterView, PostView, LoginView, UserView, CollectionView, LogoutView, CategoryView, \
@@ -42,6 +42,8 @@ if __name__ == '__main__':
     @app.before_request
     def before_request():
         g.user = current_user
+        g.categories = Category.query.all()
+        g.users = User.query.all()
 
 
     @app.errorhandler(404)

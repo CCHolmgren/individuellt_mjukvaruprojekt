@@ -4,15 +4,13 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Changed the rendering of comments, will probably change that macro later if it looks like I need it.&#10;* render_comment and render_childcomments macros, but only render_comment is used right now.&#10;* rendering comments works.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" afterPath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/category.html" afterPath="$PROJECT_DIR$/indvproj/templates/category.html" />
+    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Working on some layout and such.&#10;* Check so that the user is allowed to view the user's collections, which means that the current user either is an admin or the user that he is viewing.&#10;* Adding style rules.&#10;* Adding some classes to the divs so that we can style them, and see what they hold.&#10;* Since the proxy that Flask_login uses doesn't have a function called allowed_to_remove_category we must first check if the user is active, since that means that it isn't a flask_login proxy.&#10;* Adding divs and classes to layout.html&#10;* Also in main.html, aswell as some moving around.&#10;* We must first check if the user is allowed to view that other users collections.&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/layout.html" afterPath="$PROJECT_DIR$/indvproj/templates/layout.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/main.html" afterPath="$PROJECT_DIR$/indvproj/templates/main.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/static/style.css" afterPath="$PROJECT_DIR$/indvproj/static/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/user.html" afterPath="$PROJECT_DIR$/indvproj/templates/user.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/yourapplication.py" afterPath="$PROJECT_DIR$/indvproj/yourapplication.py" />
     </list>
     <ignored path="individuellt_mjukvaruprojekt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,7 +42,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="457" column="86" selection-start="16714" selection-end="16741" vertical-scroll-proportion="-12.5" vertical-offset="6509" max-vertical-offset="11866">
+            <state line="457" column="140" selection-start="16795" selection-end="16795" vertical-scroll-proportion="0.0" vertical-offset="6483" max-vertical-offset="11866">
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
                 <element signature="e#5360#5555#0" expanded="false" />
@@ -55,14 +53,23 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="pydoc.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indvproj/model/pydoc.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="79" column="48" selection-start="5487" selection-end="5487" vertical-scroll-proportion="-10.538462" vertical-offset="1069" max-vertical-offset="1649">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="_formhelpers.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="43" selection-start="2825" selection-end="2825" vertical-scroll-proportion="-17.23077" vertical-offset="657" max-vertical-offset="1751">
+            <state line="49" column="2" selection-start="2127" selection-end="2127" vertical-scroll-proportion="-6.1153846" vertical-offset="674" max-vertical-offset="1768">
               <folding>
-                <element signature="e#2547#2578#0" expanded="true" />
-                <element signature="e#3096#3127#0" expanded="true" />
-                <element signature="e#3438#3507#0" expanded="true" />
+                <element signature="e#2555#2586#0" expanded="true" />
+                <element signature="e#3100#3131#0" expanded="true" />
+                <element signature="e#3442#3511#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,7 +78,7 @@
       <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/static/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="12" selection-start="1294" selection-end="1294" vertical-scroll-proportion="0.0" vertical-offset="1073" max-vertical-offset="1904">
+            <state line="82" column="15" selection-start="1025" selection-end="1025" vertical-scroll-proportion="0.0" vertical-offset="954" max-vertical-offset="2057">
               <folding />
             </state>
           </provider>
@@ -80,7 +87,7 @@
       <file leaf-file-name="category.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/category.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="32" selection-start="733" selection-end="733" vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="561">
+            <state line="18" column="32" selection-start="741" selection-end="741" vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="561">
               <folding />
             </state>
           </provider>
@@ -104,38 +111,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="post.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="55" selection-start="973" selection-end="973" vertical-scroll-proportion="-13.076923" vertical-offset="0" max-vertical-offset="493">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="user.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/user.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="12" selection-start="563" selection-end="563" vertical-scroll-proportion="0.41975307" vertical-offset="0" max-vertical-offset="567">
+            <state line="2" column="4" selection-start="51" selection-end="139" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="425">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="layout.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/layout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="24" selection-start="1211" selection-end="1211" vertical-scroll-proportion="-19.538462" vertical-offset="36" max-vertical-offset="680">
-              <folding />
+            <state line="20" column="15" selection-start="860" selection-end="860" vertical-scroll-proportion="0.5996473" vertical-offset="0" max-vertical-offset="1326">
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="comment_on_comment.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/indvproj/templates/comment_on_comment.html">
+      <file leaf-file-name="yourapplication.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="54" selection-start="257" selection-end="257" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="255">
-              <folding />
+            <state line="45" column="34" selection-start="1481" selection-end="1481" vertical-scroll-proportion="0.0" vertical-offset="427" max-vertical-offset="1190">
+              <folding>
+                <marker date="1399892874253" expanded="true" signature="1372:1481" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -192,15 +195,15 @@
         <option value="$PROJECT_DIR$/indvproj/createanddropall.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/comment_on_comment.html" />
         <option value="$PROJECT_DIR$/indvproj/model/models.py" />
-        <option value="$PROJECT_DIR$/indvproj/yourapplication.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/post.html" />
-        <option value="$PROJECT_DIR$/indvproj/templates/main.html" />
-        <option value="$PROJECT_DIR$/indvproj/static/style.css" />
         <option value="$PROJECT_DIR$/indvproj/templates/category.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
-        <option value="$PROJECT_DIR$/indvproj/templates/layout.html" />
-        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/user.html" />
+        <option value="$PROJECT_DIR$/indvproj/static/style.css" />
+        <option value="$PROJECT_DIR$/indvproj/templates/main.html" />
+        <option value="$PROJECT_DIR$/indvproj/yourapplication.py" />
+        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
+        <option value="$PROJECT_DIR$/indvproj/templates/layout.html" />
       </list>
     </option>
   </component>
@@ -906,7 +909,11 @@
       <created>1399880416784</created>
       <updated>1399880416784</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Working on some layout and such.&#10;* Check so that the user is allowed to view the user's collections, which means that the current user either is an admin or the user that he is viewing.&#10;* Adding style rules.&#10;* Adding some classes to the divs so that we can style them, and see what they hold.&#10;* Since the proxy that Flask_login uses doesn't have a function called allowed_to_remove_category we must first check if the user is active, since that means that it isn't a flask_login proxy.&#10;* Adding divs and classes to layout.html&#10;* Also in main.html, aswell as some moving around.&#10;* We must first check if the user is allowed to view that other users collections.&#10;">
+      <created>1399884633868</created>
+      <updated>1399884633868</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -967,7 +974,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Changed some things, idk what." />
     <MESSAGE value="Adding posts to collections is now possible, but I want to be able to do it some other way. Lets see how that owkrs out. At this moment it's not possible to remove the posts, but that should be solved some time." />
     <MESSAGE value="Simplified the adding of posts to collections, which also should mean that it is easier to remove posts." />
     <MESSAGE value="Decided to only use a single view for adding posts, which simplifies the logic and removes unnecessary code. Updating the postcount on a user so that every new post adds 1 to it.&#10;Renamed groupid to collectionid, it was a remnant from when collections were called groups." />
@@ -992,7 +998,8 @@
     <MESSAGE value="I think this solves the problems with the comemnts&#10;It isn't possible to add childcomments yet, but the models supports it.&#10;* Comments fixed?&#10;* Added stylesheet." />
     <MESSAGE value="Now it actually renders the childcomments.&#10;* Updated Sprint backlog.&#10;* Changed the repr of Comment to display the amount of childcomments.&#10;* It's really easy to add children to the comments, just do an append of a Comment object, and then commit it to the database since we are always creating a new comment.&#10;* Macros for displaying comments.&#10;* Renders the comments in post.html.&#10;* Removed unnecessary debugging prints from before_request.&#10;* Added a file with the solution that helped me with the nested comments problem." />
     <MESSAGE value="Changed the rendering of comments, will probably change that macro later if it looks like I need it.&#10;* render_comment and render_childcomments macros, but only render_comment is used right now.&#10;* rendering comments works." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed the rendering of comments, will probably change that macro later if it looks like I need it.&#10;* render_comment and render_childcomments macros, but only render_comment is used right now.&#10;* rendering comments works." />
+    <MESSAGE value="Working on some layout and such.&#10;* Check so that the user is allowed to view the user's collections, which means that the current user either is an admin or the user that he is viewing.&#10;* Adding style rules.&#10;* Adding some classes to the divs so that we can style them, and see what they hold.&#10;* Since the proxy that Flask_login uses doesn't have a function called allowed_to_remove_category we must first check if the user is active, since that means that it isn't a flask_login proxy.&#10;* Adding divs and classes to layout.html&#10;* Also in main.html, aswell as some moving around.&#10;* We must first check if the user is allowed to view that other users collections.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on some layout and such.&#10;* Check so that the user is allowed to view the user's collections, which means that the current user either is an admin or the user that he is viewing.&#10;* Adding style rules.&#10;* Adding some classes to the divs so that we can style them, and see what they hold.&#10;* Since the proxy that Flask_login uses doesn't have a function called allowed_to_remove_category we must first check if the user is active, since that means that it isn't a flask_login proxy.&#10;* Adding divs and classes to layout.html&#10;* Also in main.html, aswell as some moving around.&#10;* We must first check if the user is allowed to view that other users collections.&#10;" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1240,11 +1247,6 @@
         <state line="162" column="73" selection-start="11174" selection-end="11174" vertical-scroll-proportion="-7.8461537" vertical-offset="2550" max-vertical-offset="20485" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/pydoc.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="48" selection-start="5487" selection-end="5487" vertical-scroll-proportion="0.44864866" vertical-offset="1094" max-vertical-offset="1649" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/models.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="12750" />
@@ -1292,33 +1294,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="25" selection-start="1362" selection-end="1362" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1156">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="277" column="30" selection-start="10785" selection-end="10785" vertical-scroll-proportion="0.7453626" vertical-offset="2448" max-vertical-offset="4420">
-          <folding>
-            <element signature="e#1589#5333#0" expanded="false" />
-            <element signature="e#4920#5333#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="42" selection-start="663" selection-end="663" vertical-scroll-proportion="-8.5" vertical-offset="102" max-vertical-offset="1020">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/category.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="32" selection-start="733" selection-end="733" vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="561">
+        <state line="18" column="32" selection-start="741" selection-end="741" vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="561">
           <folding />
         </state>
       </provider>
@@ -1337,34 +1315,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="55" selection-start="973" selection-end="973" vertical-scroll-proportion="-13.076923" vertical-offset="0" max-vertical-offset="493">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/model/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="277" column="30" selection-start="10785" selection-end="10785" vertical-scroll-proportion="0.0" vertical-offset="2448" max-vertical-offset="4420">
+          <folding>
+            <element signature="e#1589#5333#0" expanded="false" />
+            <element signature="e#4920#5333#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="43" selection-start="2825" selection-end="2825" vertical-scroll-proportion="-17.23077" vertical-offset="657" max-vertical-offset="1751">
+        <state line="49" column="2" selection-start="2127" selection-end="2127" vertical-scroll-proportion="-6.1153846" vertical-offset="674" max-vertical-offset="1768">
           <folding>
-            <element signature="e#2547#2578#0" expanded="true" />
-            <element signature="e#3096#3127#0" expanded="true" />
-            <element signature="e#3438#3507#0" expanded="true" />
+            <element signature="e#2555#2586#0" expanded="true" />
+            <element signature="e#3100#3131#0" expanded="true" />
+            <element signature="e#3442#3511#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/model/pydoc.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="48" selection-start="5487" selection-end="5487" vertical-scroll-proportion="-10.538462" vertical-offset="1069" max-vertical-offset="1649">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="10" selection-start="880" selection-end="880" vertical-scroll-proportion="-13.730769" vertical-offset="0" max-vertical-offset="476">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/static/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="12" selection-start="1294" selection-end="1294" vertical-scroll-proportion="0.0" vertical-offset="1073" max-vertical-offset="1904">
+        <state line="82" column="15" selection-start="1025" selection-end="1025" vertical-scroll-proportion="0.0" vertical-offset="954" max-vertical-offset="2057">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/layout.html">
+    <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="24" selection-start="1211" selection-end="1211" vertical-scroll-proportion="-19.538462" vertical-offset="36" max-vertical-offset="680">
-          <folding />
+        <state line="45" column="34" selection-start="1481" selection-end="1481" vertical-scroll-proportion="0.0" vertical-offset="427" max-vertical-offset="1190">
+          <folding>
+            <marker date="1399892874253" expanded="true" signature="1372:1481" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="457" column="86" selection-start="16714" selection-end="16741" vertical-scroll-proportion="-12.5" vertical-offset="6509" max-vertical-offset="11866">
+        <state line="457" column="140" selection-start="16795" selection-end="16795" vertical-scroll-proportion="0.0" vertical-offset="6483" max-vertical-offset="11866">
           <folding>
             <element signature="e#0#16#0" expanded="true" />
             <element signature="e#5360#5555#0" expanded="false" />
@@ -1374,17 +1385,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/user.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="55" selection-start="973" selection-end="973" vertical-scroll-proportion="-13.076923" vertical-offset="0" max-vertical-offset="493">
+        <state line="2" column="4" selection-start="51" selection-end="139" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="425">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/user.html">
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="12" selection-start="563" selection-end="563" vertical-scroll-proportion="0.41975307" vertical-offset="0" max-vertical-offset="567">
-          <folding />
+        <state line="20" column="15" selection-start="860" selection-end="860" vertical-scroll-proportion="0.5996473" vertical-offset="0" max-vertical-offset="1326">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

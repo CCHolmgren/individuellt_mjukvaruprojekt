@@ -69,10 +69,18 @@ h2 {
     padding: 0.5em;
 }
 
-.categories {
+.toleftside {
     position: absolute;
     top: 100px;
     left: 0;
+}
+
+.categories {
+}
+
+.main {
+    margin-left: 216px;
+    float: left;
 }
 
 .collections {

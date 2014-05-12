@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{%- from "_formhelpers.html" import render_post, render_collection_dense with context %}
 <html>
 <head>
     <title>{{ title }}</title>
@@ -30,6 +31,43 @@
         {%- endif %}
     {%- endwith %}
 </div>
-{%- block body %}{%- endblock %}
+<div class="toleftside">
+    <div>
+        {% if g.user.collections %}
+            All your collections:
+            {% for collection in g.user.collections.all() %}
+                {{ render_collection_dense(collection) }}
+            {% endfor %}
+        {% else %}
+            You haven't got any collections
+        {% endif %}
+    </div>
+    <div>
+        All users:
+        {% for user in g.users %}
+            <div>{{ user.username }}</div>
+        {% endfor %}
+    </div>
+    <div class="categories">
+        <p>Categories:</p>
+        {% for category in g.categories %}
+            <div>
+                <a href={{ url_for('CategoryView:get', categoryname=category.categoryname) }}>{{ category.categoryname }}</a>
+                {% if category.moderators.all() %}
+                    <div>
+                        <small>Moderators:
+                            {% for moderator in category.moderators.all() %}
+                                <a href={{ url_for('UserView:get',username=moderator.username) }}>{{ moderator.username }}</a>
+                            {% endfor %}
+                        </small>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="main">
+    {%- block body %}{%- endblock %}
+</div>
 </body>
 </html>
