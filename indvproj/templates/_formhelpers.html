@@ -70,15 +70,27 @@
         <p>{{ moderator.username }}</p>
     {% endfor %}
 {% endmacro %}
-{% macro render_comment(comment) %}
-    <div>
-        <div>{{ comment }}</div>
-        {{ render_childcomments(comment) }}
+{% macro render_comment(comment,postid) %}
+    <div style="border:1px solid black;">
+        <div>
+            <div>{{ comment.content|safe }}</div>
+            {{ comment }}
+            <a href={{ url_for('PostView:comment_on',postid=postid,commentid=comment.commentid) }}>Reply</a>
+        </div>
+        <div>
+            {% for comment in comment.children recursive %}
+                <div style="margin-left:{{ loop.depth*20 }}px; border: 1px solid #000000;">
+                    <div>{{ comment.content|safe }}</div>
+                    {{ comment }}
+                    <a href={{ url_for('PostView:comment_on',postid=postid,commentid=comment.commentid) }}>Reply</a>
+                </div>
+                {% if comment.children %}
+                    <div>{{ loop(comment.children) }}</div>
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
 {% endmacro %}
-{% macro render_childcomments(parent_comment) %}
-    {% for comment in parent_comment.children recursive %}
-        <div style="margin-left:{{ loop.depth*20 }}px">{{ comment }}</div>
-        <div>{{ loop(comment.children) }}</div>
-    {% endfor %}
+{% macro render_childcomments(parent_comment, postid) %}
+
 {% endmacro %}

@@ -18,8 +18,7 @@
             <input type="submit" value="Submit comment">
         </form>
         {% for comment in post.comments.all() %}
-            <div>{{ render_comment(comment) }}
-            </div>
+            <div>{{ render_comment(comment, post.postid) }}</div>
         {% endfor %}
     {% endif %}
 {% endblock %}

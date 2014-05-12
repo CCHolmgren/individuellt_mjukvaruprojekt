@@ -4,15 +4,10 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="I think this solves the problems with the comemnts&#10;It isn't possible to add childcomments yet, but the models supports it.&#10;* Comments fixed?&#10;* Added stylesheet.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SQLAlchemy_problem_with_comment.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Document/Sprint Backlog.ods" afterPath="$PROJECT_DIR$/Document/Sprint Backlog.ods" />
+    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Now it actually renders the childcomments.&#10;* Updated Sprint backlog.&#10;* Changed the repr of Comment to display the amount of childcomments.&#10;* It's really easy to add children to the comments, just do an append of a Comment object, and then commit it to the database since we are always creating a new comment.&#10;* Macros for displaying comments.&#10;* Renders the comments in post.html.&#10;* Removed unnecessary debugging prints from before_request.&#10;* Added a file with the solution that helped me with the nested comments problem.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" afterPath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/models.py" afterPath="$PROJECT_DIR$/indvproj/model/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/post.html" afterPath="$PROJECT_DIR$/indvproj/templates/post.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/yourapplication.py" afterPath="$PROJECT_DIR$/indvproj/yourapplication.py" />
     </list>
     <ignored path="individuellt_mjukvaruprojekt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,32 +39,33 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="335" column="43" selection-start="11555" selection-end="11555" vertical-scroll-proportion="0.0" vertical-offset="4540" max-vertical-offset="11849">
+            <state line="349" column="18" selection-start="12145" selection-end="12155" vertical-scroll-proportion="0.0" vertical-offset="4557" max-vertical-offset="11866">
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-                <element signature="e#5364#5559#0" expanded="false" />
-                <element signature="e#5594#7330#0" expanded="false" />
-                <element signature="e#7366#7568#0" expanded="false" />
+                <element signature="e#5360#5555#0" expanded="false" />
+                <element signature="e#5590#7326#0" expanded="false" />
+                <element signature="e#7362#7564#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_formhelpers.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_formhelpers.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="40" selection-start="3020" selection-end="3020" vertical-scroll-proportion="-14.615385" vertical-offset="895" max-vertical-offset="1513">
+            <state line="75" column="50" selection-start="3050" selection-end="3050" vertical-scroll-proportion="0.31040564" vertical-offset="1099" max-vertical-offset="1683">
               <folding>
-                <element signature="e#3171#3212#0" expanded="true" />
+                <element signature="e#2953#2984#0" expanded="true" />
+                <element signature="e#3282#3351#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="post.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="post.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="46" selection-start="964" selection-end="964" vertical-scroll-proportion="0.5996473" vertical-offset="0" max-vertical-offset="567">
+            <state line="20" column="55" selection-start="973" selection-end="973" vertical-scroll-proportion="-13.076923" vertical-offset="0" max-vertical-offset="493">
               <folding />
             </state>
           </provider>
@@ -201,8 +197,8 @@
         <option value="$PROJECT_DIR$/indvproj/model/views.py" />
         <option value="$PROJECT_DIR$/indvproj/model/models.py" />
         <option value="$PROJECT_DIR$/indvproj/yourapplication.py" />
-        <option value="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/post.html" />
+        <option value="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
       </list>
     </option>
   </component>
@@ -301,24 +297,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="individuellt_mjukvaruprojekt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="individuellt_mjukvaruprojekt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="indvproj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -900,7 +878,11 @@
       <created>1399845311403</created>
       <updated>1399845311403</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Now it actually renders the childcomments.&#10;* Updated Sprint backlog.&#10;* Changed the repr of Comment to display the amount of childcomments.&#10;* It's really easy to add children to the comments, just do an append of a Comment object, and then commit it to the database since we are always creating a new comment.&#10;* Macros for displaying comments.&#10;* Renders the comments in post.html.&#10;* Removed unnecessary debugging prints from before_request.&#10;* Added a file with the solution that helped me with the nested comments problem.">
+      <created>1399852730114</created>
+      <updated>1399852730114</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -925,7 +907,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3174946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -937,7 +919,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39956802" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3347732" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3315335" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3315335" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -961,7 +943,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Updated Sprint Backlog.&#10;changed the categoryname to use the lowercase version. This way we do not need to check it later, and the url will always use the lowercase anyway.&#10;Added the categorytitle to the create_category template." />
     <MESSAGE value="Adding categorytitle to the form.&#10;add_moderator shell." />
     <MESSAGE value="Changed some things, idk what." />
     <MESSAGE value="Adding posts to collections is now possible, but I want to be able to do it some other way. Lets see how that owkrs out. At this moment it's not possible to remove the posts, but that should be solved some time." />
@@ -986,7 +967,8 @@
     <MESSAGE value="* Added the allowed_to_post_in_category and allowed_to_remove_category methods to the user object so that we can use them in the templates. This allows us to do things such as check in category.html if the user is allowed to remove the category and as such render the button or not.&#10;* Added a allowed_to_post_in_category method for those categories with moderator or administrator only posts, such as blog and about.&#10;* Added some more Statuses to createanddrop file incase I want to truncate the database for some reason.&#10;* Registering the AboutView, for the about page." />
     <MESSAGE value="* allowed_to_add_moderators and allowed_to_remove_post as well as is_admin is now functions of User so that we can use them instead of the allowed_to_remove_post(user, post) functions.&#10;* Working on adding comments to comments, but at this moment it's quite hard. Haven't really wrapped my head around how the SQLAlchemy ORM works with One to many relationships that are nested.&#10;* Implemented the functionality to post comments to comments, but then commented it since it didn't work as it should.&#10;* Changed some allowed_to_* functions to their model counterparts.&#10;* Handles more cases of users not allowed to do stuff." />
     <MESSAGE value="I think this solves the problems with the comemnts&#10;It isn't possible to add childcomments yet, but the models supports it.&#10;* Comments fixed?&#10;* Added stylesheet." />
-    <option name="LAST_COMMIT_MESSAGE" value="I think this solves the problems with the comemnts&#10;It isn't possible to add childcomments yet, but the models supports it.&#10;* Comments fixed?&#10;* Added stylesheet." />
+    <MESSAGE value="Now it actually renders the childcomments.&#10;* Updated Sprint backlog.&#10;* Changed the repr of Comment to display the amount of childcomments.&#10;* It's really easy to add children to the comments, just do an append of a Comment object, and then commit it to the database since we are always creating a new comment.&#10;* Macros for displaying comments.&#10;* Renders the comments in post.html.&#10;* Removed unnecessary debugging prints from before_request.&#10;* Added a file with the solution that helped me with the nested comments problem." />
+    <option name="LAST_COMMIT_MESSAGE" value="Now it actually renders the childcomments.&#10;* Updated Sprint backlog.&#10;* Changed the repr of Comment to display the amount of childcomments.&#10;* It's really easy to add children to the comments, just do an append of a Comment object, and then commit it to the database since we are always creating a new comment.&#10;* Macros for displaying comments.&#10;* Renders the comments in post.html.&#10;* Removed unnecessary debugging prints from before_request.&#10;* Added a file with the solution that helped me with the nested comments problem." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1345,18 +1327,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="335" column="43" selection-start="11555" selection-end="11555" vertical-scroll-proportion="0.0" vertical-offset="4540" max-vertical-offset="11849">
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-            <element signature="e#5364#5559#0" expanded="false" />
-            <element signature="e#5594#7330#0" expanded="false" />
-            <element signature="e#7366#7568#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="42" column="25" selection-start="1362" selection-end="1362" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1156">
@@ -1364,19 +1334,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="40" selection-start="3020" selection-end="3020" vertical-scroll-proportion="-14.615385" vertical-offset="895" max-vertical-offset="1513">
+        <state line="20" column="55" selection-start="973" selection-end="973" vertical-scroll-proportion="-13.076923" vertical-offset="0" max-vertical-offset="493">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="349" column="18" selection-start="12145" selection-end="12155" vertical-scroll-proportion="0.0" vertical-offset="4557" max-vertical-offset="11866">
           <folding>
-            <element signature="e#3171#3212#0" expanded="true" />
+            <element signature="e#0#16#0" expanded="true" />
+            <element signature="e#5360#5555#0" expanded="false" />
+            <element signature="e#5590#7326#0" expanded="false" />
+            <element signature="e#7362#7564#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="46" selection-start="964" selection-end="964" vertical-scroll-proportion="0.5996473" vertical-offset="0" max-vertical-offset="567">
-          <folding />
+        <state line="75" column="50" selection-start="3050" selection-end="3050" vertical-scroll-proportion="0.31040564" vertical-offset="1099" max-vertical-offset="1683">
+          <folding>
+            <element signature="e#2953#2984#0" expanded="true" />
+            <element signature="e#3282#3351#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
