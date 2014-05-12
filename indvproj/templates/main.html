@@ -10,7 +10,9 @@
 
             <div>
                 Moderator in:
-                {{ g.user.moderator }}
+                {% for moderator in g.user.moderator %}
+                    <a href={{ url_for('CategoryView:get',categoryname=moderator.categoryname) }}>{{ moderator.categorytitle }}</a>
+                {% endfor %}
             </div>
             <p>Your userpage:
                 <a href={{ url_for('UserView:get', username=g.user.username) }}>{{ g.user.username }}</a>

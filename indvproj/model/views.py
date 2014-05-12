@@ -324,6 +324,27 @@ class PostView(FlaskView):
             flash("That post does not exist.")
             return redirect(url_for("MainView:index"))
 
+    @route('/<postid>/<commentid>/delete', methods=['POST'])
+    @login_required
+    def delete_comment(self, postid, commentid):
+        try:
+            post = Post.query.get(postid)
+            comment = Comment.query.get(commentid)
+            if current_user.allowed_to_remove_comment(comment, post):
+                db_session.delete(comment)
+                db_session.commit()
+                flash('The comment was deleted.')
+                return redirect(url_for('PostView:get', postid=postid))
+            else:
+                flash(
+                    "You weren't allowed to remove this comment, maybe you aren't the comments creator,"
+                    "or you aren't a moderator.")
+                return redirect(url_for('PostView:get', postid=postid))
+        except Exception as e:
+            print(e)
+            db_session.rollback()
+            return redirect(url_for('PostView:get', postid=postid))
+
     @route('/<postid>/<commentid>/comment',methods=['POST'])
     @login_required
     def comment_on_comment(self, postid, commentid):
@@ -633,7 +654,6 @@ class CategoryView(FlaskView):
             print(e)
             db_session.rollback()
             return redirect(url_for('MainView:index'))
-
 
 class CollectionView(FlaskView):
     """

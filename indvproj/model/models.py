@@ -135,6 +135,15 @@ class User(db.Model):
         else:
             return False
 
+    def allowed_to_remove_comment(self, comment, post):
+        if self.userid == comment.userid:
+            return True
+        elif self.is_admin():
+            return True
+        elif self in post.category.moderators:
+            return True
+        return False
+
 
 class Status(db.Model):
     """
