@@ -47,7 +47,7 @@ class DeletePostForm(Form):
 
 
 class AddToCollectionForm(Form):
-    link = TextField("Link", [validators.URL()], default="Link")
+    link = TextField("Link", [validators.URL(require_tld=False)], default="Link")
     submit = SubmitField("Add link to collection")
 
 

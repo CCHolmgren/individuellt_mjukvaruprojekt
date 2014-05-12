@@ -2,7 +2,7 @@ Changes:
 X (Works as it should now) Change so you can login using lowercase and uppercase, no matter the case actually
 Make it more descriptive around adding links to collections, maybe even a description of what a collection is at the creation page and so on
 Better errormessage on add link collection page, something other than invalid url
-Make it actually possible to post links to a collection
+X (It is now possible to add links that link to different sites, and also to localhost, but that should change, maybe, maybe not) Make it actually possible to post links to a collection
 Confirmation box on removal of stuff
 Formfield for posting comments
 X (Plans laid on ice for now. Will look to implement this later, but at this moment it isn't worth the time since there's a lot of things to do.) Change comments from what it is now to a parent children situation where parent is a foreign key and children is a relationship with a table comment_has_comment with columns parentcommentid, comment id

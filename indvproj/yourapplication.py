@@ -13,7 +13,7 @@ if __name__ == '__main__':
     from flask_login import current_user
     from loginmanager import login_manager
     from views import MainView, RegisterView, PostView, LoginView, UserView, CollectionView, LogoutView, CategoryView, \
-        BlogView, AboutView
+        BlogView, AboutView, ModerationView
     from flask_wtf.csrf import CsrfProtect
     #print("Encrypting 'what' and returns the sha512 hash with the salt generated",encrypt("what"))
     #app.debug = True
@@ -35,9 +35,7 @@ if __name__ == '__main__':
     CategoryView.register(app)
     BlogView.register(app)
     AboutView.register(app)
-
-    print('Initializing db')
-
+    ModerationView.register(app)
 
     @app.before_request
     def before_request():

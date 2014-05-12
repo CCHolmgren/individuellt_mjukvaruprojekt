@@ -4,6 +4,16 @@
     <h1>Post - {{ post.title or "There isn't anything here" }}</h1>
     {% if post %}
         {% if allowed_to_remove %}
+            <form method="post" action="/collection/test">
+                {{ form.csrf_token() }}
+                <select name="collectionid">
+                    {% for collection in g.user.collections %}
+                        <option value={{ collection.collectionid }}>{{ collection.collectionid }}</option>
+                    {% endfor %}
+                </select>
+                <input type="hidden" value={{ post.postid }} name="postid">
+                <input type=submit value=Submit>
+            </form>
             {{ render_post(post) }}
             <form method=post action=/p/{{ post.postid }}/delete>
                 {{ render_field(form.submit) }}

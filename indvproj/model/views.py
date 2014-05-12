@@ -6,7 +6,7 @@ from models import User, Post, Collection, Category, Comment, Link
 print('Importing db_session in model.views.py')
 from indvproj import db_session
 from flask_login import login_required, login_user, current_user, logout_user
-from flask import render_template, redirect, flash, url_for, g
+from flask import render_template, redirect, flash, url_for, g, request
 from Forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, CategoryForm, DeletePostForm, \
     AddToCollectionForm, AddModeratorForm, CommentForm
 from markdown import markdown
@@ -473,7 +473,9 @@ class UserView(FlaskView):
         :param username: The username of the user to lookup
         :return: Either a rendered template of user.html or user_missing.html if there isn't a user with that username
         """
-        user = User.query.filter_by(username=username).first()
+        from sqlalchemy import func
+
+        user = User.query.filter(func.lower(User.username) == func.lower(username)).first()
         if user is not None:
             #print(user.collections.all())
             return render_template('user.html', user=user,
@@ -703,7 +705,8 @@ class CollectionView(FlaskView):
         :return:
         """
         addform = AddToCollectionForm()
-        if addform.validate_on_submit() and is_url(addform.link.data):
+        if addform.validate_on_submit():
+            print("Inside add_link if-statement")
             #oldpost = Link.query.get(addform.link.data)
             link = Link(addform.link.data)
             print(db_session)
@@ -720,7 +723,7 @@ class CollectionView(FlaskView):
         return redirect(url_for('CollectionView:get', collectionid=collectionid))
 
     @login_required
-    def get(self, collectionid, **kwargs):
+    def get(self, collectionid):
         """
         Gets the collection with the given id, if the user is allowed to view that collection,
         i.e. if he created it
@@ -732,8 +735,11 @@ class CollectionView(FlaskView):
         print(dir(collection))
         print(collection.links.all())
         deleteform = DeletePostForm()
-        addform = AddToCollectionForm()
-
+        if request.args.get('link') != None:
+            addform = AddToCollectionForm(link=request.args.get('link'))
+        else:
+            addform = AddToCollectionForm()
+        print("Does it crash here?")
         if collection:
             print(collection)
             print(collection.userid)
@@ -767,3 +773,18 @@ class CollectionView(FlaskView):
                 print(repr(e), e)
                 redirect(url_for("CollectionView:new_collection"))
         return render_template('create_collection.html', form=form, title="Create a new collection")
+
+    @route('/test', methods=['POST'])
+    def test_function(self):
+        collection = Collection.query.get(int(request.form['collectionid']))
+        post = Post.query.get(int(request.form['postid']))
+        collection.links.append(Link(url_for('PostView:get', postid=post.postid, _external=True)))
+        db_session.commit()
+        return redirect(url_for('CollectionView:get', collectionid=collection.collectionid))
+
+
+class ModerationView(FlaskView):
+    route_base = '/mod'
+
+    def index(self):
+        return "This is the moderation view, here you will take care of all your moderation needs."
