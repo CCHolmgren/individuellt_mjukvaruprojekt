@@ -2,7 +2,6 @@
 {% from "_formhelpers.html" import render_post, render_collection_dense with context %}
 {% block body %}
     <div>
-        <h1>Overview</h1>
         {% if g.user.is_active() %}
             <p>Do you want to create a new <a href={{ url_for('CollectionView:new_collection') }}>collection</a>?</p>
             <p>Or a new <a href={{ url_for('PostView:new_post') }}>post</a>?</p>

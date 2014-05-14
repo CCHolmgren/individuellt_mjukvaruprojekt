@@ -6,7 +6,7 @@ from models import User, Post, Collection, Category, Comment, Link
 print('Importing db_session in model.views.py')
 from indvproj import db_session
 from flask_login import login_required, login_user, current_user, logout_user
-from flask import render_template, redirect, flash, url_for, g, request
+from flask import render_template, redirect, flash, url_for, g, request, abort
 from Forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, CategoryForm, DeletePostForm, \
     AddToCollectionForm, AddModeratorForm, CommentForm
 from markdown import markdown
@@ -532,21 +532,22 @@ class CategoryView(FlaskView):
 
         form = DeletePostForm()
         commentform = CommentForm()
-        post = Post.query.get(postid)
-        print(post.categoryid)
-        category = Category.query.filter(func.lower(Category.categoryname) == func.lower(categoryname)).first()
-        print(category)
-        print(dir(current_user))
-        if post.categoryid == category.categoryid:
+        post = Post.query.filter_by(postid=postid).first_or_404()
+        #print(post.categoryid)
+        category = Category.query.filter(func.lower(Category.categoryname) == func.lower(categoryname)).first_or_404()
+        #print(category)
+        #print(dir(current_user))
+        #if post.categoryid == category.categoryid:
+        if post in category.posts:
             if current_user.is_active() and current_user.allowed_to_remove_post(post):
                 return render_template('post.html', post=Post.query.get(postid), form=form, allowed_to_remove=True,
                                        commentform=commentform)
             return render_template('post.html', post=Post.query.get(postid), form=form, allowed_to_remove=False,
                                    commentform=commentform)
-
-        print(Category.query.get(post.categoryid).categoryname, postid)
-        return redirect(url_for('CategoryView:view_post', categoryname=Category.query.get(post.categoryid).categoryname,
-                                postid=postid))
+        return abort(404)
+        #print(Category.query.get(post.categoryid).categoryname, postid)
+        #return redirect(url_for('CategoryView:view_post', categoryname=Category.query.get(post.categoryid).categoryname,
+        #                       postid=postid))
 
     @route('<categoryname>/p/new', methods=['GET', 'POST'])
     @login_required
@@ -706,16 +707,22 @@ class CollectionView(FlaskView):
         """
         addform = AddToCollectionForm()
         if addform.validate_on_submit():
-            print("Inside add_link if-statement")
-            #oldpost = Link.query.get(addform.link.data)
-            link = Link(addform.link.data)
-            print(db_session)
+            #Check to see if there exists a link with that url already
+            potentiallink = Link.query.filter_by(link=addform.link.data).first()
 
-            #print(collection_has_post)
-            db_session.add(link)
-            db_session.commit()
-            collection = Collection.query.get(collectionid)
-            collection.links.append(link)
+            #If that's the case, just use that link
+            if potentiallink:
+                collection = Collection.query.get(collectionid)
+                collection.links.append(potentiallink)
+            #Otherwise we just add a new link
+            else:
+                link = Link(addform.link.data)
+
+                db_session.add(link)
+                db_session.commit()
+                collection = Collection.query.get(collectionid)
+                collection.links.append(link)
+
             db_session.commit()
             print(collection.links.all())
             return redirect(url_for('CollectionView:get', collectionid=collectionid))

@@ -10,11 +10,14 @@ import datetime
                                db.Column('pid', db.Integer, db.ForeignKey('post.postid'), primary_key=True)
 )"""
 collection_has_link = db.Table('collection_has_link',
-                               db.Column('cid', db.Integer, db.ForeignKey('collection.collectionid'), primary_key=True),
+                               db.Column('cid', db.Integer,
+                                         db.ForeignKey('collection.collectionid', ondelete="CASCADE"),
+                                         primary_key=True),
                                db.Column('linkid', db.Integer, db.ForeignKey('link.linkid'), primary_key=True)
 )
 category_has_moderator = db.Table('category_has_moderator',
-                                  db.Column('categoryid', db.Integer, db.ForeignKey('category.categoryid'),
+                                  db.Column('categoryid', db.Integer,
+                                            db.ForeignKey('category.categoryid', ondelete="CASCADE"),
                                             primary_key=True),
                                   db.Column('userid', db.Integer, db.ForeignKey('user.userid'), primary_key=True)
 )
@@ -255,14 +258,23 @@ class Collection(db.Model):
     collectionid = db.Column(db.Integer, primary_key=True)
     userid = db.Column(db.Integer, db.ForeignKey('user.userid'), nullable=False)
     title = db.Column(db.String(250), nullable=False)
+    random = db.Column(db.BigInteger)
 
     def __init__(self, userid, title):
+        import random
+
         self.userid = userid
         self.title = title
+        #Makes sure that we get a random number from 1000000000000000000 to max postgresql bigint
+        #This will then be used to verify that the collection will not collide with some other collection
+        #That way we can use the random part to verify that that user is allowed to view the collection
+        #Safety through obstruction
+        #Works in this case, I hope
+        self.random = random.randint(1000000000000000000, 9223372036854775807)
 
     def __repr__(self):
-        return '<Collection {} created by {}, collectionid: {}>'.format(self.title, self.user.username,
-                                                                        self.collectionid)
+        return '<Collection {} created by {}, collectionid: {}, random: {}>'.format(self.title, self.user.username,
+                                                                                    self.collectionid, self.random)
 
 
 class Post(db.Model):

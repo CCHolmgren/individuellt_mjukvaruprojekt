@@ -1,19 +1,25 @@
 {% extends "layout.html" %}
 {% block body %}
     {% from '_formhelpers.html' import render_post_with_delete, render_post_without_delete, render_field, render_post, render_comment, render_childcomments with context %}
-    <h1>Post - {{ post.title or "There isn't anything here" }}</h1>
+    <h1>{{ post.title or "There isn't anything here" }}</h1>
     {% if post %}
-        {% if allowed_to_remove %}
+        {% if g.user.is_active() and g.user.collections.all() %}
+            <span class="small">Choose here in what collection to save this post in.</span>
             <form method="post" action="/collection/test">
                 {{ form.csrf_token() }}
                 <select name="collectionid">
                     {% for collection in g.user.collections %}
-                        <option value={{ collection.collectionid }}>{{ collection.collectionid }}</option>
+                        <option value={{ collection.collectionid }}>{{ collection.title }}</option>
                     {% endfor %}
                 </select>
                 <input type="hidden" value={{ post.postid }} name="postid">
                 <input type=submit value=Submit>
             </form>
+        {% elif g.user.is_active() %}
+            <span class="small">You haven't got any collections yet. Maybe you want to <a
+                    href={{ url_for('CollectionView:new_collection') }}>create</a> one?</span>
+        {% endif %}
+        {% if allowed_to_remove %}
             {{ render_post(post) }}
             <form method=post action=/p/{{ post.postid }}/delete>
                 {{ render_field(form.submit) }}

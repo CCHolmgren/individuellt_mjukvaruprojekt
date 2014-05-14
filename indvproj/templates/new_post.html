@@ -12,12 +12,12 @@
     <form method=post action=/p/new/>
     <dl>
             {{ render_field(form.title) }}
-            <small>The title of the post.</small>
-            {{ render_field(form.categoryname) }}
-            <small>The name of the category that the post will get posted to.</small>
-            {{ render_field(form.content) }}
-            <small>Content allows for markdown to be used.</small>
-        </dl>
+        <span class="small">The title of the post.</span>
+        {{ render_field(form.categoryname) }}
+        <span class="small">The name of the category that the post will get posted to.</span>
+        {{ render_field(form.content) }}
+        <span class="small">Content allows for markdown to be used.</span>
+    </dl>
         <p><input type=submit value=Post></p>
         {{ form.csrf_token() }}
     </form>

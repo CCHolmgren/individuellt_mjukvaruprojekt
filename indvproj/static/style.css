@@ -114,3 +114,12 @@ h2 {
 .post-title {
     font-size: 20px;
 }
+
+.signinbar {
+    float: right;
+}
+
+.small {
+    font-size: 0.7em;
+    color: #999999;
+}

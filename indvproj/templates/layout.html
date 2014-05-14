@@ -9,16 +9,16 @@
 <body>
 <div class="head">
     <a href={{ url_for('MainView:index') }}>Home</a>
-    {% if not g.user.is_active() %}
-        <div style="float:right"><p>Do you want to <a href={{ url_for('RegisterView:new_user') }}> register?</a></p>
 
-            <p>Or do you want to <a href={{ url_for('LoginView:index') }}>Login</a></p></div>
-    {% else %}
-        <div style="float:right">
+    <div class="signinbar">
+        {% if not g.user.is_active() %}
+            <p>Do you want to <a href={{ url_for('RegisterView:new_user') }}> register</a> or <a
+                    href={{ url_for('LoginView:index') }}>login</a>?</p>
+        {% else %}
             <a href={{ url_for('LogoutView:logout') }}>Log out</a>
             <a href={{ url_for('UserView:get',username= g.user.username) }}>{{ g.user.username }}</a>
-        </div>
     {% endif %}
+    </div>
 </div>
 <div class="messages">
     {%- with messages = get_flashed_messages() %}
@@ -33,13 +33,15 @@
 </div>
 <div class="toleftside">
     <div>
-        {% if g.user.collections %}
+        {% if g.user.is_active() %}
+            {% if g.user.collections %}
             All your collections:
             {% for collection in g.user.collections.all() %}
                 {{ render_collection_dense(collection) }}
             {% endfor %}
         {% else %}
             You haven't got any collections
+        {% endif %}
         {% endif %}
     </div>
     <div>

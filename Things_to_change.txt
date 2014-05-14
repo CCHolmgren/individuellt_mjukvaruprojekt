@@ -15,3 +15,14 @@ Category id already exists error? Categoryid 3 exists, but why doesn't it get in
 x (Is now a link, but should maybe change to something better, or better text?) Add quicklinks to creation of posts to a category.
 X (Only possible by being an admin, but it's possible. Should remove the button if you aren't an admin though) Removal of categories.
 X (A default will not be chosen, that was a bad idea.) Change so that if no category is chosen a default one will be chosen for you, preferably something like /c/index or /c/default
+
+
+
+
+Sharing collections
+This will get done with the collectionid and a random integer which combined, converted to strings I guess and then encoded in base64
+This will give you the route such as /collection/share/[base64]
+[base64] will then get inputted into 
+maybe check http://stackoverflow.com/questions/7194506/unique-unpredictable-12-digit-integer-id/7194533#7194533
+It seems that to get correct results from sqlalchemy you must use a double filter, such as Collection.query.filter(Collection.collectionid == 1).filter(Collection.userid == 1)
+But not if you want to do a combined, such as Collection.query.filter(Collection.collectionid + Collection.userid == 2) where that would work just fine

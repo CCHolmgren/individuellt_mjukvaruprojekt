@@ -20,11 +20,10 @@
     <div class="post">
         <div class="post-title"><a href={{ url_for('PostView:get', postid=post.postid) }}>{{ post.title }}</a></div>
         <div class="post-content">{{ post.content|safe }}</div>
-        <footer>
-            Postid: {{ post.postid }} | Posted by: <a
+        <footer>Postid: {{ post.postid }} | Posted by: <a
                 href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a> | Amount of
             comments: {{ post.comments.all()|length }}
-            <small>Currently displays incorrect data.</small>
+            <span class="small">Currently&nbsp;displays&nbsp;incorrect&nbsp;data.</span>
         </footer>
     </div>
 {% endmacro %}
