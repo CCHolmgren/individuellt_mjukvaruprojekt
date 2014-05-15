@@ -25,6 +25,17 @@ def getsalt(length):
     return os.urandom(length)
 
 
+def decode_base64_with_split(base64string):
+    """
+    Takes a base64 stirng, and decodes it. It is then split with '-' so that we get the postid and random value
+    :param base64string:
+    :return: Returns postid, random
+    """
+    import base64
+
+    return base64.b64decode(bytes(base64string, 'ascii')).decode('utf-8').split('-')
+
+
 def escape_text_and_create_markdown(unescaped_text, safe_mode="escape"):
     """
     Takes unsafe input and escapes it and converts it to safe html using markdown
@@ -249,6 +260,7 @@ class PostView(FlaskView):
     and also creation of new posts
     """
     # TODO: Add so that we can see what user did what, such as removal of the post and edited and so on
+    # I.e. logging
     route_base = '/p'
 
     def get(self, postid):
@@ -258,18 +270,18 @@ class PostView(FlaskView):
         :param postid: The postid of the post to view
         :return: Either a redirect to CategoryView:view_post if the post exists, or a rendered template of post.html
         """
-        # TODO: Change this to a missing_post template instead
         post = Post.query.get(postid)
 
         #print(dir(Comment.query.filter(Comment.commentid in Post.comments)))
 
         form = DeletePostForm()
-        print(form)
+        #print(form)
 
         if post:
             return redirect(url_for('CategoryView:view_post', postid=post.postid,
                                     categoryname=Category.query.get(post.categoryid).categoryname))
-        return render_template('post.html', post=Post.query.get(postid), form=form)
+        return abort(404)
+        #return render_template('post.html', post=Post.query.get(postid), form=form)
 
     # TODO: Add more methods for deletion that isn't permanent, set a status or something
     @route('/<postid>/delete', methods=['POST'])
@@ -289,7 +301,8 @@ class PostView(FlaskView):
             if allowed_to_remove_post(current_user, post):
                 db_session.delete(post)
                 db_session.commit()
-                return redirect(url_for('MainView:index'))
+                flash('The post was deleted.')
+                return redirect(url_for('CategoryView:get', categoryname=category.categoryname))
             else:
                 flash(
                     "You weren't allowed to remove this post, maybe you aren't the posts creator,"
@@ -391,20 +404,23 @@ class PostView(FlaskView):
         print(form.categoryname.data)
         if form.validate_on_submit():  # or linkform.validate_on_submit():
             category = Category.query.filter_by(categoryname=form.categoryname.data).first()
-            if category.allowed_to_post_in_category(current_user):
-                post = Post(current_user.userid, _datetime.datetime.now(),
-                            escape_text_and_create_markdown(form.content.data), 1,
-                            form.title.data, category.categoryid)
+            if category:
+                if category.allowed_to_post_in_category(current_user):
+                    post = Post(current_user.userid, _datetime.datetime.now(),
+                                escape_text_and_create_markdown(form.content.data), 1,
+                                form.title.data, category.categoryid)
 
-                print(post)
-                db_session.add(post)
-                current_user.postscreated += 1
-                db_session.commit()
-                #assert Post.query.get(post.postid) > 0
-                return redirect(
-                    url_for("CategoryView:view_post", categoryname=category.categoryname, postid=post.postid))
-            flash("You are not allowed to post in that category!")
-            return redirect(url_for('CategoryView:get', categoryname=categoryname))
+                    print(post)
+                    db_session.add(post)
+                    current_user.postscreated += 1
+                    db_session.commit()
+                    #assert Post.query.get(post.postid) > 0
+                    return redirect(
+                        url_for("CategoryView:view_post", categoryname=category.categoryname, postid=post.postid))
+                flash("You are not allowed to post in that category!")
+                return redirect(url_for('PostView:new_post'))
+            flash('The category cant be found')
+            return redirect(url_for('PostView:new_post'))
 
         return render_template('new_post.html', form=form, categoryname=categoryname)
 
@@ -431,16 +447,18 @@ class RegisterView(FlaskView):
         if form.validate_on_submit():
             try:
                 #print(*encrypt(form.password.data))
-
+                failed = False
                 potentialUser = User.query.filter_by(username=form.username.data).first()
                 print(potentialUser)
 
                 if potentialUser:
                     flash("The username already exists.")
-                    redirect(url_for("RegisterView:new_user"))
-
+                    failed = True
                 if User.query.filter_by(email=form.email.data).first():
                     flash("The email already exists.")
+                    failed = True
+
+                if (failed):
                     redirect(url_for("RegisterView:new_user"))
 
                 user = User(form.username.data, form.email.data, *encrypt(form.password.data))
@@ -738,6 +756,8 @@ class CollectionView(FlaskView):
         :param id: Collectionid to lookup
         :return:
         """
+        if not collectionid.isdigit():
+            return abort(404)
         collection = Collection.query.get(collectionid)
         print(dir(collection))
         print(collection.links.all())
@@ -752,6 +772,26 @@ class CollectionView(FlaskView):
             print(collection.userid)
             print(current_user.userid)
             if current_user.userid == collection.userid:
+                return render_template('collection.html', collection=collection, title=collection.title,
+                                       deleteform=deleteform, form=addform)
+            return render_template('not_verified_collection.html', title="You are not eligible to view this collection")
+        return render_template('not_verified_collection.html', title="You are not eligible to view this collection")
+
+    def __get(self, collectionid, allowed_to_watch):
+        collection = Collection.query.get(collectionid)
+        print(dir(collection))
+        print(collection.links.all())
+        deleteform = DeletePostForm()
+        if request.args.get('link') != None:
+            addform = AddToCollectionForm(link=request.args.get('link'))
+        else:
+            addform = AddToCollectionForm()
+        print("Does it crash here?")
+        if collection:
+            print(collection)
+            print(collection.userid)
+            print(current_user.userid)
+            if current_user.userid == collection.userid or allowed_to_watch:
                 return render_template('collection.html', collection=collection, title=collection.title,
                                        deleteform=deleteform, form=addform)
             return render_template('not_verified_collection.html', title="You are not eligible to view this collection")
@@ -788,6 +828,17 @@ class CollectionView(FlaskView):
         collection.links.append(Link(url_for('PostView:get', postid=post.postid, _external=True)))
         db_session.commit()
         return redirect(url_for('CollectionView:get', collectionid=collection.collectionid))
+
+    @route('/share/<base64string>')
+    def display_collection(self, base64string):
+        collectionid, randomvalue = decode_base64_with_split(base64string)
+        collection = Collection.query.filter_by(collectionid=collectionid, random=randomvalue).first()
+
+        if collection:
+            return self.__get(collection.collectionid, allowed_to_watch=True)
+
+        flash("You aren't allowed to watch that collection, or it isn't a real collection in the first place.")
+        return redirect(url_for('MainView:index'))
 
 
 class ModerationView(FlaskView):

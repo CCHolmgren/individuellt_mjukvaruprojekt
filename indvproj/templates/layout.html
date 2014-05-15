@@ -34,14 +34,14 @@
 <div class="toleftside">
     <div>
         {% if g.user.is_active() %}
-            {% if g.user.collections %}
-            All your collections:
-            {% for collection in g.user.collections.all() %}
-                {{ render_collection_dense(collection) }}
-            {% endfor %}
-        {% else %}
-            You haven't got any collections
-        {% endif %}
+            {% if g.user.collections.all() %}
+                All your collections:
+                {% for collection in g.user.collections.all() %}
+                    {{ render_collection_dense(collection) }}
+                {% endfor %}
+            {% else %}
+                You haven't got any collections
+            {% endif %}
         {% endif %}
     </div>
     <div>
@@ -51,13 +51,13 @@
         {% endfor %}
     </div>
     <div class="categories">
-        <p>Categories:</p>
+        <span>Categories:</span>
         {% for category in g.categories %}
             <div>
                 <a href={{ url_for('CategoryView:get', categoryname=category.categoryname) }}>{{ category.categoryname }}</a>
                 {% if category.moderators.all() %}
                     <div>
-                        <small>Moderators:
+                        <small>Mods:
                             {% for moderator in category.moderators.all() %}
                                 <a href={{ url_for('UserView:get',username=moderator.username) }}>{{ moderator.username }}</a>
                             {% endfor %}

@@ -260,6 +260,11 @@ class Collection(db.Model):
     title = db.Column(db.String(250), nullable=False)
     random = db.Column(db.BigInteger)
 
+    def get_base64(self):
+        import base64
+
+        return base64.b64encode(bytes("{}-{}".format(self.collectionid, self.random), 'ascii')).decode('utf-8')
+
     def __init__(self, userid, title):
         import random
 

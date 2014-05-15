@@ -4,6 +4,7 @@
     {% from "_formhelpers.html" import render_collection, render_field with context %}
     {{ render_collection(collection) }}
     {# Add link to collection #}
+    {{ collection.get_base64() }}
     <form method=post action=/collection/{{ collection.collectionid }}/add_link>
         {{ render_field(form.link) }}
         <input type="submit" value="Add link to collection">

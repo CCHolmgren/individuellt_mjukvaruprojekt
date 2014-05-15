@@ -3,10 +3,13 @@
 {% block body %}
     <div>
         {% if g.user.is_active() %}
-            <p>Do you want to create a new <a href={{ url_for('CollectionView:new_collection') }}>collection</a>?</p>
-            <p>Or a new <a href={{ url_for('PostView:new_post') }}>post</a>?</p>
-            <p>Create a new <a href={{ url_for('CategoryView:new_category') }}>category</a>.</p>
-
+            <div>
+                <ul>
+                    <li>New <a href={{ url_for('PostView:new_post') }}>post</a></li>
+                    <li>Create a new <a href={{ url_for('CollectionView:new_collection') }}>collection</a>?</li>
+                    <li>... a new <a href={{ url_for('CategoryView:new_category') }}>category</a>?</li>
+                </ul>
+            </div>
             <div>
                 Moderator in:
                 {% for moderator in g.user.moderator %}
