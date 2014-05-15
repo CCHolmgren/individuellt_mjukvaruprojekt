@@ -173,17 +173,19 @@ class Comment(db.Model):
     userid = db.Column(db.Integer, db.ForeignKey('user.userid'))
     postid = db.Column(db.Integer, db.ForeignKey('post.postid'), nullable=True)
     parentid = db.Column(db.Integer, db.ForeignKey(commentid))
+    statusid = db.Column(db.Integer, db.ForeignKey('status.statusid'), default=1, nullable=True)
 
     children = db.relationship('Comment', backref=db.backref('parent', remote_side=commentid))
 
     content = db.Column(db.String(2000))
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
-    def __init__(self, userid, content, postid=None, commentid=None):
+    def __init__(self, userid, content, postid=None, commentid=None, status=1):
         self.userid = userid
         self.postid = postid
         self.content = content
         self.commentid = commentid
+        self.status = status
 
     def __repr__(self):
         return '<Comment {}, commentid: {}, children: {}>'.format(self.content[:15], self.commentid, len(self.children))
@@ -298,8 +300,9 @@ class Post(db.Model):
     #collections = db.relationship('Collection', secondary=collection_has_post,
     #                              backref=db.backref('posts', lazy='dynamic'))
     categoryid = db.Column(db.Integer, db.ForeignKey('category.categoryid', ondelete="CASCADE"), nullable=False)
+    statusid = db.Column(db.Integer, db.ForeignKey('status.statusid'), default=1, nullable=True)
 
-    def __init__(self, createdby, timeposted, content, typeid, title, categoryid):
+    def __init__(self, createdby, timeposted, content, typeid, title, categoryid, statusid=1):
         self.createdby = createdby
         self.timeposted = timeposted
         self.content = content
@@ -308,6 +311,7 @@ class Post(db.Model):
         self.views = 0
         self.typeid = typeid
         self.categoryid = categoryid
+        self.statusid = 1
 
     def __repr__(self):
         return '<Post {}>'.format(self.title)

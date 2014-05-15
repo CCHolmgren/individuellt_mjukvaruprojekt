@@ -283,7 +283,27 @@ class PostView(FlaskView):
         return abort(404)
         #return render_template('post.html', post=Post.query.get(postid), form=form)
 
-    # TODO: Add more methods for deletion that isn't permanent, set a status or something
+    @route('/<postid>/remove', methods=['POST'])
+    @login_required
+    def remove(self, postid):
+        try:
+            post = Post.query.get(postid)
+            category = Category.query.get(post.categoryid)
+            if current_user.allowed_to_remove_post(post):
+                post.status = 5
+                db_session.commit()
+                flash('The post was removed.')
+                return redirect(url_for('CategoryView:get', categoryname=category.categoryname))
+            else:
+                flash(
+                    "You weren't allowed to remove this post, maybe you aren't the posts creator,"
+                    "or you aren't a moderator.")
+                return redirect(url_for('MainView:index'))
+        except Exception as e:
+            print(e)
+            db_session.rollback()
+            return redirect(url_for('MainView:index'))
+
     @route('/<postid>/delete', methods=['POST'])
     @login_required
     def delete(self, postid):
@@ -298,14 +318,14 @@ class PostView(FlaskView):
         try:
             post = Post.query.get(postid)
             category = Category.query.get(post.categoryid)
-            if allowed_to_remove_post(current_user, post):
+            if current_user.allowed_to_remove_post(post):
                 db_session.delete(post)
                 db_session.commit()
                 flash('The post was deleted.')
                 return redirect(url_for('CategoryView:get', categoryname=category.categoryname))
             else:
                 flash(
-                    "You weren't allowed to remove this post, maybe you aren't the posts creator,"
+                    "You weren't allowed to delete this post, maybe you aren't the posts creator,"
                     "or you aren't a moderator.")
                 return redirect(url_for('MainView:index'))
         except Exception as e:
@@ -337,6 +357,27 @@ class PostView(FlaskView):
             flash("That post does not exist.")
             return redirect(url_for("MainView:index"))
 
+    @route('/<postid>/<commentid>/remove', methods=['POST'])
+    @login_required
+    def remove_comment(self, postid, commentid):
+        try:
+            post = Post.query.get(postid)
+            comment = Comment.query.get(commentid)
+            if current_user.allowed_to_remove_comment(comment, post):
+                comment.statusid = 5
+                db_session.commit()
+                flash('The comment was removed.')
+                return redirect(url_for('PostView:get', postid=postid))
+            else:
+                flash(
+                    "You weren't allowed to remove this comment, maybe you aren't the comments creator,"
+                    "or you aren't a moderator.")
+                return redirect(url_for('PostView:get', postid=postid))
+        except Exception as e:
+            print(e)
+            db_session.rollback()
+            return redirect(url_for('PostView:get', postid=postid))
+
     @route('/<postid>/<commentid>/delete', methods=['POST'])
     @login_required
     def delete_comment(self, postid, commentid):
@@ -350,7 +391,7 @@ class PostView(FlaskView):
                 return redirect(url_for('PostView:get', postid=postid))
             else:
                 flash(
-                    "You weren't allowed to remove this comment, maybe you aren't the comments creator,"
+                    "You weren't allowed to delete this comment, maybe you aren't the comments creator,"
                     "or you aren't a moderator.")
                 return redirect(url_for('PostView:get', postid=postid))
         except Exception as e:
