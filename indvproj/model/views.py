@@ -148,6 +148,7 @@ def allowed_to_post_in_category(user, category):
         return False
 
 
+# noinspection PyTypeChecker
 class AboutView(FlaskView):
     def index(self):
         return CategoryView.get(None, 'about')
@@ -190,6 +191,7 @@ class MainView(FlaskView):
                                posts=Post.query.all(), categories=Category.query.all(), users=User.query.all())
 
 
+# noinspection PyTypeChecker
 class BlogView(FlaskView):
     """
     Shorthand for /c/blog
@@ -199,6 +201,7 @@ class BlogView(FlaskView):
         """
         Takes care of /blog/ and returns CategoryView.get('blog')
         """
+        # noinspection PyCallByClass
         return CategoryView.get(self, 'blog')
 
 
@@ -227,9 +230,6 @@ class LoginView(FlaskView):
             potentialuser = User.query.filter(func.lower(User.username) == func.lower(form.username.data)).first()
 
             if potentialuser:
-                #user = User.query.filter(username=form.username.data, password=check_password(form.password.data,
-                #                                                                                User.query.filter(
-                #                                                                                   User.username == form.username.data).first().salt)).first()
                 #Instead of doing a odd query, just do this instead
                 if potentialuser.password == check_password(form.password.data, potentialuser.salt):
                     login_user(potentialuser)
@@ -274,7 +274,7 @@ class PostView(FlaskView):
 
         #print(dir(Comment.query.filter(Comment.commentid in Post.comments)))
 
-        form = DeletePostForm()
+        #form = DeletePostForm()
         #print(form)
 
         if post:
@@ -399,7 +399,7 @@ class PostView(FlaskView):
             db_session.rollback()
             return redirect(url_for('PostView:get', postid=postid))
 
-    @route('/<postid>/<commentid>/comment',methods=['POST'])
+    @route('/<postid>/<commentid>/comment', methods=['POST'])
     @login_required
     def comment_on_comment(self, postid, commentid):
         form = CommentForm()
@@ -407,24 +407,28 @@ class PostView(FlaskView):
             comment = Comment.query.get(commentid)
             if comment:
                 comment.children.append(
-                    Comment(content=form.content.data, userid=current_user.userid))  #, parent=commentid))
+                    Comment(content=form.content.data, userid=current_user.userid))
+                #, parent=commentid))
                 #newcomment = Comment(content=form.content.data, userid=current_user.userid, parent=commentid)
                 #db_session.add(newcomment)
                 db_session.commit()
                 #print(newcomment.commentid)
-                #db.engine.execute(comment_has_comment.insert().values(parentcommentid=commentid, childcommentid=newcomment.commentid))
+                #db.engine.execute(comment_has_comment.insert().values
+                ## (parentcommentid=commentid, childcommentid=newcomment.commentid))
 
-                #comment.children.append(Comment(content=form.content.data, postid=postid, userid=current_user.userid,parent=1))
+                #comment.children.append(Comment(content=form.content.data,
+                ## postid=postid, userid=current_user.userid,parent=1))
                 #db_session.commit()
 
                 flash("The comment was created")
-                return redirect(url_for('PostView:get',postid=postid))
+                return redirect(url_for('PostView:get', postid=postid))
 
     @route('/<postid>/<commentid>')
     @login_required
     def comment_on(self,postid, commentid):
         form = CommentForm()
-        return render_template('comment_on_comment.html',form=form, parentcomment=Comment.query.get(commentid),postid=postid)
+        return render_template('comment_on_comment.html', form=form, parentcomment=Comment.query.get(commentid),
+                               postid=postid)
 
     @route('/new/', methods=['GET', 'POST'])
     @login_required
@@ -499,7 +503,7 @@ class RegisterView(FlaskView):
                     flash("The email already exists.")
                     failed = True
 
-                if (failed):
+                if failed:
                     redirect(url_for("RegisterView:new_user"))
 
                 user = User(form.username.data, form.email.data, *encrypt(form.password.data))
@@ -538,10 +542,12 @@ class UserView(FlaskView):
         if user is not None:
             #print(user.collections.all())
             return render_template('user.html', user=user,
-                                   allowed_to_view_collections=current_user == user or current_user.is_active() and current_user.status == 4)
+                                   allowed_to_view_collections=current_user == user or current_user.is_active() and
+                                                               current_user.status == 4)
         return render_template('user_missing.html', title="The user doesn't seem to exist")
 
 
+# noinspection PyTypeChecker
 class CategoryView(FlaskView):
     """
     CategoryView handles everything centered around categories such as new categories, moderators
@@ -605,7 +611,8 @@ class CategoryView(FlaskView):
                                    commentform=commentform)
         return abort(404)
         #print(Category.query.get(post.categoryid).categoryname, postid)
-        #return redirect(url_for('CategoryView:view_post', categoryname=Category.query.get(post.categoryid).categoryname,
+        #return redirect(url_for('CategoryView:view_post', categoryname=Category.query.get(post.categoryid).
+        # categoryname,
         #                       postid=postid))
 
     @route('<categoryname>/p/new', methods=['GET', 'POST'])
@@ -617,6 +624,7 @@ class CategoryView(FlaskView):
         :param categoryname:
         :return:
         """
+        # noinspection PyCallByClass
         return PostView.new_post(self, categoryname)
 
     @route('/new', methods=['GET', 'POST'])
@@ -717,6 +725,7 @@ class CategoryView(FlaskView):
             db_session.rollback()
             return redirect(url_for('MainView:index'))
 
+
 class CollectionView(FlaskView):
     """
     CollectionView handles everything around collections
@@ -781,7 +790,6 @@ class CollectionView(FlaskView):
                 db_session.commit()
                 collection = Collection.query.get(collectionid)
                 collection.links.append(link)
-
             db_session.commit()
             print(collection.links.all())
             return redirect(url_for('CollectionView:get', collectionid=collectionid))
@@ -794,7 +802,7 @@ class CollectionView(FlaskView):
         Gets the collection with the given id, if the user is allowed to view that collection,
         i.e. if he created it
 
-        :param id: Collectionid to lookup
+        :param collectionid: Collectionid to lookup
         :return:
         """
         if not collectionid.isdigit():
@@ -803,7 +811,7 @@ class CollectionView(FlaskView):
         print(dir(collection))
         print(collection.links.all())
         deleteform = DeletePostForm()
-        if request.args.get('link') != None:
+        if request.args.get('link') is not None:
             addform = AddToCollectionForm(link=request.args.get('link'))
         else:
             addform = AddToCollectionForm()
@@ -823,7 +831,7 @@ class CollectionView(FlaskView):
         print(dir(collection))
         print(collection.links.all())
         deleteform = DeletePostForm()
-        if request.args.get('link') != None:
+        if request.args.get('link') is not None:
             addform = AddToCollectionForm(link=request.args.get('link'))
         else:
             addform = AddToCollectionForm()

@@ -5,7 +5,7 @@ from sqlalchemy.dialects import postgresql
 from indvproj import db
 import datetime
 
-"""collection_has_post = db.Table('collection_has_post',
+x = """collection_has_post = db.Table('collection_has_post',
                                db.Column('cid', db.Integer, db.ForeignKey('collection.collectionid'), primary_key=True),
                                db.Column('pid', db.Integer, db.ForeignKey('post.postid'), primary_key=True)
 )"""
@@ -83,7 +83,7 @@ class User(db.Model):
     def allowed_to_remove_category(self, category):
         """
         We don't want anyone except admins removing categories, just send a message to them if you want to remove it
-        :param user: the user that is doing the removal
+        :param self: the user that is doing the removal
         :param category: category to remove
         :return: True if user.status is 4, i.e. administrator else false
         """
@@ -94,7 +94,7 @@ class User(db.Model):
     def allowed_to_add_moderators(self, category):
         """
         A user can add a moderator to a category if the user is a moderator himself, or an admin
-        :param user: User doing the adding
+        :param self: User doing the adding
         :param category: Category to add to
         :return:
         """
@@ -107,7 +107,7 @@ class User(db.Model):
     def allowed_to_remove_post(self, post):
         """
         A user who created the post, a moderator of the category or an admin can remove a post
-        :param user: The user doing the removal
+        :param self: The user doing the removal
         :param post: The post to remove
         :return: True if the user is allowed to remove the post else False
         """
@@ -224,7 +224,7 @@ class Category(db.Model):
     posts = db.relationship('Post', backref='category', lazy='dynamic')
     statusid = db.Column(db.Integer, db.ForeignKey('status.statusid'))
 
-    def __init__(self, categoryname, status=1, title="Default title"):
+    def __init__(self, categoryname, title="Default title", status=1):
         self.categoryname = categoryname
         self.categorytitle = title
         self.status = status
@@ -262,6 +262,7 @@ class Collection(db.Model):
     title = db.Column(db.String(250), nullable=False)
     random = db.Column(db.BigInteger)
 
+    # noinspection PyArgumentList
     def get_base64(self):
         import base64
 
@@ -311,7 +312,7 @@ class Post(db.Model):
         self.views = 0
         self.typeid = typeid
         self.categoryid = categoryid
-        self.statusid = 1
+        self.statusid = statusid
 
     def __repr__(self):
         return '<Post {}>'.format(self.title)

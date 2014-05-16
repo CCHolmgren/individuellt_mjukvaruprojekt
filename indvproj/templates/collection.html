@@ -11,8 +11,9 @@
         {{ form.csrf_token() }}
     </form>
     {# Delete the collection #}
-    <form method=post action=/collection/{{ collection.collectionid }}/delete>
-        {{ render_field(deleteform.submit) }}
+    <form method=post action=/collection/{{ collection.collectionid }}/delete
+          onsubmit="return confirm('Are you sure you want to submit?')">
+        <input type="submit" value="Delete">
         {{ deleteform.csrf_token() }}
     </form>
 {% endblock %}

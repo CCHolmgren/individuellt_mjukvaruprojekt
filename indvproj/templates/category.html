@@ -13,12 +13,15 @@
     </div>
     <div>
         {% if g.user.is_active() and g.user.allowed_to_post_in_category(category) %}
-            <a href={{ url_for('CategoryView:new_post',categoryname=category.categoryname) }}>Create a new post</a>
-    {% endif %}
+            <a href={{ url_for('CategoryView:new_post',categoryname=category.categoryname) }}>Create a new post in this
+                category</a>
+        {% endif %}
     </div>
     {% if g.user.is_active() and g.user.allowed_to_remove_category(category) %}
-        <form method=post action=/c/{{ category.categoryname }}/delete>
-            {{ render_field(form.submit) }}
+        <form method=post action=/c/{{ category.categoryname }}/delete
+              onsubmit="return confirm('Are you sure you want to submit?')">
+            {# render_field(form.submit) #}
+            <input type="submit" value="Delete">
             {{ form.csrf_token() }}
         </form>
     {% endif %}

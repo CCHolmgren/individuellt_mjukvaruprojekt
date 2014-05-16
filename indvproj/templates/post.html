@@ -21,18 +21,26 @@
         {% endif %}
         {% if allowed_to_remove %}
             {{ render_post(post) }}
-            <form method=post action=/p/{{ post.postid }}/delete>
-                {{ render_field(form.submit) }}
+            <div>
+            <form method=post action=/p/{{ post.postid }}/delete
+                  onsubmit="return confirm('Are you sure you want to submit?')">
+                {# render_field(form.submit) #}
+                {# form.submit #}
+                <input type="submit" value="Delete">
                 {{ form.csrf_token() }}
             </form>
         {% else %}
             {{ render_post_without_delete(post) }}
+            <div>
         {% endif %}
-        <form method=post action=/p/{{ post.postid }}/comment>
-            {{ render_field(commentform.content) }}
-            {{ commentform.csrf_token() }}
-            <input type="submit" value="Submit comment">
-        </form>
+    <form method=post action=/p/{{ post.postid }}/comment>
+        {# render_field(commentform.content) #}
+        {{ commentform.content }}
+        <br>
+        <input type="submit" value="Submit comment">
+        {{ commentform.csrf_token() }}
+    </form>
+    </div>
         {% for comment in post.comments.all() %}
             <div>{{ render_comment(comment, post.postid) }}</div>
         {% endfor %}
