@@ -4,6 +4,7 @@
 <head>
     <title>{{ title }}</title>
     {% block head %}{% endblock %}
+    <link rel=stylesheet type=text/css href="{{ url_for('static',filename='reset.css') }}">
     <link rel=stylesheet type=text/css href="{{ url_for('static',filename='style.css') }}">
 </head>
 <body>
@@ -20,18 +21,18 @@
     {% endif %}
     </div>
 </div>
-<div class="messages">
-    {%- with messages = get_flashed_messages() %}
-        {%- if messages %}
-            <ul class=flashes>
-                {%- for message in messages %}
-                    <li>{{ message }}</li>
-                {%- endfor %}
-            </ul>
-        {%- endif %}
-    {%- endwith %}
-</div>
-<div class="toleftside">
+<div class="aside">
+    <div class="messages">
+        {%- with messages = get_flashed_messages() %}
+            {%- if messages %}
+                <ul class=flashes>
+                    {%- for message in messages %}
+                        <li>{{ message }}</li>
+                    {%- endfor %}
+                </ul>
+            {%- endif %}
+        {%- endwith %}
+    </div>
     <div>
         {% if g.user.is_active() %}
             {% if g.user.collections.all() %}

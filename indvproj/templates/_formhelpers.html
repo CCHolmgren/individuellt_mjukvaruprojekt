@@ -19,10 +19,10 @@
 {% macro render_post(post) %}
     <div class="post">
         <div class="post-title"><a href={{ url_for('PostView:get', postid=post.postid) }}>{{ post.title }}</a></div>
-        <div class="post-content">{{ post.content|safe }}</div>
-        <footer>Postid: {{ post.postid }} | Posted by: <a
-                href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a> | Amount of
-            comments: {{ post.comments.all()|length }}
+        <footer class="small"><span>Postid: {{ post.postid }} | Posted by: <a
+                href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a> | <a
+                href={{ url_for('PostView:get',postid=post.postid)+"#comments" }}>Amount of
+            comments: {{ post.comments.all()|length }}</a></span>
             <span class="small">Currently&nbsp;displays&nbsp;incorrect&nbsp;data.</span>
         </footer>
     </div>
@@ -50,7 +50,7 @@
 {% endmacro %}
 {% macro render_collection(collection) %}
     <div class="collection">
-    <div>Collection title:{{ collection.title }}</div>
+        <div>Collection title:{{ collection.title }}</div>
         <div>Creator:{{ collection.user.username }}</div>
         {% for link in collection.links.all() %}
             <p>{{ link.link|urlize }}</p>
@@ -59,8 +59,8 @@
 {% endmacro %}
 {% macro render_collection_dense(collection) %}
     <div class="collection-dense" style="border:1px solid black;">
-    <div>
-            <a href={{ url_for('CollectionView:get',collectionid=collection.collectionid,errors=None) }}>{{ collection.title }}</a>
+        <div>
+        <a href={{ url_for('CollectionView:get',collectionid=collection.collectionid,errors=None) }}>{{ collection.title }}</a>
         </div>
         <div>{{ collection.user }}</div>
         <div>Links: {{ collection.links.all()|length }}</div>
@@ -73,7 +73,7 @@
     {% endfor %}
 {% endmacro %}
 {% macro render_comment(comment,postid) %}
-    <div style="border:1px solid black;">
+    <div class="parent">
         <div>
             <div>{{ comment.content|safe }}</div>
             {{ comment }}
@@ -81,14 +81,16 @@
         </div>
         <div>
             {% for comment in comment.children recursive %}
-                <div style="margin-left:{{ loop.depth*20 }}px; border: 1px solid #000000;">
-                    <div>{{ comment.content|safe }}</div>
-                    {{ comment }}
-                    <a href={{ url_for('PostView:comment_on',postid=postid,commentid=comment.commentid) }}>Reply</a>
+                <div class="parent" style="margin-left:{{ 20*loop.depth }}px">
+                    <div>
+                        <div>{{ comment.content|safe }}</div>
+                        {{ comment }}
+                        <a href={{ url_for('PostView:comment_on',postid=postid,commentid=comment.commentid) }}>Reply</a>
+                    </div>
+                    {% if comment.children %}
+                        <div>{{ loop(comment.children) }}</div>
+                    {% endif %}
                 </div>
-                {% if comment.children %}
-                    <div>{{ loop(comment.children) }}</div>
-                {% endif %}
             {% endfor %}
         </div>
     </div>

@@ -7,7 +7,7 @@ Confirmation box on removal of stuff
 Formfield for posting comments
 X (Plans laid on ice for now. Will look to implement this later, but at this moment it isn't worth the time since there's a lot of things to do.) Change comments from what it is now to a parent children situation where parent is a foreign key and children is a relationship with a table comment_has_comment with columns parentcommentid, comment id
 Removal of comments
-A post should be able to directly post to a collection, or something like that. A box to the side where you choose a collection to post in, and then do it?
+X (Wirjs biw wu´´vua a dropdown, but maybe I should change that) A post should be able to directly post to a collection, or something like that. A box to the side where you choose a collection to post in, and then do it?
 X (Meh, reddit does it) A posts title shouldn't need to link to itself, should it inside PostView:get
 Maybe change creation of categories to a ajax version so that we can validate without redirecting all the time? Or fill in the values that are correct when you failed some vlaidation?
 X (Fixed, just a problem with post.html not having the form there) You can comment on your own posts, but not someone elses?
@@ -26,3 +26,8 @@ This will give you the route such as /collection/share/[base64]
 maybe check http://stackoverflow.com/questions/7194506/unique-unpredictable-12-digit-integer-id/7194533#7194533
 It seems that to get correct results from sqlalchemy you must use a double filter, such as Collection.query.filter(Collection.collectionid == 1).filter(Collection.userid == 1)
 But not if you want to do a combined, such as Collection.query.filter(Collection.collectionid + Collection.userid == 2) where that would work just fine
+
+base64.b64encode(bytes("{}-{}".format(self.collectionid, self.random),'ascii'))
+This gives us the url route
+base64.b64decode(bytes([urlroute])).decode('utf-8').split('-')
+This gives us both the collection id, and the random value. Then we do Collection.query.filter_by(collectionid=[0],random=[1])

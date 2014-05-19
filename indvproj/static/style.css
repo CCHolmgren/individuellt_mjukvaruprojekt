@@ -69,18 +69,51 @@ h2 {
     padding: 0.5em;
 }
 
-.toleftside {
-    position: absolute;
-    top: 100px;
-    left: 0;
+.aside {
+    margin-left: 5px;
+    order: 1;
 }
 
 .categories {
 }
 
+.head {
+    margin-left: 5px;
+    margin-right: 5px;
+    order: 1;
+    flex: 1 100%;
+}
+
+.head, .main, .aside {
+    /*flex: 1 100%;*/
+}
+
+.post {
+    width: 100%;
+}
+
+@media all and (min-width: 1301px) {
+    .post {
+        width: 48%;
+    }
+}
+
+body {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
 .main {
-    margin-left: 216px;
-    float: left;
+    flex: 2 0;
+    order: 2;
+    display: flex;
+    flex-flow: row wrap;
 }
 
 .collections {
@@ -88,31 +121,68 @@ h2 {
     width: 300px;
 }
 
+.onehundered {
+    width: 100%;
+}
+
 .post {
-    position: relative;
     border: 1px solid black;
-    float: left;
-    width: 450px;
+    max-width: 60em;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 5px;
+    /*margin: auto;*/
+    /*width: 25%;
+    height: 100px;*/
+    /*margin: auto;
+    border-radius:5px;
+    display: flex-box;
+    /*position: relative;*/
+    /*border: 1px solid black;
+    /*float: left;*/
+    /*width: 450px;*/
+    /*min-width: 200px;
+    width: 30%;
     overflow-x: auto;
     word-wrap: break-word;
     margin-bottom: 10px;
     margin-right: 10px;
-    height: 150px;
+    height: 150px;*/
 }
 
 .post footer {
     position: relative;
     bottom: 0;
     left: 0;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
-.post-content {
-    margin-left: 2px;
-    margin-right: 2px;
+.post .footer {
+    margin: 10px;
 }
 
 .post-title {
-    font-size: 20px;
+    margin: 5px;
+    font-size: 18px;
+}
+
+.add-to-collection {
+}
+
+.margin-ten {
+    margin: 10px;
+}
+
+.post-content {
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 .signinbar {
@@ -122,4 +192,9 @@ h2 {
 .small {
     font-size: 0.7em;
     color: #999999;
+}
+
+.parent {
+    border: 1px solid black;
+    margin: 5px 0;
 }
