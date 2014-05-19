@@ -1,19 +1,23 @@
 {%- extends "layout.html" %}
 {%- block body %}
     {%- from "_formhelpers.html" import render_post, render_collection_dense with context %}
-    Username: {{ user.username }}<br>
-    Userid: {{ user.userid }}<br>
-    Email: {{ user.email }}<br>
-    Created: {{ user.created }}<br>
-    Status: {{ user.status }}<br>
-    Statusname: {{ user.statusobject.statusname }}<br>
+    <div class="onehundered">
+        Username: {{ user.username }}<br>
+        Userid: {{ user.userid }}<br>
+        Email: {{ user.email }}<br>
+        Created: {{ user.created }}<br>
+        Status: {{ user.status }}<br>
+        Statusname: {{ user.statusobject.statusname }}<br>
+    </div>
     {% if allowed_to_view_collections %}
-        Collections:
-        {%- for collection in user.collections.all() %}
-            {{ render_collection_dense(collection) }}<br>
-        {%- endfor %}
+        <div class="fortyeight">
+            Collections:
+            {%- for collection in user.collections.all() %}
+                {{ render_collection_dense(collection) }}<br>
+            {%- endfor %}
+        </div>
     {% endif %}
-    Posts:
+    <div class="onehundered">Posts:</div>
     {%- for post in user.posts %}
         {{ render_post(post) }}
     {%- endfor %}

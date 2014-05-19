@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% from "_formhelpers.html" import render_post, render_collection_dense with context %}
+{% from "_formhelpers.html" import render_post_dense, render_collection_dense with context %}
 {% block body %}
     <!--{% if g.user.is_active() %}
             <div>
@@ -20,6 +20,6 @@
             </p>
         {% endif %}-->
     {% for post in posts %}
-            {{ render_post(post) }}
-        {% endfor %}
+        {{ render_post_dense(post) }}
+    {% endfor %}
 {% endblock %}

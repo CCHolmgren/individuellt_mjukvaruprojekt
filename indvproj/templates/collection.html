@@ -2,18 +2,25 @@
 {% extends "layout.html" %}
 {% block body %}
     {% from "_formhelpers.html" import render_collection, render_field with context %}
-    {{ render_collection(collection) }}
-    {# Add link to collection #}
-    {{ collection.get_base64() }}
-    <form method=post action=/collection/{{ collection.collectionid }}/add_link>
-        {{ render_field(form.link) }}
-        <input type="submit" value="Add link to collection">
-        {{ form.csrf_token() }}
-    </form>
-    {# Delete the collection #}
-    <form method=post action=/collection/{{ collection.collectionid }}/delete
-          onsubmit="return confirm('Are you sure you want to submit?')">
-        <input type="submit" value="Delete">
-        {{ deleteform.csrf_token() }}
-    </form>
+    <div class="margin-ten">
+        {{ render_collection(collection) }}
+        <div class="display-url">
+            Shareable url:
+            <div><a href={{ url_for('CollectionView:display_collection',base64string=collection.get_base64()) }}>
+                {{ url_for('CollectionView:display_collection',base64string=collection.get_base64(),_external=True) }}
+            </a></div>
+        </div>
+        {# Add link to collection #}
+        <form method=post action=/collection/{{ collection.collectionid }}/add_link>
+            {{ render_field(form.link) }}
+            <input type="submit" value="Add link to collection">
+            {{ form.csrf_token() }}
+        </form>
+        {# Delete the collection #}
+        <form method=post action=/collection/{{ collection.collectionid }}/delete
+              onsubmit="return confirm('Are you sure you want to submit?')">
+            <input type="submit" value="Delete">
+            {{ deleteform.csrf_token() }}
+        </form>
+    </div>
 {% endblock %}

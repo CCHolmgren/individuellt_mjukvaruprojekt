@@ -121,16 +121,25 @@ body {
     width: 300px;
 }
 
+.collection-dense {
+    width: auto;
+}
+
 .onehundered {
     width: 100%;
+}
+
+.fortyeight {
+    width: 48%;
 }
 
 .post {
     border: 1px solid black;
     max-width: 60em;
-    width: 100%;
+    /*width: 100%;*/
     overflow: hidden;
     border-radius: 5px;
+    margin: 10px;
     /*margin: auto;*/
     /*width: 25%;
     height: 100px;*/
@@ -174,6 +183,10 @@ body {
     margin: 10px;
 }
 
+.margin-five {
+    margin: 5px;
+}
+
 .post-content {
 }
 
@@ -195,6 +208,7 @@ a:hover {
 }
 
 .parent {
+    border-radius: 5px;
     border: 1px solid black;
-    margin: 5px 0;
+    margin: 5px 2px;
 }
