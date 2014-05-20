@@ -42,16 +42,16 @@
                 </form>
             </div>
         {% endif %}
-    <form method=post action=/p/{{ post.postid }}/comment>
-        {# render_field(commentform.content) #}
-        {{ commentform.content }}
-        <br>
-        <input type="submit" value="Submit comment">
-        {{ commentform.csrf_token() }}
-    </form>
+        <form method=post action=/p/{{ post.postid }}/comment>
+            {# render_field(commentform.content) #}
+            {{ commentform.content }}
+            <br>
+            <input type="submit" value="Submit comment">
+            {{ commentform.csrf_token() }}
+        </form>
         <div id="comments">
-        {% for comment in post.comments.all() %}
-            <div>{{ render_comment(comment, post.postid) }}</div>
-        {% endfor %}
+            {% for comment in post.comments.all() %}
+                <div>{{ render_comment(comment, post.postid,commentform) }}</div>
+            {% endfor %}
         </div>
 {% endblock %}

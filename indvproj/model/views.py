@@ -14,6 +14,9 @@ from markdown import markdown
 
 __author__ = 'Chrille'
 
+#This is the highest value that we dare put into the selectors since they will creash if they get a larger value than this
+MAXINT = 2147483647
+
 
 def getsalt(length):
     """
@@ -350,7 +353,9 @@ class PostView(FlaskView):
             post = Post.query.get(postid)
             if post:
                 print("Inside if post:")
-                post.comments.append(Comment(content=form.content.data, postid=post.postid, userid=current_user.userid))
+                post.comments.append(
+                    Comment(content=escape_text_and_create_markdown(form.content.data), postid=post.postid,
+                            userid=current_user.userid))
                 db_session.commit()
                 flash("The comment was posted")
                 return redirect(url_for('PostView:get', postid=postid))
@@ -407,7 +412,7 @@ class PostView(FlaskView):
             comment = Comment.query.get(commentid)
             if comment:
                 comment.children.append(
-                    Comment(content=form.content.data, userid=current_user.userid))
+                    Comment(content=escape_text_and_create_markdown(form.content.data), userid=current_user.userid))
                 #, parent=commentid))
                 #newcomment = Comment(content=form.content.data, userid=current_user.userid, parent=commentid)
                 #db_session.add(newcomment)
@@ -427,6 +432,9 @@ class PostView(FlaskView):
     @login_required
     def comment_on(self,postid, commentid):
         form = CommentForm()
+        Comment.query.get(commentid)
+        if int(commentid) > MAXINT:
+            return abort(404)
         return render_template('comment_on_comment.html', form=form, parentcomment=Comment.query.get(commentid),
                                postid=postid)
 
@@ -597,6 +605,8 @@ class CategoryView(FlaskView):
 
         form = DeletePostForm()
         commentform = CommentForm()
+        if int(postid) > MAXINT:
+            return abort(404)
         post = Post.query.filter_by(postid=postid).first_or_404()
         #print(post.categoryid)
         category = Category.query.filter(func.lower(Category.categoryname) == func.lower(categoryname)).first_or_404()
@@ -805,7 +815,7 @@ class CollectionView(FlaskView):
         :param collectionid: Collectionid to lookup
         :return:
         """
-        if not collectionid.isdigit():
+        if not collectionid.isdigit() or int(collectionid) > MAXINT:
             return abort(404)
         collection = Collection.query.get(collectionid)
         print(dir(collection))

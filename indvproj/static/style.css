@@ -19,6 +19,24 @@ h2 {
     font-size: 1.2em;
 }
 
+ol, ul {
+    list-style-position: inside;
+}
+
+li > p:not(:first-child) {
+    margin-left: 15px;
+}
+
+blockquote {
+    border-left: 1px solid red;
+}
+
+blockquote p {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 5px;
+}
+
 .page {
     margin: 2em auto;
     width: 35em;
@@ -70,11 +88,44 @@ h2 {
 }
 
 .aside {
-    margin-left: 5px;
+    background: white;
     order: 1;
+    width: 0;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    height: auto;
+    transition: width 0.3s ease;
+}
+
+#main-navigation:target {
+    width: 20%;
+    min-width: 200px;
+}
+
+.therest {
+    clear: right;
+}
+
+#main-navigation:target + .main {
+    width: 100%;
+}
+
+.close-nav {
+    float: right;
 }
 
 .categories {
+    border-radius: 3px;
+    border: 1px solid black;
+}
+
+.users {
+    border-radius: 3px;
+    border: 1px solid black;
+    margin-bottom: 4px;
 }
 
 .head {
@@ -92,8 +143,17 @@ h2 {
     width: 100%;
 }
 
+#content {
+    height: 140px;
+    width: 100%;
+}
+
 @media all and (min-width: 1301px) {
     .post {
+        width: 48%;
+    }
+
+    #content {
         width: 48%;
     }
 }
@@ -117,12 +177,37 @@ body {
 }
 
 .collections {
-    float: right;
-    width: 300px;
+    border-radius: 3px;
+    margin-bottom: 4px;
+    border: 1px solid black;
+}
+
+.collections span {
+    margin-left: 4px;
 }
 
 .collection-dense {
     width: auto;
+    border-radius: 3px;
+    margin-bottom: 4px;
+    margin: 2px;
+}
+
+.collection-dense .content {
+    margin-left: 4px;
+    margin-right: 4px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.category {
+    margin-bottom: 4px;
+    margin: 2px;
+}
+
+.user {
+    margin-bottom: 4px;
+    margin: 2px;
 }
 
 .onehundered {
@@ -174,6 +259,10 @@ body {
 .post-title {
     margin: 5px;
     font-size: 18px;
+}
+
+h1.post-title {
+    font-size: 22px;
 }
 
 .add-to-collection {

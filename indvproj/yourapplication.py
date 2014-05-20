@@ -1,5 +1,5 @@
 if __name__ == '__main__':
-    from flask import g
+    from flask import g, render_template
 
     print('Importing db_session and db')
     from indvproj import app, db_session
@@ -46,7 +46,7 @@ if __name__ == '__main__':
 
     @app.errorhandler(404)
     def page_not_found(e):
-        return "Sorry, the page that you equested could not be found. {} {}".format(dir(e), e)
+        return render_template('404.html')
 
 
     @login_manager.user_loader

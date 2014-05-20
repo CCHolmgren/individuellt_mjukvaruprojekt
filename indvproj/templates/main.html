@@ -1,8 +1,9 @@
 {% extends "layout.html" %}
 {% from "_formhelpers.html" import render_post_dense, render_collection_dense with context %}
 {% block body %}
-    <!--{% if g.user.is_active() %}
-            <div>
+    {% if g.user.is_active() %}
+        <div class="onehundered">
+        <div>
                 <ul>
                     <li>New <a href={{ url_for('PostView:new_post') }}>post</a></li>
                     <li>Create a new <a href={{ url_for('CollectionView:new_collection') }}>collection</a>?</li>
@@ -18,7 +19,8 @@
             <p>Your userpage:
                 <a href={{ url_for('UserView:get', username=g.user.username) }}>{{ g.user.username }}</a>
             </p>
-        {% endif %}-->
+        </div>
+    {% endif %}
     {% for post in posts %}
         {{ render_post_dense(post) }}
     {% endfor %}

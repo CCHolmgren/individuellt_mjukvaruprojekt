@@ -4,12 +4,14 @@
 <head>
     <title>{{ title }}</title>
     {% block head %}{% endblock %}
-    <link rel=stylesheet type=text/css href="{{ url_for('static',filename='reset.css') }}">
+    <!--<link rel=stylesheet type=text/css href="{{ url_for('static',filename='reset.css') }}">-->
     <link rel=stylesheet type=text/css href="{{ url_for('static',filename='style.css') }}">
 </head>
 <body>
 <div class="head">
     <a href={{ url_for('MainView:index') }}>Home</a>
+    <a href="#main-navigation">Menu</a>
+
 
     <div class="signinbar">
         {% if not g.user.is_active() %}
@@ -21,52 +23,56 @@
     {% endif %}
     </div>
 </div>
-<div class="aside">
-    <div class="messages">
-        {%- with messages = get_flashed_messages() %}
-            {%- if messages %}
-                <ul class=flashes>
-                    {%- for message in messages %}
-                        <li>{{ message }}</li>
-                    {%- endfor %}
-                </ul>
-            {%- endif %}
-        {%- endwith %}
-    </div>
-    <div>
+<div class="aside" id="main-navigation">
+    <a href="#" class="close-nav">Close</a>
+
+    <div class="therest">
+        <div class="messages">
+            {%- with messages = get_flashed_messages() %}
+                {%- if messages %}
+                    <ul class=flashes>
+                        {%- for message in messages %}
+                            <li>{{ message }}</li>
+                        {%- endfor %}
+                    </ul>
+                {%- endif %}
+            {%- endwith %}
+        </div>
         {% if g.user.is_active() %}
-            {% if g.user.collections.all() %}
-                All your collections:
-                {% for collection in g.user.collections.all() %}
-                    {{ render_collection_dense(collection) }}
-                {% endfor %}
-            {% else %}
-                You haven't got any collections
-            {% endif %}
-        {% endif %}
-    </div>
-    <div>
-        All users:
-        {% for user in g.users %}
-            <div>{{ user.username }}</div>
-        {% endfor %}
-    </div>
-    <div class="categories">
-        <span>Categories:</span>
-        {% for category in g.categories %}
-            <div>
-                <a href={{ url_for('CategoryView:get', categoryname=category.categoryname) }}>{{ category.categoryname }}</a>
-                {% if category.moderators.all() %}
-                    <div>
-                        <small>Mods:
-                            {% for moderator in category.moderators.all() %}
-                                <a href={{ url_for('UserView:get',username=moderator.username) }}>{{ moderator.username }}</a>
-                            {% endfor %}
-                        </small>
-                    </div>
+            <div class="collections">
+                {% if g.user.collections.all() %}
+                    <span>Your collections:</span>
+                    {% for collection in g.user.collections.all() %}
+                        {{ render_collection_dense(collection) }}
+                    {% endfor %}
+                {% else %}
+                    You haven't got any collections
                 {% endif %}
             </div>
-        {% endfor %}
+        {% endif %}
+        <div class="users">
+            <span class="user">All users:</span>
+            {% for user in g.users %}
+                <div class="user">{{ user.username }}</div>
+            {% endfor %}
+        </div>
+        <div class="categories">
+            <span class="category">Categories:</span>
+            {% for category in g.categories %}
+                <div class="category">
+                    <a href={{ url_for('CategoryView:get', categoryname=category.categoryname) }}>{{ category.categoryname }}</a>
+                    {% if category.moderators.all() %}
+                        <div>
+                            <small>Mods:
+                                {% for moderator in category.moderators.all() %}
+                                    <a href={{ url_for('UserView:get',username=moderator.username) }}>{{ moderator.username }}</a>
+                                {% endfor %}
+                            </small>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
 <div class="main">

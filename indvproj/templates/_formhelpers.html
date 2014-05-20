@@ -77,11 +77,12 @@
 {% endmacro %}
 {% macro render_collection_dense(collection) %}
     <div class="collection-dense" style="border:1px solid black;">
+        <div class="content">
         <div>
         <a href={{ url_for('CollectionView:get',collectionid=collection.collectionid,errors=None) }}>{{ collection.title }}</a>
         </div>
-        <div>{{ collection.user }}</div>
         <div>Links: {{ collection.links.all()|length }}</div>
+    </div>
     </div>
 {% endmacro %}
 {% macro all_moderators() %}
@@ -90,28 +91,57 @@
         <p>{{ moderator.username }}</p>
     {% endfor %}
 {% endmacro %}
-{% macro render_comment(comment,postid) %}
-    <div class="parent">
-    <div class="margin-five">
-        <div class="small footer">Postid: {{ post.postid }} | Posted by: <a
-                href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a> | Amount
-            of
-            comments: {{ post.comments.all()|length }}</div>
-        <div>{{ comment.content|safe }}</div>
-            <a href={{ url_for('PostView:comment_on',postid=postid,commentid=comment.commentid) }}>Reply</a>
-        </div>
-        <div>
+{% macro render_comment(comment,postid,commentform) %}
+    <div class="parent" id={{ comment.commentid }}>
+        <div class="margin-five">
+            <div class="small footer">Postid: {{ post.postid }} | Posted by:
+                <a href={{ url_for('UserView:get',username=post.user.username) }}>
+                    {{ post.user.username }}
+                </a> | Amount
+                of
+                comments: {{ post.comments.all()|length }}
+            </div>
+            <div>
+                {{ comment.content|safe }}
+            </div>
+            <a href={{ "#"+comment.commentid|string }} onclick="document.getElementById('{{ "comment"+comment.commentid|string }}').style.display
+            = 'initial'">
+            Reply
+            </a>
+            <form method=post action=/p/{{ postid }}/{{ comment.commentid }}/comment
+                  id={{ "comment" + comment.commentid|string }} style="display: none
+            ">
+            {{ render_field(commentform.content) }}
+            <input type=submit value="Post the comment">
+            {{ form.csrf_token() }}
+            </form>
             {% for comment in comment.children recursive %}
-                <div class="parent" style="margin-left:{{ 20*loop.depth }}px">
-                <div class="margin-five">
-                    <div class="small footer">Postid: {{ post.postid }} | Posted by: <a
-                            href={{ url_for('UserView:get',username=comment.user.username) }}>{{ comment.user.username }}</a>
-                        <a href={{ url_for('PostView:comment_on',postid=postid,commentid=comment.commentid) }}>Reply</a>
-                    </div>
-                    <div>{{ comment.content|safe }}</div>
-                    {% if comment.children %}
-                        <div>{{ loop(comment.children) }}</div>
-                    {% endif %}
+                <div>
+                    <div class="parent" style="margin-left:{{ 20*loop.depth }}px" id={{ comment.commentid }}>
+                        <div class="margin-five">
+                            <div class="small footer">Postid: {{ post.postid }} | Posted by:
+                                <a href={{ url_for('UserView:get',username=comment.user.username) }}>
+                                    {{ comment.user.username }}
+                                </a>
+                            </div>
+                            <div>
+                                {{ comment.content|safe }}
+                            </div>
+                            <a href={{ "#"+comment.commentid|string }} onclick="document.getElementById('{{ "comment"+comment.commentid|string }}').style.display
+                            = 'initial'">Reply</a>
+                            <form method=post action=/p/{{ postid }}/{{ comment.commentid }}/comment
+                                  style="display: none" id={{ "comment" + comment.commentid|string }} style="display:
+                                  none
+                            ">
+                            {{ render_field(commentform.content) }}
+                            <input type=submit value="Post the comment">
+                            {{ form.csrf_token() }}
+                            </form>
+                            {% if comment.children %}
+                                <div>{{ loop(comment.children) }}</div>
+                            {% endif %}
+                        </div>
+                </div>
                 </div>
             {% endfor %}
         </div>
