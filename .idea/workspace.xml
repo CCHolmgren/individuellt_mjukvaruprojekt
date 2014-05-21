@@ -1,25 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Error checking and more css.&#10;* Added a constant for MAXINT so that it doesn't throw errors when you try to access a post with a huge integer value or comment value. I.E. error checking&#10;* Creating comments now escapes the data, maytbe it should be automatic, but at this time it isn't.&#10;* Loads of CSS.&#10;* Added a 404 page so that it doesn't just return text that isn't proper HTML.&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/indvproj/templates/edit_post.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/Forms.py" afterPath="$PROJECT_DIR$/indvproj/model/Forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" afterPath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/add_moderators.html" afterPath="$PROJECT_DIR$/indvproj/templates/add_moderators.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/category.html" afterPath="$PROJECT_DIR$/indvproj/templates/category.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/collection.html" afterPath="$PROJECT_DIR$/indvproj/templates/collection.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/collections.html" afterPath="$PROJECT_DIR$/indvproj/templates/collections.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/layout.html" afterPath="$PROJECT_DIR$/indvproj/templates/layout.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/login.html" afterPath="$PROJECT_DIR$/indvproj/templates/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/main.html" afterPath="$PROJECT_DIR$/indvproj/templates/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/models.py" afterPath="$PROJECT_DIR$/indvproj/model/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/moderators.html" afterPath="$PROJECT_DIR$/indvproj/templates/moderators.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/new_post.html" afterPath="$PROJECT_DIR$/indvproj/templates/new_post.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/post.html" afterPath="$PROJECT_DIR$/indvproj/templates/post.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/static/style.css" afterPath="$PROJECT_DIR$/indvproj/static/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/user.html" afterPath="$PROJECT_DIR$/indvproj/templates/user.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
+    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Remember to not name your endpoints the same, that is seriously hard to debug.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/yourapplication.py" afterPath="$PROJECT_DIR$/indvproj/yourapplication.py" />
     </list>
     <ignored path="individuellt_mjukvaruprojekt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,21 +32,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="649" column="39" selection-start="24347" selection-end="24347" vertical-scroll-proportion="0.64924115" vertical-offset="8166" max-vertical-offset="13430">
+            <state line="283" column="16" selection-start="8653" selection-end="8653" vertical-scroll-proportion="0.0" vertical-offset="4342" max-vertical-offset="13906">
               <folding>
-                <element signature="e#0#16#0" expanded="true" />
-                <element signature="e#9054#9819#0" expanded="false" />
-                <element signature="e#9928#11078#0" expanded="false" />
-                <element signature="e#11189#12152#0" expanded="false" />
-                <element signature="e#12292#13076#0" expanded="false" />
-                <element signature="e#13216#14006#0" expanded="false" />
-                <element signature="e#14151#15180#0" expanded="false" />
-                <element signature="e#15290#15572#0" expanded="false" />
-                <element signature="e#20547#21508#0" expanded="false" />
+                <element signature="e#9055#9820#0" expanded="false" />
+                <element signature="e#9929#11079#0" expanded="false" />
+                <element signature="e#11190#12153#0" expanded="false" />
+                <element signature="e#12293#13077#0" expanded="false" />
+                <element signature="e#13217#14007#0" expanded="false" />
+                <element signature="e#14152#15181#0" expanded="false" />
+                <element signature="e#15291#15573#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="yourapplication.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="40" selection-start="67" selection-end="67" vertical-scroll-proportion="0.02866779" vertical-offset="0" max-vertical-offset="1156">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -88,7 +79,7 @@
       <file leaf-file-name="post.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="14" selection-start="0" selection-end="3119" vertical-scroll-proportion="-20.5" vertical-offset="521" max-vertical-offset="1156">
+            <state line="62" column="14" selection-start="0" selection-end="3123" vertical-scroll-proportion="-20.5" vertical-offset="521" max-vertical-offset="1156">
               <folding />
             </state>
           </provider>
@@ -115,16 +106,7 @@
       <file leaf-file-name="Forms.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/model/Forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="16" selection-start="981" selection-end="981" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1088">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="category.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/indvproj/templates/category.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="39" selection-start="592" selection-end="592" vertical-scroll-proportion="-7.8461537" vertical-offset="51" max-vertical-offset="680">
+            <state line="24" column="16" selection-start="982" selection-end="982" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1122">
               <folding />
             </state>
           </provider>
@@ -142,7 +124,7 @@
       <file leaf-file-name="new_post.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/new_post.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="102" selection-start="702" selection-end="702" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="493">
+            <state line="16" column="102" selection-start="706" selection-end="706" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="493">
               <folding />
             </state>
           </provider>
@@ -196,7 +178,6 @@
         <option value="$PROJECT_DIR$/indvproj/templates/create_collection.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/comment_on_comment.html" />
         <option value="$PROJECT_DIR$/indvproj/static/reset.css" />
-        <option value="$PROJECT_DIR$/indvproj/yourapplication.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/404.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/new_post.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/user.html" />
@@ -215,6 +196,7 @@
         <option value="$PROJECT_DIR$/indvproj/model/models.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/edit_post.html" />
         <option value="$PROJECT_DIR$/indvproj/model/views.py" />
+        <option value="$PROJECT_DIR$/indvproj/yourapplication.py" />
       </list>
     </option>
   </component>
@@ -964,7 +946,15 @@
       <created>1400589200773</created>
       <updated>1400589200773</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Editing posts is now possible, huge amount of css.&#10;* Changed so that posts are now possible to edit, changed database and added a form + template for it.&#10;* Changed a lot of css and layout.&#10;* Added another menu for categories and moved that one from the first so that the left got the users and the collections and the right one got the categories, maybe they should swap?&#10;* Loads more of layout and css.">
+      <created>1400668485609</created>
+      <updated>1400668485609</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Remember to not name your endpoints the same, that is seriously hard to debug.">
+      <created>1400668949576</created>
+      <updated>1400668949576</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1026,8 +1016,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="* AddModeratorForm and CommentForm&#10;* Renamed id to postid and added a print statement." />
-    <MESSAGE value="* Added docstrings to all views" />
     <MESSAGE value="* Had some problem with SQLAlchemy, which seems to be solved now, IDK if it is though.&#10;* Since I changed CollectionView:get from id to collection id I needed to change that in the templates as well.&#10;*" />
     <MESSAGE value="* Added docstrings to models.&#10;* Adding links to collections should be possible now, but not posts.&#10;* Recreated the virtualenv&#10;* Created a Problems.txt with descriptions on some problems I've had &#10;* Changed some templates such as the render_post so that it actually displays the content of the post." />
     <MESSAGE value="* Append the current user as a moderator to the created category&#10;" />
@@ -1051,7 +1039,9 @@
     <MESSAGE value="* Added a lot of CSS.&#10;* Documentation on how the collection url works." />
     <MESSAGE value="* A load more CSS.&#10;* Added a render_post_dense macro that replaces render_post when we don't want the content and so on.&#10;* Why not more CSS?&#10;* Also changed around the HTML to work with the flex-box better and so on. CSS is just a hack.&#10;" />
     <MESSAGE value="Error checking and more css.&#10;* Added a constant for MAXINT so that it doesn't throw errors when you try to access a post with a huge integer value or comment value. I.E. error checking&#10;* Creating comments now escapes the data, maytbe it should be automatic, but at this time it isn't.&#10;* Loads of CSS.&#10;* Added a 404 page so that it doesn't just return text that isn't proper HTML.&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Error checking and more css.&#10;* Added a constant for MAXINT so that it doesn't throw errors when you try to access a post with a huge integer value or comment value. I.E. error checking&#10;* Creating comments now escapes the data, maytbe it should be automatic, but at this time it isn't.&#10;* Loads of CSS.&#10;* Added a 404 page so that it doesn't just return text that isn't proper HTML.&#10;" />
+    <MESSAGE value="Editing posts is now possible, huge amount of css.&#10;* Changed so that posts are now possible to edit, changed database and added a form + template for it.&#10;* Changed a lot of css and layout.&#10;* Added another menu for categories and moved that one from the first so that the left got the users and the collections and the right one got the categories, maybe they should swap?&#10;* Loads more of layout and css." />
+    <MESSAGE value="Remember to not name your endpoints the same, that is seriously hard to debug." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remember to not name your endpoints the same, that is seriously hard to debug." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1269,13 +1259,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="593" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="1616" selection-end="1616" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="1156">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/comment_on_comment.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="18" selection-start="356" selection-end="356" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="289">
@@ -1329,8 +1312,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="90" column="42" selection-start="3900" selection-end="3900" vertical-scroll-proportion="-4.4423075" vertical-offset="1299" max-vertical-offset="2669">
           <folding>
-            <element signature="e#5166#5207#0" expanded="true" />
-            <element signature="e#6093#6114#0" expanded="true" />
+            <element signature="e#5190#5231#0" expanded="true" />
+            <element signature="e#6117#6138#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1389,14 +1372,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/new_post.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="102" selection-start="702" selection-end="702" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="493">
+        <state line="16" column="102" selection-start="706" selection-end="706" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="493">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="14" selection-start="0" selection-end="3119" vertical-scroll-proportion="-20.5" vertical-offset="521" max-vertical-offset="1156">
+        <state line="62" column="14" selection-start="0" selection-end="3123" vertical-scroll-proportion="-20.5" vertical-offset="521" max-vertical-offset="1156">
           <folding />
         </state>
       </provider>
@@ -1424,7 +1407,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/Forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="16" selection-start="981" selection-end="981" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1088">
+        <state line="24" column="16" selection-start="982" selection-end="982" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1122">
           <folding />
         </state>
       </provider>
@@ -1438,18 +1421,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="649" column="39" selection-start="24347" selection-end="24347" vertical-scroll-proportion="0.64924115" vertical-offset="8166" max-vertical-offset="13430">
+        <state line="283" column="16" selection-start="8653" selection-end="8653" vertical-scroll-proportion="0.0" vertical-offset="4342" max-vertical-offset="13906">
           <folding>
-            <element signature="e#0#16#0" expanded="true" />
-            <element signature="e#9054#9819#0" expanded="false" />
-            <element signature="e#9928#11078#0" expanded="false" />
-            <element signature="e#11189#12152#0" expanded="false" />
-            <element signature="e#12292#13076#0" expanded="false" />
-            <element signature="e#13216#14006#0" expanded="false" />
-            <element signature="e#14151#15180#0" expanded="false" />
-            <element signature="e#15290#15572#0" expanded="false" />
-            <element signature="e#20547#21508#0" expanded="false" />
+            <element signature="e#9055#9820#0" expanded="false" />
+            <element signature="e#9929#11079#0" expanded="false" />
+            <element signature="e#11190#12153#0" expanded="false" />
+            <element signature="e#12293#13077#0" expanded="false" />
+            <element signature="e#13217#14007#0" expanded="false" />
+            <element signature="e#14152#15181#0" expanded="false" />
+            <element signature="e#15291#15573#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/yourapplication.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="40" selection-start="67" selection-end="67" vertical-scroll-proportion="0.02866779" vertical-offset="0" max-vertical-offset="1156">
+          <folding />
         </state>
       </provider>
     </entry>

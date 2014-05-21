@@ -273,6 +273,7 @@ class PostView(FlaskView):
         :param postid: The postid of the post to view
         :return: Either a redirect to CategoryView:view_post if the post exists, or a rendered template of post.html
         """
+
         post = Post.query.get(postid)
 
         #print(dir(Comment.query.filter(Comment.commentid in Post.comments)))
@@ -489,6 +490,7 @@ class PostView(FlaskView):
             if form.validate_on_submit():
                 print("Save the post")
                 post.content = escape_text_and_create_markdown(form.content.data)
+                post.non_markdown = form.content.data
                 db_session.commit()
                 flash('The post was updated.')
                 return redirect(url_for('PostView:get', postid=postid))
@@ -647,7 +649,8 @@ class CategoryView(FlaskView):
         #                       postid=postid))
 
     @route('<categoryname>/p/<postid>/edit')
-    def view_post(self, categoryname, postid):
+    @login_required
+    def edit_post(self, categoryname, postid):
         return PostView.edit_post(self, postid)
 
     @route('<categoryname>/p/new', methods=['GET', 'POST'])
