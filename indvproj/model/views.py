@@ -8,7 +8,7 @@ from indvproj import db_session
 from flask_login import login_required, login_user, current_user, logout_user
 from flask import render_template, redirect, flash, url_for, g, request, abort
 from Forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, CategoryForm, DeletePostForm, \
-    AddToCollectionForm, AddModeratorForm, CommentForm
+    AddToCollectionForm, AddModeratorForm, CommentForm, EditPostForm
 from markdown import markdown
 
 
@@ -191,7 +191,7 @@ class MainView(FlaskView):
         #db_session.commit()
         #raise Exception()
         return render_template('main.html',
-                               posts=Post.query.all(), categories=Category.query.all(), users=User.query.all())
+                               posts=Post.query.all()[::-1], categories=Category.query.all(), users=User.query.all())
 
 
 # noinspection PyTypeChecker
@@ -461,7 +461,7 @@ class PostView(FlaskView):
                 if category.allowed_to_post_in_category(current_user):
                     post = Post(current_user.userid, _datetime.datetime.now(),
                                 escape_text_and_create_markdown(form.content.data), 1,
-                                form.title.data, category.categoryid)
+                                form.title.data, category.categoryid, non_markdown=form.content.data)
 
                     print(post)
                     db_session.add(post)
@@ -476,6 +476,26 @@ class PostView(FlaskView):
             return redirect(url_for('PostView:new_post'))
 
         return render_template('new_post.html', form=form, categoryname=categoryname)
+
+    @route('/<postid>/edit', methods=['GET', 'POST'])
+    @login_required
+    def edit_post(self, postid):
+        if current_user.allowed_to_remove_post(Post.query.get(postid)):
+            print("Hello?")
+            form = EditPostForm()
+            post = Post.query.get_or_404(postid)
+            if not form.content.data:
+                form.content.data = post.non_markdown
+            if form.validate_on_submit():
+                print("Save the post")
+                post.content = escape_text_and_create_markdown(form.content.data)
+                db_session.commit()
+                flash('The post was updated.')
+                return redirect(url_for('PostView:get', postid=postid))
+            print("Something failed", form.errors)
+            return render_template('edit_post.html', form=form, post=post)
+        flash('You are not allowed to edit this post.')
+        return redirect(url_for('PostView:get', postid=postid))
 
 
 class RegisterView(FlaskView):
@@ -587,7 +607,8 @@ class CategoryView(FlaskView):
         category = Category.query.filter(func.lower(Category.categoryname) == func.lower(categoryname)).first()
         print("Category:", category)
         print("Dir category:", dir(category))
-        posts = category.posts.all()
+        #Reverse the posts so we get most recent first
+        posts = category.posts.all()[::-1]
         return render_template('category.html', category=category, posts=posts, form=deletionform)
 
     @route('<categoryname>/p/<postid>')
@@ -624,6 +645,10 @@ class CategoryView(FlaskView):
         #return redirect(url_for('CategoryView:view_post', categoryname=Category.query.get(post.categoryid).
         # categoryname,
         #                       postid=postid))
+
+    @route('<categoryname>/p/<postid>/edit')
+    def view_post(self, categoryname, postid):
+        return PostView.edit_post(self, postid)
 
     @route('<categoryname>/p/new', methods=['GET', 'POST'])
     @login_required
@@ -677,7 +702,7 @@ class CategoryView(FlaskView):
         flash("You are not allowed to create categories. Please contact the admins to resolve this.")
         return redirect(url_for("MainView:index"))
 
-    @route('/<categoryname>/moderators/')
+    @route('/<categoryname>/moderators')
     def moderators(self, categoryname):
         """
         Displays all moderators in a category
@@ -685,7 +710,9 @@ class CategoryView(FlaskView):
         :param categoryname: Categoryname to display moderators in
         :return:
         """
-        return render_template('moderators.html', category=Category.query.filter_by(categoryname=categoryname).first())
+        form = AddModeratorForm()
+        return render_template('moderators.html', category=Category.query.filter_by(categoryname=categoryname).first(),
+                               form=form)
 
     @route('<categoryname>/moderators/add', methods=['GET', 'POST'])
     @login_required

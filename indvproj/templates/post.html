@@ -3,55 +3,61 @@
     {% from '_formhelpers.html' import render_post_with_delete, render_post_without_delete, render_field, render_post, render_comment, render_childcomments with context %}
     <div class="onehundered margin-ten">
         <h1 class="post-title">{{ post.title }}</h1>
+        {# Allows the user to add the post to a collection #}
+        {# TODO: Add the collection_has_post table again #}
         {% if g.user.is_active() and g.user.collections.all() %}
             <div class="add-to-collection">
-                <span class="small">Choose here in what collection to save this post in.</span>
+                <span class="small">Choose here to add this post to a collection.</span>
 
                 <form method="post" action="/collection/test">
                     {{ form.csrf_token() }}
+
+                    {# All collections with their collectionid as the value and title as the key #}
                     <select name="collectionid">
                         {% for collection in g.user.collections %}
                             <option value={{ collection.collectionid }}>{{ collection.title }}</option>
                         {% endfor %}
                     </select>
+
                     <input type="hidden" value={{ post.postid }} name="postid">
-                    <input type=submit value=Submit>
+                    <input type=submit value=Save>
                 </form>
             </div>
+            {# If the user lacks collections, do this instead. #}
         {% elif g.user.is_active() %}
             <div class="add-to-collection">
                 <span class="small">You haven't got any collections yet. Maybe you want to <a
                         href={{ url_for('CollectionView:new_collection') }}>create</a> one?</span>
             </div>
         {% endif %}
-        <div class="post">
-            <div class="small footer">Postid: {{ post.postid }} | Posted by: <a
+        <div class="post onehundered">
+        <div class="small footer">Postid: {{ post.postid }} | Posted by: <a
                     href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a> | Amount
                 of
                 comments: {{ post.comments.all()|length }}</div>
             <div class="post-content margin-ten">{{ post.content|safe }}</div>
         </div>
+        {# Render a button to delete the post, but should probably be moved somewhere else #}
         {% if allowed_to_remove %}
             <div>
                 <form method=post action=/p/{{ post.postid }}/delete
                       onsubmit="return confirm('Are you sure you want to submit?')">
-                    {# render_field(form.submit) #}
-                    {# form.submit #}
                     <input type="submit" value="Delete">
                     {{ form.csrf_token() }}
                 </form>
             </div>
         {% endif %}
         <form method=post action=/p/{{ post.postid }}/comment>
-            {# render_field(commentform.content) #}
             {{ commentform.content }}
             <br>
             <input type="submit" value="Submit comment">
             {{ commentform.csrf_token() }}
         </form>
+        {# Render all comments with all children, might want to limit the amount of childcoments #}
         <div id="comments">
             {% for comment in post.comments.all() %}
                 <div>{{ render_comment(comment, post.postid,commentform) }}</div>
             {% endfor %}
         </div>
+    </div>
 {% endblock %}

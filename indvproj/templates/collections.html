@@ -2,9 +2,10 @@
 {% extends "layout.html" %}
 {% block body %}
     {% from "_formhelpers.html" import render_collection_dense with context %}
-    <div class="margin-ten">
-    {% for collection in collections %}
-        {{ render_collection_dense(collection) }}
-    {% endfor %}
+    <div class="margin-ten flex">
+        <p class="onehundered">All of your collections:</p>
+        {% for collection in collections %}
+            {{ render_collection_dense(collection) }}
+        {% endfor %}
     </div>
 {% endblock %}

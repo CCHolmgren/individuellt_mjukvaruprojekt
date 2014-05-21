@@ -3,8 +3,10 @@
     {% from "_formhelpers.html" import render_field %}
     <form method=post action=/login/>
         <dl>
-            {{ render_field(form.username) }}
-            {{ render_field(form.password) }}
+            <dt>Username</dt>
+            <dt>{{ form.username }}</dt>
+            <dt>Password</dt>
+            <dt>{{ form.password }}</dt>
         </dl>
         <p><input type=submit value=Login></p>
         {{ form.csrf_token }}

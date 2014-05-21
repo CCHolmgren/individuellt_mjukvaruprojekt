@@ -78,17 +78,17 @@
 {% macro render_collection_dense(collection) %}
     <div class="collection-dense" style="border:1px solid black;">
         <div class="content">
-        <div>
-        <a href={{ url_for('CollectionView:get',collectionid=collection.collectionid,errors=None) }}>{{ collection.title }}</a>
+            <div>
+                <a href={{ url_for('CollectionView:get',collectionid=collection.collectionid,errors=None) }}>{{ collection.title|truncate(length=20, killwords=True) }}</a>
+            </div>
+            <div>Links: {{ collection.links.all()|length }}</div>
         </div>
-        <div>Links: {{ collection.links.all()|length }}</div>
-    </div>
     </div>
 {% endmacro %}
 {% macro all_moderators() %}
     All moderators:
     {% for moderator in category.moderators.all() %}
-        <p>{{ moderator.username }}</p>
+        <div>{{ moderator.username }}</div>
     {% endfor %}
 {% endmacro %}
 {% macro render_comment(comment,postid,commentform) %}
@@ -141,7 +141,7 @@
                                 <div>{{ loop(comment.children) }}</div>
                             {% endif %}
                         </div>
-                </div>
+                    </div>
                 </div>
             {% endfor %}
         </div>

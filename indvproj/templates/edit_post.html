@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% from '_formhelpers.html' import render_post_with_delete, render_post_without_delete, render_field, render_post, render_comment, render_childcomments with context %}
+    <div class="onehundered margin-ten">
+        <h1 class="post-title">{{ post.title }}</h1>
+        {# Allows the user to add the post to a collection #}
+        {# TODO: Add the collection_has_post table again #}
+        <div class="post onehundered">
+            <div class="small footer">Postid: {{ post.postid }} | Posted by: <a
+                    href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a> | Amount
+                of
+                comments: {{ post.comments.all()|length }}</div>
+            <form method=post action=/p/{{ post.postid }}/edit>
+                <div class="post-content margin-ten">{{ form.content }}</div>
+                <input type="Submit" value="Edit">
+                {{ form.csrf_token() }}
+            </form>
+        </div>
+        {# Render a button to delete the post, but should probably be moved somewhere else #}
+    </div>
+{% endblock %}

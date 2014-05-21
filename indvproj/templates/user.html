@@ -2,23 +2,30 @@
 {%- block body %}
     {%- from "_formhelpers.html" import render_post, render_collection_dense with context %}
     <div class="onehundered">
-        Username: {{ user.username }}<br>
-        Userid: {{ user.userid }}<br>
-        Email: {{ user.email }}<br>
-        Created: {{ user.created }}<br>
-        Status: {{ user.status }}<br>
-        Statusname: {{ user.statusobject.statusname }}<br>
+        <div>Username: {{ user.username }}</div>
+        <div>Userid: {{ user.userid }}</div>
+        <div>Email: {{ user.email }}</div>
+        <div>Created: {{ user.created }}</div>
+        <div>Status: {{ user.status }}</div>
+        <div>Statusname: {{ user.statusobject.statusname }}</div>
     </div>
     {% if allowed_to_view_collections %}
-        <div class="fortyeight">
-            Collections:
+
+        <hr class="onehundered">
+        <div class="flex fortyeight">
+            <div class="onehundered">Collections:</div>
             {%- for collection in user.collections.all() %}
                 {{ render_collection_dense(collection) }}<br>
             {%- endfor %}
         </div>
     {% endif %}
-    <div class="onehundered">Posts:</div>
-    {%- for post in user.posts %}
-        {{ render_post(post) }}
-    {%- endfor %}
+    <hr class="onehundered">
+    <div class="onehundered flex">
+        <div class="onehundered">
+            Posts:
+        </div>
+        {%- for post in user.posts %}
+            {{ render_post(post) }}
+        {%- endfor %}
+    </div>
 {%- endblock %}

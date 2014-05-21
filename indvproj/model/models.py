@@ -294,6 +294,7 @@ class Post(db.Model):
     timeposted = db.Column(db.DateTime, nullable=False)
     views = db.Column(db.Integer, default=0)
     content = db.Column(db.String(2000), nullable=False)
+    non_markdown = db.Column(db.String(2000))
     typeid = db.Column(db.Integer, db.ForeignKey('type.typeid'), nullable=True)
     title = db.Column(db.String(250), nullable=False)
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
@@ -303,7 +304,7 @@ class Post(db.Model):
     categoryid = db.Column(db.Integer, db.ForeignKey('category.categoryid', ondelete="CASCADE"), nullable=False)
     statusid = db.Column(db.Integer, db.ForeignKey('status.statusid'), default=1, nullable=True)
 
-    def __init__(self, createdby, timeposted, content, typeid, title, categoryid, statusid=1):
+    def __init__(self, createdby, timeposted, content, typeid, title, categoryid, statusid=1, non_markdown=None):
         self.createdby = createdby
         self.timeposted = timeposted
         self.content = content
@@ -313,6 +314,7 @@ class Post(db.Model):
         self.typeid = typeid
         self.categoryid = categoryid
         self.statusid = statusid
+        self.non_markdown = non_markdown
 
     def __repr__(self):
         return '<Post {}>'.format(self.title)

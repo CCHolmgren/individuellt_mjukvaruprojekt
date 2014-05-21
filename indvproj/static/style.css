@@ -88,6 +88,7 @@ blockquote p {
 }
 
 .aside {
+    overflow: auto;
     background: white;
     order: 1;
     width: 0;
@@ -95,8 +96,18 @@ blockquote p {
     position: fixed;
     top: 0;
     left: 0;
-    overflow: hidden;
-    height: auto;
+    transition: width 0.3s ease;
+}
+
+.aside2 {
+    overflow: auto;
+    background: white;
+    order: 3;
+    width: 0;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    right: 0;
     transition: width 0.3s ease;
 }
 
@@ -105,16 +116,51 @@ blockquote p {
     min-width: 200px;
 }
 
-.therest {
-    clear: right;
-}
-
 #main-navigation:target + .main {
     width: 100%;
 }
 
+#category-navigation:target {
+    width: 20%;
+    min-width: 200px;
+}
+
+#category-navigation:target + .main {
+    width: 100%;
+}
+
+.home {
+    display: inline-block;
+    color: white;
+    padding: 4px;
+    margin-left: 8px;
+    border-radius: 4px;
+    background: #00A000;
+    height: 19px;
+}
+
+.open-nav {
+    display: inline-block;
+    background: #0e84b5;
+    color: white;
+    padding: 4px;
+    border-radius: 4px;
+    height: 19px;
+}
+
+.therest {
+    clear: right;
+}
+
 .close-nav {
-    float: right;
+    margin-top: 7px;
+    margin-left: 11px;
+    margin-right: -4px;
+}
+
+.close-nav2 {
+    margin-top: 7px;
+    margin-left: 11px;
 }
 
 .categories {
@@ -133,6 +179,10 @@ blockquote p {
     margin-right: 5px;
     order: 1;
     flex: 1 100%;
+    display: flex;
+    align-items: baseline;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
 }
 
 .head, .main, .aside {
@@ -146,6 +196,11 @@ blockquote p {
 #content {
     height: 140px;
     width: 100%;
+    max-width: 60em;
+}
+
+.fortyeight {
+    width: 100%;
 }
 
 @media all and (min-width: 1301px) {
@@ -153,7 +208,7 @@ blockquote p {
         width: 48%;
     }
 
-    #content {
+    .fortyeight {
         width: 48%;
     }
 }
@@ -176,6 +231,11 @@ body {
     flex-flow: row wrap;
 }
 
+.flex {
+    display: flex;
+    flex-flow: row wrap;
+}
+
 .collections {
     border-radius: 3px;
     margin-bottom: 4px;
@@ -188,6 +248,7 @@ body {
 
 .collection-dense {
     width: auto;
+    min-width: 200px;
     border-radius: 3px;
     margin-bottom: 4px;
     margin: 2px;
@@ -205,6 +266,18 @@ body {
     margin: 2px;
 }
 
+#addmoderators {
+    display: none;
+}
+
+#addmoderators:target {
+    display: initial;
+}
+
+#addmoderators:target + #addmore {
+    display: none;
+}
+
 .user {
     margin-bottom: 4px;
     margin: 2px;
@@ -212,10 +285,6 @@ body {
 
 .onehundered {
     width: 100%;
-}
-
-.fortyeight {
-    width: 48%;
 }
 
 .post {
@@ -288,7 +357,8 @@ a:hover {
 }
 
 .signinbar {
-    float: right;
+    margin-left: auto;
+    margin-right: 4px;
 }
 
 .small {

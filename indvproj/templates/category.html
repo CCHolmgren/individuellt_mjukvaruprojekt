@@ -9,7 +9,7 @@
             {% if category.moderators.all() %}
                 Moderators in this category:
                 {% for moderator in category.moderators.all() %}
-                    <div>{{ moderator }}</div>
+                    <div>{{ moderator.username }}</div>
                 {% endfor %}
             {% endif %}
         </div>

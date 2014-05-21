@@ -9,22 +9,27 @@
 </head>
 <body>
 <div class="head">
-    <a href={{ url_for('MainView:index') }}>Home</a>
-    <a href="#main-navigation">Menu</a>
+    <a href="#main-navigation" class="open-nav">Menu</a>
+    <a href={{ url_for('MainView:index') }} class="home">Home</a>
 
 
     <div class="signinbar">
         {% if not g.user.is_active() %}
-            <p>Do you want to <a href={{ url_for('RegisterView:new_user') }}> register</a> or <a
-                    href={{ url_for('LoginView:index') }}>login</a>?</p>
+            Do you want to <a href={{ url_for('RegisterView:new_user') }}> register</a> or <a
+                href={{ url_for('LoginView:index') }}>login</a>?
         {% else %}
-            <a href={{ url_for('LogoutView:logout') }}>Log out</a>
-            <a href={{ url_for('UserView:get',username= g.user.username) }}>{{ g.user.username }}</a>
-    {% endif %}
+            <a href={{ url_for('UserView:get',username= g.user.username) }} class="open-nav">{{ g.user.username }}</a>
+            <a href={{ url_for('LogoutView:logout') }}  class="open-nav">Log out</a>
+        {% endif %}
+    </div>
+    <div>
+        <a href="#category-navigation" class="open-nav">Categories</a>
     </div>
 </div>
 <div class="aside" id="main-navigation">
-    <a href="#" class="close-nav">Close</a>
+    <a href="#" class="close-nav open-nav">Close</a>
+
+    <a href={{ url_for('MainView:index') }} class="home">Home</a>
 
     <div class="therest">
         <div class="messages">
@@ -56,27 +61,31 @@
                 <div class="user">{{ user.username }}</div>
             {% endfor %}
         </div>
-        <div class="categories">
-            <span class="category">Categories:</span>
-            {% for category in g.categories %}
-                <div class="category">
-                    <a href={{ url_for('CategoryView:get', categoryname=category.categoryname) }}>{{ category.categoryname }}</a>
-                    {% if category.moderators.all() %}
-                        <div>
-                            <small>Mods:
-                                {% for moderator in category.moderators.all() %}
-                                    <a href={{ url_for('UserView:get',username=moderator.username) }}>{{ moderator.username }}</a>
-                                {% endfor %}
-                            </small>
-                        </div>
-                    {% endif %}
-                </div>
-            {% endfor %}
-        </div>
     </div>
 </div>
 <div class="main">
     {%- block body %}{%- endblock %}
+</div>
+<div class="aside2" id="category-navigation">
+    <a href="#" class="close-nav2 open-nav" style="float:right">Close</a>
+
+    <div class="categories" style="clear:right">
+        <span class="category">Categories:</span>
+        {% for category in g.categories %}
+            <div class="category">
+                <a href={{ url_for('CategoryView:get', categoryname=category.categoryname) }}>{{ category.categoryname }}</a>
+                {% if category.moderators.all() %}
+                    <div>
+                        <small>Mods:
+                            {% for moderator in category.moderators.all() %}
+                                <a href={{ url_for('UserView:get',username=moderator.username) }}>{{ moderator.username }}</a>
+                            {% endfor %}
+                        </small>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
 </div>
 </body>
 </html>

@@ -3,12 +3,12 @@
 {% block body %}
     {% if g.user.is_active() %}
         <div class="onehundered">
-        <div>
-                <ul>
-                    <li>New <a href={{ url_for('PostView:new_post') }}>post</a></li>
-                    <li>Create a new <a href={{ url_for('CollectionView:new_collection') }}>collection</a>?</li>
-                    <li>... a new <a href={{ url_for('CategoryView:new_category') }}>category</a>?</li>
-                </ul>
+            <div>
+                <dl>
+                    <dt>New <a href={{ url_for('PostView:new_post') }}>post</a></dt>
+                    <dt>Create a new <a href={{ url_for('CollectionView:new_collection') }}>collection</a>?</dt>
+                    <dt>or a new <a href={{ url_for('CategoryView:new_category') }}>category</a>?</dt>
+                </dl>
             </div>
             <div>
                 Moderator in:
@@ -16,9 +16,10 @@
                     <a href={{ url_for('CategoryView:get',categoryname=moderator.categoryname) }}>{{ moderator.categorytitle }}</a>
                 {% endfor %}
             </div>
-            <p>Your userpage:
+            <div>
+                Your userpage:
                 <a href={{ url_for('UserView:get', username=g.user.username) }}>{{ g.user.username }}</a>
-            </p>
+            </div>
         </div>
     {% endif %}
     {% for post in posts %}

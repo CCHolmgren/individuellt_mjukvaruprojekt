@@ -1,11 +1,14 @@
 {% extends "layout.html" %}
 {% block body %}
-    {% from "_formhelpers.html" import all_moderators with context %}
-    {{ all_moderators() }}
-    {% if g.user in category.moderators.all() %}
-        <p>
-            <a href={{ url_for('CategoryView:add_moderator',categoryname=category.categoryname) }}>Add more
-                moderators</a>
-        </p>
-    {% endif %}
+    {% from "_formhelpers.html" import all_moderators, render_field with context %}
+    <div>
+        {{ all_moderators() }}
+        {% if g.user in category.moderators.all() %}
+            <p>
+                <a href={{ url_for('CategoryView:add_moderator',categoryname=category.categoryname) }}>
+                    Add more moderators
+                </a>
+            </p>
+        {% endif %}
+    </div>
 {% endblock %}

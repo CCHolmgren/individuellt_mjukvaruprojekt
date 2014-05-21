@@ -22,6 +22,10 @@ class TextPostForm(Form):
     categoryname = TextField('Categoryname', [validators.Length(min=1, max=100), validators.Required()])
 
 
+class EditPostForm(Form):
+    content = TextAreaField("Content here", [validators.Length(min=10, max=2000), validators.Required()])
+
+
 class LinkPostForm(Form):
     title = TextField("Title", [validators.Length(min=10, max=250), validators.Required()])
     link = URLField([validators.url()])

@@ -1,13 +1,16 @@
 {% extends "layout.html" %}
 {% block body %}
     {% from "_formhelpers.html" import render_field, all_moderators with context %}
-    {{ all_moderators() }}
-    <form method=post action=/c/{{ categoryname }}/moderators/add>
-        <dl>
-            {{ render_field(form.username) }}
-            <small>Username of the user that you want to add.</small>
-        </dl>
-        <p><input type=submit value="Add to the category"></p>
-        {{ form.csrf_token }}
-    </form>
+    <div>
+        {{ all_moderators() }}
+        <form method=post action=/c/{{ categoryname }}/moderators/add>
+            <dl>
+                <dt>Username</dt>
+                <dt>{{ form.username }}</dt>
+                <small>The user that you want to add.</small>
+            </dl>
+            <p><input type=submit value="Add to the category"></p>
+            {{ form.csrf_token }}
+        </form>
+    </div>
 {% endblock %}
