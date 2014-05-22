@@ -34,13 +34,15 @@
         <div class="small footer">Postid: {{ post.postid }} | Posted by: <a
                     href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a> | Amount
                 of
-                comments: {{ post.comments.all()|length }}</div>
+            comments: {{ post.comments.all()|length }}
+            <a href={{ url_for('CategoryView:edit_post', categoryname=post.category.categoryname,postid=post.postid) }}>Edit</a>
+        </div>
             <div class="post-content margin-ten">{{ post.content|safe }}</div>
         </div>
         {# Render a button to delete the post, but should probably be moved somewhere else #}
         {% if allowed_to_remove %}
             <div>
-                <form method=post action=/p/{{ post.postid }}/delete
+                <form method=post action=/p/{{ post.postid }}/remove
                       onsubmit="return confirm('Are you sure you want to submit?')">
                     <input type="submit" value="Delete">
                     {{ form.csrf_token() }}

@@ -12,7 +12,17 @@
     <a href="#main-navigation" class="open-nav">Menu</a>
     <a href={{ url_for('MainView:index') }} class="home">Home</a>
 
-
+    <div class="messages">
+        {%- with messages = get_flashed_messages() %}
+            {%- if messages %}
+                <div class=flashes>
+                    {%- for message in messages %}
+                        <div>{{ message }}</div>
+                    {%- endfor %}
+                </div>
+            {%- endif %}
+        {%- endwith %}
+    </div>
     <div class="signinbar">
         {% if not g.user.is_active() %}
             Do you want to <a href={{ url_for('RegisterView:new_user') }}> register</a> or <a
@@ -32,17 +42,6 @@
     <a href={{ url_for('MainView:index') }} class="home">Home</a>
 
     <div class="therest">
-        <div class="messages">
-            {%- with messages = get_flashed_messages() %}
-                {%- if messages %}
-                    <ul class=flashes>
-                        {%- for message in messages %}
-                            <li>{{ message }}</li>
-                        {%- endfor %}
-                    </ul>
-                {%- endif %}
-            {%- endwith %}
-        </div>
         {% if g.user.is_active() %}
             <div class="collections">
                 {% if g.user.collections.all() %}

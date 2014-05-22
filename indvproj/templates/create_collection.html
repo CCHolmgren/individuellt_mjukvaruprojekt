@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 {% block body %}
-    {% from "_formhelpers.html" import render_field %}
+    {% from "_formhelpers.html" import render_field, with_errors %}
     <form method=post action=/collection/new>
-    <dl>
-            {{ render_field(form.title) }}
-        <span class="small">The name of the collection.</span>
-    </dl>
+        <dl>
+            {{ with_errors(form.title) }}
+            <span class="small">The name of the collection.</span>
+        </dl>
         <p><input type=submit value=New></p>
         {{ form.csrf_token() }}
     </form>

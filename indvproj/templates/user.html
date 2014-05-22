@@ -25,7 +25,9 @@
             Posts:
         </div>
         {%- for post in user.posts %}
-            {{ render_post(post) }}
+            {% if post.statusid != 5 %}
+                {{ render_post(post) }}
+            {% endif %}
         {%- endfor %}
     </div>
 {%- endblock %}

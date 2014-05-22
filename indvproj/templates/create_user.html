@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 {% block body %}
-    {% from "_formhelpers.html" import render_field %}
+    {% from "_formhelpers.html" import render_field, with_errors %}
     <form method=post action=/register/>
         <dl>
-            {{ render_field(form.username) }}
-            {{ render_field(form.email) }}
-            {{ render_field(form.password) }}
-            {{ render_field(form.confirm) }}
+            {{ with_errors(form.username) }}
+            {{ with_errors(form.email) }}
+            {{ with_errors(form.password) }}
+            {{ with_errors(form.confirm) }}
         </dl>
         <p><input type=submit value=Register></p>
         {{ form.csrf_token() }}

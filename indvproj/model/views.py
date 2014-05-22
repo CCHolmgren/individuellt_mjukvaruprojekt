@@ -191,7 +191,8 @@ class MainView(FlaskView):
         #db_session.commit()
         #raise Exception()
         return render_template('main.html',
-                               posts=Post.query.all()[::-1], categories=Category.query.all(), users=User.query.all())
+                               posts=Post.query.filter(Post.statusid != 5).all()[::-1], categories=Category.query.all(),
+                               users=User.query.all())
 
 
 # noinspection PyTypeChecker
@@ -274,17 +275,17 @@ class PostView(FlaskView):
         :return: Either a redirect to CategoryView:view_post if the post exists, or a rendered template of post.html
         """
 
-        post = Post.query.get(postid)
+        post = Post.query.get_or_404(postid)
 
         #print(dir(Comment.query.filter(Comment.commentid in Post.comments)))
 
         #form = DeletePostForm()
         #print(form)
-
-        if post:
-            return redirect(url_for('CategoryView:view_post', postid=post.postid,
-                                    categoryname=Category.query.get(post.categoryid).categoryname))
-        return abort(404)
+        # I.E. deleted
+        if post.statusid == 5:
+            return abort(404)
+        return redirect(url_for('CategoryView:view_post', postid=post.postid,
+                                categoryname=Category.query.get(post.categoryid).categoryname))
         #return render_template('post.html', post=Post.query.get(postid), form=form)
 
     @route('/<postid>/remove', methods=['POST'])
@@ -294,7 +295,7 @@ class PostView(FlaskView):
             post = Post.query.get(postid)
             category = Category.query.get(post.categoryid)
             if current_user.allowed_to_remove_post(post):
-                post.status = 5
+                post.statusid = 5
                 db_session.commit()
                 flash('The post was removed.')
                 return redirect(url_for('CategoryView:get', categoryname=category.categoryname))
@@ -456,7 +457,12 @@ class PostView(FlaskView):
             form.categoryname.data = categoryname
         #linkform = LinkPostForm()
         print(form.categoryname.data)
+        if current_user.status == 4:
+            # Ugly hack to remove the length requirement if the user is a moderator
+            form.title.validators = []
+
         if form.validate_on_submit():  # or linkform.validate_on_submit():
+            print("Inside validate")
             category = Category.query.filter_by(categoryname=form.categoryname.data).first()
             if category:
                 if category.allowed_to_post_in_category(current_user):
@@ -475,7 +481,7 @@ class PostView(FlaskView):
                 return redirect(url_for('PostView:new_post'))
             flash('The category cant be found')
             return redirect(url_for('PostView:new_post'))
-
+        print(form.errors)
         return render_template('new_post.html', form=form, categoryname=categoryname)
 
     @route('/<postid>/edit', methods=['GET', 'POST'])
@@ -610,7 +616,7 @@ class CategoryView(FlaskView):
         print("Category:", category)
         print("Dir category:", dir(category))
         #Reverse the posts so we get most recent first
-        posts = category.posts.all()[::-1]
+        posts = category.posts.filter(Post.statusid != 5).all()[::-1]
         return render_template('category.html', category=category, posts=posts, form=deletionform)
 
     @route('<categoryname>/p/<postid>')
@@ -631,6 +637,9 @@ class CategoryView(FlaskView):
         if int(postid) > MAXINT:
             return abort(404)
         post = Post.query.filter_by(postid=postid).first_or_404()
+
+        if post.statusid == 5:
+            return abort(404)
         #print(post.categoryid)
         category = Category.query.filter(func.lower(Category.categoryname) == func.lower(categoryname)).first_or_404()
         #print(category)
@@ -733,8 +742,11 @@ class CategoryView(FlaskView):
             form = AddModeratorForm()
             if form.validate_on_submit():
                 user = User.query.filter_by(username=form.username.data).first()
-                category.moderators.append(user)
-                db_session.commit()
+                if user not in category.moderators:
+                    category.moderators.append(user)
+                    db_session.commit()
+                flash("That user is already a moderator in this category.")
+                return redirect(url_for('CategoryView:add_moderator', categoryname=categoryname))
             return render_template('add_moderators.html', category=category, form=form,
                                    categoryname=category.categoryname)
         flash("You are not allowed to add moderators to this category!")

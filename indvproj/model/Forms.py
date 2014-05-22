@@ -1,6 +1,9 @@
 from flask_wtf import Form
 from wtforms import TextField, PasswordField, validators, TextAreaField, SubmitField
 from wtforms.fields.html5 import URLField
+from models import Category, User
+from wtforms.validators import ValidationError
+from sqlalchemy import func
 
 __author__ = 'Chrille'
 
@@ -20,6 +23,10 @@ class TextPostForm(Form):
     title = TextField("Title", [validators.Length(min=10, max=250), validators.Required()])
     content = TextAreaField("Content here", [validators.Length(min=10, max=2000), validators.Required()])
     categoryname = TextField('Categoryname', [validators.Length(min=1, max=100), validators.Required()])
+
+    def validate_categoryname(self, field):
+        if not Category.query.filter_by(categoryname=field.data).first():
+            raise ValidationError("The category doesn't seem to exist.")
 
 
 class EditPostForm(Form):
@@ -57,6 +64,10 @@ class AddToCollectionForm(Form):
 
 class AddModeratorForm(Form):
     username = TextField('Username')
+
+    def validate_username(self, field):
+        if not User.query.filter(func.lower(User.username) == func.lower(field.data)).first():
+            raise ValidationError("The user doesn't seem to exist.")
 
 
 class CommentForm(Form):

@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
-    {% from "_formhelpers.html" import render_field %}
+    {% from "_formhelpers.html" import render_field, with_errors %}
     <!--<form method=post action=/category/{{ id }}/p/new>
         <dl>
             {#  #} render_field(linkform.title) }}
@@ -11,14 +11,39 @@
     </form>-->
     <form method=post action=/p/new/ class="onehundered">
         <dl>
-        <dt>{{ form.title() }}</dt>
-        <dt><span class="small">The title of the post.</span></dt>
-        <dt>{{ form.categoryname }}</dt>
-        <dt><span class="small">The name of the category that the post will get posted to.</span></dt>
-            <dt>{{ form.content(class='content') }}</dt>
+            {{ with_errors(form.title) }}
+            <dt><span class="small">The title of the post.</span></dt>
+            {{ with_errors(form.categoryname) }}
+            <dt><span class="small">The name of the category that the post will get posted to.</span></dt>
+            <p id="wmd-button-bar"></p>
+            {{ with_errors(form.content,class="content", id="wmd-input") }}
             <dt><span class="small">Content allows for markdown to be used.</span></dt>
     </dl>
         <p><input type=submit value=Post></p>
         {{ form.csrf_token() }}
     </form>
+    <div class="content" id="wmd-preview"></div>
+
+    <script>
+        !function () {
+            var converter = Markdown.getSanitizingConverter();
+            var editor = new Markdown.Editor(converter);
+            editor.hooks.set("insertImageDialog", function (callback) {
+                setTimeout(function () {
+                    var url = prompt("We have detected that you like cats. Do you want to insert an image of a cat?", "http://")
+                    if (url)
+                        callback(url)
+                    else
+                        callback(null);
+                }, 0);
+                return true; // tell the editor that we'll take care of getting the image url
+            });
+            editor.run();
+        }()
+    </script>
+{% endblock %}
+{% block head %}
+    <script src={{ url_for('static',filename="Markdown.Converter.js") }}></script>
+    <script src={{ url_for('static',filename="Markdown.Editor.js") }}></script>
+    <script src={{ url_for('static',filename="Markdown.Sanitizer.js") }}></script>
 {% endblock %}

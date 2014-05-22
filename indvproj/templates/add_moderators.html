@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 {% block body %}
-    {% from "_formhelpers.html" import render_field, all_moderators with context %}
+    {% from "_formhelpers.html" import render_field, all_moderators, with_errors with context %}
     <div>
         {{ all_moderators() }}
         <form method=post action=/c/{{ categoryname }}/moderators/add>
             <dl>
                 <dt>Username</dt>
-                <dt>{{ form.username }}</dt>
+                {{ with_errors(form.username) }}
                 <small>The user that you want to add.</small>
             </dl>
             <p><input type=submit value="Add to the category"></p>
