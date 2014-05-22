@@ -294,6 +294,7 @@ body {
     overflow: hidden;
     border-radius: 5px;
     margin: 10px;
+    margin-left: 0;
     /*margin: auto;*/
     /*width: 25%;
     height: 100px;*/

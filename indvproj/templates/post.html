@@ -34,8 +34,9 @@
         <div class="small footer">Postid: {{ post.postid }} | Posted by: <a
                     href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a> | Amount
                 of
-            comments: {{ post.comments.all()|length }}
+            comments: {{ post.comments.all()|length }} |
             <a href={{ url_for('CategoryView:edit_post', categoryname=post.category.categoryname,postid=post.postid) }}>Edit</a>
+            {% if g.user.status == 4 %}| Status: {{ post.statusid }}{% endif %}
         </div>
             <div class="post-content margin-ten">{{ post.content|safe }}</div>
         </div>

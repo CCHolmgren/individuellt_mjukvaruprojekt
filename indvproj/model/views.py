@@ -289,7 +289,7 @@ class PostView(FlaskView):
         #form = DeletePostForm()
         #print(form)
         # I.E. deleted
-        if post.statusid == 5:
+        if post.statusid == 5 and getattr(current_user, "status", None) != 4:
             return abort(404)
         return redirect(url_for('CategoryView:view_post', postid=post.postid,
                                 categoryname=Category.query.get(post.categoryid).categoryname))
@@ -466,7 +466,8 @@ class PostView(FlaskView):
         print(form.categoryname.data)
         if current_user.status == 4:
             # Ugly hack to remove the length requirement if the user is a moderator
-            form.title.validators = []
+            form.title.validators = form.title.validators[1:]
+            form.content.validators = form.content.validators[1:]
 
         if form.validate_on_submit():  # or linkform.validate_on_submit():
             print("Inside validate")
@@ -649,7 +650,7 @@ class CategoryView(FlaskView):
             return abort(404)
         post = Post.query.filter_by(postid=postid).first_or_404()
 
-        if post.statusid == 5:
+        if post.statusid == 5 and getattr(current_user, "status", None) != 4:
             return abort(404)
         #print(post.categoryid)
         category = Category.query.filter(func.lower(Category.categoryname) == func.lower(categoryname)).first_or_404()
