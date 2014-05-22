@@ -623,7 +623,11 @@ class CategoryView(FlaskView):
         print("Category:", category)
         print("Dir category:", dir(category))
         #Reverse the posts so we get most recent first
-        posts = category.posts.filter(Post.statusid != 5).all()[::-1]
+
+        if getattr(current_user, "status", None) != 4:
+            posts = category.posts.filter(Post.statusid != 5).all()[::-1]
+        else:
+            posts = category.posts.all()[::-1]
         return render_template('category.html', category=category, posts=posts, form=deletionform)
 
     @route('<categoryname>/p/<postid>')

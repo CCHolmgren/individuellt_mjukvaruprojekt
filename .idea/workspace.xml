@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Inbuilt validation on some fields, and a new macro to render errors along with the form.&#10;* Do not display posts that have statusid == 5, i.e. deleted&#10;* Just use a Post.query.get_or_404 instead of checking if it exists later.&#10;* Do not display a post if it is deleted.&#10;* If the user is an admin, don't validate the title.&#10;* A lot of CSS to style the new markdown previewer.&#10;* User with_errors instead of render_field or just the plain {{form.username}} type.&#10;* Moved the flashing of messages from the left menu to the head. This way they are actually visible and you don't need to go look for them. Might want to move the to be a sibling to .main?&#10;* Some Javascript on the new_post page to display the preview of the markdown.&#10;* Added a edit link for posts.&#10;* Do not display posts if they are removed.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/user.html" afterPath="$PROJECT_DIR$/indvproj/templates/user.html" />
+    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Now an admin can view posts that are removed, but not anyone else.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -36,13 +35,13 @@
       <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="193" column="40" selection-start="5754" selection-end="5754" vertical-scroll-proportion="0.57319224" vertical-offset="2956" max-vertical-offset="15317">
+            <state line="629" column="46" selection-start="23342" selection-end="23342" vertical-scroll-proportion="0.7830688" vertical-offset="9229" max-vertical-offset="15385">
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-                <element signature="e#12677#13461#0" expanded="false" />
-                <element signature="e#13601#14391#0" expanded="false" />
-                <element signature="e#14536#15565#0" expanded="false" />
-                <element signature="e#15675#15957#0" expanded="false" />
+                <element signature="e#12691#13475#0" expanded="false" />
+                <element signature="e#13615#14405#0" expanded="false" />
+                <element signature="e#14550#15579#0" expanded="false" />
+                <element signature="e#15689#15971#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -89,10 +88,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create_user.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/indvproj/templates/create_user.html">
+      <file leaf-file-name="category.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indvproj/templates/category.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="64" selection-start="109" selection-end="109" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="323">
+            <state line="15" column="39" selection-start="592" selection-end="592" vertical-scroll-proportion="-7.8461537" vertical-offset="51" max-vertical-offset="680">
               <folding />
             </state>
           </provider>
@@ -976,7 +975,11 @@
       <created>1400746485478</created>
       <updated>1400746485478</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Now an admin can view posts that are removed, but not anyone else.">
+      <created>1400746850948</created>
+      <updated>1400746850948</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1038,7 +1041,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="* Append the current user as a moderator to the created category&#10;" />
     <MESSAGE value="* Allowed to add statuses to users at creation, with a default of 1 (Normal)&#10;* Ravengenocide is now an admin" />
     <MESSAGE value="* Added a function to check if the user is allowed to remove post. This is used to check in PostView:delete." />
     <MESSAGE value="* Somehow I got the parent child part of the commenting system to work, I am amazed that it actually worked.&#10;* Set category removal to cascade, hopefully it works as intended.&#10;* Added helper function to check if the user is allowed to remove a category, at this point only admins can do that.&#10;* Login is now caseinsensitive, as it should be.&#10;* Deletion of categories implemented.&#10;* Moved the comment field so that everyone can comment and now just the creator.&#10;* Link from a category to creation of a new post in the category.&#10;* Added a Things_to_change file where I add things that I should work on at this moment." />
@@ -1063,7 +1065,8 @@
     <MESSAGE value="Remember to not name your endpoints the same, that is seriously hard to debug." />
     <MESSAGE value="Remember to not name your endpoints the same, that is seriously hard to debug.&#10;&#10;" />
     <MESSAGE value="Inbuilt validation on some fields, and a new macro to render errors along with the form.&#10;* Do not display posts that have statusid == 5, i.e. deleted&#10;* Just use a Post.query.get_or_404 instead of checking if it exists later.&#10;* Do not display a post if it is deleted.&#10;* If the user is an admin, don't validate the title.&#10;* A lot of CSS to style the new markdown previewer.&#10;* User with_errors instead of render_field or just the plain {{form.username}} type.&#10;* Moved the flashing of messages from the left menu to the head. This way they are actually visible and you don't need to go look for them. Might want to move the to be a sibling to .main?&#10;* Some Javascript on the new_post page to display the preview of the markdown.&#10;* Added a edit link for posts.&#10;* Do not display posts if they are removed." />
-    <option name="LAST_COMMIT_MESSAGE" value="Inbuilt validation on some fields, and a new macro to render errors along with the form.&#10;* Do not display posts that have statusid == 5, i.e. deleted&#10;* Just use a Post.query.get_or_404 instead of checking if it exists later.&#10;* Do not display a post if it is deleted.&#10;* If the user is an admin, don't validate the title.&#10;* A lot of CSS to style the new markdown previewer.&#10;* User with_errors instead of render_field or just the plain {{form.username}} type.&#10;* Moved the flashing of messages from the left menu to the head. This way they are actually visible and you don't need to go look for them. Might want to move the to be a sibling to .main?&#10;* Some Javascript on the new_post page to display the preview of the markdown.&#10;* Added a edit link for posts.&#10;* Do not display posts if they are removed." />
+    <MESSAGE value="Now an admin can view posts that are removed, but not anyone else." />
+    <option name="LAST_COMMIT_MESSAGE" value="Now an admin can view posts that are removed, but not anyone else." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1355,13 +1358,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/category.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="39" selection-start="592" selection-end="592" vertical-scroll-proportion="-7.8461537" vertical-offset="51" max-vertical-offset="680">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="24" selection-start="246" selection-end="246" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="323">
@@ -1460,15 +1456,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/category.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="39" selection-start="592" selection-end="592" vertical-scroll-proportion="-7.8461537" vertical-offset="51" max-vertical-offset="680">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="193" column="40" selection-start="5754" selection-end="5754" vertical-scroll-proportion="0.57319224" vertical-offset="2956" max-vertical-offset="15317">
+        <state line="629" column="46" selection-start="23342" selection-end="23342" vertical-scroll-proportion="0.7830688" vertical-offset="9229" max-vertical-offset="15385">
           <folding>
             <element signature="e#0#16#0" expanded="true" />
-            <element signature="e#12677#13461#0" expanded="false" />
-            <element signature="e#13601#14391#0" expanded="false" />
-            <element signature="e#14536#15565#0" expanded="false" />
-            <element signature="e#15675#15957#0" expanded="false" />
+            <element signature="e#12691#13475#0" expanded="false" />
+            <element signature="e#13615#14405#0" expanded="false" />
+            <element signature="e#14550#15579#0" expanded="false" />
+            <element signature="e#15689#15971#0" expanded="false" />
           </folding>
         </state>
       </provider>
