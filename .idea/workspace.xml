@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Remember to not name your endpoints the same, that is seriously hard to debug.&#10;&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/Forms.py" afterPath="$PROJECT_DIR$/indvproj/model/Forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" afterPath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/add_moderators.html" afterPath="$PROJECT_DIR$/indvproj/templates/add_moderators.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/create_category.html" afterPath="$PROJECT_DIR$/indvproj/templates/create_category.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/create_collection.html" afterPath="$PROJECT_DIR$/indvproj/templates/create_collection.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/create_user.html" afterPath="$PROJECT_DIR$/indvproj/templates/create_user.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/edit_post.html" afterPath="$PROJECT_DIR$/indvproj/templates/edit_post.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/layout.html" afterPath="$PROJECT_DIR$/indvproj/templates/layout.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/models.py" afterPath="$PROJECT_DIR$/indvproj/model/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/new_post.html" afterPath="$PROJECT_DIR$/indvproj/templates/new_post.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/post.html" afterPath="$PROJECT_DIR$/indvproj/templates/post.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/static/style.css" afterPath="$PROJECT_DIR$/indvproj/static/style.css" />
+    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Inbuilt validation on some fields, and a new macro to render errors along with the form.&#10;* Do not display posts that have statusid == 5, i.e. deleted&#10;* Just use a Post.query.get_or_404 instead of checking if it exists later.&#10;* Do not display a post if it is deleted.&#10;* If the user is an admin, don't validate the title.&#10;* A lot of CSS to style the new markdown previewer.&#10;* User with_errors instead of render_field or just the plain {{form.username}} type.&#10;* Moved the flashing of messages from the left menu to the head. This way they are actually visible and you don't need to go look for them. Might want to move the to be a sibling to .main?&#10;* Some Javascript on the new_post page to display the preview of the markdown.&#10;* Added a edit link for posts.&#10;* Do not display posts if they are removed.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/user.html" afterPath="$PROJECT_DIR$/indvproj/templates/user.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -45,26 +33,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="747" column="95" selection-start="28224" selection-end="28224" vertical-scroll-proportion="-12.5" vertical-offset="10980" max-vertical-offset="14807">
+            <state line="193" column="40" selection-start="5754" selection-end="5754" vertical-scroll-proportion="0.57319224" vertical-offset="2956" max-vertical-offset="15317">
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-                <element signature="e#11262#12225#0" expanded="false" />
-                <element signature="e#12365#13149#0" expanded="false" />
-                <element signature="e#13289#14079#0" expanded="false" />
-                <element signature="e#14224#15253#0" expanded="false" />
-                <element signature="e#15363#15645#0" expanded="false" />
+                <element signature="e#12677#13461#0" expanded="false" />
+                <element signature="e#13601#14391#0" expanded="false" />
+                <element signature="e#14536#15565#0" expanded="false" />
+                <element signature="e#15675#15957#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_formhelpers.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_formhelpers.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="131" column="118" selection-start="6187" selection-end="6187" vertical-scroll-proportion="0.5996473" vertical-offset="1887" max-vertical-offset="2822">
+            <state line="133" column="34" selection-start="6234" selection-end="6234" vertical-scroll-proportion="-13.076923" vertical-offset="1921" max-vertical-offset="2890">
               <folding />
             </state>
           </provider>
@@ -73,9 +60,12 @@
       <file leaf-file-name="Forms.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/model/Forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="0" selection-start="2465" selection-end="2465" vertical-scroll-proportion="0.0" vertical-offset="750" max-vertical-offset="1343">
+            <state line="63" column="0" selection-start="2463" selection-end="2463" vertical-scroll-proportion="0.0" vertical-offset="750" max-vertical-offset="1343">
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
+                <marker date="1400746484646" expanded="true" signature="769:1264" placeholder="..." />
+                <marker date="1400746484646" expanded="true" signature="2493:2735" placeholder="..." />
+                <marker date="1400746484646" expanded="true" signature="2571:2735" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -84,7 +74,7 @@
       <file leaf-file-name="post.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="34" selection-start="2362" selection-end="2362" vertical-scroll-proportion="-11.769231" vertical-offset="408" max-vertical-offset="1190">
+            <state line="43" column="17" selection-start="2376" selection-end="2376" vertical-scroll-proportion="-12.423077" vertical-offset="408" max-vertical-offset="1190">
               <folding />
             </state>
           </provider>
@@ -93,7 +83,7 @@
       <file leaf-file-name="user.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/user.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="34" selection-start="1028" selection-end="1028" vertical-scroll-proportion="-17.653847" vertical-offset="0" max-vertical-offset="646">
+            <state line="26" column="37" selection-start="993" selection-end="993" vertical-scroll-proportion="-13.961538" vertical-offset="79" max-vertical-offset="680">
               <folding />
             </state>
           </provider>
@@ -112,7 +102,13 @@
         <entry file="file://$PROJECT_DIR$/indvproj/templates/edit_post.html">
           <provider selected="true" editor-type-id="text-editor">
             <state line="2" column="168" selection-start="213" selection-end="213" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="442">
-              <folding />
+              <folding>
+                <marker date="1400745050595" expanded="true" signature="269:1154" placeholder="..." />
+                <marker date="1400745050595" expanded="true" signature="483:1049" placeholder="..." />
+                <marker date="1400745050595" expanded="true" signature="522:768" placeholder="..." />
+                <marker date="1400745050595" expanded="true" signature="564:675" placeholder="..." />
+                <marker date="1400745050595" expanded="true" signature="832:1034" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,7 +116,7 @@
       <file leaf-file-name="new_post.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/new_post.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="8" selection-start="481" selection-end="510" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="901">
+            <state line="13" column="12" selection-start="485" selection-end="514" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="918">
               <folding />
             </state>
           </provider>
@@ -203,7 +199,6 @@
         <option value="$PROJECT_DIR$/indvproj/model/models.py" />
         <option value="$PROJECT_DIR$/indvproj/static/style.css" />
         <option value="$PROJECT_DIR$/indvproj/static/Markdown.Editor.js" />
-        <option value="$PROJECT_DIR$/indvproj/templates/user.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/post.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/new_post.html" />
         <option value="$PROJECT_DIR$/indvproj/model/Forms.py" />
@@ -212,9 +207,10 @@
         <option value="$PROJECT_DIR$/indvproj/templates/create_user.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/edit_post.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/add_moderators.html" />
-        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/layout.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
+        <option value="$PROJECT_DIR$/indvproj/templates/user.html" />
+        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
       </list>
     </option>
   </component>
@@ -976,7 +972,11 @@
       <created>1400668963461</created>
       <updated>1400668963461</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Inbuilt validation on some fields, and a new macro to render errors along with the form.&#10;* Do not display posts that have statusid == 5, i.e. deleted&#10;* Just use a Post.query.get_or_404 instead of checking if it exists later.&#10;* Do not display a post if it is deleted.&#10;* If the user is an admin, don't validate the title.&#10;* A lot of CSS to style the new markdown previewer.&#10;* User with_errors instead of render_field or just the plain {{form.username}} type.&#10;* Moved the flashing of messages from the left menu to the head. This way they are actually visible and you don't need to go look for them. Might want to move the to be a sibling to .main?&#10;* Some Javascript on the new_post page to display the preview of the markdown.&#10;* Added a edit link for posts.&#10;* Do not display posts if they are removed.">
+      <created>1400746485478</created>
+      <updated>1400746485478</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1038,7 +1038,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="* Added docstrings to models.&#10;* Adding links to collections should be possible now, but not posts.&#10;* Recreated the virtualenv&#10;* Created a Problems.txt with descriptions on some problems I've had &#10;* Changed some templates such as the render_post so that it actually displays the content of the post." />
     <MESSAGE value="* Append the current user as a moderator to the created category&#10;" />
     <MESSAGE value="* Allowed to add statuses to users at creation, with a default of 1 (Normal)&#10;* Ravengenocide is now an admin" />
     <MESSAGE value="* Added a function to check if the user is allowed to remove post. This is used to check in PostView:delete." />
@@ -1063,7 +1062,8 @@
     <MESSAGE value="Editing posts is now possible, huge amount of css.&#10;* Changed so that posts are now possible to edit, changed database and added a form + template for it.&#10;* Changed a lot of css and layout.&#10;* Added another menu for categories and moved that one from the first so that the left got the users and the collections and the right one got the categories, maybe they should swap?&#10;* Loads more of layout and css." />
     <MESSAGE value="Remember to not name your endpoints the same, that is seriously hard to debug." />
     <MESSAGE value="Remember to not name your endpoints the same, that is seriously hard to debug.&#10;&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remember to not name your endpoints the same, that is seriously hard to debug.&#10;&#10;" />
+    <MESSAGE value="Inbuilt validation on some fields, and a new macro to render errors along with the form.&#10;* Do not display posts that have statusid == 5, i.e. deleted&#10;* Just use a Post.query.get_or_404 instead of checking if it exists later.&#10;* Do not display a post if it is deleted.&#10;* If the user is an admin, don't validate the title.&#10;* A lot of CSS to style the new markdown previewer.&#10;* User with_errors instead of render_field or just the plain {{form.username}} type.&#10;* Moved the flashing of messages from the left menu to the head. This way they are actually visible and you don't need to go look for them. Might want to move the to be a sibling to .main?&#10;* Some Javascript on the new_post page to display the preview of the markdown.&#10;* Added a edit link for posts.&#10;* Do not display posts if they are removed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Inbuilt validation on some fields, and a new macro to render errors along with the form.&#10;* Do not display posts that have statusid == 5, i.e. deleted&#10;* Just use a Post.query.get_or_404 instead of checking if it exists later.&#10;* Do not display a post if it is deleted.&#10;* If the user is an admin, don't validate the title.&#10;* A lot of CSS to style the new markdown previewer.&#10;* User with_errors instead of render_field or just the plain {{form.username}} type.&#10;* Moved the flashing of messages from the left menu to the head. This way they are actually visible and you don't need to go look for them. Might want to move the to be a sibling to .main?&#10;* Some Javascript on the new_post page to display the preview of the markdown.&#10;* Added a edit link for posts.&#10;* Do not display posts if they are removed." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1393,50 +1393,31 @@
     <entry file="file://$PROJECT_DIR$/indvproj/templates/edit_post.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="168" selection-start="213" selection-end="213" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="442">
-          <folding />
+          <folding>
+            <marker date="1400745050595" expanded="true" signature="269:1154" placeholder="..." />
+            <marker date="1400745050595" expanded="true" signature="483:1049" placeholder="..." />
+            <marker date="1400745050595" expanded="true" signature="522:768" placeholder="..." />
+            <marker date="1400745050595" expanded="true" signature="564:675" placeholder="..." />
+            <marker date="1400745050595" expanded="true" signature="832:1034" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/new_post.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="8" selection-start="481" selection-end="510" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="901">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="34" selection-start="2362" selection-end="2362" vertical-scroll-proportion="-11.769231" vertical-offset="408" max-vertical-offset="1190">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="34" selection-start="1028" selection-end="1028" vertical-scroll-proportion="-17.653847" vertical-offset="0" max-vertical-offset="646">
+        <state line="13" column="12" selection-start="485" selection-end="514" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="918">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/Forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="0" selection-start="2465" selection-end="2465" vertical-scroll-proportion="0.0" vertical-offset="750" max-vertical-offset="1343">
+        <state line="63" column="0" selection-start="2463" selection-end="2463" vertical-scroll-proportion="0.0" vertical-offset="750" max-vertical-offset="1343">
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="747" column="95" selection-start="28224" selection-end="28224" vertical-scroll-proportion="-12.5" vertical-offset="10980" max-vertical-offset="14807">
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-            <element signature="e#11262#12225#0" expanded="false" />
-            <element signature="e#12365#13149#0" expanded="false" />
-            <element signature="e#13289#14079#0" expanded="false" />
-            <element signature="e#14224#15253#0" expanded="false" />
-            <element signature="e#15363#15645#0" expanded="false" />
+            <marker date="1400746484646" expanded="true" signature="769:1264" placeholder="..." />
+            <marker date="1400746484646" expanded="true" signature="2493:2735" placeholder="..." />
+            <marker date="1400746484646" expanded="true" signature="2571:2735" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1460,8 +1441,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="131" column="118" selection-start="6187" selection-end="6187" vertical-scroll-proportion="0.5996473" vertical-offset="1887" max-vertical-offset="2822">
+        <state line="133" column="34" selection-start="6234" selection-end="6234" vertical-scroll-proportion="-13.076923" vertical-offset="1921" max-vertical-offset="2890">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="37" selection-start="993" selection-end="993" vertical-scroll-proportion="-13.961538" vertical-offset="79" max-vertical-offset="680">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="17" selection-start="2376" selection-end="2376" vertical-scroll-proportion="-12.423077" vertical-offset="408" max-vertical-offset="1190">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="193" column="40" selection-start="5754" selection-end="5754" vertical-scroll-proportion="0.57319224" vertical-offset="2956" max-vertical-offset="15317">
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+            <element signature="e#12677#13461#0" expanded="false" />
+            <element signature="e#13601#14391#0" expanded="false" />
+            <element signature="e#14536#15565#0" expanded="false" />
+            <element signature="e#15675#15957#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

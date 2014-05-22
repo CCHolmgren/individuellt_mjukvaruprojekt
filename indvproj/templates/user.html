@@ -27,6 +27,8 @@
         {%- for post in user.posts %}
             {% if post.statusid != 5 %}
                 {{ render_post(post) }}
+            {% elif g.user.statusid == 4 %}
+                {{ render_post(post) }}
             {% endif %}
         {%- endfor %}
     </div>

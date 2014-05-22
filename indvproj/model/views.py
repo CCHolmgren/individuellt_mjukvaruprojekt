@@ -190,9 +190,15 @@ class MainView(FlaskView):
         #Comment.query.first().ignored_list.append(Comment(userid=1, content=""))
         #db_session.commit()
         #raise Exception()
-        return render_template('main.html',
-                               posts=Post.query.filter(Post.statusid != 5).all()[::-1], categories=Category.query.all(),
+
+        if getattr(current_user, "status", None) != 4:
+            return render_template('main.html',
+                                   posts=Post.query.filter(Post.statusid != 5).all()[::-1], categories=Category.query.all(),
                                users=User.query.all())
+        else:
+            return render_template('main.html',
+                                   posts=Post.query.all()[::-1], categories=Category.query.all(),
+                                   users=User.query.all())
 
 
 # noinspection PyTypeChecker
@@ -251,6 +257,7 @@ class LogoutView(FlaskView):
     LOgs the user out via Flask_login
     """
 
+    @route('/')
     @login_required
     def logout(self):
         logout_user()
