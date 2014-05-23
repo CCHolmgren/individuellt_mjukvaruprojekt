@@ -61,6 +61,9 @@ class User(db.Model):
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
+    def created_when(self):
+        return '{:%Y-%m-%d %H:%M:%S}'.format(self.created)
+
     #Functions needed for flask_login to work
     def is_authenticated(self):
         return True

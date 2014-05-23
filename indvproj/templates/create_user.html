@@ -3,12 +3,26 @@
     {% from "_formhelpers.html" import render_field, with_errors %}
     <form method=post action=/register/>
         <dl>
-            {{ with_errors(form.username) }}
-            {{ with_errors(form.email) }}
-            {{ with_errors(form.password) }}
-            {{ with_errors(form.confirm) }}
+            <div>
+                <span>Username</span>
+                {{ with_errors(form.username, class="input-text") }}
+                <span class="small">Only a-z, A-Z, +, - allowed.</span>
+            </div>
+            <div>
+                <span>Email</span>
+                {{ with_errors(form.email, class="input-text") }}
+                <span class="small">Will at this moment not be used for anything.</span>
+            </div>
+            <div>
+                <span>Password</span>
+                {{ with_errors(form.password, class="input-text") }}
+            </div>
+            <div>
+                <span>Confirm password</span>
+                {{ with_errors(form.confirm, class="input-text") }}
+            </div>
         </dl>
-        <p><input type=submit value=Register></p>
+        <div><input type=submit value=Register class="btn green"></div>
         {{ form.csrf_token() }}
     </form>
 {% endblock %}

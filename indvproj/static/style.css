@@ -92,11 +92,16 @@ blockquote p {
     background: white;
     order: 1;
     width: 0;
-    z-index: 100;
-    position: fixed;
+    margin-top: 15px;
+    margin-right: 10px;
+    /*position: fixed;
     top: 0;
-    left: 0;
-    transition: width 0.3s ease;
+    left: 0;*/
+    transition: all 0.3s linear;
+}
+
+.margin-top {
+    margin-top: 15px;
 }
 
 .aside2 {
@@ -104,11 +109,17 @@ blockquote p {
     background: white;
     order: 3;
     width: 0;
-    z-index: 100;
-    position: fixed;
+    margin-top: 15px;
+    /*position: fixed;
     top: 0;
-    right: 0;
-    transition: width 0.3s ease;
+    right: 0;*/
+    height: 100%;
+    transition: all 0.3s linear;
+}
+
+.larger-input {
+    width: 100%;
+    max-width: 1000px;
 }
 
 #main-navigation:target {
@@ -165,6 +176,7 @@ blockquote p {
 
 .categories {
     border-radius: 3px;
+    margin-top: 44px;
     border: 1px solid black;
 }
 
@@ -182,7 +194,7 @@ blockquote p {
     display: flex;
     align-items: baseline;
     padding-bottom: 10px;
-    border-bottom: 2px solid #eee;
+    box-shadow: 0 11px 31px -11px #ccc;
 }
 
 .head, .main, .aside {
@@ -239,6 +251,7 @@ body {
 .collections {
     border-radius: 3px;
     margin-bottom: 4px;
+    margin-top: 10px;
     border: 1px solid black;
 }
 
@@ -278,11 +291,41 @@ body {
     display: none;
 }
 
+.btn {
+    display: inline-block;
+    padding: 4px;
+    border: 0 none;
+    border-radius: 4px;
+}
+
+.input-text {
+    border-radius: 3px;
+}
+
+.blue {
+    color: white;
+    background: #0e84b5;
+}
+
+.green {
+    color: white;
+    background: #00A000;
+}
+
+.has-error {
+    background-color: rgba(255, 0, 0, 0.30);
+    color: white;
+}
+
+.has-error:focus {
+    background-color: white;
+    color: black;
+}
+
 .user {
     margin-bottom: 4px;
     margin: 2px;
 }
-
 .onehundered {
     width: 100%;
 }
@@ -295,6 +338,7 @@ body {
     border-radius: 5px;
     margin: 10px;
     margin-left: 0;
+    height: 100%;
     /*margin: auto;*/
     /*width: 25%;
     height: 100px;*/

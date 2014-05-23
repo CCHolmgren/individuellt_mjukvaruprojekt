@@ -21,6 +21,10 @@ if __name__ == '__main__':
 
     csrf = CsrfProtect()
 
+    @csrf.error_handler
+    def csrf_error(reason):
+        print("Well fuck", reason)
+
     login_manager.init_app(app)
     login_manager.login_view = 'LoginView:index'
     csrf.init_app(app)
@@ -37,17 +41,20 @@ if __name__ == '__main__':
     AboutView.register(app)
     ModerationView.register(app)
 
+    @app.before_first_request
+    def x():
+        pass
+
     @app.before_request
     def before_request():
+        print("Here then?")
         g.user = current_user
         g.categories = Category.query.all()
         g.users = User.query.all()
 
-
     @app.errorhandler(404)
     def page_not_found(e):
-        return render_template('404.html')
-
+        return render_template('404.html'), 404
 
     @login_manager.user_loader
     def load_user(userid):

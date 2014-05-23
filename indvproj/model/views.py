@@ -11,7 +11,6 @@ from Forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, Cat
     AddToCollectionForm, AddModeratorForm, CommentForm, EditPostForm
 from markdown import markdown
 
-
 __author__ = 'Chrille'
 
 #This is the highest value that we dare put into the selectors since they will creash if they get a larger value than this
@@ -193,12 +192,13 @@ class MainView(FlaskView):
 
         if getattr(current_user, "status", None) != 4:
             return render_template('main.html',
-                                   posts=Post.query.filter(Post.statusid != 5).all()[::-1], categories=Category.query.all(),
-                               users=User.query.all())
+                                   posts=Post.query.filter(Post.statusid != 5).limit(100).all()[::-1],
+                                   categories=Category.query.all(),
+                                   users=User.query.limit(100).all())
         else:
             return render_template('main.html',
-                                   posts=Post.query.all()[::-1], categories=Category.query.all(),
-                                   users=User.query.all())
+                                   posts=Post.query.limit(100).all()[::-1], categories=Category.query.all(),
+                                   users=User.query.limit(100).all())
 
 
 # noinspection PyTypeChecker
@@ -529,6 +529,7 @@ class RegisterView(FlaskView):
         :return: Either a redirect to MainView:index if the user is already registered and logged in,
         a redirect to RegisterView:new_user again or a rendered template of create_user.html
         """
+        print("Do we get here?")
         if current_user.is_active():
             return redirect(url_for('MainView:index'))
 
@@ -626,9 +627,9 @@ class CategoryView(FlaskView):
         #Reverse the posts so we get most recent first
 
         if getattr(current_user, "status", None) != 4:
-            posts = category.posts.filter(Post.statusid != 5).all()[::-1]
+            posts = category.posts.filter(Post.statusid != 5).limit(100).all()[::-1]
         else:
-            posts = category.posts.all()[::-1]
+            posts = category.posts.limit(100).all()[::-1]
         return render_template('category.html', category=category, posts=posts, form=deletionform)
 
     @route('<categoryname>/p/<postid>')
@@ -648,7 +649,7 @@ class CategoryView(FlaskView):
         commentform = CommentForm()
         if int(postid) > MAXINT:
             return abort(404)
-        post = Post.query.filter_by(postid=postid).first_or_404()
+        post = Post.query.get_or_404(postid)
 
         if post.statusid == 5 and getattr(current_user, "status", None) != 4:
             return abort(404)

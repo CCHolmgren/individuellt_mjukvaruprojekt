@@ -1,11 +1,9 @@
 {%- extends "layout.html" %}
 {%- block body %}
     {%- from "_formhelpers.html" import render_post, render_collection_dense with context %}
-    <div class="onehundered">
-        <div>Username: {{ user.username }}</div>
-        <div>Userid: {{ user.userid }}</div>
-        <div>Email: {{ user.email }}</div>
-        <div>Created: {{ user.created }}</div>
+    <div class="onehundered margin-top">
+        <div><h3>{{ user.username }}</h3></div>
+        <div>Created: {{ user.created_when() }}</div>
         <div>Status: {{ user.status }}</div>
         <div>Statusname: {{ user.statusobject.statusname }}</div>
     </div>

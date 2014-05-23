@@ -9,14 +9,16 @@ __author__ = 'Chrille'
 
 
 class RegistrationForm(Form):
-    username = TextField("Username", [validators.Regexp(r'^[\w.+-]+$'), validators.Length(min=5, max=120)])
+    username = TextField("Username",
+                         [validators.Regexp(r'^[\w+-]+$', message="Your username can only contain a-zA-Z and +-"),
+                          validators.Length(min=5, max=120)])
     email = TextField("Email", [validators.Length(min=6), validators.Email()])
     password = PasswordField("New password", [
         validators.Required(),
         validators.EqualTo("confirm", message="Passwords must match"),
         validators.Length(min=5)
     ])
-    confirm = PasswordField("Repeat password")
+    confirm = PasswordField("Repeat password", [validators.Required()])
 
 
 class TextPostForm(Form):

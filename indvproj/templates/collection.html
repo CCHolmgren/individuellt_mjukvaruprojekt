@@ -1,21 +1,26 @@
 {# Inteded to display a single collection #}
 {% extends "layout.html" %}
 {% block body %}
-    {% from "_formhelpers.html" import render_collection, render_field with context %}
-    <div class="margin-ten">
-        {# Add link to collection #}
-        <form method=post action=/collection/{{ collection.collectionid }}/add_link>
-            {{ form.link }}
-            <input type="submit" value="Add link to collection">
-            {{ form.csrf_token() }}
-        </form>
+    {% from "_formhelpers.html" import render_collection, render_field, with_errors with context %}
+    <div class="margin-ten onehundered">
+
         {# Delete the collection #}
         <form method=post action=/collection/{{ collection.collectionid }}/delete
               onsubmit="return confirm('Are you sure you want to submit?')">
-            <input type="submit" value="Delete">
+            {{ collection.title }} <input type="submit" value="Delete">
             {{ deleteform.csrf_token() }}
         </form>
-        {{ render_collection(collection) }}
+        {# Add link to collection #}
+        <form method=post action=/collection/{{ collection.collectionid }}/add_link>
+            {{ form.link(class="larger-input") }}
+            <input type="submit" value="Add link to collection">
+            {{ form.csrf_token() }}
+        </form>
+        <h3>Links in the collection</h3>
+        {% for link in collection.links %}
+            {{ link.link|urlize }}
+        {% endfor %}
+        {# render_collection(collection) #}
         <div class="display-url">
             Shareable url:
             <div><a href={{ url_for('CollectionView:display_collection',base64string=collection.get_base64()) }}>

@@ -4,22 +4,6 @@
     {% from "_formhelpers.html" import render_post_dense, render_field with context %}
     <div class="onehundered">
         <h1>{{ category.categorytitle }}</h1>
-
-        <div>
-            {% if category.moderators.all() %}
-                Moderators in this category:
-                {% for moderator in category.moderators.all() %}
-                    <div>{{ moderator.username }}</div>
-                {% endfor %}
-            {% endif %}
-        </div>
-        {% if g.user.is_active() and g.user.allowed_to_post_in_category(category) %}
-            <div>
-                <a href={{ url_for('CategoryView:new_post',categoryname=category.categoryname) }}>
-                    Create a new post in this category
-                </a>
-            </div>
-        {% endif %}
         {% if g.user.is_active() and g.user.allowed_to_remove_category(category) %}
             <form method=post action=/c/{{ category.categoryname }}/delete
                   onsubmit="return confirm('Are you sure you want to submit?')">
@@ -28,8 +12,25 @@
                 {{ form.csrf_token() }}
             </form>
         {% endif %}
+        {% if g.user.is_active() and g.user.allowed_to_post_in_category(category) %}
+            <div>
+                <a href={{ url_for('CategoryView:new_post',categoryname=category.categoryname) }}>
+                    Create a new post in this category
+                </a>
+            </div>
+        {% endif %}
     </div>
     {% for post in posts %}
         {{ render_post_dense(post) }}
     {% endfor %}
+{% endblock %}
+{% block moderators %}
+    <div>
+        {% if category.moderators.all() %}
+            Moderators in this category:
+            {% for moderator in category.moderators.all() %}
+                <div>{{ moderator.username }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
 {% endblock %}

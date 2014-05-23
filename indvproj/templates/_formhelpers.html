@@ -22,7 +22,10 @@
         <footer class="small"><span>Postid: {{ post.postid }} | Posted by: <a
                 href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a> | <a
                 href={{ url_for('PostView:get',postid=post.postid)+"#comments" }}>Amount of
-            comments: {{ post.comments.all()|length }}</a></span>
+            comments: {{ post.comments.all()|length }}</a>
+            {% if g.user.is_active() and g.user.allowed_to_remove_post(post) %}|
+                <a href={{ url_for('CategoryView:edit_post', categoryname=post.category.categoryname,postid=post.postid) }}>Edit</a>{% endif %}
+            {% if g.user.status == 4 %}| Status: {{ post.statusid }}{% endif %}</span>
             <span class="small">Currently&nbsp;displays&nbsp;incorrect&nbsp;data.</span>
         </footer>
     </div>
@@ -59,6 +62,10 @@
                     href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a> | <a
                     href={{ url_for('PostView:get',postid=post.postid)+"#comments" }}>Amount of
                 comments: {{ post.comments.all()|length }}</a>
+                {% if g.user.is_active() and g.user.allowed_to_remove_post(post) %} |
+                    <a href={{ url_for('CategoryView:edit_post', categoryname=post.category.categoryname,postid=post.postid) }}>
+                        Edit</a>{% endif %}
+                {% if g.user.status == 4 %}| Status: {{ post.statusid }}{% endif %}
             </span>
             <span class="small">
                 Currently&nbsp;displays&nbsp;incorrect&nbsp;data.
@@ -153,7 +160,7 @@
 {% macro with_errors(field) %}
     <div class="form_field">
         {% if field.errors %}
-            {% set css_class = 'has_error ' + kwargs.pop('class', '') %}
+            {% set css_class = 'has-error ' + kwargs.pop('class', '') %}
             {{ field(class=css_class, **kwargs) }}
             <ul class="errors">{% for error in field.errors %}
                 <li>{{ error|e }}</li>{% endfor %}</ul>
