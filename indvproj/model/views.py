@@ -153,7 +153,7 @@ def allowed_to_post_in_category(user, category):
 # noinspection PyTypeChecker
 class AboutView(FlaskView):
     def index(self):
-        return CategoryView.get(None, 'about')
+        return CategoryView.get(CategoryView(), 'about')
 
 
 class MainView(FlaskView):
@@ -212,7 +212,7 @@ class BlogView(FlaskView):
         Takes care of /blog/ and returns CategoryView.get('blog')
         """
         # noinspection PyCallByClass
-        return CategoryView.get(self, 'blog')
+        return CategoryView.get(CategoryView(), 'blog')
 
 
 class LoginView(FlaskView):
@@ -675,7 +675,7 @@ class CategoryView(FlaskView):
     @route('<categoryname>/p/<postid>/edit')
     @login_required
     def edit_post(self, categoryname, postid):
-        return PostView.edit_post(self, postid)
+        return PostView.edit_post(PostView(), postid)
 
     @route('<categoryname>/p/new', methods=['GET', 'POST'])
     @login_required
@@ -687,7 +687,7 @@ class CategoryView(FlaskView):
         :return:
         """
         # noinspection PyCallByClass
-        return PostView.new_post(self, categoryname)
+        return PostView.new_post(PostView(), categoryname)
 
     @route('/new', methods=['GET', 'POST'])
     @login_required
