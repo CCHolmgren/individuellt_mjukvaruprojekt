@@ -239,6 +239,8 @@ class Category(db.Model):
         return '<Category {}>'.format(self.categoryname)
 
     def allowed_to_post_in_category(self, user):
+        print(user)
+        print(self)
         if user.status in (2, 3, 5):
             return False
         #If the user is an admin

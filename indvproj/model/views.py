@@ -475,7 +475,7 @@ class PostView(FlaskView):
             print("Inside validate")
             category = Category.query.filter_by(categoryname=form.categoryname.data).first()
             if category:
-                if category.allowed_to_post_in_category(current_user):
+                if current_user.allowed_to_post_in_category(category):
                     post = Post(current_user.userid, datetime.datetime.now(),
                                 escape_text_and_create_markdown(form.content.data), 1,
                                 form.title.data, category.categoryid, non_markdown=form.content.data)
