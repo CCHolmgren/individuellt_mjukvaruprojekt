@@ -9,10 +9,10 @@ if __name__ == '__main__':
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:bubblegum123@localhost/postgres'
     db.init_app(app)"""
 
-    from models import User, Category
+    from indvproj.model import User, Category
     from flask_login import current_user
-    from loginmanager import login_manager
-    from views import MainView, RegisterView, PostView, LoginView, UserView, CollectionView, LogoutView, CategoryView, \
+    from indvproj.model import login_manager
+    from indvproj.model import MainView, RegisterView, PostView, LoginView, UserView, CollectionView, LogoutView, CategoryView, \
         BlogView, AboutView, ModerationView
     from flask_wtf.csrf import CsrfProtect
     #print("Encrypting 'what' and returns the sha512 hash with the salt generated",encrypt("what"))

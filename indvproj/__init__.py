@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+#from model import *
 #import flask_sqlalchemy
 
 

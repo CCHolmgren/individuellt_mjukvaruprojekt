@@ -1,7 +1,7 @@
 from flask_wtf import Form
 from wtforms import TextField, PasswordField, validators, TextAreaField, SubmitField
 from wtforms.fields.html5 import URLField
-from models import Category, User
+from .models import Category, User
 from wtforms.validators import ValidationError
 from sqlalchemy import func
 

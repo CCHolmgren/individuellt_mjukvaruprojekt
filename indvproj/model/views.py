@@ -1,13 +1,13 @@
 import _datetime
 
 from flask.ext.classy import FlaskView, route
-from models import User, Post, Collection, Category, Comment, Link
+from .models import User, Post, Collection, Category, Comment, Link
 
 print('Importing db_session in model.views.py')
 from indvproj import db_session
 from flask_login import login_required, login_user, current_user, logout_user
 from flask import render_template, redirect, flash, url_for, g, request, abort
-from Forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, CategoryForm, DeletePostForm, \
+from .Forms import TextPostForm, RegistrationForm, LoginForm, CollectionForm, CategoryForm, DeletePostForm, \
     AddToCollectionForm, AddModeratorForm, CommentForm, EditPostForm
 from markdown import markdown
 

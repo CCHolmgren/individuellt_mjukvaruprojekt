@@ -2,6 +2,9 @@ __author__ = 'Chrille'
 from sqlalchemy.dialects import postgresql
 #from sqlalchemy import db.Column, db.Integer, db.String, db.DateTime, db.ForeignKey, PrimaryKeyConstraint
 #from model.database import db
+import sys
+sys.path.append('C:\\Users\\Chrille\\School\\individuellt_mjukvaruprojekt\\indvproj')
+print(sys.path)
 from indvproj import db
 import datetime
 
