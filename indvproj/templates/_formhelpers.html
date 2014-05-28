@@ -124,7 +124,7 @@
             </form>
             {% for comment in comment.children recursive %}
                 <div>
-                    <div class="parent" style="margin-left:{{ 20*loop.depth }}px" id={{ comment.commentid }}>
+                    <div class="parent" style="margin-left:20px" id={{ comment.commentid }}>
                         <div class="margin-five">
                             <div class="small footer">Postid: {{ post.postid }} | Posted by:
                                 <a href={{ url_for('UserView:get',username=comment.user.username) }}>
