@@ -1,4 +1,4 @@
-import _datetime
+import datetime
 
 from flask.ext.classy import FlaskView, route
 from .models import User, Post, Collection, Category, Comment, Link
@@ -476,7 +476,7 @@ class PostView(FlaskView):
             category = Category.query.filter_by(categoryname=form.categoryname.data).first()
             if category:
                 if category.allowed_to_post_in_category(current_user):
-                    post = Post(current_user.userid, _datetime.datetime.now(),
+                    post = Post(current_user.userid, datetime.datetime.now(),
                                 escape_text_and_create_markdown(form.content.data), 1,
                                 form.title.data, category.categoryid, non_markdown=form.content.data)
 
