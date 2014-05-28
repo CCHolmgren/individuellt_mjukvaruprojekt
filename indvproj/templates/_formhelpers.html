@@ -132,7 +132,11 @@
                                 </a>
                             </div>
                             <div>
-                                {{ comment.content|safe }}
+                                {% if comment.statusid != 5 or g.user.statusid == 4%}
+                                    {{ comment.content|safe }}
+                                    {% elif comment.statusid == 5 and g.user.statusid != 4 %}
+                                    This comment was deleted by the user.
+                                {% endif %}
                             </div>
                             <a href={{ "#"+comment.commentid|string }} onclick="document.getElementById('{{ "comment"+comment.commentid|string }}').style.display
                             = 'initial'">Reply</a>

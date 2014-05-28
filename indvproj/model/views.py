@@ -272,6 +272,8 @@ class PostView(FlaskView):
     """
     # TODO: Add so that we can see what user did what, such as removal of the post and edited and so on
     # I.e. logging
+    # TODO: Change so that it's possible to make a post visible again
+
     route_base = '/p'
 
     def get(self, postid):

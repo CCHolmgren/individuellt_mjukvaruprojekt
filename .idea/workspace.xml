@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Proper user checking to so that it doesn't crash on current_user.status.&#10;* Removed the vlaidation on content aswell.&#10;* If the user is an admin display the statusid of the post.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/404.html" afterPath="$PROJECT_DIR$/indvproj/templates/404.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/Forms.py" afterPath="$PROJECT_DIR$/indvproj/model/Forms.py" />
+    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Limit most things to 100, we don't want to load thousand sof posts into the same page, and I can't be bothered with pagination right now.&#10;* CSS galore.&#10;* Added some info if the logged in user is an admin.&#10;* Moved the moderators block to the right navigation menu, since that isn't really useful information.&#10;* More stuff.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Document/Testspecifikation.odt" afterPath="$PROJECT_DIR$/Document/Testspecifikation.odt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" afterPath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/category.html" afterPath="$PROJECT_DIR$/indvproj/templates/category.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/collection.html" afterPath="$PROJECT_DIR$/indvproj/templates/collection.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/create_user.html" afterPath="$PROJECT_DIR$/indvproj/templates/create_user.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/layout.html" afterPath="$PROJECT_DIR$/indvproj/templates/layout.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/models.py" afterPath="$PROJECT_DIR$/indvproj/model/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/post.html" afterPath="$PROJECT_DIR$/indvproj/templates/post.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/static/style.css" afterPath="$PROJECT_DIR$/indvproj/static/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/user.html" afterPath="$PROJECT_DIR$/indvproj/templates/user.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/yourapplication.py" afterPath="$PROJECT_DIR$/indvproj/yourapplication.py" />
     </list>
     <ignored path="individuellt_mjukvaruprojekt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,7 +37,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="630" column="51" selection-start="23581" selection-end="23581" vertical-scroll-proportion="-138.58182" vertical-offset="3088" max-vertical-offset="16422">
+            <state line="389" column="4" selection-start="13404" selection-end="13404" vertical-scroll-proportion="0.0" vertical-offset="6290" max-vertical-offset="16473">
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -64,10 +54,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="category.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="category.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/category.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="28" selection-start="1378" selection-end="1378" vertical-scroll-proportion="0.8783542" vertical-offset="53" max-vertical-offset="697">
+            <state line="17" column="45" selection-start="925" selection-end="925" vertical-scroll-proportion="-9.076923" vertical-offset="53" max-vertical-offset="697">
               <folding />
             </state>
           </provider>
@@ -82,10 +72,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_formhelpers.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_formhelpers.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="241" selection-start="3277" selection-end="3277" vertical-scroll-proportion="-8.115385" vertical-offset="843" max-vertical-offset="2941">
+            <state line="140" column="63" selection-start="6781" selection-end="6781" vertical-scroll-proportion="0.8527828" vertical-offset="1905" max-vertical-offset="3077">
               <folding />
             </state>
           </provider>
@@ -112,7 +102,7 @@
       <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/static/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="23" selection-start="1249" selection-end="1249" vertical-scroll-proportion="-11.076923" vertical-offset="1327" max-vertical-offset="8993">
+            <state line="95" column="23" selection-start="1250" selection-end="1250" vertical-scroll-proportion="-11.076923" vertical-offset="1327" max-vertical-offset="9129">
               <folding />
             </state>
           </provider>
@@ -202,11 +192,11 @@
         <option value="$PROJECT_DIR$/indvproj/templates/collection.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/user.html" />
         <option value="$PROJECT_DIR$/indvproj/model/models.py" />
-        <option value="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
         <option value="$PROJECT_DIR$/indvproj/static/style.css" />
-        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/layout.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/category.html" />
+        <option value="$PROJECT_DIR$/indvproj/model/views.py" />
+        <option value="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
       </list>
     </option>
   </component>
@@ -984,7 +974,11 @@
       <created>1400748255830</created>
       <updated>1400748255830</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="Limit most things to 100, we don't want to load thousand sof posts into the same page, and I can't be bothered with pagination right now.&#10;* CSS galore.&#10;* Added some info if the logged in user is an admin.&#10;* Moved the moderators block to the right navigation menu, since that isn't really useful information.&#10;* More stuff.">
+      <created>1400841507140</created>
+      <updated>1400841507140</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1008,9 +1002,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3174946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32829374" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3261339" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32721382" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1021,12 +1016,11 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39956802" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969475" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3347732" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34159482" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3423326" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3174946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1046,7 +1040,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="* Somehow I got the parent child part of the commenting system to work, I am amazed that it actually worked.&#10;* Set category removal to cascade, hopefully it works as intended.&#10;* Added helper function to check if the user is allowed to remove a category, at this point only admins can do that.&#10;* Login is now caseinsensitive, as it should be.&#10;* Deletion of categories implemented.&#10;* Moved the comment field so that everyone can comment and now just the creator.&#10;* Link from a category to creation of a new post in the category.&#10;* Added a Things_to_change file where I add things that I should work on at this moment." />
     <MESSAGE value="Renamed forms to Forms, will it work now?" />
     <MESSAGE value="* Added the allowed_to_post_in_category and allowed_to_remove_category methods to the user object so that we can use them in the templates. This allows us to do things such as check in category.html if the user is allowed to remove the category and as such render the button or not.&#10;* Added a allowed_to_post_in_category method for those categories with moderator or administrator only posts, such as blog and about.&#10;* Added some more Statuses to createanddrop file incase I want to truncate the database for some reason.&#10;* Registering the AboutView, for the about page." />
     <MESSAGE value="* allowed_to_add_moderators and allowed_to_remove_post as well as is_admin is now functions of User so that we can use them instead of the allowed_to_remove_post(user, post) functions.&#10;* Working on adding comments to comments, but at this moment it's quite hard. Haven't really wrapped my head around how the SQLAlchemy ORM works with One to many relationships that are nested.&#10;* Implemented the functionality to post comments to comments, but then commented it since it didn't work as it should.&#10;* Changed some allowed_to_* functions to their model counterparts.&#10;* Handles more cases of users not allowed to do stuff." />
@@ -1071,7 +1064,8 @@
     <MESSAGE value="Now an admin can view posts that are removed, but not anyone else." />
     <MESSAGE value="And of course in a category aswell." />
     <MESSAGE value="Proper user checking to so that it doesn't crash on current_user.status.&#10;* Removed the vlaidation on content aswell.&#10;* If the user is an admin display the statusid of the post." />
-    <option name="LAST_COMMIT_MESSAGE" value="Proper user checking to so that it doesn't crash on current_user.status.&#10;* Removed the vlaidation on content aswell.&#10;* If the user is an admin display the statusid of the post." />
+    <MESSAGE value="Limit most things to 100, we don't want to load thousand sof posts into the same page, and I can't be bothered with pagination right now.&#10;* CSS galore.&#10;* Added some info if the logged in user is an admin.&#10;* Moved the moderators block to the right navigation menu, since that isn't really useful information.&#10;* More stuff." />
+    <option name="LAST_COMMIT_MESSAGE" value="Limit most things to 100, we don't want to load thousand sof posts into the same page, and I can't be bothered with pagination right now.&#10;* CSS galore.&#10;* Added some info if the logged in user is an admin.&#10;* Moved the moderators block to the right navigation menu, since that isn't really useful information.&#10;* More stuff." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1762,13 +1756,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="241" selection-start="3277" selection-end="3277" vertical-scroll-proportion="-8.115385" vertical-offset="843" max-vertical-offset="2941">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/static/wmd-buttons.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1776,7 +1763,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/static/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="23" selection-start="1249" selection-end="1249" vertical-scroll-proportion="-11.076923" vertical-offset="1327" max-vertical-offset="8993">
+        <state line="95" column="23" selection-start="1250" selection-end="1250" vertical-scroll-proportion="-11.076923" vertical-offset="1327" max-vertical-offset="9129">
           <folding />
         </state>
       </provider>
@@ -1785,15 +1772,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="14" selection-start="159" selection-end="159" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="153">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="630" column="51" selection-start="23581" selection-end="23581" vertical-scroll-proportion="-138.58182" vertical-offset="3088" max-vertical-offset="16422">
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1808,7 +1786,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/category.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="28" selection-start="1378" selection-end="1378" vertical-scroll-proportion="0.8783542" vertical-offset="53" max-vertical-offset="697">
+        <state line="17" column="45" selection-start="925" selection-end="925" vertical-scroll-proportion="-9.076923" vertical-offset="53" max-vertical-offset="697">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="389" column="4" selection-start="13404" selection-end="13404" vertical-scroll-proportion="0.0" vertical-offset="6290" max-vertical-offset="16473">
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="140" column="63" selection-start="6781" selection-end="6781" vertical-scroll-proportion="0.8527828" vertical-offset="1905" max-vertical-offset="3077">
           <folding />
         </state>
       </provider>
