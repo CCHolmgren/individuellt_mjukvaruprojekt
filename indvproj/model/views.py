@@ -563,7 +563,7 @@ class RegisterView(FlaskView):
                 return redirect(url_for('MainView:index'))
             except Exception as e:
                 db_session.rollback()
-                flash('Something horrible happened')
+                flash('The user could not be created, please try again later.')
                 print(repr(e))
                 redirect(url_for("RegisterView:new_user"))
         return render_template('create_user.html', form=form, title="Create a new user")
@@ -628,10 +628,10 @@ class CategoryView(FlaskView):
         print("Dir category:", dir(category))
         #Reverse the posts so we get most recent first
 
-        if getattr(current_user, "status", None) != 4:
-            posts = category.posts.filter(Post.statusid != 5).limit(100).all()[::-1]
-        else:
-            posts = category.posts.limit(100).all()[::-1]
+        #if getattr(current_user, "status", None) != 4:
+        posts = category.posts.filter(Post.statusid != 5).limit(100).all()[::-1]
+        #else:
+        #    posts = category.posts.limit(100).all()[::-1]
         return render_template('category.html', category=category, posts=posts, form=deletionform)
 
     @route('<categoryname>/p/<postid>')
@@ -708,7 +708,9 @@ class CategoryView(FlaskView):
                         flash("There is already a category with that categoryname")
                         return redirect(url_for("CategoryView:new_category"))
 
-                    category = Category(form.categoryname.data.lower(), form.categorytitle.data)
+                    category = Category(form.categoryname.data.lower(), title=form.categorytitle.data, statusid=1)
+                    print("Category created: ", category, category)
+                    print(repr(category))
                     db_session.add(category)
                     db_session.commit()
 
@@ -720,7 +722,7 @@ class CategoryView(FlaskView):
                 except Exception as e:
                     db_session.rollback()
                     print('Something horrible happened')
-                    flash('Something horrible happened')
+                    flash('The category could not be created, please try again later.')
                     print(repr(e), e)
                     redirect(url_for("CategoryView:new_category"))
 
@@ -932,7 +934,7 @@ class CollectionView(FlaskView):
                 return redirect(url_for('CollectionView:get', collectionid=collection.collectionid))
             except Exception as e:
                 db_session.rollback()
-                flash('Something horrible happened')
+                flash('The collection could not be created, please try again later.')
                 print(repr(e), e)
                 redirect(url_for("CollectionView:new_collection"))
         return render_template('create_collection.html', form=form, title="Create a new collection")

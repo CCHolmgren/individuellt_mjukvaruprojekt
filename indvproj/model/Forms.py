@@ -10,7 +10,7 @@ __author__ = 'Chrille'
 
 class RegistrationForm(Form):
     username = TextField("Username",
-                         [validators.Regexp(r'^[\w+-]+$', message="Your username can only contain a-zA-Z and +-"),
+                         [validators.Regexp(r'^[\w\d]+$', message="Your username can only contain a-zA-Z and 0-9"),
                           validators.Length(min=5, max=120)])
     email = TextField("Email", [validators.Length(min=6), validators.Email()])
     password = PasswordField("New password", [

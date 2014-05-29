@@ -230,10 +230,10 @@ class Category(db.Model):
     posts = db.relationship('Post', backref='category', lazy='dynamic')
     statusid = db.Column(db.Integer, db.ForeignKey('status.statusid'))
 
-    def __init__(self, categoryname, title="Default title", status=1):
+    def __init__(self, categoryname, title="Default title", statusid=1):
         self.categoryname = categoryname
         self.categorytitle = title
-        self.status = status
+        self.statusid = statusid
 
     def __repr__(self):
         return '<Category {}>'.format(self.categoryname)
