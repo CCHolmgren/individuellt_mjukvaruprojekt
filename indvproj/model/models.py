@@ -227,7 +227,7 @@ class Category(db.Model):
     categoryname = db.Column(db.String(100), unique=True, nullable=False)
     categorytitle = db.Column(db.String(100))
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    posts = db.relationship('Post', backref='category', lazy='dynamic')
+    posts = db.relationship('Post', backref='category', lazy='dynamic', cascade="all, delete")
     statusid = db.Column(db.Integer, db.ForeignKey('status.statusid'))
 
     def __init__(self, categoryname, title="Default title", statusid=1):
@@ -309,7 +309,7 @@ class Post(db.Model):
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
     #collections = db.relationship('Collection', secondary=collection_has_post,
     #                              backref=db.backref('posts', lazy='dynamic'))
-    categoryid = db.Column(db.Integer, db.ForeignKey('category.categoryid', ondelete="CASCADE"), nullable=False)
+    categoryid = db.Column(db.Integer, db.ForeignKey('category.categoryid', ondelete="CASCADE"))
     statusid = db.Column(db.Integer, db.ForeignKey('status.statusid'), default=1, nullable=True)
 
     def __init__(self, createdby, timeposted, content, typeid, title, categoryid, statusid=1, non_markdown=None):

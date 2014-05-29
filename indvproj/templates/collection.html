@@ -6,8 +6,8 @@
 
         {# Delete the collection #}
         <form method=post action=/collection/{{ collection.collectionid }}/delete
-              onsubmit="return confirm('Are you sure you want to submit?')">
-            {{ collection.title }} <input type="submit" value="Delete">
+              onsubmit="return confirm('Are you sure you want to delete {{ collection.title }}?')">
+            {{ collection.title }} <input type="submit" value="Delete" class="btn red">
             {{ deleteform.csrf_token() }}
         </form>
         {# Add link to collection #}
@@ -18,7 +18,12 @@
         </form>
         <h3>Links in the collection</h3>
         {% for link in collection.links %}
-            {{ link.link|urlize }}
+
+            <form method=post action=/collection/{{ collection.collectionid }}/{{ link.linkid }}/delete
+                  onsubmit="return confirm('Are you sure you want to remove {{ '"' +link.link+ '"' }} from this collection?')">
+                {{ link.link|urlize }}<input type="submit" value="X" class="btn">
+                {{ deleteform.csrf_token() }}
+            </form>
         {% endfor %}
         {# render_collection(collection) #}
         <div class="display-url">

@@ -35,7 +35,10 @@ def decode_base64_with_split(base64string):
     """
     import base64
 
-    return base64.b64decode(bytes(base64string, 'ascii')).decode('utf-8').split('-')
+    try:
+        return base64.b64decode(bytes(base64string, 'ascii')).decode('utf-8').split('-')
+    except base64.binascii.Error as e:
+        return abort(404)
 
 
 def escape_text_and_create_markdown(unescaped_text, safe_mode="escape"):
@@ -629,10 +632,12 @@ class CategoryView(FlaskView):
         #Reverse the posts so we get most recent first
 
         #if getattr(current_user, "status", None) != 4:
-        posts = category.posts.filter(Post.statusid != 5).limit(100).all()[::-1]
-        #else:
+        if category:
+            posts = category.posts.filter(Post.statusid != 5).limit(100).all()[::-1]
+            #else:
         #    posts = category.posts.limit(100).all()[::-1]
-        return render_template('category.html', category=category, posts=posts, form=deletionform)
+            return render_template('category.html', category=category, posts=posts, form=deletionform)
+        return abort(404)
 
     @route('<categoryname>/p/<postid>')
     def view_post(self, categoryname, postid):
@@ -780,19 +785,21 @@ class CategoryView(FlaskView):
         :param postid: Postid of post to delete
         :return: Redirects to MainView:index all the time
         """
-        try:
-            category = Category.query.filter_by(categoryname=categoryname).first()
-            if current_user.allowed_to_remove_category(category):
-                db_session.delete(category)
-                db_session.commit()
-                return redirect(url_for('MainView:index'))
-            else:
-                flash("To remove this category message the admins")
-                return redirect(url_for('MainView:index'))
-        except Exception as e:
-            print(e)
-            db_session.rollback()
+        #try:
+        category = Category.query.filter_by(categoryname=categoryname).first()
+        print(category)
+        raise Exception()
+        if current_user.allowed_to_remove_category(category):
+            db_session.delete(category)
+            db_session.commit()
             return redirect(url_for('MainView:index'))
+        else:
+            flash("To remove this category message the admins")
+            return redirect(url_for('MainView:index'))
+            #except Exception as e:
+            #    print(e)
+            #    db_session.rollback()
+            #    return redirect(url_for('MainView:index'))
 
 
 class CollectionView(FlaskView):
@@ -850,6 +857,7 @@ class CollectionView(FlaskView):
             #If that's the case, just use that link
             if potentiallink:
                 collection = Collection.query.get(collectionid)
+                raise Exception()
                 collection.links.append(potentiallink)
             #Otherwise we just add a new link
             else:
@@ -857,7 +865,9 @@ class CollectionView(FlaskView):
 
                 db_session.add(link)
                 db_session.commit()
+
                 collection = Collection.query.get(collectionid)
+                raise Exception()
                 collection.links.append(link)
             db_session.commit()
             print(collection.links.all())
@@ -899,21 +909,13 @@ class CollectionView(FlaskView):
         collection = Collection.query.get(collectionid)
         print(dir(collection))
         print(collection.links.all())
-        deleteform = DeletePostForm()
-        if request.args.get('link') is not None:
-            addform = AddToCollectionForm(link=request.args.get('link'))
-        else:
-            addform = AddToCollectionForm()
-        print("Does it crash here?")
+
         if collection:
             print(collection)
             print(collection.userid)
             print(current_user.userid)
-            if current_user.userid == collection.userid or allowed_to_watch:
-                return render_template('collection.html', collection=collection, title=collection.title,
-                                       deleteform=deleteform, form=addform)
-            return render_template('not_verified_collection.html', title="You are not eligible to view this collection")
-        return render_template('not_verified_collection.html', title="You are not eligible to view this collection")
+            return render_template('shared_collection.html', collection=collection)
+        return abort(404)
 
     @route('/new', methods=['GET', 'POST'])
     @login_required
@@ -940,6 +942,7 @@ class CollectionView(FlaskView):
         return render_template('create_collection.html', form=form, title="Create a new collection")
 
     @route('/test', methods=['POST'])
+    @login_required
     def test_function(self):
         collection = Collection.query.get(int(request.form['collectionid']))
         post = Post.query.get(int(request.form['postid']))
@@ -955,8 +958,24 @@ class CollectionView(FlaskView):
         if collection:
             return self.__get(collection.collectionid, allowed_to_watch=True)
 
-        flash("You aren't allowed to watch that collection, or it isn't a real collection in the first place.")
-        return redirect(url_for('MainView:index'))
+        return abort(404)
+
+    @route('/<collectionid>/<linkid>/remove', methods=['POST'])
+    @login_required
+    def remove_link(self, collectionid, linkid):
+        """
+        Deletes the collection, since we use csrf_protection the user cannot remove a collection that they
+        aren't allowed to delete, so we don't need any checking of the user
+
+        :param collectionid: Collection to delete
+        :return:
+        """
+        link = Link.query.get(linkid)
+        collection = Collection.query.get(collectionid)
+        collection.links.remove(link)
+        db_session.commit()
+        flash("The link was removed from the collection")
+        return redirect(url_for('CollectionView:get', collectionid=collectionid))
 
 
 class ModerationView(FlaskView):

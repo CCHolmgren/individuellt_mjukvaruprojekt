@@ -312,6 +312,11 @@ body {
     background: #00A000;
 }
 
+.red {
+    color: white;
+    background: #d2322d;
+}
+
 .has-error {
     background-color: rgba(255, 0, 0, 0.30);
     color: white;

@@ -1,0 +1,18 @@
+{# Inteded to display a single collection #}
+{% extends "layout.html" %}
+{% block body %}
+    {% from "_formhelpers.html" import render_collection, render_field, with_errors with context %}
+    <div class="margin-ten onehundered">
+        <h3>Links in the collection</h3>
+        {% for link in collection.links %}
+            {{ link.link|urlize }}
+        {% endfor %}
+        {# render_collection(collection) #}
+        <div class="display-url">
+            Shareable url:
+            <div><a href={{ url_for('CollectionView:display_collection',base64string=collection.get_base64()) }}>
+                {{ url_for('CollectionView:display_collection',base64string=collection.get_base64(),_external=True) }}
+            </a></div>
+        </div>
+    </div>
+{% endblock %}

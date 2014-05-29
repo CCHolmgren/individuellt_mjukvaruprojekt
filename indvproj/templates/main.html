@@ -10,12 +10,14 @@
                     <dt>or a new <a href={{ url_for('CategoryView:new_category') }}>category</a>?</dt>
                 </dl>
             </div>
-            <div>
+            {% if g.user.moderator %}
+                <div>
                 Moderator in:
                 {% for moderator in g.user.moderator %}
                     <a href={{ url_for('CategoryView:get',categoryname=moderator.categoryname) }}>{{ moderator.categorytitle }}</a>
                 {% endfor %}
             </div>
+            {% endif %}
             <div>
                 Your userpage:
                 <a href={{ url_for('UserView:get', username=g.user.username) }}>{{ g.user.username }}</a>
