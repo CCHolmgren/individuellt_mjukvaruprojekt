@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Set cascade to remove all posts if the category is deleted.&#10;base64 decode can throw an error if the url is wrong, gotta handle that.&#10;Do not display posts that are removed on main.&#10;Added a red button option.&#10;404 extends layout.html&#10;Give an option to remove a link.&#10;Only display Moderator in: if there are any categories to moderate.&#10;shared_collection is for when you want to share a collection, it's a stripped down version that doesn't allow any removal of links or of the collection.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/indvproj/static/wmd-buttons.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/indvproj/static/Markdown.Converter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/indvproj/static/Markdown.Editor.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/indvproj/static/Markdown.Sanitizer.js" />
+    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Added the markdown thingys.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/new_post.html" afterPath="$PROJECT_DIR$/indvproj/templates/new_post.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/post.html" afterPath="$PROJECT_DIR$/indvproj/templates/post.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/static/style.css" afterPath="$PROJECT_DIR$/indvproj/static/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="individuellt_mjukvaruprojekt.iws" />
@@ -35,10 +34,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="965" column="11" selection-start="37416" selection-end="37416" vertical-scroll-proportion="0.5368782" vertical-offset="16092" max-vertical-offset="16847">
+            <state line="965" column="11" selection-start="37416" selection-end="37416" vertical-scroll-proportion="0.0" vertical-offset="16092" max-vertical-offset="16847">
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -64,15 +63,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Forms.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/indvproj/model/Forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="78" selection-start="613" selection-end="613" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="404.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/404.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -91,33 +81,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_formhelpers.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="117" column="30" selection-start="5396" selection-end="5396" vertical-scroll-proportion="-7.8461537" vertical-offset="1785" max-vertical-offset="3077">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/static/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="300" column="13" selection-start="4150" selection-end="4150" vertical-scroll-proportion="0.0" vertical-offset="4823" max-vertical-offset="9214">
+            <state line="536" column="1" selection-start="7680" selection-end="7680" vertical-scroll-proportion="0.0" vertical-offset="8631" max-vertical-offset="9214">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add_moderators.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/indvproj/templates/add_moderators.html">
+      <file leaf-file-name="moderators.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indvproj/templates/moderators.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="27" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="357">
-              <folding>
-                <marker date="1400745087986" expanded="true" signature="150:560" placeholder="..." />
-                <marker date="1400745087986" expanded="true" signature="252:549" placeholder="..." />
-                <marker date="1400745087986" expanded="true" signature="269:432" placeholder="..." />
-              </folding>
+            <state line="8" column="24" selection-start="367" selection-end="367" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="323">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new_post.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/indvproj/templates/new_post.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="14" selection-start="305" selection-end="305" vertical-scroll-proportion="0.15260324" vertical-offset="0" max-vertical-offset="1071">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="post.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="60" column="94" selection-start="3293" selection-end="3293" vertical-scroll-proportion="-12.923077" vertical-offset="684" max-vertical-offset="1241">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -178,14 +173,12 @@
         <option value="$PROJECT_DIR$/indvproj/templates/moderators.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/login.html" />
         <option value="$PROJECT_DIR$/indvproj/static/Markdown.Editor.js" />
-        <option value="$PROJECT_DIR$/indvproj/templates/new_post.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/create_category.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/create_collection.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/edit_post.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/add_moderators.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/create_user.html" />
         <option value="$PROJECT_DIR$/indvproj/yourapplication.py" />
-        <option value="$PROJECT_DIR$/indvproj/templates/post.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/user.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/layout.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/category.html" />
@@ -196,10 +189,12 @@
         <option value="$PROJECT_DIR$/indvproj/model/models.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/404.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/main.html" />
-        <option value="$PROJECT_DIR$/indvproj/static/style.css" />
         <option value="$PROJECT_DIR$/indvproj/templates/collection.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/shared_collection.html" />
         <option value="$PROJECT_DIR$/indvproj/model/views.py" />
+        <option value="$PROJECT_DIR$/indvproj/static/style.css" />
+        <option value="$PROJECT_DIR$/indvproj/templates/new_post.html" />
+        <option value="$PROJECT_DIR$/indvproj/templates/post.html" />
       </list>
     </option>
   </component>
@@ -989,7 +984,11 @@
       <created>1401366795076</created>
       <updated>1401366795076</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="Added the markdown thingys.">
+      <created>1401371454402</created>
+      <updated>1401371454402</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1014,7 +1013,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3174946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32829374" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1022,7 +1021,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32721382" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969475" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17465389" sideWeight="0.49841774" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17465389" sideWeight="0.49841774" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39956802" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969475" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3347732" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -1052,7 +1051,6 @@
       <TodoPanelSettings />
     </option>
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="false" />
-    <MESSAGE value="* allowed_to_add_moderators and allowed_to_remove_post as well as is_admin is now functions of User so that we can use them instead of the allowed_to_remove_post(user, post) functions.&#10;* Working on adding comments to comments, but at this moment it's quite hard. Haven't really wrapped my head around how the SQLAlchemy ORM works with One to many relationships that are nested.&#10;* Implemented the functionality to post comments to comments, but then commented it since it didn't work as it should.&#10;* Changed some allowed_to_* functions to their model counterparts.&#10;* Handles more cases of users not allowed to do stuff." />
     <MESSAGE value="I think this solves the problems with the comemnts&#10;It isn't possible to add childcomments yet, but the models supports it.&#10;* Comments fixed?&#10;* Added stylesheet." />
     <MESSAGE value="Now it actually renders the childcomments.&#10;* Updated Sprint backlog.&#10;* Changed the repr of Comment to display the amount of childcomments.&#10;* It's really easy to add children to the comments, just do an append of a Comment object, and then commit it to the database since we are always creating a new comment.&#10;* Macros for displaying comments.&#10;* Renders the comments in post.html.&#10;* Removed unnecessary debugging prints from before_request.&#10;* Added a file with the solution that helped me with the nested comments problem." />
     <MESSAGE value="Changed the rendering of comments, will probably change that macro later if it looks like I need it.&#10;* render_comment and render_childcomments macros, but only render_comment is used right now.&#10;* rendering comments works." />
@@ -1077,7 +1075,8 @@
     <MESSAGE value="Limit most things to 100, we don't want to load thousand sof posts into the same page, and I can't be bothered with pagination right now.&#10;* CSS galore.&#10;* Added some info if the logged in user is an admin.&#10;* Moved the moderators block to the right navigation menu, since that isn't really useful information.&#10;* More stuff." />
     <MESSAGE value="Gotta set that statusid and not status, which resolves the problem with users not beign able to post in a category." />
     <MESSAGE value="Set cascade to remove all posts if the category is deleted.&#10;base64 decode can throw an error if the url is wrong, gotta handle that.&#10;Do not display posts that are removed on main.&#10;Added a red button option.&#10;404 extends layout.html&#10;Give an option to remove a link.&#10;Only display Moderator in: if there are any categories to moderate.&#10;shared_collection is for when you want to share a collection, it's a stripped down version that doesn't allow any removal of links or of the collection." />
-    <option name="LAST_COMMIT_MESSAGE" value="Set cascade to remove all posts if the category is deleted.&#10;base64 decode can throw an error if the url is wrong, gotta handle that.&#10;Do not display posts that are removed on main.&#10;Added a red button option.&#10;404 extends layout.html&#10;Give an option to remove a link.&#10;Only display Moderator in: if there are any categories to moderate.&#10;shared_collection is for when you want to share a collection, it's a stripped down version that doesn't allow any removal of links or of the collection." />
+    <MESSAGE value="Added the markdown thingys." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the markdown thingys." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1251,11 +1250,6 @@
         <state line="2" column="64" selection-start="109" selection-end="109" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="289" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/new_post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="12" selection-start="485" selection-end="514" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="918" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/create_user.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="51" selection-start="335" selection-end="335" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="561" />
@@ -1290,19 +1284,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="79" selection-start="2004" selection-end="2280" vertical-scroll-proportion="-15.615385" vertical-offset="240" max-vertical-offset="1207" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/edit_post.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="19" selection-start="1035" selection-end="1035" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="442" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/moderators.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="24" selection-start="367" selection-end="367" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="323" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/user.html">
@@ -1363,9 +1347,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="27" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="357">
           <folding>
-            <marker date="1400745087986" expanded="true" signature="150:560" placeholder="..." />
-            <marker date="1400745087986" expanded="true" signature="252:549" placeholder="..." />
-            <marker date="1400745087986" expanded="true" signature="269:432" placeholder="..." />
+            <marker date="1400745087986" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400745087986" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400745087986" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1391,13 +1375,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/static/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="300" column="13" selection-start="4150" selection-end="4150" vertical-scroll-proportion="0.0" vertical-offset="4823" max-vertical-offset="9214">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/collection.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="79" selection-start="0" selection-end="1772" vertical-scroll-proportion="-13.923077" vertical-offset="29" max-vertical-offset="697">
@@ -1414,10 +1391,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="965" column="11" selection-start="37416" selection-end="37416" vertical-scroll-proportion="0.5368782" vertical-offset="16092" max-vertical-offset="16847">
+        <state line="965" column="11" selection-start="37416" selection-end="37416" vertical-scroll-proportion="0.0" vertical-offset="16092" max-vertical-offset="16847">
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/moderators.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="24" selection-start="367" selection-end="367" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="323">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/static/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="536" column="1" selection-start="7680" selection-end="7680" vertical-scroll-proportion="0.0" vertical-offset="8631" max-vertical-offset="9214">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="94" selection-start="3293" selection-end="3293" vertical-scroll-proportion="-12.923077" vertical-offset="684" max-vertical-offset="1241">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/new_post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="14" selection-start="305" selection-end="305" vertical-scroll-proportion="0.15260324" vertical-offset="0" max-vertical-offset="1071">
+          <folding />
         </state>
       </provider>
     </entry>

@@ -37,6 +37,7 @@
                 comments: {{ post.comments.all()|length }}
                 {% if g.user.is_active() and g.user.allowed_to_remove_post(post) %}|
                     <a href={{ url_for('CategoryView:edit_post', categoryname=post.category.categoryname,postid=post.postid) }}>Edit</a>{% endif %}
+                {# If the user is admin display the Status of the post #}
                 {% if g.user.status == 4 %}| Status: {{ post.statusid }}{% endif %}
             </div>
             <div class="post-content margin-ten">{{ post.content|safe }}</div>

@@ -1,4 +1,9 @@
 {% extends "layout.html" %}
+{% block head %}
+    <script src={{ url_for('static',filename="Markdown.Converter.js") }}></script>
+    <script src={{ url_for('static',filename="Markdown.Editor.js") }}></script>
+    <script src={{ url_for('static',filename="Markdown.Sanitizer.js") }}></script>
+{% endblock %}
 {% block body %}
     {% from "_formhelpers.html" import render_field, with_errors %}
     <!--<form method=post action=/category/{{ id }}/p/new>
@@ -11,18 +16,28 @@
     </form>-->
     <form method=post action=/p/new/ class="onehundered">
         <dl>
+            Title
             {{ with_errors(form.title) }}
             <dt><span class="small">The title of the post.</span></dt>
+            Categoryname
             {{ with_errors(form.categoryname) }}
             <dt><span class="small">The name of the category that the post will get posted to.</span></dt>
-            <p id="wmd-button-bar"></p>
-            {{ with_errors(form.content,class="content", id="wmd-input") }}
+            Content
+            <span id="wmd-button-bar"></span>
+            {{ with_errors(form.content,class="post", id="wmd-input") }}
             <dt><span class="small">Content allows for markdown to be used.</span></dt>
     </dl>
         <p><input type=submit value=Post></p>
         {{ form.csrf_token() }}
     </form>
-    <div class="content" id="wmd-preview"></div>
+    <!--Preview of the markdown-->
+    <div class="onehundered">
+        <p>Preview of the post:</p>
+
+        <div class="post">
+            <div class="post-content margin-ten" id="wmd-preview"></div>
+        </div>
+    </div>
 
     <script>
         !function () {
@@ -41,9 +56,4 @@
             editor.run();
         }()
     </script>
-{% endblock %}
-{% block head %}
-    <script src={{ url_for('static',filename="Markdown.Converter.js") }}></script>
-    <script src={{ url_for('static',filename="Markdown.Editor.js") }}></script>
-    <script src={{ url_for('static',filename="Markdown.Sanitizer.js") }}></script>
 {% endblock %}
