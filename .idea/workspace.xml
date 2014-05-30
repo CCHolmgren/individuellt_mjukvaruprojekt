@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Yes">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/__init__.py" afterPath="$PROJECT_DIR$/indvproj/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/layout.html" afterPath="$PROJECT_DIR$/indvproj/templates/layout.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="individuellt_mjukvaruprojekt.iws" />
@@ -80,8 +80,11 @@
       <file leaf-file-name="layout.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/layout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="26" selection-start="618" selection-end="618" vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="1700">
-              <folding />
+            <state line="7" column="4" selection-start="247" selection-end="247" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="1700">
+              <folding>
+                <element signature="n#style#0;n#a#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -176,7 +179,6 @@
         <option value="$PROJECT_DIR$/indvproj/templates/create_user.html" />
         <option value="$PROJECT_DIR$/indvproj/yourapplication.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/user.html" />
-        <option value="$PROJECT_DIR$/indvproj/templates/layout.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/category.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
         <option value="$PROJECT_DIR$/indvproj/createanddropall.py" />
@@ -192,6 +194,7 @@
         <option value="$PROJECT_DIR$/indvproj/templates/404.html" />
         <option value="$PROJECT_DIR$/indvproj/model/views.py" />
         <option value="$PROJECT_DIR$/indvproj/static/style.css" />
+        <option value="$PROJECT_DIR$/indvproj/templates/layout.html" />
         <option value="$PROJECT_DIR$/indvproj/__init__.py" />
       </list>
     </option>
@@ -994,7 +997,11 @@
       <created>1401439261802</created>
       <updated>1401439261802</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="Yes">
+      <created>1401439377869</created>
+      <updated>1401439377869</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1415,17 +1422,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="26" selection-start="618" selection-end="618" vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="1700">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/static/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="81" column="0" selection-start="1017" selection-end="1017" vertical-scroll-proportion="0.0" vertical-offset="996" max-vertical-offset="9282">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="4" selection-start="247" selection-end="247" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="1700">
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
