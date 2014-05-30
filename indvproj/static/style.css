@@ -68,6 +68,10 @@ blockquote p {
     font-weight: bold;
 }
 
+.messages {
+    margin-left: 10px;
+}
+
 .metanav {
     text-align: right;
     font-size: 0.8em;

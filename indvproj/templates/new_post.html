@@ -26,13 +26,13 @@
             <span id="wmd-button-bar"></span>
             {{ with_errors(form.content,class="post", id="wmd-input") }}
             <dt><span class="small">Content allows for markdown to be used.</span></dt>
-    </dl>
+        </dl>
         <p><input type=submit value=Post></p>
         {{ form.csrf_token() }}
     </form>
     <!--Preview of the markdown-->
     <div class="onehundered">
-        <p>Preview of the post:</p>
+        <p>Live preview</p>
 
         <div class="post">
             <div class="post-content margin-ten" id="wmd-preview"></div>
@@ -40,6 +40,11 @@
     </div>
 
     <script>
+        /*
+         *!function(){}() is just shorthand for (function(){}())
+         * i.e. a IEFF
+         * Just had to try it out once
+         */
         !function () {
             var converter = Markdown.getSanitizingConverter();
             var editor = new Markdown.Editor(converter);

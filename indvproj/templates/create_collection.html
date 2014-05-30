@@ -3,6 +3,7 @@
     {% from "_formhelpers.html" import render_field, with_errors %}
     <form method=post action=/collection/new>
         <dl>
+            Title
             {{ with_errors(form.title) }}
             <span class="small">The name of the collection.</span>
         </dl>

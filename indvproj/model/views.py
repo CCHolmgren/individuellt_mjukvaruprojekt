@@ -444,7 +444,7 @@ class PostView(FlaskView):
 
     @route('/<postid>/<commentid>')
     @login_required
-    def comment_on(self,postid, commentid):
+    def comment_on(self, postid, commentid):
         form = CommentForm()
         Comment.query.get(commentid)
         if int(commentid) > MAXINT:
@@ -635,7 +635,7 @@ class CategoryView(FlaskView):
         if category:
             posts = category.posts.filter(Post.statusid != 5).limit(100).all()[::-1]
             #else:
-        #    posts = category.posts.limit(100).all()[::-1]
+            #    posts = category.posts.limit(100).all()[::-1]
             return render_template('category.html', category=category, posts=posts, form=deletionform)
         return abort(404)
 
@@ -907,13 +907,8 @@ class CollectionView(FlaskView):
 
     def __get(self, collectionid, allowed_to_watch):
         collection = Collection.query.get(collectionid)
-        print(dir(collection))
-        print(collection.links.all())
 
         if collection:
-            print(collection)
-            print(collection.userid)
-            print(current_user.userid)
             return render_template('shared_collection.html', collection=collection)
         return abort(404)
 
