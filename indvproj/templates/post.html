@@ -1,4 +1,8 @@
 {% extends "layout.html" %}
+{% block headeradditions %}
+    <a href={{ url_for("CategoryView:get", categoryname=post.category.categoryname) }} class=home>Back
+        to {{ post.category.categoryname }}</a>
+{% endblock %}
 {% block body %}
     {% from '_formhelpers.html' import render_post_with_delete, render_post_without_delete, render_field, render_post, render_comment, render_childcomments with context %}
     <div class="onehundered margin-ten">
@@ -31,7 +35,7 @@
             </div>
         {% endif %}
         <div class="post onehundered">
-            <div class="small footer">Postid: {{ post.postid }} | Posted by: <a
+            <div class="small footer comment-head">Postid: {{ post.postid }} | Posted by: <a
                     href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a> | Amount
                 of
                 comments: {{ post.comments.all()|length }}
@@ -46,8 +50,8 @@
         {% if allowed_to_remove %}
             <div>
                 <form method=post action=/p/{{ post.postid }}/remove
-                      onsubmit="return confirm('Are you sure you want to submit?')">
-                    <input type="submit" value="Delete">
+                      onsubmit="return confirm('Are you sure you want to delete this post?')">
+                    <input type="submit" value="Delete post">
                     {{ form.csrf_token() }}
                 </form>
             </div>

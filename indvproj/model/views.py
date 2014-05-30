@@ -788,7 +788,6 @@ class CategoryView(FlaskView):
         #try:
         category = Category.query.filter_by(categoryname=categoryname).first()
         print(category)
-        raise Exception()
         if current_user.allowed_to_remove_category(category):
             db_session.delete(category)
             db_session.commit()
@@ -857,7 +856,6 @@ class CollectionView(FlaskView):
             #If that's the case, just use that link
             if potentiallink:
                 collection = Collection.query.get(collectionid)
-                raise Exception()
                 collection.links.append(potentiallink)
             #Otherwise we just add a new link
             else:
@@ -867,7 +865,6 @@ class CollectionView(FlaskView):
                 db_session.commit()
 
                 collection = Collection.query.get(collectionid)
-                raise Exception()
                 collection.links.append(link)
             db_session.commit()
             print(collection.links.all())

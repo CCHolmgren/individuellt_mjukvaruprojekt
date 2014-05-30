@@ -24,7 +24,8 @@
                 href={{ url_for('PostView:get',postid=post.postid)+"#comments" }}>Amount of
             comments: {{ post.comments.all()|length }}</a>
             {% if g.user.is_active() and g.user.allowed_to_remove_post(post) %}|
-                <a href={{ url_for('CategoryView:edit_post', categoryname=post.category.categoryname,postid=post.postid) }}>Edit</a>{% endif %}
+                <a href={{ url_for('CategoryView:edit_post', categoryname=post.category.categoryname,postid=post.postid) }}>Edit
+                    post</a>{% endif %}
             {% if g.user.status == 4 %}| Status: {{ post.statusid }}{% endif %}</span>
             <span class="small">Currently&nbsp;displays&nbsp;incorrect&nbsp;data.</span>
         </footer>
@@ -101,15 +102,13 @@
 {% macro render_comment(comment,postid,commentform) %}
     <div class="parent" id={{ comment.commentid }}>
         <div class="margin-five">
-            <div class="small footer">Postid: {{ post.postid }} | Posted by:
+            <div class="small footer comment-head">Postid: {{ post.postid }} | Posted by:
                 <a href={{ url_for('UserView:get',username=post.user.username) }}>
                     {{ post.user.username }}
-                </a> | Amount
-                of
-                comments: {{ post.comments.all()|length }}
+                </a>
             </div>
-            <div>
-                {{ comment.content|safe }}
+            <div class="comment-content">
+            {{ comment.content|safe }}
             </div>
             <a href={{ "#"+comment.commentid|string }} onclick="document.getElementById('{{ "comment"+comment.commentid|string }}').style.display
             = 'initial'">
@@ -126,13 +125,13 @@
                 <div>
                     <div class="parent" style="margin-left:20px" id={{ comment.commentid }}>
                         <div class="margin-five">
-                            <div class="small footer">Postid: {{ post.postid }} | Posted by:
+                            <div class="small footer comment-head">Postid: {{ post.postid }} | Posted by:
                                 <a href={{ url_for('UserView:get',username=comment.user.username) }}>
                                     {{ comment.user.username }}
                                 </a>
                             </div>
-                            <div>
-                                {% if comment.statusid != 5 or g.user.statusid == 4%}
+                            <div class="comment-content">
+                            {% if comment.statusid != 5 or g.user.statusid == 4%}
                                     {{ comment.content|safe }}
                                     {% elif comment.statusid == 5 and g.user.statusid != 4 %}
                                     This comment was deleted by the user.

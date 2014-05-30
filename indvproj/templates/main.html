@@ -1,6 +1,11 @@
 {% extends "layout.html" %}
 {% from "_formhelpers.html" import render_post_dense, render_collection_dense with context %}
 {% block body %}
+    <div class="onehundered">
+        Do you need help with how the site works? Head over to <a
+            href={{ url_for("CategoryView:get", categoryname="help") }}>/c/help</a> and check out the posts there about
+        how to use this site!
+    </div>
     {% if g.user.is_active() %}
         <div class="onehundered">
             <div>
@@ -18,10 +23,6 @@
                 {% endfor %}
             </div>
             {% endif %}
-            <div>
-                Your userpage:
-                <a href={{ url_for('UserView:get', username=g.user.username) }}>{{ g.user.username }}</a>
-            </div>
         </div>
     {% endif %}
     {% for post in posts %}

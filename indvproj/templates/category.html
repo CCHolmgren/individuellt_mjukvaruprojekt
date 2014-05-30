@@ -4,6 +4,9 @@
     {% from "_formhelpers.html" import render_post_dense, render_field with context %}
     <div class="onehundered">
         <h1>{{ category.categorytitle }}</h1>
+        {% if not g.user.is_active() %}
+            You don't seem to be logged in, please sign in to post!
+        {% endif %}
         {% if g.user.is_active() and g.user.allowed_to_remove_category(category) %}
             <form method=post action=/c/{{ category.categoryname }}/delete
                   onsubmit="return confirm('Are you sure you want to submit?')">

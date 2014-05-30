@@ -12,6 +12,7 @@ h1, h2 {
 }
 
 h1 {
+    font-size: 22px;
     border-bottom: 2px solid #eee;
 }
 
@@ -150,15 +151,17 @@ blockquote p {
     padding: 4px;
     margin-left: 8px;
     border-radius: 4px;
-    background: #00A000;
+    border: 0 none;
+    background: #FF6600;
     height: 19px;
 }
 
 .open-nav {
     display: inline-block;
-    background: #0e84b5;
+    /*background: #0e84b5;*/
     color: white;
     padding: 4px;
+    border: 1px solid black;
     border-radius: 4px;
     height: 19px;
 }
@@ -168,20 +171,26 @@ blockquote p {
 }
 
 .close-nav {
+    color: black;
     margin-top: 7px;
     margin-left: 11px;
     margin-right: -4px;
 }
 
 .close-nav2 {
+    color: black;
     margin-top: 7px;
     margin-left: 11px;
 }
 
-.categories {
+.categories, .moderators {
     border-radius: 3px;
     margin-top: 44px;
     border: 1px solid black;
+}
+
+.moderators {
+    margin-top: 10px;
 }
 
 .users {
@@ -191,18 +200,31 @@ blockquote p {
 }
 
 .head {
-    margin-left: 5px;
-    margin-right: 5px;
+    /*margin-left: 5px;
+    margin-right: 5px;*/
     order: 1;
     flex: 1 100%;
     display: flex;
     align-items: baseline;
     padding-bottom: 10px;
     box-shadow: 0 11px 31px -11px #ccc;
+    background-color: #660099;
+    color: white;
+    padding-top: 5px;
+    padding: 5px;
 }
 
 .head, .main, .aside {
     /*flex: 1 100%;*/
+}
+
+hr {
+    height: 4px;
+    background-color: grey;
+}
+
+.main > div, .main > form {
+    margin-top: 10px;
 }
 
 .post {
@@ -321,8 +343,23 @@ body {
     background: #d2322d;
 }
 
+.white-text {
+    color: #FF6600;
+    text-decoration: underline;
+}
+
+.delete {
+    background-color: #990033;
+    color: white;
+}
+
+.delete:hover {
+    cursor: pointer;
+    background-color: #FF0000;
+}
+
 .has-error {
-    background-color: rgba(255, 0, 0, 0.30);
+    background-color: rgba(255, 0, 0, 0.7);
     color: white;
 }
 
@@ -396,6 +433,10 @@ h1.post-title {
     margin: 10px;
 }
 
+.margin-top-ten {
+    margin-top: 10px;
+}
+
 .margin-five {
     margin: 5px;
 }
@@ -423,8 +464,17 @@ a:hover {
 
 .parent {
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid #999999;
     margin: 5px 2px;
+    margin-top: 10px;
+}
+
+.comment-content {
+    margin: 5px 0;
+}
+
+.comment-head {
+    border-bottom: 1px solid #CCCCCC;
 }
 
 body {

@@ -3,15 +3,15 @@ X (Works as it should now) Change so you can login using lowercase and uppercase
 Make it more descriptive around adding links to collections, maybe even a description of what a collection is at the creation page and so on
 Better errormessage on add link collection page, something other than invalid url
 X (It is now possible to add links that link to different sites, and also to localhost, but that should change, maybe, maybe not) Make it actually possible to post links to a collection
-Confirmation box on removal of stuff
-Formfield for posting comments
+X Confirmation box on removal of stuff
+X Formfield for posting comments
 X (Plans laid on ice for now. Will look to implement this later, but at this moment it isn't worth the time since there's a lot of things to do.) Change comments from what it is now to a parent children situation where parent is a foreign key and children is a relationship with a table comment_has_comment with columns parentcommentid, comment id
 Removal of comments
-X (Wirjs biw wu��vua a dropdown, but maybe I should change that) A post should be able to directly post to a collection, or something like that. A box to the side where you choose a collection to post in, and then do it?
+X (Wirjs biw wu��vua a dropdown, but maybe I should change that) A post should be able to directly post to a collection, or something like that. A box to the side where you choose a collection to post in, and then do it?
 X (Meh, reddit does it) A posts title shouldn't need to link to itself, should it inside PostView:get
 Maybe change creation of categories to a ajax version so that we can validate without redirecting all the time? Or fill in the values that are correct when you failed some vlaidation?
 X (Fixed, just a problem with post.html not having the form there) You can comment on your own posts, but not someone elses?
-Category id already exists error? Categoryid 3 exists, but why doesn't it get increased? Didn't seem to happen again, odd.
+X Category id already exists error? Categoryid 3 exists, but why doesn't it get increased? Didn't seem to happen again, odd.
 x (Is now a link, but should maybe change to something better, or better text?) Add quicklinks to creation of posts to a category.
 X (Only possible by being an admin, but it's possible. Should remove the button if you aren't an admin though) Removal of categories.
 X (A default will not be chosen, that was a bad idea.) Change so that if no category is chosen a default one will be chosen for you, preferably something like /c/index or /c/default
@@ -31,3 +31,12 @@ base64.b64encode(bytes("{}-{}".format(self.collectionid, self.random),'ascii'))
 This gives us the url route
 base64.b64decode(bytes([urlroute])).decode('utf-8').split('-')
 This gives us both the collection id, and the random value. Then we do Collection.query.filter_by(collectionid=[0],random=[1])
+Must take care of the case when the base64 string isn't the correct length. Use base64.binerror
+
+X Fixa dokumenten runt workshop 2 och 3.
+Fixa presentationsslidern med Ignite.
+Fixa allt som står här: https://coursepress.lnu.se/kurs/granssnittsutveckling-anvandarvanlighet-och-tillganglighet/uppgiftsbeskrivningar/
+	https://coursepress.lnu.se/kurs/individuellt-mjukvaruutvecklingsprojekt/projektet/slutleverans/
+
+X Problem med categories och users som inte har skapat dem. Problemet var att jag inte satte statusid till 1 som default, utan jag satte status till 1, vilket inte användes, och inte sparades i databasen.
+Därför kunde inte vanliga users posts, eftersom statusid inte var 1 och de var inte moderatorer eller admins.

@@ -7,7 +7,7 @@
         {# Delete the collection #}
         <form method=post action=/collection/{{ collection.collectionid }}/delete
               onsubmit="return confirm('Are you sure you want to delete {{ collection.title }}?')">
-            {{ collection.title }} <input type="submit" value="Delete" class="btn red">
+            {{ collection.title }} <input type="submit" value="Delete" class="btn delete">
             {{ deleteform.csrf_token() }}
         </form>
         {# Add link to collection #}
@@ -21,7 +21,7 @@
 
             <form method=post action=/collection/{{ collection.collectionid }}/{{ link.linkid }}/delete
                   onsubmit="return confirm('Are you sure you want to remove {{ '"' +link.link+ '"' }} from this collection?')">
-                {{ link.link|urlize }}<input type="submit" value="X" class="btn">
+                {{ link.link|urlize }}<input type="submit" value="X" class="btn delete">
                 {{ deleteform.csrf_token() }}
             </form>
         {% endfor %}

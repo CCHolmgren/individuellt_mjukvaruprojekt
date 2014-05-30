@@ -3,12 +3,10 @@
     {% from "_formhelpers.html" import render_field, with_errors %}
     <form method=post action=/c/new>
         <dl>
-            Categoryname
-            {{ with_errors(form.categoryname) }}
+            {{ with_errors(form.categoryname,autocomplete="off", placeholder="Categoryname") }}
             <dt><span class="small">The name that will be used in the url, (somethingsimilartothis), may only contain a-z and + -.</span>
             </dt>
-            Categorytitle
-            {{ with_errors(form.categorytitle) }}
+            {{ with_errors(form.categorytitle,autocomplete="off", placeholder="Categoryname") }}
             <dt><span class="small">The text that will be at the top of the page, (Something similar to this).</span>
             </dt>
         </dl>

@@ -12,6 +12,7 @@
 <div class="head">
     <a href="#main-navigation" class="open-nav">Menu</a>
     <a href={{ url_for('MainView:index') }} class="home">Home</a>
+    {% block headeradditions %}{% endblock %}
 
     <div class="messages">
         {%- with messages = get_flashed_messages() %}
@@ -26,11 +27,11 @@
     </div>
     <div class="signinbar">
         {% if not g.user.is_active() %}
-            Do you want to <a href={{ url_for('RegisterView:new_user') }}> register</a> or <a
-                href={{ url_for('LoginView:index') }}>login</a>?
+            Do you want to <a href={{ url_for('RegisterView:new_user') }} class="white-text"> register</a> or <a
+                href={{ url_for('LoginView:index') }} class="white-text">login</a>?
         {% else %}
-            <a href={{ url_for('UserView:get',username= g.user.username) }} class="open-nav">{{ g.user.username }}</a>
-            <a href={{ url_for('LogoutView:logout') }}  class="open-nav">Log out</a>
+            <a href={{ url_for('UserView:get',username= g.user.username) }} class="home">{{ g.user.username }}</a>
+            <a href={{ url_for('LogoutView:logout') }}  class="home">Log out</a>
         {% endif %}
     </div>
     <div>
