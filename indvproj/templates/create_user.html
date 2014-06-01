@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 {% block body %}
     {% from "_formhelpers.html" import render_field, with_errors %}
-    <form method=post action=/register/>
-        <dl>
+    <form method=post action=/register/ style="margin-left:auto; margin-right:auto;">
+    <dl>
             <div>
                 <span>Username</span>
                 {{ with_errors(form.username, class="input-text") }}

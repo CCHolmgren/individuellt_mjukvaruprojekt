@@ -16,11 +16,14 @@
     </form>-->
     <form method=post action=/p/new/ class="onehundered margin-top-ten">
     <dl>
+        Post title
         {{ with_errors(form.title, placeholder="Title", autocomplete="off") }}
         <dt><span class="small">The title of the post.</span></dt>
+        Category name to post in
         {{ with_errors(form.categoryname, placeholder="Category name", autocomplete="off") }}
-        <dt><span class="small">The name of the category that the post will get posted to.</span></dt>
-            <span id="wmd-button-bar"></span>
+        <dt><span class="small">The name of the category that the post will get posted to. Do note that you must be allowed to post in that category for it to be possible.</span>
+        </dt>
+        <span id="wmd-button-bar"></span>
         {{ with_errors(form.content,class="post", id="wmd-input",placeholder="Content of your post goese here.") }}
         <dt><span class="small">You can use markdown to style your input.</span></dt>
     </dl>

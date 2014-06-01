@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="Yes">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Things_to_change.txt" afterPath="$PROJECT_DIR$/Things_to_change.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/__init__.py" afterPath="$PROJECT_DIR$/indvproj/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" afterPath="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/category.html" afterPath="$PROJECT_DIR$/indvproj/templates/category.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/collection.html" afterPath="$PROJECT_DIR$/indvproj/templates/collection.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/create_category.html" afterPath="$PROJECT_DIR$/indvproj/templates/create_category.html" />
+    <list default="true" id="40f786a3-fc6a-465a-9f20-956ed56c63f5" name="Default" comment="More styling done, even if it's super late to do it now.&#10;Removed some raise Exception thingys, since that's really stupid in production code.&#10;If you aren't logged in, go check out /c/help!&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/create_user.html" afterPath="$PROJECT_DIR$/indvproj/templates/create_user.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/layout.html" afterPath="$PROJECT_DIR$/indvproj/templates/layout.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/login.html" afterPath="$PROJECT_DIR$/indvproj/templates/login.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/main.html" afterPath="$PROJECT_DIR$/indvproj/templates/main.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/new_post.html" afterPath="$PROJECT_DIR$/indvproj/templates/new_post.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/templates/post.html" afterPath="$PROJECT_DIR$/indvproj/templates/post.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/static/style.css" afterPath="$PROJECT_DIR$/indvproj/static/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indvproj/model/views.py" afterPath="$PROJECT_DIR$/indvproj/model/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="individuellt_mjukvaruprojekt.iws" />
@@ -46,37 +40,75 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="199" column="25" selection-start="6101" selection-end="6101" vertical-scroll-proportion="-11.038462" vertical-offset="3096" max-vertical-offset="16711">
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="category.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/indvproj/templates/category.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="67" selection-start="364" selection-end="364" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="748">
+            <state line="199" column="25" selection-start="6101" selection-end="6101" vertical-scroll-proportion="0.0" vertical-offset="9231" max-vertical-offset="16660">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create_category.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/indvproj/templates/create_category.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="17" selection-start="414" selection-end="414" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="357">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/static/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="340" column="18" selection-start="4765" selection-end="4765" vertical-scroll-proportion="0.5368782" vertical-offset="5467" max-vertical-offset="9894">
+            <state line="216" column="17" selection-start="3082" selection-end="3082" vertical-scroll-proportion="-11.038462" vertical-offset="3385" max-vertical-offset="10166">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_formhelpers.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="95" column="13" selection-start="4466" selection-end="4466" vertical-scroll-proportion="-7.8076925" vertical-offset="1412" max-vertical-offset="3060">
+              <folding>
+                <marker date="1401451908542" expanded="true" signature="70:322" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="156:292" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="376:507" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="575:1489" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="723:1478" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="729:1371" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="771:878" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="884:1034" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="1141:1273" placeholder="..." />
+                <marker date="1401451908542" expanded="false" signature="1569:1592" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="1593:2040" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="1748:1970" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="1790:1897" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="1984:2029" placeholder="..." />
+                <marker date="1401451908542" expanded="false" signature="2118:2141" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="2142:2530" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="2297:2519" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="2339:2446" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="2615:3649" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="2648:2754" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="2785:3638" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="2804:3501" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="2863:2974" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="2980:3138" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="3254:3386" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="3534:3620" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="3735:3975" placeholder="..." />
+                <marker date="1401451908542" expanded="false" signature="4081:4104" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="4105:4436" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="4135:4425" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="4153:4344" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="4713:7731" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="4770:7720" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="4822:5028" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="4886:5009" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="5070:5128" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="5421:5505" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="5766:7680" placeholder="..." />
+                <marker date="1401451908542" expanded="false" signature="5815:5831" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="5836:7657" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="5909:7630" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="5977:6253" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="6057:6218" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="6311:6703" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="7018:7174" placeholder="..." />
+                <marker date="1401451908542" expanded="false" signature="7060:7073" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="7879:8236" placeholder="..." />
+                <marker date="1401451908542" expanded="true" signature="8065:8152" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,7 +116,46 @@
       <file leaf-file-name="new_post.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/new_post.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="10" selection-start="1560" selection-end="1560" vertical-scroll-proportion="-16.346153" vertical-offset="102" max-vertical-offset="1122">
+            <state line="24" column="45" selection-start="1279" selection-end="1279" vertical-scroll-proportion="-12.423077" vertical-offset="85" max-vertical-offset="1156">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="27" selection-start="166" selection-end="166" vertical-scroll-proportion="0.091561936" vertical-offset="0" max-vertical-offset="629">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indvproj/templates/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="108" selection-start="708" selection-end="708" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="374">
+              <folding>
+                <element signature="e#232#255#0" expanded="true" />
+                <element signature="e#366#389#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit_post.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indvproj/templates/edit_post.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="19" selection-start="1035" selection-end="1035" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="442">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create_user.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indvproj/templates/create_user.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="83" selection-start="196" selection-end="196" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="561">
               <folding />
             </state>
           </provider>
@@ -99,43 +170,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="139" selection-start="308" selection-end="308" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="578">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_formhelpers.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="28" selection-start="722" selection-end="722" vertical-scroll-proportion="-7.9615383" vertical-offset="150" max-vertical-offset="2975">
-              <folding>
-                <element signature="tag#div#0;tag#div#0;tag#div#0;tag#div#2;tag#div#0;tag#div#8" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="layout.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indvproj/templates/layout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="66" selection-start="1242" selection-end="1242" vertical-scroll-proportion="-6.3846154" vertical-offset="344" max-vertical-offset="1717">
+            <state line="29" column="92" selection-start="1155" selection-end="1155" vertical-scroll-proportion="-5.730769" vertical-offset="344" max-vertical-offset="1717">
               <folding>
                 <element signature="n#style#0;n#a#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="post.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="925" selection-end="925" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="1292">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -184,11 +226,9 @@
         <option value="$PROJECT_DIR$/indvproj/static/reset.css" />
         <option value="$PROJECT_DIR$/indvproj/templates/collections.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/moderators.html" />
-        <option value="$PROJECT_DIR$/indvproj/templates/login.html" />
         <option value="$PROJECT_DIR$/indvproj/static/Markdown.Editor.js" />
         <option value="$PROJECT_DIR$/indvproj/templates/edit_post.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/add_moderators.html" />
-        <option value="$PROJECT_DIR$/indvproj/templates/create_user.html" />
         <option value="$PROJECT_DIR$/indvproj/yourapplication.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/user.html" />
         <option value="$PROJECT_DIR$/indvproj/createanddropall.py" />
@@ -202,13 +242,15 @@
         <option value="$PROJECT_DIR$/indvproj/templates/collection.html" />
         <option value="$PROJECT_DIR$/indvproj/model/views.py" />
         <option value="$PROJECT_DIR$/indvproj/templates/create_category.html" />
-        <option value="$PROJECT_DIR$/indvproj/templates/new_post.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/_formhelpers.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/post.html" />
-        <option value="$PROJECT_DIR$/indvproj/templates/main.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/category.html" />
+        <option value="$PROJECT_DIR$/indvproj/templates/new_post.html" />
+        <option value="$PROJECT_DIR$/indvproj/templates/login.html" />
+        <option value="$PROJECT_DIR$/indvproj/templates/create_user.html" />
         <option value="$PROJECT_DIR$/indvproj/templates/layout.html" />
         <option value="$PROJECT_DIR$/indvproj/static/style.css" />
+        <option value="$PROJECT_DIR$/indvproj/templates/main.html" />
       </list>
     </option>
   </component>
@@ -364,7 +406,7 @@
     <property name="FullScreen" value="false" />
     <property name="TODO_SCOPE" value="Changed Files" />
     <property name="dynamic.classpath" value="false" />
-    <property name="SearchEverywhereHistory" value="submit&#10;collections&#10;index&#10;collection.groupid&#10;gro&#10;groupid" />
+    <property name="SearchEverywhereHistory" value="&#10;submit&#10;collections&#10;index&#10;collection.groupid&#10;gro&#10;groupid" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="290" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="290" />
@@ -1018,7 +1060,11 @@
       <created>1401439669827</created>
       <updated>1401439669827</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="More styling done, even if it's super late to do it now.&#10;Removed some raise Exception thingys, since that's really stupid in production code.&#10;If you aren't logged in, go check out /c/help!&#10;">
+      <created>1401451909020</created>
+      <updated>1401451909020</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1081,7 +1127,6 @@
       <TodoPanelSettings />
     </option>
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="false" />
-    <MESSAGE value="Changed the rendering of comments, will probably change that macro later if it looks like I need it.&#10;* render_comment and render_childcomments macros, but only render_comment is used right now.&#10;* rendering comments works." />
     <MESSAGE value="Working on some layout and such.&#10;* Check so that the user is allowed to view the user's collections, which means that the current user either is an admin or the user that he is viewing.&#10;* Adding style rules.&#10;* Adding some classes to the divs so that we can style them, and see what they hold.&#10;* Since the proxy that Flask_login uses doesn't have a function called allowed_to_remove_category we must first check if the user is active, since that means that it isn't a flask_login proxy.&#10;* Adding divs and classes to layout.html&#10;* Also in main.html, aswell as some moving around.&#10;* We must first check if the user is allowed to view that other users collections.&#10;" />
     <MESSAGE value="Moving some stuff from main.html to layout.html since it should be persistent.&#10;* Gotta check if the user is active, since AnonymousUserMixin hasn't got status, doh.&#10;* More css.&#10;* Moved stuff from main.html to layout.html and also added the from _formhelpers.html macro import since render_collection_dense wasn't defined.&#10;* Main.html is now a lot more empty and only has the things that should be there.&#10;* Adding some stuff to g since that makes it a lot easier to implement the layout.html things. Might be bad if we got a lot of users, but that is something to be optimized later." />
     <MESSAGE value="Working on the finer details.&#10;* Added a allowed_to_remove_comment function to User so that we can later remove comments if we need to.&#10;* Added a delte_comment function, but at this time it doesn't actually work, since there isn't any form that allows you to do it yet.&#10;* Displays what categories you are moderator in a nicer way.&#10;* Adding files to moderate categories, posts and users, this will allow us to remove, delete, edit, ban and so on." />
@@ -1106,7 +1151,8 @@
     <MESSAGE value="Added the markdown thingys." />
     <MESSAGE value="min-height on the post class so that we can use it to style the preview without it breaking and looking horrible.&#10;Moved the block head to top of new_post and changed some html elements to make more sense.&#10;" />
     <MESSAGE value="Yes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Yes" />
+    <MESSAGE value="More styling done, even if it's super late to do it now.&#10;Removed some raise Exception thingys, since that's really stupid in production code.&#10;If you aren't logged in, go check out /c/help!&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="More styling done, even if it's super late to do it now.&#10;Removed some raise Exception thingys, since that's really stupid in production code.&#10;If you aren't logged in, go check out /c/help!&#10;" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1251,16 +1297,6 @@
         <state line="56" column="0" selection-start="1761" selection-end="1761" vertical-scroll-proportion="-15.038462" vertical-offset="561" max-vertical-offset="37689" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="24" selection-start="246" selection-end="246" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="323" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/create_user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="51" selection-start="335" selection-end="335" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="561" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272" />
@@ -1288,11 +1324,6 @@
         <state line="52" column="25" selection-start="1698" selection-end="1698" vertical-scroll-proportion="0.0" vertical-offset="690" max-vertical-offset="1275">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/edit_post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="19" selection-start="1035" selection-end="1035" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="442" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/user.html">
@@ -1391,15 +1422,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="199" column="25" selection-start="6101" selection-end="6101" vertical-scroll-proportion="-11.038462" vertical-offset="3096" max-vertical-offset="16711">
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/create_category.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="17" selection-start="414" selection-end="414" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="357">
@@ -1407,32 +1429,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/new_post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="10" selection-start="1560" selection-end="1560" vertical-scroll-proportion="-16.346153" vertical-offset="102" max-vertical-offset="1122">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="28" selection-start="722" selection-end="722" vertical-scroll-proportion="-7.9615383" vertical-offset="150" max-vertical-offset="2975">
-          <folding>
-            <element signature="tag#div#0;tag#div#0;tag#div#0;tag#div#2;tag#div#0;tag#div#8" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/post.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="925" selection-end="925" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="1292">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="139" selection-start="308" selection-end="308" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="578">
+        <state line="17" column="0" selection-start="933" selection-end="933" vertical-scroll-proportion="-10.461538" vertical-offset="17" max-vertical-offset="1309">
           <folding />
         </state>
       </provider>
@@ -1451,9 +1450,93 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/model/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="199" column="25" selection-start="6101" selection-end="6101" vertical-scroll-proportion="0.0" vertical-offset="9231" max-vertical-offset="16660">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/create_user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="83" selection-start="196" selection-end="196" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="561">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/edit_post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="19" selection-start="1035" selection-end="1035" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="442">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/_formhelpers.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="13" selection-start="4466" selection-end="4466" vertical-scroll-proportion="-7.8076925" vertical-offset="1412" max-vertical-offset="3060">
+          <folding>
+            <marker date="1401451908542" expanded="true" signature="70:322" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="156:292" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="376:507" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="575:1489" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="723:1478" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="729:1371" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="771:878" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="884:1034" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="1141:1273" placeholder="..." />
+            <marker date="1401451908542" expanded="false" signature="1569:1592" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="1593:2040" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="1748:1970" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="1790:1897" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="1984:2029" placeholder="..." />
+            <marker date="1401451908542" expanded="false" signature="2118:2141" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="2142:2530" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="2297:2519" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="2339:2446" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="2615:3649" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="2648:2754" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="2785:3638" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="2804:3501" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="2863:2974" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="2980:3138" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="3254:3386" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="3534:3620" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="3735:3975" placeholder="..." />
+            <marker date="1401451908542" expanded="false" signature="4081:4104" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="4105:4436" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="4135:4425" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="4153:4344" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="4713:7731" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="4770:7720" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="4822:5028" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="4886:5009" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="5070:5128" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="5421:5505" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="5766:7680" placeholder="..." />
+            <marker date="1401451908542" expanded="false" signature="5815:5831" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="5836:7657" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="5909:7630" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="5977:6253" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="6057:6218" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="6311:6703" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="7018:7174" placeholder="..." />
+            <marker date="1401451908542" expanded="false" signature="7060:7073" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="7879:8236" placeholder="..." />
+            <marker date="1401451908542" expanded="true" signature="8065:8152" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/new_post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="45" selection-start="1279" selection-end="1279" vertical-scroll-proportion="-12.423077" vertical-offset="85" max-vertical-offset="1156">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="66" selection-start="1242" selection-end="1242" vertical-scroll-proportion="-6.3846154" vertical-offset="344" max-vertical-offset="1717">
+        <state line="29" column="92" selection-start="1155" selection-end="1155" vertical-scroll-proportion="-5.730769" vertical-offset="344" max-vertical-offset="1717">
           <folding>
             <element signature="n#style#0;n#a#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1463,7 +1546,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indvproj/static/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="340" column="18" selection-start="4765" selection-end="4765" vertical-scroll-proportion="0.5368782" vertical-offset="5467" max-vertical-offset="9894">
+        <state line="216" column="17" selection-start="3082" selection-end="3082" vertical-scroll-proportion="-11.038462" vertical-offset="3385" max-vertical-offset="10166">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="108" selection-start="708" selection-end="708" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="374">
+          <folding>
+            <element signature="e#232#255#0" expanded="true" />
+            <element signature="e#366#389#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indvproj/templates/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="27" selection-start="166" selection-end="166" vertical-scroll-proportion="0.091561936" vertical-offset="0" max-vertical-offset="629">
           <folding />
         </state>
       </provider>

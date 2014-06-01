@@ -27,8 +27,8 @@
     </div>
     <div class="signinbar">
         {% if not g.user.is_active() %}
-            Do you want to <a href={{ url_for('RegisterView:new_user') }} class="white-text"> register</a> or <a
-                href={{ url_for('LoginView:index') }} class="white-text">login</a>?
+            Do you want to <a href={{ url_for('RegisterView:new_user') }} class="orange-link"> register</a> or <a
+                href={{ url_for('LoginView:index') }} class="orange-link">login</a>?
         {% else %}
             <a href={{ url_for('UserView:get',username= g.user.username) }} class="home">{{ g.user.username }}</a>
             <a href={{ url_for('LogoutView:logout') }}  class="home">Log out</a>
@@ -75,7 +75,7 @@
         {% for category in g.categories %}
             <div class="category">
                 <a href={{ url_for('CategoryView:get', categoryname=category.categoryname) }}>{{ category.categoryname }}</a>
-                {% if category.moderators.all() %}
+                <!--{% if category.moderators.all() %}
                     <div>
                         <small>Mods:
                             {% for moderator in category.moderators.all() %}
@@ -83,7 +83,7 @@
                             {% endfor %}
                         </small>
                     </div>
-                {% endif %}
+                {% endif %}-->
             </div>
         {% endfor %}
     </div>

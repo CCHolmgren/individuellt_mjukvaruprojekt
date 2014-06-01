@@ -1,14 +1,19 @@
 {% extends "layout.html" %}
 {% block body %}
     {% from "_formhelpers.html" import render_field %}
-    <form method=post action=/login/>
+    <form method=post action=/login/ style="margin-left:auto;margin-right:auto">
         <dl>
-            <dt>Username</dt>
-            <dt>{{ form.username }}</dt>
-            <dt>Password</dt>
-            <dt>{{ form.password }}</dt>
+            <dt><label for="username" style="display: block;">Username</label>
+                {{ form.username }}</dt>
+            <dt>
+                <label for="password" style="display: block;">Password</label>
+                {{ form.password }}</dt>
         </dl>
         <p><input type=submit value=Login></p>
+
+        <p class="small">Forgotten your password? Too bad, there is no password reset yet!</p>
+
+        <p class="small">Create a new user at <a href={{ url_for("RegisterView:new_user") }}>/register/</a>.</p>
         {{ form.csrf_token }}
     </form>
 {% endblock %}

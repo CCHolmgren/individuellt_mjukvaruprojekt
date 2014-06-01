@@ -2,9 +2,12 @@
 {% from "_formhelpers.html" import render_post_dense, render_collection_dense with context %}
 {% block body %}
     <div class="onehundered">
-        Do you need help with how the site works? Head over to <a
-            href={{ url_for("CategoryView:get", categoryname="help") }}>/c/help</a> and check out the posts there about
-        how to use this site!
+        <div class="open-nav black-text">
+            Do you need help with how the site works? Head over to <a
+                href={{ url_for("CategoryView:get", categoryname="help") }} class="orange-link">/c/help</a> and check
+            out the posts there about
+            how to use this site!
+        </div>
     </div>
     {% if g.user.is_active() %}
         <div class="onehundered">

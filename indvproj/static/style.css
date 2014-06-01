@@ -214,6 +214,10 @@ blockquote p {
     padding: 5px;
 }
 
+.black-text {
+    color: black;
+}
+
 .head, .main, .aside {
     /*flex: 1 100%;*/
 }
@@ -343,7 +347,7 @@ body {
     background: #d2322d;
 }
 
-.white-text {
+.orange-link {
     color: #FF6600;
     text-decoration: underline;
 }
