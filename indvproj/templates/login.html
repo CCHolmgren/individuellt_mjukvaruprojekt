@@ -15,5 +15,6 @@
 
         <p class="small">Create a new user at <a href={{ url_for("RegisterView:new_user") }}>/register/</a>.</p>
         {{ form.csrf_token }}
+        <input type=hidden value="{{ next or '' }}" name=next>
     </form>
 {% endblock %}

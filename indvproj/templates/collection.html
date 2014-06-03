@@ -7,25 +7,26 @@
         {# Delete the collection #}
         <form method=post action=/collection/{{ collection.collectionid }}/delete
               onsubmit="return confirm('Are you sure you want to delete {{ collection.title }}?')">
-            {{ collection.title }} <input type="submit" value="Delete" class="btn delete">
+            <span>{{ collection.title }}</span> <input type="submit" value="Delete" class="btn delete">
             {{ deleteform.csrf_token() }}
         </form>
         {# Add link to collection #}
         <form method=post action=/collection/{{ collection.collectionid }}/add_link>
-            {{ form.link(class="larger-input") }}
+            {{ form.link(class="larger-input", placeholder="Link") }}
             <input type="submit" value="Add link to collection">
             {{ form.csrf_token() }}
         </form>
         <h3>Links in the collection</h3>
         {% for link in collection.links %}
 
-            <form method=post action=/collection/{{ collection.collectionid }}/{{ link.linkid }}/delete
+            <form method=post action=/collection/{{ collection.collectionid }}/{{ link.linkid }}/remove
                   onsubmit="return confirm('Are you sure you want to remove {{ '"' +link.link+ '"' }} from this collection?')">
-                {{ link.link|urlize }}<input type="submit" value="X" class="btn delete">
+                <input type="submit" value="X" class="btn delete">{{ link.link|urlize }}
                 {{ deleteform.csrf_token() }}
             </form>
         {% endfor %}
         {# render_collection(collection) #}
+        <hr>
         <div class="display-url">
             Shareable url:
             <div><a href={{ url_for('CollectionView:display_collection',base64string=collection.get_base64()) }}>

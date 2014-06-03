@@ -3,16 +3,20 @@
 {% block body %}
     {% from "_formhelpers.html" import render_collection, render_field, with_errors with context %}
     <div class="margin-ten onehundered">
-        <h3>Links in the collection</h3>
+
+        {# Delete the collection #}
+        <form method=post action=/collection/{{ collection.collectionid }}/delete
+              onsubmit="return confirm('Are you sure you want to delete {{ collection.title }}?')">
+            <span class="margin-five">{{ collection.title }} by {{ collection.user.username }}</span>
+        </form>
+        <h3 class="margin-five">Links in the collection</h3>
         {% for link in collection.links %}
-            {{ link.link|urlize }}
+
+            <form method=post action=/collection/{{ collection.collectionid }}/{{ link.linkid }}/delete
+                  onsubmit="return confirm('Are you sure you want to remove {{ '"' +link.link+ '"' }} from this collection?')">
+                <div class="margin-five">{{ link.link|urlize }}</div>
+            </form>
         {% endfor %}
         {# render_collection(collection) #}
-        <div class="display-url">
-            Shareable url:
-            <div><a href={{ url_for('CollectionView:display_collection',base64string=collection.get_base64()) }}>
-                {{ url_for('CollectionView:display_collection',base64string=collection.get_base64(),_external=True) }}
-            </a></div>
-        </div>
     </div>
 {% endblock %}

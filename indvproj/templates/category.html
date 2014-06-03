@@ -9,9 +9,9 @@
         {% endif %}
         {% if g.user.is_active() and g.user.allowed_to_remove_category(category) %}
             <form method=post action=/c/{{ category.categoryname }}/delete
-                  onsubmit="return confirm('Are you sure you want to submit?')">
+                  onsubmit="return confirm('Are you sure you want to delete this category?')">
                 {# render_field(form.submit) #}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Delete" class="btn delete">
                 {{ form.csrf_token() }}
             </form>
         {% endif %}

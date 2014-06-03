@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 {% from "_formhelpers.html" import render_post_dense, render_collection_dense with context %}
 {% block body %}
-    <div class="onehundered">
-        <div class="open-nav black-text">
+    <div class="centering">
+        <div class="open-nav black-border black-text">
             Do you need help with how the site works? Head over to <a
                 href={{ url_for("CategoryView:get", categoryname="help") }} class="orange-link">/c/help</a> and check
             out the posts there about
@@ -20,13 +20,16 @@
             </div>
             {% if g.user.moderator %}
                 <div>
-                Moderator in:
-                {% for moderator in g.user.moderator %}
-                    <a href={{ url_for('CategoryView:get',categoryname=moderator.categoryname) }}>{{ moderator.categorytitle }}</a>
-                {% endfor %}
-            </div>
+                    You are a moderator in these categories:
+                    {% for moderator in g.user.moderator %}
+                        <a href={{ url_for('CategoryView:get',categoryname=moderator.categoryname) }}>{{ moderator.categorytitle }}</a>
+                    {% endfor %}
+                </div>
             {% endif %}
         </div>
+    {% else %}
+        <!-- Cheating with the formatting -->
+        <div class="onehundered"></div>
     {% endif %}
     {% for post in posts %}
         {{ render_post_dense(post) }}

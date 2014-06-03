@@ -1,11 +1,11 @@
 {# Intended to display a users collections, all of them #}
 {% extends "layout.html" %}
 {% block body %}
-    {% from "_formhelpers.html" import render_collection_dense with context %}
-    <div class="margin-ten flex">
+    {% from "_formhelpers.html" import render_collection_dense_no_trunk with context %}
+    <div class="margin-ten onehundered">
         <p class="onehundered">All of your collections:</p>
         {% for collection in collections %}
-            {{ render_collection_dense(collection) }}
+            {{ render_collection_dense_no_trunk(collection) }}
         {% endfor %}
     </div>
 {% endblock %}

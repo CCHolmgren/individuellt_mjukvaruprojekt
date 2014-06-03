@@ -35,8 +35,14 @@
             </div>
         {% endif %}
         <div class="post onehundered">
-            <div class="small footer comment-head">Postid: {{ post.postid }} | Posted by: <a
-                    href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a> | Amount
+            <div class="small footer comment-head">Posted by: <a class="bigger"
+                                                                 href={{ url_for('UserView:get',username=post.user.username) }}>{{ post.user.username }}</a>
+                in
+                <span class="bigger">
+                    <a href={{ url_for("CategoryView:get", categoryname=post.category.categoryname) }}>
+                        {{ post.category.categoryname }}
+                    </a>
+                </span> | Created: {{ post.created_when() }} | Amount
                 of
                 comments: {{ post.comments.all()|length }}
                 {% if g.user.is_active() and g.user.allowed_to_remove_post(post) %}|
@@ -51,13 +57,13 @@
             <div>
                 <form method=post action=/p/{{ post.postid }}/remove
                       onsubmit="return confirm('Are you sure you want to delete this post?')">
-                    <input type="submit" value="Delete post">
+                    <input type="submit" value="Delete post" class="btn delete">
                     {{ form.csrf_token() }}
                 </form>
             </div>
         {% endif %}
         <form method=post action=/p/{{ post.postid }}/comment>
-            {{ commentform.content }}
+            {{ commentform.content() }}
             <br>
             <input type="submit" value="Submit comment">
             {{ commentform.csrf_token() }}
@@ -65,7 +71,7 @@
         {# Render all comments with all children, might want to limit the amount of childcoments #}
         <div id="comments">
             {% for comment in post.comments.all() %}
-                <div>{{ render_comment(comment, post.postid,commentform) }}</div>
+                {{ render_comment(comment, post.postid,commentform) }}
             {% endfor %}
         </div>
     </div>

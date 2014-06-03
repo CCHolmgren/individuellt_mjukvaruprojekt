@@ -2,11 +2,14 @@
 {% block body %}
     {% from "_formhelpers.html" import render_field, with_errors %}
     <form method=post action=/c/new>
+        <h2>Create a new category</h2>
         <dl>
-            {{ with_errors(form.categoryname,autocomplete="off", placeholder="Categoryname") }}
-            <dt><span class="small">The name that will be used in the url, (somethingsimilartothis), may only contain a-z and + -.</span>
+            Category name
+            {{ with_errors(form.categoryname,autocomplete="off", placeholder="Category name") }}
+            <dt><span class="small">The name that will be used in the url, (somethingsimilartothis), may only contain a-z, 0-9, _ and -</span>
             </dt>
-            {{ with_errors(form.categorytitle,autocomplete="off", placeholder="Categoryname") }}
+            Category title
+            {{ with_errors(form.categorytitle,autocomplete="off", placeholder="Category title") }}
             <dt><span class="small">The text that will be at the top of the page, (Something similar to this).</span>
             </dt>
         </dl>

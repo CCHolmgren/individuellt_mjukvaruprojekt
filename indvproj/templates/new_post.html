@@ -15,6 +15,7 @@
         {#  #} linkform.csrf_token() }}
     </form>-->
     <form method=post action=/p/new/ class="onehundered margin-top-ten">
+    <h2>Create a new post</h2>
     <dl>
         Post title
         {{ with_errors(form.title, placeholder="Title", autocomplete="off") }}
@@ -24,11 +25,11 @@
         <dt><span class="small">The name of the category that the post will get posted to. Do note that you must be allowed to post in that category for it to be possible.</span>
         </dt>
         <span id="wmd-button-bar"></span>
-        {{ with_errors(form.content,class="post", id="wmd-input",placeholder="Content of your post goese here.") }}
+        {{ with_errors(form.content,class="post onehundered", id="wmd-input",placeholder="Content of your post goese here.") }}
         <dt><span class="small">You can use markdown to style your input.</span></dt>
     </dl>
-        <p><input type=submit value=Post></p>
-        {{ form.csrf_token() }}
+    <p><input type=submit value=Post></p>
+    {{ form.csrf_token() }}
     </form>
     <!--Preview of the markdown-->
     <div class="onehundered">

@@ -39,7 +39,7 @@
     </div>
 </div>
 <div class="aside" id="main-navigation">
-    <a href="#" class="close-nav open-nav">Close</a>
+    <a href="#" class="close-nav open-nav black-border">Close</a>
 
     <!--<a href={{ url_for('MainView:index') }} class="home">Home</a>-->
 
@@ -47,7 +47,7 @@
         {% if g.user.is_active() %}
             <div class="collections">
                 {% if g.user.collections.all() %}
-                    <span>Your collections:</span>
+                    <span>Your <a href={{ url_for("CollectionView:index") }}>collections</a>:</span>
                     {% for collection in g.user.collections.all() %}
                         {{ render_collection_dense(collection) }}
                     {% endfor %}
@@ -68,7 +68,7 @@
     {%- block body %}{%- endblock %}
 </div>
 <div class="aside2" id="category-navigation">
-    <a href="#" class="close-nav2 open-nav" style="float:right">Close</a>
+    <a href="#" class="close-nav2 open-nav black-border" style="float:right">Close</a>
 
     <div class="categories" style="clear:right">
         <span class="category">Categories:</span>

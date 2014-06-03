@@ -47,7 +47,7 @@ def escape_text_and_create_markdown(unescaped_text, safe_mode="escape"):
     Safe_mode set to escapes doesn't remove anything and allows the users to post what ever they want without it getting
     removed.
     """
-    return markdown(unescaped_text, safe_mode=safe_mode)
+    return markdown(unescaped_text, safe_mode=safe_mode, extensions=["sane_lists", "tables"])
 
 
 def encrypt(password):

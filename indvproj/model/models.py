@@ -3,6 +3,7 @@ from sqlalchemy.dialects import postgresql
 #from sqlalchemy import db.Column, db.Integer, db.String, db.DateTime, db.ForeignKey, PrimaryKeyConstraint
 #from model.database import db
 import sys
+
 sys.path.append('C:\\Users\\Chrille\\School\\individuellt_mjukvaruprojekt\\indvproj')
 print(sys.path)
 from indvproj import db
@@ -196,6 +197,9 @@ class Comment(db.Model):
     def __repr__(self):
         return '<Comment {}, commentid: {}, children: {}>'.format(self.content[:15], self.commentid, len(self.children))
 
+    def created_when(self):
+        return '{:%Y-%m-%d %H:%M:%S}'.format(self.created)
+
 
 class UserGroup(db.Model):
     """
@@ -326,6 +330,9 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post {}>'.format(self.title)
+
+    def created_when(self):
+        return '{:%Y-%m-%d %H:%M:%S}'.format(self.created)
 
 
 class Link(db.Model):
